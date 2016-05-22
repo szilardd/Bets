@@ -51,7 +51,7 @@ namespace Bets.Data
                 return TeamFlagUrl + flagPrefixOrExternalID + ".png";
             //otherwise resolve relative url and add id
             else
-                return AbsoluteUrl(helper) + TeamFlagUrl + flagPrefixOrExternalID + ".png";
+                return AbsoluteUrl(helper) + TeamFlagUrl + flagPrefixOrExternalID + ".svg";
         }
 
         public static string GetTeamFlagImage(string flagPrefixOrExternalID)
