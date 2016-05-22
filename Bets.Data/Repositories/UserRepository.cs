@@ -41,30 +41,18 @@ namespace Bets.Data
 
 		public UserModel GetUser(string username)
 		{
-			var userModel =
-			(
-				from user in this.GetAll()
-				where user.Username == username
-				select new UserModel
-						{
-							ID = user.UserID,
-							ProfileID = user.ProfileID,
-							Username = user.Username,
-							Password = user.Password,
-                            PasswordSalt = user.PasswordSalt,
-							Email = user.Email,
-							DisplayName = user.DisplayName,
-							Active = true,
-							IsLockedOut = false,
-							LastLoginDate = DateTime.Now
-						}
-			).SingleOrDefault();
+            var userModel = GetUserEntity().Where(e => e.Username == username).SingleOrDefault();
 
-			if (userModel != null)
+            if (userModel != null)
 				userModel.Role = Convert.ToInt32(userModel.ProfileID).ToEnum<Role>();
 
 			return userModel;
 		}
+
+        public UserModel GetUserByID()
+        {
+            return GetUserEntity().Where(e => e.ID == UserID).SingleOrDefault();
+        }
 
 		public override ActionStatus SaveItem(UserModel model, DBActionType action)
 		{
@@ -82,6 +70,28 @@ namespace Bets.Data
         public string GetUserPasswordSalt()
         {
             return this.Context.Users.Where(e => e.UserID == this.UserID).Select(e => e.PasswordSalt).First();
+        }
+
+        private IQueryable<UserModel> GetUserEntity()
+        {
+            return
+			(
+				from user in this.GetAll()
+				select new UserModel
+						{
+							ID = user.UserID,
+							ProfileID = user.ProfileID,
+							Username = user.Username,
+							Password = user.Password,
+                            PasswordSalt = user.PasswordSalt,
+							Email = user.Email,
+							DisplayName = user.DisplayName,
+							Active = true,
+							IsLockedOut = false,
+							LastLoginDate = DateTime.Now,
+                            Bonus = user.Bonus
+						}
+			);
         }
     }
 }

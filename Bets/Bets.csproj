@@ -207,6 +207,10 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Http.Tracing, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Tracing.5.2.3\lib\net45\System.Web.Http.Tracing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
@@ -281,6 +285,8 @@
     <Compile Include="Controllers\Api\Main\BaseApiController.cs" />
     <Compile Include="Controllers\Api\MatchBetsController.cs" />
     <Compile Include="Controllers\Api\MatchesController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
+    <Compile Include="Controllers\Api\SettingsController.cs" />
     <Compile Include="Controllers\Api\StandingsController.cs" />
     <Compile Include="Controllers\Api\TeamBetsController.cs" />
     <Compile Include="Controllers\Api\TeamsController.cs" />
@@ -537,6 +543,8 @@
     <Compile Include="Helpers\PagedList.cs" />
     <Compile Include="Helpers\UIExtensions.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
+    <Compile Include="Infrastructure\Attributes\ApiLogFilter.cs" />
+    <Compile Include="Infrastructure\ApiLogHander.cs" />
     <Compile Include="Infrastructure\Attributes\ApiAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\ApiGlobalExceptionHandler.cs" />
     <Compile Include="Infrastructure\Attributes\LogonAttribute.cs" />
@@ -553,6 +561,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Bets.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CustomTextWriteTraceListener.cs" />
     <Compile Include="Mailers\INotificationMailer.cs" />
     <Compile Include="Mailers\NotificationMailer.cs" />
     <Compile Include="Models\ApplicationOAuthProvider.cs" />
@@ -573,6 +582,7 @@
   <ItemGroup>
     <Content Include="Content\BOYCOTT_-webfont.svg" />
     <Compile Include="App_Start\DisplayMode.cs" />
+    <Content Include="App_Data\Tracing\readme.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1200,6 +1210,7 @@
     <Content Include="Views\Help\_HelpDashboard.cshtml" />
     <Content Include="Views\Admin\_AddMatch.cshtml" />
     <Content Include="Views\Admin\_AddMatch.Mobile.cshtml" />
+    <Content Include="Settings\diagnostics.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

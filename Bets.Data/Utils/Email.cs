@@ -38,8 +38,8 @@ namespace Bets.Data
 			}
 			catch (Exception ex)
 			{
-				Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
-				return false;
+                Logger.Log(ex);
+                return false;
 			}
 		}
 	}

@@ -23,6 +23,19 @@ namespace Bets.Data
         public string SecondTeamName {get; set; }
 
         /// <summary>
+        /// Round in which the match takes place
+        /// </summary>
+        [Required]
+        public int RoundID { get; set; }
+
+        /// <summary>
+        /// Until what date (UTC) can a bet be made on the match
+        /// </summary>
+        [Required]
+        [NotMapped]
+        public DateTime BetExpirationDate => Extensions.GetBetCutoffDate(Date);
+
+        /// <summary>
         /// Points awared if the first team wins
         /// </summary>
         [Required]

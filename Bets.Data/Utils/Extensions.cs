@@ -125,11 +125,11 @@ namespace Bets.Data
         /// <summary>
         /// Until what date and time can a bet be made
         /// </summary>
-        /// <param name="matchDate"></param>
+        /// <param name="betDate"></param>
         /// <returns></returns>
-        public static DateTime GetBetCutoffDate(DateTime matchDate)
+        public static DateTime GetBetCutoffDate(DateTime betDate)
         {
-            return matchDate == DateTime.MinValue ? matchDate : matchDate.AddHours(-1 * DataConfig.HoursBeforeBet);
+            return (betDate == DateTime.MinValue) ? betDate : betDate.AddHours(-1 * DataConfig.HoursBeforeBet);
         }
     }
 }

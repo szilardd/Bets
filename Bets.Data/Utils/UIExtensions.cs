@@ -2,6 +2,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Bets.Data
@@ -32,6 +33,12 @@ namespace Bets.Data
 
         private static string AbsoluteUrl(UrlHelper helper)
         {
+            // should be null only when called by trace writer
+            if (HttpContext.Current == null)
+            {
+                return "{{SiteUrl}}";
+            }
+
             var url = HttpContext.Current.Request.Url;
             var suffix = string.Empty;
 
@@ -77,7 +84,7 @@ namespace Bets.Data
         public static string GetUserImage(this UrlHelper helper, string username)
         {
             var imgPath = "profile/" + username + ".jpg";
-            var fileInfo = new FileInfo(HttpContext.Current.Server.MapPath("~/content/img/" + imgPath));
+            var fileInfo = new FileInfo(HostingEnvironment.MapPath("~/content/img/" + imgPath));
             var root = AbsoluteUrl(helper) + ImageRoot.Replace("~/", "");
 
             if (fileInfo.Exists)

@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Bets.Controllers.Api
 {
-    public class MatchBetsController : BaseApiController
+    public class MatchBetsController : BaseApiController<MatchesForRoundRepository, Match, MatchForRoundModel>
     {
         public MatchBetsController(IMapper mapper) : base(mapper) {}
 
@@ -19,12 +19,20 @@ namespace Bets.Controllers.Api
         /// Saves bet for match
         /// </summary>
         [HttpPost]
-        public ActionStatus Post([FromBody]ApiMatchBetModel model)
+        public ApiMatchBetResponse Post([FromBody]ApiMatchBetModel model)
         {
-            var repo = new MatchesForRoundRepository(UserID);
             var matchForRoundModel = _mapper.Map<MatchForRoundModel>(model);
 
-            return repo.SaveItem(matchForRoundModel, DBActionType.Insert);
+            var saveResult = Repo.SaveItem(matchForRoundModel, DBActionType.Update);
+            ApiMatchBetResponse response = new ApiMatchBetResponse(saveResult);
+
+            // set user bonus
+            if (saveResult.Success)
+            {
+                response.Result = Repo.GetUserBonus();
+            }
+
+            return response;
         }
     }
 }

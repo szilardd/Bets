@@ -9,7 +9,7 @@ using Bets.Data.Models;
 
 namespace Bets.Controllers.Api
 {
-    public class GoalscorersController : BaseApiController
+    public class GoalscorersController : BaseApiController<GoalscorerRepository, Player, GoalscorerModel>
     {
         private readonly GoalscorerRepository _repo;
 

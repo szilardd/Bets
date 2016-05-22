@@ -9,13 +9,10 @@ using Bets.Data.Models;
 
 namespace Bets.Controllers.Api
 {
-    public class GoalscorerBetsController : BaseApiController
+    public class GoalscorerBetsController : BaseApiController<GoalscorerRepository, Player, GoalscorerModel>
     {
-        private readonly GoalscorerRepository _repo;
-
         public GoalscorerBetsController(IMapper mapper) : base(mapper)
         {
-            _repo = new GoalscorerRepository(UserID);
         }
 
         /// <summary>
@@ -24,7 +21,7 @@ namespace Bets.Controllers.Api
         [HttpGet]
         public ActionStatus<ApiGoalscorerModel> Get()
         {
-            var result = _mapper.Map<ApiGoalscorerModel>(_repo.GetSelectedGoalscorer(null).FirstOrDefault());
+            var result = _mapper.Map<ApiGoalscorerModel>(Repo.GetSelectedGoalscorer(null).FirstOrDefault());
             return new ActionStatus<ApiGoalscorerModel>(result);
         }
 

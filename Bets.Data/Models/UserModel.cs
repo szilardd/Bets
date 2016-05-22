@@ -71,8 +71,9 @@ namespace Bets.Data.Models
 		public int Points { get; set; }
 		public int? RoundID { get; set; }
 		public int MatchID { get; set; }
+        public int Bonus { get; internal set; }
 
-		public UserModel()
+        public UserModel()
 		{
 		}
 

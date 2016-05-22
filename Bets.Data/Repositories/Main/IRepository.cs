@@ -37,9 +37,10 @@ namespace Bets.Data
 
         public ActionStatus()
         {
+            Success = true;
         }
 
-        public ActionStatus(T result)
+        public ActionStatus(T result) : this()
         {
             Result = result;
         }
@@ -56,6 +57,7 @@ namespace Bets.Data
 
         public ActionStatusCollection(IQueryable<T> result)
         {
+            Success = true;
             Result = result;
         }
     }

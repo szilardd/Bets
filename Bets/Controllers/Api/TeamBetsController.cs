@@ -7,22 +7,17 @@ using Bets.Data.Models;
 
 namespace Bets.Controllers.Api
 {
-    public class TeamBetsController : BaseApiController
+    public class TeamBetsController : BaseApiController<WinnerRepository, Team, TeamModel>
     {
-        private readonly WinnerRepository _repo;
-
-        public TeamBetsController(IMapper mapper) : base(mapper)
-        {
-            _repo = new WinnerRepository(UserID);
-        }
+        public TeamBetsController(IMapper mapper) : base(mapper) {}
 
         /// <summary>
         /// Returns team bet
         /// </summary>
         [HttpGet]
-        public ActionStatus<ApiTeamModel> Get(int id)
+        public ActionStatus<ApiTeamModel> Get()
         {
-            var result = _mapper.Map<ApiTeamModel>(_repo.GetSelectedWinner(null).FirstOrDefault());
+            var result = _mapper.Map<ApiTeamModel>(Repo.GetSelectedWinner(null).FirstOrDefault());
             return new ActionStatus<ApiTeamModel>(result);
         }
 
@@ -33,7 +28,7 @@ namespace Bets.Controllers.Api
         [HttpPost]
         public ActionStatus Post(ApiTeamBetModel model)
         {
-            return _repo.SaveItem(_mapper.Map<TeamModel>(model), DBActionType.Update);
+            return Repo.SaveItem(_mapper.Map<TeamModel>(model), DBActionType.Update);
         }
     }
 }

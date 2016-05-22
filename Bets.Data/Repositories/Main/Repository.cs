@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using Bets.Data.Models;
 using System.IO;
 using System.Text;
+using System.Web.Mvc;
+using System.Diagnostics;
 
 namespace Bets.Data
 {
@@ -82,28 +84,26 @@ namespace Bets.Data
 
 		#endregion
 
-		private StringWriter GetLogger()
-		{
-			this.logger = new StringBuilder();
-			StringWriter writer = new StringWriter(logger);
-			return writer;
-		}
-
 		public Repository()
 		{
-			if (ConfigurationManager.AppSettings["LiveMode"] == "true")
-				this.Context = this.GetDataContext();
-			else
-			{
-				//profile sql queries using ASP.NET mini profiler
-				SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["Bets"].ConnectionString);
+            if (DataConfig.IsLiveMode())
+            {
+                this.Context = this.GetDataContext();
+            }
+            else
+            {
+                //profile sql queries
+                SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["Bets"].ConnectionString);
 
                 // wrap the connection with a profiling connection that tracks timings
-                this.Context = new BetsDataContext(sqlConn); //new BetsDataContext(new StackExchange.Profiling.Data.ProfiledDbConnection(sqlConn, MiniProfiler.Current));
+                this.Context = new BetsDataContext(sqlConn);
             }
 
-			this.Context.Log = this.GetLogger();
-			this.Context.CommandTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["CommandTimeout"]);
+            if (DataConfig.EnableTracing())
+            {
+                this.Context.Log = new TextToTraceWriter { Category = "DatabaseQuery" };
+            }
+            this.Context.CommandTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["CommandTimeout"]);
 		}
 
 		public Repository(int userID) : this()
@@ -231,14 +231,14 @@ namespace Bets.Data
 						System.Threading.Thread.Sleep(500);
 						saveRetryCount++;
 
-						Elmah.ErrorSignal.FromCurrentContext().Raise(sqlEx);
+                        Logger.Log(sqlEx);
 
 						return this.Save();
 					}
 
 					default:
 					{
-						Elmah.ErrorSignal.FromCurrentContext().Raise(sqlEx);
+						Logger.Log(sqlEx);
 						return StoredProcResult.Error;
 					}
 				}
@@ -250,7 +250,7 @@ namespace Bets.Data
 				if (saveRetryCount >= MAX_RETRY_COUNT)
 					return StoredProcResult.ErrChanged;
 
-				Elmah.ErrorSignal.FromCurrentContext().Raise(changeConflictEx);
+                Logger.Log(changeConflictEx);
 
 				//resolve concurrency issue by retrieving only changed fields into conflicting entities
 				//and try saving again
@@ -264,7 +264,7 @@ namespace Bets.Data
 			}
 			catch (Exception ex)
 			{
-				Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                Logger.Log(ex);
 				return StoredProcResult.Error;
 			}
 
@@ -279,13 +279,13 @@ namespace Bets.Data
 			switch (spResult)
 			{ 
 				case StoredProcResult.ErrChanged        :   dbResult.Message = "Failed to " + action + " because records have been changed since last view. Please reload the page."; break;
-				case StoredProcResult.ErrNoRecord       :   dbResult.Message = "Failed to " + action + " because records does not exist."; break;
+				case StoredProcResult.ErrNoRecord       :   dbResult.Message = "Failed to " + action + " because record doesn't exist."; break;
 				case StoredProcResult.ErrRecExist       :   dbResult.Message = "Failed to " + action + " because the record already exists."; break;
 				case StoredProcResult.ErrRecHasLink     :   dbResult.Message = "Failed to " + action + " because there are records that depend on this one."; break;
 				case StoredProcResult.ErrUnknown		:	dbResult.Message = "Failed to " + action + "."; break;
 				case StoredProcResult.InvalidPassword	:	dbResult.Message = "Failed to " + action + " because the password is invalid!"; break;
-				case StoredProcResult.Success			:	dbResult.Message = "The " + action + " completed successfully!"; dbResult.Success = true; break;
-				default                                 :   dbResult.Message = "Failed to " + action + "."; break;
+				case StoredProcResult.Success			:	dbResult.Message = "The data was saved successfully!"; dbResult.Success = true; break;
+                default                                 :   dbResult.Message = "Failed to " + action + "."; break;
 			}
 
 			if (!String.IsNullOrWhiteSpace(spError))
@@ -347,9 +347,9 @@ namespace Bets.Data
 			}
 			catch (Exception ex)
 			{
-				Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                Logger.Log(ex);
 
-				spResult = StoredProcResult.ErrUnknown;
+                spResult = StoredProcResult.ErrUnknown;
 			}
 
 			return this.GetDBResult(spResult, spError, DBActionType);

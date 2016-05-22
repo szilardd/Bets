@@ -10,6 +10,7 @@ using Bets.Data;
 using System.IO;
 using System.Drawing;
 using ThatAuthentication;
+using Bets.Infrastructure;
 
 namespace Bets.Controllers
 {
@@ -103,7 +104,7 @@ namespace Bets.Controllers
 				return true;
 			}
 			catch (Exception ex) {
-				Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                Logger.Log(ex);
 				return false; 
 			}
 		}

@@ -3,17 +3,13 @@ using System.Web.Http;
 using System.Web.Http.OData.Query;
 using AutoMapper;
 using Bets.Data;
+using Bets.Data.Models;
 
 namespace Bets.Controllers.Api
 {
-    public class TeamsController : BaseApiController
+    public class TeamsController : BaseApiController<WinnerRepository, Team, TeamModel>
     {
-        private readonly WinnerRepository _repo;
-
-        public TeamsController(IMapper mapper) : base(mapper)
-        {
-            _repo = new WinnerRepository(UserID);
-        }
+        public TeamsController(IMapper mapper) : base(mapper) {}
 
         /// <summary>
         /// Returns teams ordered by bet points descending
@@ -21,7 +17,7 @@ namespace Bets.Controllers.Api
         [HttpGet]
         public ActionStatusCollection<ApiTeamModel> Get(ODataQueryOptions<ApiTeamModel> queryOptions)
         {
-            var result = ProjectAndFilter<ApiTeamModel>(_repo.GetWinnersForListing(null), queryOptions);
+            var result = ProjectAndFilter<ApiTeamModel>(Repo.GetWinnersForListing(null), queryOptions);
             return new ActionStatusCollection<ApiTeamModel>(result);
         }
     }

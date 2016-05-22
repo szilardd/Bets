@@ -98,9 +98,13 @@
     <Compile Include="ApiModels\ApiGoalscorerBetModel.cs" />
     <Compile Include="ApiModels\ApiGoalscorerModel.cs" />
     <Compile Include="ApiModels\ApiMatchBetModel.cs" />
+    <Compile Include="ApiModels\ApiMatchBetResponse.cs" />
     <Compile Include="ApiModels\ApiMatchForRoundModel.cs" />
+    <Compile Include="ApiModels\ApiSettingModel.cs" />
     <Compile Include="ApiModels\ApiStandingsModel.cs" />
     <Compile Include="ApiModels\ApiTeamModel.cs" />
+    <Compile Include="ApiModels\ApiUserModel.cs" />
+    <Compile Include="ApiModels\ApiUserUpdateModel.cs" />
     <Compile Include="Bets.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +161,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\WinnerRepository.cs" />
     <Compile Include="Repositories\WorstUsersForRoundRepository.cs" />
+    <Compile Include="TextToTraceWriter.cs" />
     <Compile Include="Utils\DataConfig.cs" />
     <Compile Include="Utils\DropdownOption.cs" />
     <Compile Include="Utils\DynamicOrderBy.cs" />
@@ -180,6 +185,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\UIExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

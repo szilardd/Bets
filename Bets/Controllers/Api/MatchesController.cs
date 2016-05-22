@@ -7,17 +7,13 @@ using System.Web.Http;
 using System.Web.Http.OData.Query;
 using AutoMapper;
 using Bets.Data;
+using Bets.Data.Models;
 
 namespace Bets.Controllers.Api
 {
-    public class MatchesController : BaseApiController
+    public class MatchesController : BaseApiController<MatchesForRoundRepository, Match, MatchForRoundModel>
     {
-        private readonly MatchesForRoundRepository _repo;
-
-        public MatchesController(IMapper mapper) : base(mapper)
-        {
-            _repo = new MatchesForRoundRepository(UserID);
-        }
+        public MatchesController(IMapper mapper) : base(mapper) {}
 
         /// <summary>
         /// Returns matches for the current round
@@ -26,7 +22,7 @@ namespace Bets.Controllers.Api
         [HttpGet]
         public ActionStatusCollection<ApiMatchForRoundModel> Get(ODataQueryOptions<ApiMatchForRoundModel> queryOptions)
         {
-            var result = ProjectAndFilter(_repo.GetMatchesForRound(null), queryOptions);
+            var result = ProjectAndFilter(Repo.GetMatchesForRound(null), queryOptions);
             return new ActionStatusCollection<ApiMatchForRoundModel>(result);
         }
     }

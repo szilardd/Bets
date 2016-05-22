@@ -92,6 +92,7 @@ namespace Bets.Data
 							PointsX = match.PointsX,
 							Points2 = match.Points2,
 							Date = match.Date,
+                            RoundID = match.RoundID,
 							FirstTeamFlag = firstTeam.FlagPrefix,
 							SecondTeamFlag = secondTeam.FlagPrefix,
 							FirstTeamGoals = match.FirstTeamGoals,

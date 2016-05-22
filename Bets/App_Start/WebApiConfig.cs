@@ -6,6 +6,7 @@ using System.Web.OData.Builder;
 using Elmah.Contrib.WebApi;
 using Microsoft.Owin.Security.OAuth;
 using Bets.Data;
+using Bets.Infrastructure;
 
 namespace Bets
 {
@@ -24,7 +25,20 @@ namespace Bets
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // authorize using custom logic
             config.Filters.Add(new CustomAuthorize());
+
+            if (DataConfig.EnableTracing())
+            {
+                //log requests
+                config.Filters.Add(new ApiLogFilter());
+
+                //enable tracing (configured in web.config)
+                config.EnableSystemDiagnosticsTracing();
+
+                //log all method calls
+                config.MessageHandlers.Add(new ApiLogHandler());
+            }
 
             // set up elmah
             config.Services.Add(typeof(IExceptionLogger), new ElmahExceptionLogger());

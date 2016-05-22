@@ -11,6 +11,8 @@ using Autofac;
 using ThatAuthentication;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Bets.Infrastructure;
+using System.Diagnostics;
 
 namespace Bets
 {

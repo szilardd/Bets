@@ -60,5 +60,10 @@ namespace Bets.Data
 		{
 			return ConfigurationManager.AppSettings["LiveMode"] == "true";
 		}
+
+        public static bool EnableTracing()
+        {
+            return ConfigurationManager.AppSettings["EnableTracing"] == "true";
+        }
 	}
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Bets.Mailers;
 using Bets.Data;
+using Bets.Infrastructure;
 
 namespace Bets.Controllers
 {
@@ -43,7 +44,7 @@ namespace Bets.Controllers
 			}
 			catch (Exception ex)
 			{
-				Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                Logger.Log(ex);
 			}
 
 			return null;
