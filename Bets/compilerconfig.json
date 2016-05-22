@@ -34,5 +34,17 @@
   {
     "outputFile": "Content/css/login.css",
     "inputFile": "Content/css/login.less"
+  },
+  {
+    "outputFile": "Content/css/pages/rounds.css",
+    "inputFile": "Content/css/pages/rounds.less"
+  },
+  {
+    "outputFile": "Content/css/pages/userbets.css",
+    "inputFile": "Content/css/pages/userbets.less"
+  },
+  {
+    "outputFile": "Content/css/pages/teams.css",
+    "inputFile": "Content/css/pages/teams.less"
   }
 ]

@@ -1,16 +1,11 @@
 ﻿@if (Request.IsAuthenticated)
 {
-	<ul>
-		@if (ViewBag.IsAdmin ?? false) {
-			<li><a href="@Url.Action("Index", "Admin")" class="grn">Admin</a></li>
-			<li>|</li>
-		}
-		<li><a href="@Url.Action("Index", "Help")" class="grn">Help</a></li>
-		<li>|</li>
-		<li><a href="@Url.Action("Index", "Profile")" class="grn">Profile</a></li>
-		<li>|</li>
-		<li><a href="@Url.Action("LogOff", "Account")" class="grn">Log Off</a></li>
-		<li>|</li>
-		<li>Welcome <strong>@ViewBag.DisplayName</strong>!</li>
-	</ul>
+    <ul>
+        <li><a href="@Url.Action("LogOff", "Account")" class="grn">Log Off</a></li>
+        @if (ViewBag.IsAdmin ?? false)
+        {
+            <li><a href="@Url.Action("Index", "Admin")" class="grn">Admin</a></li>
+        }
+        <li><a href="@Url.Action("Index", "Profile")" class="grn">Profile</a></li>
+    </ul>
 }

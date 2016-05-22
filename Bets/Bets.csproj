@@ -625,6 +625,9 @@
     <Content Include="Content\css\login.css">
       <DependentUpon>login.less</DependentUpon>
     </Content>
+    <Content Include="Content\css\login.min.css">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\main.css">
       <DependentUpon>main.less</DependentUpon>
     </Content>
@@ -650,6 +653,9 @@
       <DependentUpon>rounds.css</DependentUpon>
     </Content>
     <None Include="Content\css\pages\rounds.less" />
+    <Content Include="Content\css\pages\rounds.min.css">
+      <DependentUpon>rounds.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\pages\teams.css">
       <DependentUpon>teams.less</DependentUpon>
     </Content>
@@ -682,31 +688,14 @@
     </Content>
     <Content Include="Content\img\ajax-loader-small.gif" />
     <Content Include="Content\img\ajax-loader.gif" />
-    <Content Include="Content\img\bgimg\bg1.jpg" />
-    <Content Include="Content\img\bgimg\bg10.jpg" />
-    <Content Include="Content\img\bgimg\bg11.jpg" />
-    <Content Include="Content\img\bgimg\bg12.jpg" />
-    <Content Include="Content\img\bgimg\bg13.jpg" />
-    <Content Include="Content\img\bgimg\bg14.jpg" />
-    <Content Include="Content\img\bgimg\bg15.jpg" />
-    <Content Include="Content\img\bgimg\bg16.jpg" />
-    <Content Include="Content\img\bgimg\bg2.jpg" />
-    <Content Include="Content\img\bgimg\bg3.jpg" />
-    <Content Include="Content\img\bgimg\bg4.jpg" />
-    <Content Include="Content\img\bgimg\bg5.jpg" />
-    <Content Include="Content\img\bgimg\bg6.jpg" />
-    <Content Include="Content\img\bgimg\bg7.jpg" />
-    <Content Include="Content\img\bgimg\bg8.jpg" />
-    <Content Include="Content\img\bgimg\bg9.jpg" />
-    <Content Include="Content\img\bg\bg_mascots.png" />
-    <Content Include="Content\img\bg\bg_mascots2.png" />
-    <Content Include="Content\img\bg\testbg.png" />
-    <Content Include="Content\img\bg\testbg2.png" />
     <Content Include="Content\img\buttons\done.png" />
     <Content Include="Content\img\buttons\next.png" />
     <Content Include="Content\img\buttons\prev.png" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\grass.png" />
+    <Content Include="Content\img\heroimages\hero1.jpg" />
+    <Content Include="Content\img\heroimages\hero2.jpg" />
+    <Content Include="Content\img\heroimages\hero3.jpg" />
     <Content Include="Content\img\icons\no.png" />
     <Content Include="Content\img\icons\star-bonus.png" />
     <Content Include="Content\img\icons\star.png" />
