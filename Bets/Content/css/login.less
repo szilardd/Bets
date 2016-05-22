@@ -3,7 +3,7 @@
 
 html { background: none; }
 body {
-	background: url(../img/main/stucco.png);
+	background: @backColor;
 }
 
 .editor-field {
@@ -25,18 +25,18 @@ input[type=text], input[type=password]
 .login-holder
 {
 	margin-top: 100px;
-	.box-shadow(0, 5px, 90px, #cdcdcd);
 	.border-radius(10px);
 	width: 278px;
 	margin: 100px auto auto auto;
 	text-align: center;
 	padding: 25px 0;
+    background: @secondaryColor;
 }
 	
 	.login-holder input[type=submit]
 	{
 		.border-radius(5px);
-		background-color: @primaryColor;
+		background-color: #3C2E48;
 		border: solid 1px #280d3e;
 		width: 80px;
 		height: 30px;
@@ -51,7 +51,7 @@ input[type=text], input[type=password]
 	}
 		.login-holder input[type=submit]:hover
 		{
-			background-color: yellowGreen;
+			background-color: #705b80;
 		}
 
 .field-validation-error, .validation-summary-errors
@@ -68,9 +68,10 @@ input[type=text], input[type=password]
 	}
 
 #login-page #title { 
-	margin-left: 20px;
+	margin-left: 12px;
 	text-shadow: 1px 1px #CCC;
     margin-bottom: 20px;
+    font-size: 50px;
 }
 
     #login-page #title span {

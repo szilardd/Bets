@@ -30,5 +30,9 @@
   {
     "outputFile": "Content/css/help.css",
     "inputFile": "Content/css/help.less"
+  },
+  {
+    "outputFile": "Content/css/login.css",
+    "inputFile": "Content/css/login.less"
   }
 ]

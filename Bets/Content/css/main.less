@@ -66,8 +66,7 @@ footer, header, hgroup, menu, nav, section {display: block}
 
 html 
 {
-	background: black url(../img/grass.png) repeat;
-	background-color: #000;
+	background-color: @backColor;
 }
 
 /*-------------------
@@ -137,7 +136,7 @@ html {
 }
 
 body {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #444;
 	margin: 0 0 1px; 
@@ -145,6 +144,8 @@ body {
 	line-height: 1.5;
 	background-color: transparent;
 	margin-bottom: 20px;
+    width: 900px;
+    margin: 0 auto;
 }
 
 body:before {
@@ -293,7 +294,6 @@ h4 span {
 header {
 	position: relative;
 	width: 100%;
-	height: 100px;
 	display: block;
 }
 
@@ -316,32 +316,44 @@ div.bottom
     background: -o-linear-gradient(left, #00aeff 1%,#71fc00 15%,#ffff00 30%,#fc7a00 50%,#cc00a6 70%,#ff0084 85%,#ff0000 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(left, #00aeff 1%,#71fc00 15%,#ffff00 30%,#fc7a00 50%,#cc00a6 70%,#ff0084 85%,#ff0000 100%); /* IE10+ */
     background: linear-gradient(left, #00aeff 1%,#71fc00 15%,#ffff00 30%,#fc7a00 50%,#cc00a6 70%,#ff0084 85%,#ff0000 100%); /* W3C */
-    /*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00aeff', endColorstr='#ff0000',GradientType=1 ); /* IE6-9 */
 }
 
 .logo {
     width: 73px;
     position: absolute;
-    left: 250px;
-    top: 23px;
+    left: 210px;
+    top: 13px;
     border: none;
     z-index: 0;
 }
 
-.menu {
-	width: 600px;
+.menu-container {
+    background:@menuColor;
 }
+
+    .menu {
+	    width: 680px;
+        margin-left: 165px;
+        height: 60px;
+    }
 /*-------------------
 |       FOOTER      |
 -------------------*/
 footer {
-	height: 100px;
+	height: 40px;
 	clear: both;
 	width: 100%;
 	margin: 0 auto;
-	background-color: @backColor;
+	background-color: @menuColor;
 	color: #fff;
 }
+
+    footer div {
+        width: 100%;
+        text-align: right;
+        padding: 14px 10px 0 0;
+        font-size: 11px;
+    }
 
 /*-------------------
 |    CONTAINERS     |
@@ -352,27 +364,20 @@ footer {
 }
 
 #container {
-	.box-shadow(0px, 0px, 10px, #222);
-	.border-radius(8px);
 	position: relative;
-	max-width: @contentWidth - 20;
 	margin: 0 auto;
-	background-color: transparent;
-	/*min-height: 100%;*/
 	min-height: 600px;
-	background-color: #fff;
-	background-image: url(../img/main/stucco.png);
+	background-color: #F5F5F5;
 	padding: 20px;
 }
 
 .main {
-	max-width: @contentWidth - 20;
 	margin: 0 auto;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: transparent;
-	padding-top: 20px;
 	position: relative;
+    height: 235px;
 }
 
 /*-------------------
@@ -381,6 +386,7 @@ footer {
 .account 
 {
 	text-align: right;
+    margin-top: 5px;
 }
 
 	.account  li { color: #CCC; float: right; margin-right:5px; }
@@ -390,36 +396,44 @@ footer {
 	}
 
 nav {
-	height: 40px;
+	height: 100%;
 	margin: 0 auto;
-	padding-top: 10px;
 }
+    nav ul {
+        height: 100%;
+        overflow: hidden;
+    }
 
-nav ul li {
-	float: left;
-	line-height: normal;
-	margin-left: 20px;
-}
+        nav ul li {
+	        float: left;
+	        line-height: normal;
+            height: 100%;
+        }
 
-nav ul li a 
-{
-	.opacity(80);
-	font-size: 20px;
-	font-family: Arial, Helvetica, sans-serif;
-	color:#fff;
-	text-transform:capitalize;
-	font-weight:normal;
-	display:block;	/* IE6, IE7 line height fix */
-	background-color:transparent;
-	text-decoration:none;
-	margin-top:3px;
-	padding:5px;
-}
+            nav ul li a 
+            {
+                font-family: 'Oswald', Arial, Arial, Helvetica, sans-serif;
+	            font-size: 21px;
+	            color:#fff;
+	            text-transform:capitalize;
+	            font-weight:normal;
+	            display:block;	/* IE6, IE7 line height fix */
+	            background-color:transparent;
+	            text-decoration:none;
+	            margin: 0;
+                height: 100%;
+                padding: 14px 20px 0 20px;
+            }
+
+            nav a.grn:hover, nav a.grn.selected {
+                background: @secondaryColor;
+                color: #FFF;
+            }
 
 a.grn:hover, a.grn.selected
 {
 	.opacity(100);
-	color:@secondaryColor;
+    color: @logoSecondaryColor;
 }
 
 nav ul li a.orng:hover, nav ul li a.orng.selected
@@ -445,7 +459,7 @@ nav ul li a.prpl:hover, nav ul li a.prpl.selected
 	color:#CC00FF;
 }
 
-.green { color: @secondaryColor; }
+.green { color: @logoSecondaryColor; }
 .pink { color: #FF3399; }
 .orange { color: @primaryColor; }
 .blue { color: #00d0ff; }
@@ -455,12 +469,24 @@ nav ul li a.prpl:hover, nav ul li a.prpl.selected
 .medium {font-size: 50px; }
 .small {font-size: 25px; }
 .fixed { position: fixed !important; }
-.btn { padding-top: 6px; }
+.btn { 
+    padding-top: 6px; 
+    background: #FFF;
+    box-shadow: none;
+}
+
+    .btn-ac
+
+    .btn:hover {
+        background:#E6E6E6;
+    }
 /*-------------------
 |      SPECIFICS    |
 -------------------*/
  #title {
 	width: 270px;
+    padding: 10px;
+    color: #FFF;
 }
 
 #content {
@@ -471,10 +497,7 @@ nav ul li a.prpl:hover, nav ul li a.prpl.selected
 
 .icon {
 	.border-radius(5px);
-    border-color: rgba(82, 168, 236, 0.8);
-    -webkit-box-shadow: inset 0 1px 8px #AAA, 3px 0 8px #AAA;
-    -moz-box-shadow: inset 0 1px 8px #AAA, 0 3px 8px #AAA;
-    box-shadow: inset 0 1px 8px #AAA, 0 3px 8px #AAA;
+    border: solid 1px #CAC5C5;
 }
 
 img {
@@ -537,3 +560,25 @@ img {
 	display: block;
 	margin-top: 20px;
 }
+
+/*-------------------------
+|         SLIDER          |
+-------------------------*/
+#hero {
+    position: absolute;
+    width: 900px;
+    background-size: 100% auto;
+    height: 235px;
+}
+
+    .hero-1 {
+        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero1.jpg);
+    }
+
+    .hero-2 {
+        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero2.jpg);
+    }
+
+    .hero-3 {
+        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero3.jpg);
+    }
