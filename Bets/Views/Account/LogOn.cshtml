@@ -27,14 +27,14 @@
 			@using (Html.BeginForm())
 			{
 				<div class="editor-field">
-					@Html.TextBoxFor(m => m.UserName, new { placeholder = "Enter username" })
+					@Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
 					@Html.ValidationMessageFor(m => m.UserName)
 				</div>
 			
 				<br />
 			
 				<div class="editor-field">
-					@Html.PasswordFor(m => m.Password, new { placeholder = "Enter password" })
+					@Html.PasswordFor(m => m.Password, new { placeholder = "password" })
 					@Html.ValidationMessageFor(m => m.Password)
 				</div>
 			

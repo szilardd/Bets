@@ -565,7 +565,7 @@ img {
 }
 
 /*-------------------------
-|         SLIDER          |
+|         HERO            |
 -------------------------*/
 #hero {
     position: absolute;
@@ -574,14 +574,13 @@ img {
     height: 235px;
 }
 
-    .hero-1 {
-        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero1.jpg);
+@iterations: 12;
+.hero-loop (@i) when (@i > 0) {
+    .hero-@{i} {
+        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url('../img/heroimages/hero@{i}.jpg');
+        width: @i;
     }
+    .hero-loop(@i - 1);
+}
 
-    .hero-2 {
-        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero2.jpg);
-    }
-
-    .hero-3 {
-        background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url(../img/heroimages/hero3.jpg);
-    }
+.hero-loop (@iterations);

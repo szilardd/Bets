@@ -696,6 +696,11 @@
     <Content Include="Content\img\heroimages\hero1.jpg" />
     <Content Include="Content\img\heroimages\hero2.jpg" />
     <Content Include="Content\img\heroimages\hero3.jpg" />
+    <Content Include="Content\img\heroimages\hero4.jpg" />
+    <Content Include="Content\img\heroimages\hero5.jpg" />
+    <Content Include="Content\img\heroimages\hero6.jpg" />
+    <Content Include="Content\img\heroimages\hero7.jpg" />
+    <Content Include="Content\img\heroimages\hero8.jpg" />
     <Content Include="Content\img\icons\no.png" />
     <Content Include="Content\img\icons\star-bonus.png" />
     <Content Include="Content\img\icons\star.png" />
