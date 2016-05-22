@@ -168,6 +168,7 @@ namespace Bets.Controllers
 		/// Set tab name to be selected by default when the page is shown (on detail pages)
 		/// </summary>
 		/// <param name="tab"></param>
+        /// <param name="action">Action type</param>
 		protected void SetSelectedDetailTab(string tab, DetailAction action)
 		{
 			TempData[TempKey.SelectedTab.ToString()] = tab;
@@ -419,8 +420,6 @@ namespace Bets.Controllers
 		/// <summary>
 		/// Returns the IDs of the items in the current listing
 		/// </summary>
-		/// <param name="listingDataModel"></param>
-		/// <param name="excludedIDs">Excluded ids</param>
 		/// <returns></returns>
 		[HttpPost]
 		public ActionResult GetDataIDs(string pageType, bool? isLookup, bool searchCriteriaChanged, ListingParams<M> listingDataModel, List<int> excludedIDs)

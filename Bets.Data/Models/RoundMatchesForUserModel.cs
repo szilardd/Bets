@@ -10,7 +10,6 @@ namespace Bets.Data.Models
 {
     public class RoundMatchesForUserModel : MatchModel
     {
-        public int RoundID { get; set; }
         public bool Current { get; set; }
 
         public int? BetFirstTeamGoals { get; set; }

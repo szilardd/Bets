@@ -15,7 +15,8 @@ namespace Bets.Data
 	/// <summary>
 	/// A generic repository for working with data in the database
 	/// </summary>
-	/// <typeparam name="T">A POCO that represents an Entity Framework entity</typeparam>
+	/// <typeparam name="TEntity">A POCO that represents an Entity Framework entity</typeparam>
+    /// <typeparam name="M">Model</typeparam>
 	public class Repository<TEntity, M> : IRepository<TEntity, M> where TEntity : class where M : Model
 	{
 		private int saveRetryCount = 0;
@@ -163,7 +164,7 @@ namespace Bets.Data
 		/// Adds the specified entity
 		/// </summary>
 		/// <param name="entity">Entity to add</param>
-		/// <exception cref="ArgumentNullException"> if <paramref name="entity"/> is null</exception>
+        /// <param name="save">Whethere to save changes</param>
 		public bool Add(TEntity entity, bool save = false)
 		{
 			this.Context.GetTable<TEntity>().InsertOnSubmit(entity);

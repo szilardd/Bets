@@ -110,7 +110,7 @@ namespace ThatAuthentication
 		public override void Initialize(string name, NameValueCollection config)
 		{
 			if (config == null)
-				throw new ArgumentNullException("config");
+				throw new ArgumentNullException(nameof(config));
 
 			if (name == null || name.Length == 0)
 				name = "CustomMembershipProvider";

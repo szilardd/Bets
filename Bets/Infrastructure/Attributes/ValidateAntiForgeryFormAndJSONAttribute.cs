@@ -61,7 +61,7 @@ namespace Bets
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext == null)
-                throw new ArgumentNullException("filterContext");
+                throw new ArgumentNullException(nameof(filterContext));
 
             var httpContext = filterContext.HttpContext;
             var cookie = httpContext.Request.Cookies[AntiForgeryConfig.CookieName];

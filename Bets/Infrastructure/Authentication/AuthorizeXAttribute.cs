@@ -22,7 +22,7 @@ namespace ThatAuthentication
 		protected override bool AuthorizeCore(HttpContextBase httpContext)
 		{
 			if (httpContext == null)
-				throw new ArgumentNullException("httpContext");
+				throw new ArgumentNullException(nameof(httpContext));
 
 			string[] users = Users.Split(',');
 
