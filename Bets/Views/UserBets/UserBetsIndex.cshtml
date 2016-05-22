@@ -1,0 +1,83 @@
+﻿@{ Layout = Url.Layout(""); }
+@section ExternalsCSS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+		.Add(Url.CSSPlugin("rhinoslider/css/rhinoslider-1.04"))
+		.Render("~/content/combined/combined-slider-#.min.css"))
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+		.Add(Url.CSSDev("pages/userbets"))
+		.Render("~/content/combined/combined-userbets-#.min.css"))
+}
+
+@section ExternalsJS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptPlugin("rhinoslider/js/mousewheel"))
+		.Add(Url.ScriptPlugin("rhinoslider/js/easing"))
+		.Add(Url.ScriptPlugin("rhinoslider/js/rhinoslider-1.04"))
+		.Render("~/content/combined/combined-slider-#.min.js"))
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptDev("pages/userbets"))
+		.Render("~/content/combined/combined-userbets-#.min.js"))
+}
+
+<div class="clearfix">
+    <div id="main-container">
+
+        @Html.Partial("_UsersSlider")
+        <div class="clearfix"></div>
+
+		@if (ViewBag.GlobalBetsExpired) {
+			<div id="global-bets-container" class="hide">
+				<div class="line"></div>
+				<div id="goalscorer-bets" class="half left align-right">
+					@{ Html.RenderAction("Index", "GoalscorerForUserBets", new { UserID = ViewBag.FirstUserID }); }
+				</div>
+				<div id="winner-bets" class="half left align-left">
+					@{ Html.RenderAction("Index", "WinnerForUserBets", new { UserID = ViewBag.FirstUserID }); }
+				</div>
+			</div>
+		}
+
+		<div class="clear"></div>
+
+        <div id="round-slider-container">
+            @if (ViewBag.FirstRoundID != null) {
+				
+                <ul id="round-slider">
+                    @{ 
+						int counter = 0;
+						IEnumerator<ModelIDName> rounds = ViewBag.rounds;
+						rounds.MoveNext(); 
+					 }
+                    @while (rounds.Current != null) {
+						counter = 0;
+                        <li>
+                            @do {
+                                <div class="slide" data-id="@rounds.Current.ID">@rounds.Current.Name</div>
+                                counter += 1;
+                            }
+                            while (rounds.MoveNext() && counter % 4 != 3);
+                        </li>
+                    }
+                </ul>
+				<div class="clear"></div>
+                @*<div class="line"></div>
+                <div id="round-goalscorer">
+                    @{ Html.RenderAction("Index", "RoundGoalscorerForUser", new { UserID = ViewBag.FirstUserID, RoundID = ViewBag.FirstRoundID }); }
+                </div>
+                <div class="line"></div>
+                <div><h1 id="current-selected-round">&nbsp;</h1></div>*@
+				<div id="round-matches">
+					@{ Html.RenderAction("Index", "RoundMatchesForUser", new { UserID = ViewBag.FirstUserID, RoundID = ViewBag.FirstRoundID }); }
+				</div>
+            }
+            else {
+                <h1 class="center-text">We have no data to display for the round. Please come back after the current round has ended.</h1>
+            }
+           
+        </div>
+    </div>
+</div>

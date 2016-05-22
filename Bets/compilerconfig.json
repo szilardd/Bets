@@ -1,0 +1,34 @@
+﻿[
+  {
+    "outputFile": "Content/css/twitter-bootstrap/bootstrap.css",
+    "inputFile": "Content/css/twitter-bootstrap/bootstrap.less"
+  },
+  {
+    "outputFile": "Content/css/admin.css",
+    "inputFile": "Content/css/admin.less"
+  },
+  {
+    "outputFile": "Content/css/twitter-bootstrap/forms.css",
+    "inputFile": "Content/css/twitter-bootstrap/forms.less"
+  },
+  {
+    "outputFile": "Content/css/include/css3.css",
+    "inputFile": "Content/css/include/css3.less"
+  },
+  {
+    "outputFile": "Content/css/include/settings.css",
+    "inputFile": "Content/css/include/settings.less"
+  },
+  {
+    "outputFile": "Content/css/main.css",
+    "inputFile": "Content/css/main.less"
+  },
+  {
+    "outputFile": "Content/css/listing.css",
+    "inputFile": "Content/css/listing.less"
+  },
+  {
+    "outputFile": "Content/css/help.css",
+    "inputFile": "Content/css/help.less"
+  }
+]

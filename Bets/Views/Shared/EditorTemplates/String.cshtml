@@ -1,0 +1,22 @@
+﻿@model object
+
+<div class="editor-label">@Html.LabelFor(model => model)</div>
+<div class="editor-field">
+	@{
+	 
+		var htmlAttributes = new Dictionary<string, object> { { "class", ViewData["class"] } };
+		
+		if (Convert.ToBoolean(ViewData["password"] ?? false)) {
+			@Html.PasswordFor(m => m, htmlAttributes)
+		}
+		else if (Convert.ToBoolean(ViewData["textarea"] ?? false)) {
+			@Html.TextAreaFor(m => m, htmlAttributes)
+		}
+		else {
+            htmlAttributes["type"] = ViewData["type"] ?? "text";
+			@Html.TextBoxFor(m => m, htmlAttributes)
+		}
+	}
+	@Html.ValidationMessageFor(model => model)
+</div>
+<div class="clear"></div>

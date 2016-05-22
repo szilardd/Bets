@@ -1,0 +1,11 @@
+﻿@model Dictionary<string, string>
+
+<thead>
+	<tr>
+
+		@foreach (string headerName in Model.Keys) {
+			<th data-col="@headerName" class="col-@headerName">@Model[headerName]</th>
+		}
+
+	</tr>
+</thead>

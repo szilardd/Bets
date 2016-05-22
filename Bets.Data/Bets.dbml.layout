@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Bets">
+  <DataContextMoniker Name="/BetsDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5498c2c2-2b4e-44d2-b7cf-897f87edbdaf" isExpanded="false" absoluteBounds="2, 1.875, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/Match" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2fc4792d-14bc-40a6-9142-2131e32d3115" absoluteBounds="2.015, 2.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c7f34bec-42f5-44ef-b2b8-65c467e28515" isExpanded="false" absoluteBounds="2, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="030141d8-75d3-4475-9085-330c651b0444" absoluteBounds="2.0149999999999997, 1.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e284e29-133a-42e6-b74b-c3b8ad0589ff" isExpanded="false" absoluteBounds="2, 0.625, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/Team" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5e44a77-a7a2-4db8-811a-8ea212c39e4d" absoluteBounds="2.0149999999999997, 1.085, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8776b9eb-8157-4945-a59d-891e380bc752" isExpanded="false" absoluteBounds="4.5, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/GlobalBet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="22363a49-02d1-4979-b30c-b05d7be97bd0" absoluteBounds="4.5150000000000006, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c3cf10b3-3038-40e7-9cb8-5de6a8c5debd" isExpanded="false" absoluteBounds="4.5, 2.5, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/GoalscorerForRound" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b70e83f2-7609-4ec4-8b6f-3f65e4753f9b" absoluteBounds="4.515, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="45c37a8a-dce2-44ec-8e71-240e26271fc5" isExpanded="false" absoluteBounds="2, 3.875, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/MatchBet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f6101915-5bf1-4fd1-a70c-1eeb556fdab9" absoluteBounds="2.0149999999999997, 4.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e866d744-bbd3-4897-ab22-68fc5256511a" isExpanded="false" absoluteBounds="4.5, 1.875, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/Round" />
+      <nestedChildShapes>
+        <elementListCompartment Id="808070e7-de9f-44b5-add1-19c7c4ad8253" absoluteBounds="4.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1965a3b2-ca79-41ab-9d81-1f36e49ef0d9" isExpanded="false" absoluteBounds="4.5, 3.125, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/BetsForRound" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33b8f418-af92-4038-9484-c5780bf59c8b" absoluteBounds="4.515, 3.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47bb52d1-5aa6-48c6-a1e1-06d097750f22" isExpanded="false" absoluteBounds="4.5, 3.75, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/PointsForRound" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b422a8c7-9238-422e-a70f-4959428dbff9" absoluteBounds="4.515, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03c14432-a5b1-4d05-b5d8-76ebe8e4507b" isExpanded="false" absoluteBounds="2, 2.5, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/Setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07f286df-0785-48e0-a085-dc8c20ffad21" absoluteBounds="2.015, 2.96, 1.9700000000000002, 1.7878011067708333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d2accda-d2d4-47ae-8867-a2d5c3c57126" isExpanded="false" absoluteBounds="2, 3.25, 2, 0.45">
+      <DataClassMoniker Name="/BetsDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3169e33-b3d9-4caa-98d7-20a721679028" absoluteBounds="2.015, 3.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

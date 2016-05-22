@@ -1,0 +1,18 @@
+﻿@model Exception
+@{ Layout = null; ViewBag.Title = "Error"; }
+
+<html>
+<body>
+    <h2>
+        Sorry, an error occurred while processing your request.
+    </h2>
+
+    @if (ViewBag.ShowError)
+    {
+        <b>@Model.Message</b>
+        <pre>
+			@Model.StackTrace
+	</pre>
+    }
+</body>
+</html>

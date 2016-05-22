@@ -1,0 +1,59 @@
+﻿@model ListingViewModel
+@{ Layout = Model.IsSubPage ? null : Url.Layout(Model.Layout); }
+
+@section ExternalsJS {
+	@if (Html.ViewExists("_ListingIncludes")) {
+		@Html.Partial("_ListingIncludes")
+	}
+}
+
+<div	data-pagetype="@Model.SubPageType.ToLower()" 
+		data-listingtype="@Model.PageType.ToLower()" 
+		id="listing-@ViewBag.PageType.ToLower()" 
+		class=	"listing-page@{if (Model.IsSubPage) { <text>sub-listing</text> }} @{if (Model.IsSubDetailPage) { <text>sub-detail</text> }}
+				 listing-@ViewBag.ItemsPerPage listing-@Model.TemplateName.ToLower()"
+>
+
+	@if (Model.HasSearch) {
+			
+		<div class="search-container">
+
+			<!-- search -->
+			<div class="clearfix">
+
+				<div class="search-box">
+					<input type="text" placeholder="Search" class="txt-listing-search" value="@Model.Keyword">
+					<span class="btn-cancel-search pointer"></span>
+				</div>
+
+				@if (Model.HasAdvancedFilter) {
+					<span class="advanced-filter pointer @(Model.IsAdvancedFilterOn ? "advanced-filter-on" : "")">Advanced</span>
+					<span class="button-action btn-show-searches">My Saved Searches</span>
+				}
+				
+				@if (Model.HasPageNumbers && Html.ViewExists("_" + Model.SubPageType + "ListingActions")) {
+					@Html.Partial("_" + Model.SubPageType + "ListingActions")
+				}
+			
+			</div>
+		
+			<!-- advanced search -->
+			@if (Model.HasAdvancedFilter) {
+				Html.RenderPartial(Url.Include("AdvancedFilters"));
+			}
+		</div>
+	}
+	
+	@if (Model.Parameters != null) {
+		@Html.Partial(Url.Include("MasterParameters"), Model.Parameters)
+	}
+
+	<form>
+		<div class="listing-items">
+			@Html.Partial(Url.Layout(Model.TemplateName + "ListingData", false), Model.Items, ViewData)
+		</div>
+		<input type="hidden" name="fld-listing-type" value="@Model.PageType.ToLower()" />
+	</form>
+
+	@Html.AntiForgeryToken()
+</div>

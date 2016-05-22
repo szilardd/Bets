@@ -1,0 +1,34 @@
+﻿<ul id="userbets-slider">
+    @{
+        int usercounter = 0;
+        int nrOfItems = ViewBag.NrOfItemsInSlider;
+        IEnumerator<User> users = ViewBag.users;
+        users.MoveNext();
+    }
+    @while (users.Current != null)
+    {
+        usercounter = 0;
+        <li data-id="@users.Current.UserID">
+            @do
+            {
+                <div class="slide slider-content" data-id="@users.Current.UserID">
+                    <div id="slider-content-holder">
+                        <div class="left align-right">
+                            <div class="margin">
+                                <img class="small" src="@Url.GetUserImage(users.Current.Username)" alt="" />
+                            </div>
+                        </div>
+                        <div class="left align-left">
+                            <div class="margin">
+                                <p><b>@users.Current.DisplayName</b></p>
+                                <p><b>@users.Current.PointsWonBonus</b> pts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                usercounter += 1;
+            }
+            while (users.MoveNext() && usercounter % (nrOfItems + 1) != nrOfItems);
+        </li>
+    }
+</ul>

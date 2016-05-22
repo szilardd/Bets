@@ -1,0 +1,39 @@
+﻿@model UserModel
+		 
+@section ExternalsJS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptDev("pages/profile"))
+		.Render("~/content/combined/combined-profile-#.min.js"))
+}
+
+@{ ActionStatus actionStatus = (TempData[Config.ActionStatus] != null) ? (ActionStatus)TempData[Config.ActionStatus] : new ActionStatus { Success = true, Message = "" }; }
+
+@using (Html.BeginForm("Detail", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+
+	@Html.EditorFor(m => m.DisplayName)
+
+	@Html.EditorFor(m => m.Email)
+	
+	@Html.EditorFor(m => m.OldPassword, new { password = "true" })
+
+	@Html.EditorFor(m => m.Password, new { password = "true" })
+
+	@Html.EditorFor(m => m.Password2, new { password = "true" })
+
+	<div class="editor-label"><label for="file">Picture</label></div>
+	<div class="editor-field">
+		<img class="full picture" src="@Url.GetUserImage(Model.Username)"/>
+		<br />
+		<input type="file" name="file" value="Update" class="btn-file" />
+	</div>
+	
+	<div class="clear"></div>
+	
+	<br />
+	<input type="submit" value="Update" class="btn" />
+}
+
+<div id="action-status" class="hidden status-@actionStatus.Success.ToString().ToLower()">
+	<span class="message">@actionStatus.Message</span>
+</div>

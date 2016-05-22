@@ -1,0 +1,23 @@
+﻿@model TeamModel
+
+<div><img class="full" src="@Url.GetTeamLogoImage(Model.ExternalID)" /></div>
+<div>
+    <img class="flag" src="@Url.GetTeamFlagImage(Model.Flag)" />
+	<b>@Model.Name</b>
+</div>
+
+<div>
+    @if (Model.Points > 0) {
+        <div><b>@Model.Points</b> points</div>
+    }
+</div>
+
+@if (!ViewBag.Expired) {
+    
+    if (Model.BetMade) {
+	    <div class="bet-made"></div>
+    }
+    else if (!ViewBag.Expired) {
+	    <div><input type="button" class="btn" value="Select" /></div>
+    }
+}

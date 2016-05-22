@@ -1,0 +1,54 @@
+﻿#listing-matchesforcurrentround .bet-row td:first-child,
+#listing-matchesfornextround .bet-row td:first-child,
+#listing-matchesforround .bet-row td:first-child {
+  text-align: center;
+}
+#listing-matchesforcurrentround .bet-row input[type=text],
+#listing-matchesforcurrentround .bet-row input[type=number],
+#listing-matchesfornextround .bet-row input[type=text],
+#listing-matchesfornextround .bet-row input[type=number] {
+  width: 25px;
+  height: 22px;
+  display: inline-block;
+  padding: 0;
+}
+.col-FirstFlag,
+.col-SecondFlag,
+.col-Flag {
+  width: 29px;
+}
+.col-Points1,
+.col-PointsX,
+.col-Points2 {
+  width: 40px;
+}
+.col-Match {
+  width: 195px;
+  text-align: center;
+}
+.col-Date {
+  width: 102px;
+}
+.col-Bet {
+  width: 50px;
+}
+.col-Result {
+  width: 45px;
+}
+.col-BetValue {
+  width: 47px;
+}
+.col-Bonus {
+  width: 44px;
+}
+.col-BetPointsWon,
+.col-BetPointsWonBonus {
+  width: 35px;
+}
+.col-Won {
+  width: 25px;
+}
+td.Bonus {
+  text-align: center;
+}
+/*# sourceMappingURL=dashboard.css.map */

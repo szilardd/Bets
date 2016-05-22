@@ -1,0 +1,36 @@
+﻿@model TeamModel
+@{ Layout = null; }
+@if (ViewBag.Expired)
+{
+    if (ViewBag.Count > 0)
+    {
+    <div id="winner-wrapper">
+        <div>
+            <h1 style="text-align: center;">Winner</h1>
+        </div>
+        <div>
+            <img class="full" src="@("http://cache.images.globalsportsmedia.com/soccer/teams/150x150/" + Model.ExternalID + ".png")" />
+        </div>
+        <div>
+			<img src="@Url.GetTeamFlagImage(Model.Flag)" width="16" height="16"/>
+            <b>@Model.Name</b>
+        </div>
+        @if(@Model.Points > 0){
+        <div><b>@Model.Points</b> points</div>
+        }
+    </div>
+    }
+    else
+    {
+    <br />
+    <h1 class="center-text">No selected Winner yet.</h1>
+    <br />
+    }
+}
+else
+{
+    <br />
+    <h1 class="center-text">You are not allowed to see the others Winner bets yet.
+    </h1>
+    <br />
+}

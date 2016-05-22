@@ -1,0 +1,10 @@
+﻿@model Bets.ViewModels.DashboardViewModel
+@{ Layout = Url.Layout(""); }
+
+<div class="clearfix">
+
+    <div id="main-container" class="clearfix">
+        @{ Html.RenderAction("Index", "GoalscorerStandings"); }
+        <div class="clear"></div>
+    </div>
+</div>

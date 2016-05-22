@@ -1,0 +1,585 @@
+﻿.box-shadow {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.disable-appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Variables.less
+ * Variables to customize the look and feel of Bootstrap
+ * ----------------------------------------------------- */
+/*-------------------------
+|		   TABLE		  |
+--------------------------*/
+.listing-wrapper {
+  min-height: 430px;
+}
+.listing-wrapper table th,
+.listing-wrapper table td {
+  padding: 0px 5px 0;
+}
+.listing-5 .listing-wrapper,
+.listing-4 .listing-wrapper,
+.listing-6 .listing-wrapper {
+  min-height: 255px;
+}
+.listing-5 .clearfix,
+.listing-4 .clearfix,
+.listing-6 .clearfix {
+  margin-bottom: 0;
+}
+.round-expired .listing-5 .listing-wrapper,
+.round-expired .listing-4 .listing-wrapper,
+.round-expired .listing-6 .listing-wrapper {
+  min-height: 218px;
+}
+.sub-detail .listing-wrapper {
+  min-height: 200px;
+}
+.listing-wrapper table {
+  text-align: left;
+  table-layout: fixed;
+}
+.listing-wrapper th,
+.listing-wrapper td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 30px;
+}
+.listing-wrapper th a,
+.listing-wrapper td a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+}
+.listing-wrapper tbody tr:hover {
+  background-color: #EEE;
+}
+.listing-table thead tr {
+  height: 26px;
+  font-size: 14px;
+}
+.listing-wrapper input[type=text],
+.listing-wrapper input[type=number] {
+  text-align: center;
+}
+.listing-page {
+  margin-bottom: 18px;
+}
+.listing-page tr {
+  height: 25px;
+}
+.listing-page tr.bet-row {
+  padding: 10px 0;
+  height: 30px;
+}
+.listing-page .bet-spacer {
+  display: inline-block;
+  width: 50px;
+}
+.listing-page tr.invalid {
+  background-color: #CC3808;
+}
+.listing-page .btn-bet,
+.listing-page .btn-view,
+.listing-page .btn-save {
+  width: 45px;
+  height: 25px;
+  text-align: center;
+  padding: 0;
+}
+.listing-page .btn-bonus {
+  width: 25px;
+  padding: 2px;
+  height: 22px;
+}
+.listing-page .txt-listing-search:focus {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: 0 0 2 #000;
+  -moz-box-shadow: 0 0 2 #000;
+  -webkit-box-shadow: 0 0 2 #000;
+  border-color: transparent;
+}
+.listing-single {
+  float: left;
+  width: 185px;
+  text-align: center;
+}
+.listing-single .goalscorer,
+.listing-single .winner {
+  border-right: 0;
+}
+.listing-single h1 {
+  text-align: center;
+  padding-left: 0;
+}
+.listing-single .listing-page {
+  width: 175px;
+  margin: 0 auto;
+}
+/*---------------------------
+|	   SEARCH & FILTER		|
+---------------------------*/
+.search-container {
+  padding: 10px 0 7px 0;
+  overflow: hidden;
+}
+.search-box {
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  float: left;
+  width: 155px;
+  height: 23px;
+  border: solid 1px #999;
+  padding: 0px;
+  position: relative;
+  background-image: url(../img/magnifier.png);
+  background-repeat: no-repeat;
+  background-position: 1px center;
+  background-color: white;
+}
+.search-box input[type=text] {
+  border: none;
+  position: absolute;
+  left: 30px;
+  width: 120px;
+  height: 21px;
+  outline: medium none;
+  padding: 0;
+}
+.advanced-filter {
+  font-size: 16px;
+  text-decoration: underline;
+  color: #666;
+  padding: 0 20px 0 9px;
+  margin-left: 10px;
+  float: left;
+  line-height: 26px;
+  background: url(../img/arrow-down.png) no-repeat 91%;
+}
+.advanced-filter.active {
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background-color: #EEE;
+  height: 32px;
+}
+.advanced-search {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #EEE;
+  padding: 10px;
+}
+.advanced-search select {
+  margin-right: 7px;
+  width: 15%;
+  float: left;
+}
+.advanced-search .dropdown {
+  margin-top: 2px;
+}
+.advanced-search .dropdown.second {
+  margin-top: 7px;
+}
+.advanced-search > div:first-child {
+  width: 180px;
+  float: right;
+}
+.advanced-search > div:last-child {
+  margin-right: 146px;
+}
+.ui-datepicker-trigger {
+  cursor: pointer;
+}
+.sorted.asc {
+  background: url(../img/sort-arrow-down.gif) no-repeat 98% center;
+}
+.sorted.desc {
+  background: url(../img/sort-arrow-up.gif) no-repeat 98% center;
+}
+/*---------------------------
+|		 SUB-LISTING		|
+---------------------------*/
+.sub-listing table {
+  border-left: none;
+  border-right: none;
+}
+.sub-listing .listing-wrapper {
+  border-left: none;
+  border-right: none;
+}
+.sub-listing .frm-pagination {
+  border: none;
+}
+.sub-listing .search-container {
+  padding: 10px 10px 7px 10px;
+}
+/*---------------------------
+|			CUSTOM			|
+---------------------------*/
+.col-Flag {
+  width: 16px;
+}
+.col-State {
+  width: 80px;
+}
+.col-Phone,
+.col-Mobile {
+  width: 120px;
+}
+.col-Suburb {
+  width: 150px;
+}
+.col-ID,
+.col-CustomerID {
+  width: 80px;
+}
+.col-Postcode {
+  width: 80px;
+}
+.col-Sequence {
+  width: 90px;
+}
+span.sequence-no {
+  margin-right: 10px;
+  width: 15px;
+}
+.col-KPG,
+.col-Packsize,
+.col-CaseQty {
+  width: 80px;
+}
+.col-Brand {
+  width: 120px;
+}
+.col-ProductCode {
+  width: 140px;
+}
+.col-date,
+.col-Date {
+  width: 120px;
+}
+#listing-product .col-Status {
+  width: 140px;
+}
+#listing-salescall .col-Status {
+  width: 120px;
+}
+#listing-order .col-OrderID {
+  width: 135px;
+}
+#listing-order .col-CustomerID {
+  width: 80px;
+}
+#listing-order .col-CustomerName {
+  width: 295px;
+}
+#listing-matchbet {
+  width: 500px;
+  margin: 0 auto;
+}
+#listing-matchbet tr {
+  height: 30px;
+}
+#listing-matchbet .listing-wrapper th,
+#listing-matchbet .listing-wrapper td {
+  line-height: 34px;
+  padding: 2px;
+}
+#listing-matchbet .thumb {
+  height: 25px;
+}
+#listing-matchbet .col-Username {
+  width: 135px;
+}
+#listing-matchbet .col-Bonus {
+  width: 70px;
+}
+#listing-matchbet td:nth-child(5) span {
+  float: left;
+  margin-top: 7px;
+}
+#listing-matchesforcurrentround .flag,
+#listing-roundmatchesforuser .flag,
+#listing-matchesforround .flag {
+  margin-top: 9px;
+}
+/*---------------------------
+|			TOOLTIP			|
+---------------------------*/
+[id*=tooltipsy] {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  padding: 10px;
+  width: 195px;
+  color: #303030;
+  border: 2px solid #000;
+  margin: -5px 0 0 5px;
+  font-size: 12px;
+  background: #F5F5F5;
+}
+.tooltip li {
+  padding: 2px;
+}
+.tooltip li div:first-child {
+  float: left;
+  width: 40%;
+  font-weight: bold;
+}
+.tooltip li div:last-child {
+  float: right;
+  width: 60%;
+  white-space: normal;
+  text-align: right;
+}
+/*-------------------------------
+|			PAGINATION			|
+-------------------------------*/
+.listing-page .page-info {
+  padding: 2px 0;
+  line-height: 32px;
+  text-align: center;
+  margin: 0 55px;
+}
+.listing-page tfoot {
+  background-color: #eee;
+}
+.frm-pagination {
+  font-size: 14px;
+  overflow: hidden;
+}
+.frm-pagination p {
+  font-size: 14px;
+  color: #333333;
+  padding-top: 10px;
+}
+.frm-pagination .prev {
+  float: left;
+  background: url(../img/buttons/prev.png) center no-repeat;
+  margin: 5px 8px;
+  padding-right: 1px;
+}
+.frm-pagination .prev.disabled,
+.frm-pagination .next.disabled {
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+.frm-pagination .next {
+  float: right;
+  margin-right: 7px;
+  background: url(../img/buttons/next.png) center no-repeat;
+  padding-left: 1px;
+}
+.frm-pagination .next,
+.frm-pagination .prev {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  width: 26px;
+  height: 26px;
+  margin: 5px;
+  border: solid 1px transparent;
+}
+.frm-pagination a.next:hover,
+.frm-pagination a.prev:hover {
+  border: solid 1px #CCC;
+}
+/*-----------------------
+|		HORIZONTAL		|
+-----------------------*/
+ul.listing-horizontal {
+  margin: 0 auto;
+  min-height: 100px;
+  width: 100%;
+}
+/*.listing-horizontal .listing-items {
+		min-height: 320px;
+	}*/
+.listing-horizontal li,
+.goalscorer,
+.winner {
+  float: left;
+  display: block;
+  min-height: 100px;
+  padding: 10px 8px 0px 8px;
+  width: 168px;
+  text-align: center;
+}
+.goalscorer,
+.winner {
+  border-right: solid 1px #CCC;
+  padding-right: 7px;
+  min-height: 305px;
+}
+.goalscorer h3,
+.winner h3 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 70px;
+}
+.goalscorer h2,
+.winner h2 {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.listing-horizontal li div,
+.goalscorer div,
+.winner div {
+  margin: 5px 0;
+}
+/*-----------------------
+|		CUSTOM			|
+------------------------*/
+#main-container {
+  margin: 0 auto;
+}
+#sidebar {
+  width: 220px;
+  float: right;
+}
+#listing-winner .listing-wrapper {
+  min-height: 0;
+}
+#listing-standingsbonus {
+  width: 480px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
+#listing-standings .listing-wrapper,
+#listing-standingsbonus .listing-wrapper {
+  min-height: 510px;
+  margin-bottom: 0;
+}
+#listing-standings li,
+#listing-standingsbonus li {
+  width: 120px;
+}
+#listing-standings li :nth-child(3),
+#listing-standingsbonus li :nth-child(3) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#listing-standings img.full,
+#listing-standingsbonus img.full {
+  height: 75px;
+  min-height: 0;
+}
+#listing-matchbet .listing-wrapper {
+  min-height: 60px;
+}
+#listing-matchbet tr:first-child th {
+  border-top: none;
+}
+#listing-goalscorerforround,
+#listing-goalscorer,
+#listing-winner {
+  width: 672px;
+  float: left;
+}
+#listing-goalscorer .listing-items,
+#listing-winner .listing-items {
+  height: 310px;
+}
+#listing-goalscorerbetsforround .listing-wrapper {
+  min-height: 375px;
+}
+#listing-matchesforcurrentround .listing-wrapper {
+  min-height: 0;
+}
+#listing-goalscorerstandings {
+  width: 840px;
+  margin: 0 auto;
+}
+#listing-goalscorerstandings .listing-wrapper {
+  min-height: 215px;
+}
+#listing-goalscorerstandings li {
+  width: 140px;
+  position: relative;
+}
+#listing-goalscorerstandings img.full {
+  width: 100%;
+  height: 125px;
+}
+/*-----------------------
+|		  BETS			|
+------------------------*/
+.listing-horizontal div.bet-made,
+.goalscorer div.bet-made,
+.winner div.bet-made {
+  background: url(../img/buttons/done.png) center no-repeat;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+}
+.bet-win,
+.bet-warning {
+  display: inline-block;
+  width: 25px;
+  height: 18px;
+  float: left;
+  margin-top: 6px;
+}
+.bet-win-result {
+  background: url(../img/icons/yes.png) center no-repeat;
+}
+.bet-win-result-bonus {
+  background: url(../img/icons/yes-bonus.png) center no-repeat;
+}
+.bet-win-score {
+  background: url(../img/icons/star.png) center no-repeat;
+}
+.bet-win-score-bonus {
+  background: url(../img/icons/star-bonus.png) center no-repeat;
+}
+.bet-win-none {
+  background: url(../img/icons/no.png) center no-repeat;
+}
+.cell-BetAction div {
+  width: 44px;
+  height: 27px;
+}
+.bet-warning {
+  background: url(../img/icons/warning.png) center no-repeat;
+  width: 100%;
+}
+.global-expired .global-bets {
+  width: 370px;
+  margin: 0 auto;
+}
+.standing-position {
+  font-size: 20px;
+}
+.goalscorer-selected,
+.winner-selected,
+#listing-winner li,
+#listing-goalscorer li {
+  position: relative;
+}
+.goalscorer-selected div.bet-made,
+.winner-selected div.bet-made {
+  top: 0;
+  left: 0;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluY2x1ZGUvY3NzMy5sZXNzIiwibGlzdGluZy5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXFCQTtFQUVDLGdCQUFBO0VBQ0EscUJBQUE7RUFDQSx3QkFBQTs7QUFnQ0Q7RUFFQyx3QkFBQTtFQUNBLHFCQUFBO0VBQ0EsbUJBQUE7O0FBUUQ7RUFBWSxnQkFBQTtFQUFpQix1QkFBQTtFQUF3QixtQkFBQTs7Ozs7Ozs7QUMvRHJEO0VBQW1CLGlCQUFBOztBQUVuQixnQkFBaUIsTUFBTTtBQUFJLGdCQUFpQixNQUFNO0VBQ2pELGtCQUFBOztBQUVBLFVBQVc7QUFBa0IsVUFBVztBQUFrQixVQUFXO0VBQ3BFLGlCQUFBOztBQUdBLFVBQVc7QUFBVyxVQUFXO0FBQVcsVUFBVztFQUN0RCxnQkFBQTs7QUFHRCxjQUFlLFdBQVc7QUFBa0IsY0FBZSxXQUFXO0FBQWtCLGNBQWUsV0FBVztFQUNqSCxpQkFBQTs7QUFHSCxXQUFZO0VBQW1CLGlCQUFBOztBQUU5QixnQkFBaUI7RUFDaEIsZ0JBQUE7RUFDQSxtQkFBQTs7QUFHRCxnQkFBaUI7QUFBSSxnQkFBaUI7RUR1QzNCLGdCQUFBO0VBQWlCLHVCQUFBO0VBQXdCLG1CQUFBO0VDckNuRCxpQkFBQTs7QUFFRCxnQkFBaUIsR0FBRztBQUFHLGdCQUFpQixHQUFHO0VEbUNoQyxnQkFBQTtFQUFpQix1QkFBQTtFQUF3QixtQkFBQTtFQ2pDbkQscUJBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTs7QUFHRCxnQkFBaUIsTUFBTSxHQUFFO0VBQ3hCLHNCQUFBOztBQUdELGNBQWUsTUFBTTtFQUNwQixZQUFBO0VBQ0EsZUFBQTs7QUFHRCxnQkFBaUIsTUFBSztBQUFhLGdCQUFpQixNQUFLO0VBQ3hELGtCQUFBOztBQUdGO0VBQ0MsbUJBQUE7O0FBRUEsYUFBYztFQUNiLFlBQUE7O0FBR0EsYUFBYyxHQUFFO0VBQ2YsZUFBQTtFQUNBLFlBQUE7O0FBR0ssYUFBYztFQUNWLHFCQUFBO0VBQ0EsV0FBQTs7QUFHVixhQUFj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 */

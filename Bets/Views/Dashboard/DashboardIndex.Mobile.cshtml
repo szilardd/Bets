@@ -1,0 +1,21 @@
+﻿@model Bets.ViewModels.DashboardViewModel
+@{ Layout = Url.Layout(""); }
+
+@section ExternalsJS {
+
+    @MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+        .Add(Url.ScriptDev("pages/singlebet"))
+        .Add(Url.ScriptDev("pages/matchesforround"))
+        .Render("~/content/combined/combined-dashboard-#.min.js"))
+}
+
+@Html.Partial(Url.Template("MatchBet"))
+
+<div class="clearfix">
+
+    <div id="main-container" class="clearfix">
+        @{ Html.RenderAction("Index", "MatchesForCurrentRound"); }       
+    </div>
+
+    <input type="hidden" id="fld-max-bonus" value="@ViewBag.MaxBonusPerMatch" />
+</div>

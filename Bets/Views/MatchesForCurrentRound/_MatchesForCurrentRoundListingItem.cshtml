@@ -1,0 +1,67 @@
+﻿@model MatchForRoundModel
+
+@if (ViewData["type"] == "header")
+{
+	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { 
+		{ "Date", "Date" }, { "FirstFlag", "" }, { "Match", "" }, { "SecondFlag", "" }, { "Points1", "1" }, 
+		{ "PointsX", "x" }, { "Points2", "2" }, { "BetValue", "My Bet" }, {"Bonus", "Bonus" }, { "Result", "Result" }, 
+		{ "BetPointsWonBonus", "Pts" }, { "Won", "" }, { "Bet", "" }
+	});
+}
+else
+{
+	var winType = Model.WinTypeID.ToEnum<WinType>();
+  
+	<td class="col-Date">@Model.Date.ToDate(true)</td>
+	<td class="col-Flag"><img class="flag" src="@Url.GetTeamFlagImage(Model.FirstTeamFlag)" /></td>
+	<td class="col-Match">@Model.FirstTeamName vs @Model.SecondTeamName</td>
+	<td class="col-Flag"><img class="flag" src="@Url.GetTeamFlagImage(Model.SecondTeamFlag)" /></td>
+	<td>@Model.Points1</td>
+	<td>@Model.PointsX</td>
+	<td>@Model.Points2</td>
+	
+	<td class="center-text">
+		<span class="FirstTeamGoals">@Model.BetFirstTeamGoals</span>
+		@if (Model.BetFirstTeamGoals == null) {
+			<span class="bet-warning"></span>
+		}
+		else {
+			<span>&nbsp;-&nbsp;</span>
+		}
+		<span class="SecondTeamGoals">@Model.BetSecondTeamGoals</span>
+	</td>
+	
+	<td class="Bonus">@Model.Bonus</td>
+	
+	<td class="center-text">
+		<span>@Model.FirstTeamGoals</span>
+		<span>&nbsp;-&nbsp;</span>
+		<span>@Model.SecondTeamGoals</span>
+	</td>
+	
+	<td>
+		@if (winType != WinType.None) {
+			@(Model.BetPointsWonBonus)
+		}
+	</td>
+	
+	<td>
+		@switch (winType)
+		{
+			case WinType.Result	:	<text><span class="bet-win @(Model.Bonus == 0 ? "bet-win-result" : "bet-win-result-bonus")"></span></text>; break;
+			case WinType.Score	:	<text><span class="bet-win @(Model.Bonus == 0 ? "bet-win-score" : "bet-win-score-bonus")"></span></text>; break;
+			case WinType.Nothing:	<text><span class="bet-win bet-win-none"></span></text>; break;
+		}
+	</td>
+
+	<td class="cell-BetAction">
+		@if (!Model.Expired)
+		{
+			<input type="button" value="Bet" class="btn-bet btn" />
+		}
+		else 
+		{
+			<div><input type="button" value="View" class="btn-view btn" /></div>
+		}
+	</td>
+}

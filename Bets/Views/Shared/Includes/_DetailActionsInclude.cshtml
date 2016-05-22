@@ -1,0 +1,15 @@
+﻿@model Module
+@{ var detailViewModel = (DetailViewModel)ViewBag.DetailViewModel; }
+
+
+<div class="actions clearfix">
+	@if (ViewBag.PageMode == PageMode.Detail) {
+		<input type="submit" class="button-save right removed edit-field btn-save" value="Save" />
+		<span class="button-action right removed edit-field btn-cancel">Cancel</span>
+		<span class="button-action right btn-edit view-field">Edit</span>
+	}
+	else {
+		<input type="submit" class="button-save right btn-save" value="Save" />
+		<a class="button-action right btn-cancel" href="@Url.ControllerAction(detailViewModel.Actions[DetailAction.AddClose], detailViewModel.Parameters)">Cancel</a>
+	}
+</div>

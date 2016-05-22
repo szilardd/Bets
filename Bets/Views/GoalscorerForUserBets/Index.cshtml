@@ -1,0 +1,37 @@
+﻿@model GoalscorerModel
+@{ Layout = null; }
+@if (ViewBag.Expired)
+{
+    if (ViewBag.Count > 0)
+    {
+        <div id="goalscorer-wrapper">
+            <div>
+                <h1 style="text-align: center;">Top Goalscorer</h1>
+            </div>
+            <div>
+                <img class="icon full" src="@Url.GetPlayerImage(Model.ExternalID)" />
+            </div>
+            <div class="goalscorer-name">
+				<img class="flag" src="@Url.GetTeamFlagImage(Model.TeamFlag)" />
+                <b>@Model.Name</b>
+            </div>
+            @if(@Model.Points > 0){
+                <div><b>@Model.Points</b> points</div>
+            }
+            <div><b>@Model.GoalsScored</b> goal@(Model.GoalsScored != 1 ? "s" : "")</div>
+        </div>
+    }
+    else
+    {
+        <br />
+        <h1 class="center-text">No selected Top Goalscorer yet.</h1>
+        <br />
+    }
+}
+else
+{
+    <br />
+    <h1 class="center-text">You are not allowed to see the others Top Goalscorer bets yet.
+    </h1>
+    <br />
+}

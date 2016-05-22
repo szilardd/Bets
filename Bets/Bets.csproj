@@ -1,0 +1,1128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{935ECB92-209F-4E8E-BCBF-C015114AD262}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bets</RootNamespace>
+    <AssemblyName>Bets</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Bets.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin, Version=4.48.4489.28432, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elmah.Contrib.WebApi, Version=1.0.10.25, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Contrib.WebApi.1.0.10.25\lib\net45\Elmah.Contrib.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Jurassic, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Jurassic.2.1.1\lib\Jurassic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Core, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Core.6.15.0\lib\portable-net45+win+wpa81\Microsoft.OData.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.OData.Edm, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OData.Edm.6.15.0\lib\portable-net45+win+wpa81\Microsoft.OData.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Spatial, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Spatial.6.15.0\lib\portable-net45+win+wpa81\Microsoft.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcMailer.1.1\lib\40\Mvc.Mailer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SquishIt.Framework, Version=0.9.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.0.9.8.2\lib\SquishIt.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.OData, Version=5.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.OData.5.9.0\lib\net45\System.Web.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AutomapperConfig.cs" />
+    <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Api\GoalscorerBetsController.cs" />
+    <Compile Include="Controllers\Api\GoalscorersController.cs" />
+    <Compile Include="Controllers\Api\Main\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\MatchBetsController.cs" />
+    <Compile Include="Controllers\Api\MatchesController.cs" />
+    <Compile Include="Controllers\Api\StandingsController.cs" />
+    <Compile Include="Controllers\Api\TeamBetsController.cs" />
+    <Compile Include="Controllers\Api\TeamsController.cs" />
+    <Compile Include="Controllers\BestUsersForRoundController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\GoalscorerController.cs" />
+    <Compile Include="Controllers\GoalscorerForRoundController.cs" />
+    <Compile Include="Controllers\GoalscorerForUserBetsController.cs" />
+    <Compile Include="Controllers\GoalscorerStandingsController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\Main\BaseController.cs" />
+    <Compile Include="Controllers\Main\CRUDController.cs" />
+    <Compile Include="Controllers\MatchBetController.cs" />
+    <Compile Include="Controllers\MatchesForCurrentRoundController.cs" />
+    <Compile Include="Controllers\MatchesForNextRoundController.cs" />
+    <Compile Include="Controllers\MatchesForRoundController.cs" />
+    <Compile Include="Controllers\MyBetsController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\RoundGoalscorerForUserController.cs" />
+    <Compile Include="Controllers\RoundMatchesForUserController.cs" />
+    <Compile Include="Controllers\UserBetsController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RoundBetsController.cs" />
+    <Compile Include="Controllers\StandingsBonusController.cs" />
+    <Compile Include="Controllers\StandingsController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
+    <Compile Include="Controllers\GoalscorerBetsForRoundController.cs" />
+    <Compile Include="Controllers\WinnerController.cs" />
+    <Compile Include="Controllers\WinnerForUserBetsController.cs" />
+    <Compile Include="Controllers\WorstUsersForRoundController.cs" />
+    <Compile Include="DynamicData\Content\GridViewPager.ascx.cs">
+      <DependentUpon>GridViewPager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\Content\GridViewPager.ascx.designer.cs">
+      <DependentUpon>GridViewPager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default.ascx.cs">
+      <DependentUpon>Default.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default.ascx.designer.cs">
+      <DependentUpon>Default.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Edit.ascx.cs">
+      <DependentUpon>Default_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Edit.ascx.designer.cs">
+      <DependentUpon>Default_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Insert.ascx.cs">
+      <DependentUpon>Default_Insert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\EntityTemplates\Default_Insert.ascx.designer.cs">
+      <DependentUpon>Default_Insert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean.ascx.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean.ascx.designer.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean_Edit.ascx.cs">
+      <DependentUpon>Boolean_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Boolean_Edit.ascx.designer.cs">
+      <DependentUpon>Boolean_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children.ascx.cs">
+      <DependentUpon>Children.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children.ascx.designer.cs">
+      <DependentUpon>Children.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children_Insert.ascx.cs">
+      <DependentUpon>Children_Insert.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Children_Insert.ascx.designer.cs">
+      <DependentUpon>Children_Insert.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime.ascx.cs">
+      <DependentUpon>DateTime.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime.ascx.designer.cs">
+      <DependentUpon>DateTime.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime_Edit.ascx.cs">
+      <DependentUpon>DateTime_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\DateTime_Edit.ascx.designer.cs">
+      <DependentUpon>DateTime_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Decimal_Edit.ascx.cs">
+      <DependentUpon>Decimal_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Decimal_Edit.ascx.designer.cs">
+      <DependentUpon>Decimal_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\EmailAddress.ascx.cs">
+      <DependentUpon>EmailAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\EmailAddress.ascx.designer.cs">
+      <DependentUpon>EmailAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration.ascx.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration.ascx.designer.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx.cs">
+      <DependentUpon>Enumeration_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx.designer.cs">
+      <DependentUpon>Enumeration_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey.ascx.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey.ascx.designer.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx.cs">
+      <DependentUpon>ForeignKey_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx.designer.cs">
+      <DependentUpon>ForeignKey_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Integer_Edit.ascx.cs">
+      <DependentUpon>Integer_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Integer_Edit.ascx.designer.cs">
+      <DependentUpon>Integer_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany.ascx.cs">
+      <DependentUpon>ManyToMany.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany.ascx.designer.cs">
+      <DependentUpon>ManyToMany.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx.cs">
+      <DependentUpon>ManyToMany_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx.designer.cs">
+      <DependentUpon>ManyToMany_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx.cs">
+      <DependentUpon>MultilineText_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx.designer.cs">
+      <DependentUpon>MultilineText_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text.ascx.cs">
+      <DependentUpon>Text.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text.ascx.designer.cs">
+      <DependentUpon>Text.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text_Edit.ascx.cs">
+      <DependentUpon>Text_Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Text_Edit.ascx.designer.cs">
+      <DependentUpon>Text_Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url.ascx.cs">
+      <DependentUpon>Url.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\FieldTemplates\Url.ascx.designer.cs">
+      <DependentUpon>Url.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\Filters\Boolean.ascx.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\Filters\Boolean.ascx.designer.cs">
+      <DependentUpon>Boolean.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\Filters\Enumeration.ascx.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\Filters\Enumeration.ascx.designer.cs">
+      <DependentUpon>Enumeration.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\Filters\ForeignKey.ascx.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\Filters\ForeignKey.ascx.designer.cs">
+      <DependentUpon>ForeignKey.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Insert.aspx.cs">
+      <DependentUpon>Insert.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\Insert.aspx.designer.cs">
+      <DependentUpon>Insert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\ListDetails.aspx.cs">
+      <DependentUpon>ListDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicData\PageTemplates\ListDetails.aspx.designer.cs">
+      <DependentUpon>ListDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DataExtensions.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\PagedList.cs" />
+    <Compile Include="Helpers\UIExtensions.cs" />
+    <Compile Include="Helpers\UrlHelpers.cs" />
+    <Compile Include="Infrastructure\Attributes\ApiAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\ApiGlobalExceptionHandler.cs" />
+    <Compile Include="Infrastructure\Attributes\LogonAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\ValidateAntiForgeryFormAndJSONAttribute.cs" />
+    <Compile Include="Infrastructure\Authentication\AuthorizeXAttribute.cs" />
+    <Compile Include="Infrastructure\Authentication\ThatMembershipProvider.cs" />
+    <Compile Include="Infrastructure\Authentication\ThatMembershipUser.cs" />
+    <Compile Include="Infrastructure\Authentication\ThatPrincipal.cs" />
+    <Compile Include="Infrastructure\Authentication\ThatRoleProvider.cs" />
+    <Compile Include="Infrastructure\Binders\DateModelBinder.cs" />
+    <Compile Include="Infrastructure\Config.cs" />
+    <Compile Include="Bets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bets.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Mailers\INotificationMailer.cs" />
+    <Compile Include="Mailers\NotificationMailer.cs" />
+    <Compile Include="Models\ApplicationOAuthProvider.cs" />
+    <Compile Include="Models\CustomUserStore.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.master.cs">
+      <DependentUpon>Site.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DetailViewModel.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\ListingViewModel.cs" />
+    <Compile Include="ViewModels\SearchParams.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\BOYCOTT_-webfont.svg" />
+    <Compile Include="App_Start\DisplayMode.cs" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="Content\css\admin.less" />
+    <Content Include="Content\css\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\admin.min.css">
+      <DependentUpon>admin.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\help.css">
+      <DependentUpon>help.less</DependentUpon>
+    </Content>
+    <None Include="Content\css\help.less" />
+    <Content Include="Content\css\help.min.css">
+      <DependentUpon>help.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\include\css3.css">
+      <DependentUpon>css3.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\include\css3.min.css">
+      <DependentUpon>css3.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\include\settings.css">
+      <DependentUpon>settings.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\include\settings.min.css">
+      <DependentUpon>settings.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\listing.css">
+      <DependentUpon>listing.less</DependentUpon>
+    </Content>
+    <None Include="Content\css\listing.less" />
+    <None Include="Content\css\login.less" />
+    <Content Include="Content\css\listing.min.css">
+      <DependentUpon>listing.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\login.css">
+      <DependentUpon>login.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\main.css">
+      <DependentUpon>main.less</DependentUpon>
+    </Content>
+    <None Include="Content\css\main.less" />
+    <Content Include="Content\css\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\mobile.css">
+      <DependentUpon>mobile.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\dashboard.css">
+      <DependentUpon>dashboard.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\dashboard.css.map">
+      <DependentUpon>dashboard.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\mobile.less" />
+    <None Include="Content\css\pages\dashboard.less" />
+    <Content Include="Content\css\pages\rounds.css">
+      <DependentUpon>rounds.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\rounds.css.map">
+      <DependentUpon>rounds.css</DependentUpon>
+    </Content>
+    <None Include="Content\css\pages\rounds.less" />
+    <Content Include="Content\css\pages\teams.css">
+      <DependentUpon>teams.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\teams.css.map">
+      <DependentUpon>teams.css</DependentUpon>
+    </Content>
+    <None Include="Content\css\pages\teams.less" />
+    <Content Include="Content\css\pages\teams.min.css">
+      <DependentUpon>teams.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\userbets.css">
+      <DependentUpon>userbets.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\userbets.css.map">
+      <DependentUpon>userbets.css</DependentUpon>
+    </Content>
+    <None Include="Content\css\pages\userbets.less" />
+    <Content Include="Content\css\pages\userbets.min.css">
+      <DependentUpon>userbets.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\reset.css">
+      <DependentUpon>reset.less</DependentUpon>
+    </Content>
+    <None Include="Content\css\reset.less" />
+    <Content Include="Content\css\twitter-bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\twitter-bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\img\ajax-loader-small.gif" />
+    <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\bgimg\bg1.jpg" />
+    <Content Include="Content\img\bgimg\bg10.jpg" />
+    <Content Include="Content\img\bgimg\bg11.jpg" />
+    <Content Include="Content\img\bgimg\bg12.jpg" />
+    <Content Include="Content\img\bgimg\bg13.jpg" />
+    <Content Include="Content\img\bgimg\bg14.jpg" />
+    <Content Include="Content\img\bgimg\bg15.jpg" />
+    <Content Include="Content\img\bgimg\bg16.jpg" />
+    <Content Include="Content\img\bgimg\bg2.jpg" />
+    <Content Include="Content\img\bgimg\bg3.jpg" />
+    <Content Include="Content\img\bgimg\bg4.jpg" />
+    <Content Include="Content\img\bgimg\bg5.jpg" />
+    <Content Include="Content\img\bgimg\bg6.jpg" />
+    <Content Include="Content\img\bgimg\bg7.jpg" />
+    <Content Include="Content\img\bgimg\bg8.jpg" />
+    <Content Include="Content\img\bgimg\bg9.jpg" />
+    <Content Include="Content\img\bg\bg_mascots.png" />
+    <Content Include="Content\img\bg\bg_mascots2.png" />
+    <Content Include="Content\img\bg\testbg.png" />
+    <Content Include="Content\img\bg\testbg2.png" />
+    <Content Include="Content\img\buttons\done.png" />
+    <Content Include="Content\img\buttons\next.png" />
+    <Content Include="Content\img\buttons\prev.png" />
+    <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\flags2014\alg.png" />
+    <Content Include="Content\img\flags2014\arg.png" />
+    <Content Include="Content\img\flags2014\aus.png" />
+    <Content Include="Content\img\flags2014\bel.png" />
+    <Content Include="Content\img\flags2014\bih.png" />
+    <Content Include="Content\img\flags2014\bra.png" />
+    <Content Include="Content\img\flags2014\chi.png" />
+    <Content Include="Content\img\flags2014\civ.png" />
+    <Content Include="Content\img\flags2014\cmr.png" />
+    <Content Include="Content\img\flags2014\col.png" />
+    <Content Include="Content\img\flags2014\crc.png" />
+    <Content Include="Content\img\flags2014\cro.png" />
+    <Content Include="Content\img\flags2014\ecu.png" />
+    <Content Include="Content\img\flags2014\eng.png" />
+    <Content Include="Content\img\flags2014\esp.png" />
+    <Content Include="Content\img\flags2014\fra.png" />
+    <Content Include="Content\img\flags2014\ger.png" />
+    <Content Include="Content\img\flags2014\gha.png" />
+    <Content Include="Content\img\flags2014\gre.png" />
+    <Content Include="Content\img\flags2014\hon.png" />
+    <Content Include="Content\img\flags2014\irn.png" />
+    <Content Include="Content\img\flags2014\ita.png" />
+    <Content Include="Content\img\flags2014\jap.png" />
+    <Content Include="Content\img\flags2014\kor.png" />
+    <Content Include="Content\img\flags2014\mex.png" />
+    <Content Include="Content\img\flags2014\ned.png" />
+    <Content Include="Content\img\flags2014\nga.png" />
+    <Content Include="Content\img\flags2014\por.png" />
+    <Content Include="Content\img\flags2014\rus.png" />
+    <Content Include="Content\img\flags2014\sui.png" />
+    <Content Include="Content\img\flags2014\uru.png" />
+    <Content Include="Content\img\flags2014\usa.png" />
+    <Content Include="Content\img\flags\cro.png" />
+    <Content Include="Content\img\flags\cze.png" />
+    <Content Include="Content\img\flags\den.png" />
+    <Content Include="Content\img\flags\eng.png" />
+    <Content Include="Content\img\flags\esp.png" />
+    <Content Include="Content\img\flags\fra.png" />
+    <Content Include="Content\img\flags\ger.png" />
+    <Content Include="Content\img\flags\gre.png" />
+    <Content Include="Content\img\flags\irl.png" />
+    <Content Include="Content\img\flags\ita.png" />
+    <Content Include="Content\img\flags\ned.png" />
+    <Content Include="Content\img\flags\pol.png" />
+    <Content Include="Content\img\flags\por.png" />
+    <Content Include="Content\img\flags\rus.png" />
+    <Content Include="Content\img\flags\swe.png" />
+    <Content Include="Content\img\flags\ukr.png" />
+    <Content Include="Content\img\grass.png" />
+    <Content Include="Content\img\icons\no.png" />
+    <Content Include="Content\img\icons\star-bonus.png" />
+    <Content Include="Content\img\icons\star.png" />
+    <Content Include="Content\img\icons\warning.png" />
+    <Content Include="Content\img\icons\yes-bonus.png" />
+    <Content Include="Content\img\icons\yes.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\magnifier.png" />
+    <Content Include="Content\img\main\stucco.png" />
+    <Content Include="Content\img\profile\user.gif" />
+    <Content Include="Content\js\bgchanger.dev.js" />
+    <Content Include="Content\js\bgchanger.min.js">
+      <DependentUpon>bgchanger.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\jquery\jquery.blockUI.min.js" />
+    <Content Include="Content\js\jquery\jquery.tmpl.js" />
+    <Content Include="Content\js\jquery\jquery.tooltip.js" />
+    <Content Include="Content\js\jquery\jquery.validate.additional.dev.js" />
+    <Content Include="Content\js\jquery\jquery.validate.additional.min.js">
+      <DependentUpon>jquery.validate.additional.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\main.dev.js" />
+    <Content Include="Content\js\modules\crud.dev.js" />
+    <Content Include="Content\js\modules\crud.min.js">
+      <DependentUpon>crud.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\modules\eventmanager.dev.js" />
+    <Content Include="Content\js\modules\eventmanager.min.js">
+      <DependentUpon>eventmanager.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\modules\listing.dev.js" />
+    <Content Include="Content\js\modules\listing.min.js">
+      <DependentUpon>listing.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\modules\lookup.min.js">
+      <DependentUpon>lookup.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\modules\mobile.dev.js" />
+    <Content Include="Content\js\pages\profile.dev.js" />
+    <Content Include="Content\js\pages\profile.min.js">
+      <DependentUpon>profile.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\rounds.dev.js" />
+    <Content Include="Content\js\pages\rounds.min.js">
+      <DependentUpon>rounds.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\singlebet.dev.js" />
+    <Content Include="Content\js\pages\matchesforround.dev.js" />
+    <Content Include="Content\js\pages\matchesforround.min.js">
+      <DependentUpon>matchesforround.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\singlebet.min.js">
+      <DependentUpon>singlebet.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\teams.dev.js" />
+    <Content Include="Content\js\pages\teams.min.js">
+      <DependentUpon>teams.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\userbets.dev.js" />
+    <Content Include="Content\js\pages\userbets.min.js">
+      <DependentUpon>userbets.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\plugins\fastclick\fastclick.js" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_diagonal-maze_20_6e4f1c_10x10.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_diagonal-maze_40_000000_10x10.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_10_eceadf_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_10_f8f7f6_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_15_eceadf_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_15_f7f3de_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_15_ffffff_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_65_654b24_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-bg_fine-grain_68_b83400_60x60.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_3572ac_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_8c291d_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_b83400_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_fbdb93_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\plugins\jqueryui\jquery-ui-1.8.17.custom.css" />
+    <Content Include="Content\plugins\jqueryui\jquery-ui-1.8.17.custom.min.js" />
+    <Content Include="Content\plugins\jqueryui\jquery-ui-timepicker-addon.js" />
+    <Content Include="Content\plugins\knockout\jquery.tmpl.js" />
+    <Content Include="Content\plugins\knockout\knockout.js" />
+    <Content Include="Content\js\main\ajaxutils.dev.js" />
+    <Content Include="Content\js\main\ajaxutils.min.js">
+      <DependentUpon>ajaxutils.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\modules\bootstrapper.dev.js" />
+    <Content Include="Content\js\modules\bootstrapper.min.js">
+      <DependentUpon>bootstrapper.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\main\config.dev.js" />
+    <Content Include="Content\js\main\config.min.js">
+      <DependentUpon>config.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\main\date.min.js" />
+    <Content Include="Content\js\main\overrides.dev.js" />
+    <Content Include="Content\js\main\overrides.min.js">
+      <DependentUpon>overrides.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\main\utils.dev.js" />
+    <Content Include="Content\js\main\utils.min.js">
+      <DependentUpon>utils.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\pages\admin.dev.js" />
+    <Content Include="Content\js\pages\admin.min.js">
+      <DependentUpon>admin.dev.js</DependentUpon>
+    </Content>
+    <Content Include="Content\plugins\chosen\chosen-sprite.png" />
+    <Content Include="Content\plugins\chosen\chosen.jquery.min.js" />
+    <Content Include="Content\plugins\chosen\chosen.min.css" />
+    <Content Include="Content\plugins\fancybox\blank.gif" />
+    <Content Include="Content\plugins\fancybox\fancybox-x.png" />
+    <Content Include="Content\plugins\fancybox\fancybox-y.png" />
+    <Content Include="Content\plugins\fancybox\fancybox.png" />
+    <Content Include="Content\plugins\fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="Content\plugins\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\plugins\fancybox\jquery.fancybox-1.3.4.min.css" />
+    <Content Include="Content\plugins\fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Content\plugins\fancybox\log_support_close.png" />
+    <Content Include="Content\plugins\knockout\koBindingConventionsPrototype2.js" />
+    <Content Include="Content\plugins\mmenu\css\addons\jquery.mmenu.counters.css" />
+    <Content Include="Content\plugins\mmenu\css\addons\jquery.mmenu.dragopen.css" />
+    <Content Include="Content\plugins\mmenu\css\addons\jquery.mmenu.header.css" />
+    <Content Include="Content\plugins\mmenu\css\addons\jquery.mmenu.labels.css" />
+    <Content Include="Content\plugins\mmenu\css\addons\jquery.mmenu.searchfield.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.effects.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.fullscreen.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.ie8.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.positioning.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.themes.css" />
+    <Content Include="Content\plugins\mmenu\css\extensions\jquery.mmenu.widescreen.css" />
+    <Content Include="Content\plugins\mmenu\css\jquery.mmenu.all.css" />
+    <Content Include="Content\plugins\mmenu\css\jquery.mmenu.css" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.counters.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.counters.min.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.dragopen.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.dragopen.min.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.header.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.header.min.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.labels.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.labels.min.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.searchfield.js" />
+    <Content Include="Content\plugins\mmenu\js\addons\jquery.mmenu.searchfield.min.js" />
+    <Content Include="Content\plugins\mmenu\js\jquery.mmenu.js" />
+    <Content Include="Content\plugins\mmenu\js\jquery.mmenu.min.all.js" />
+    <Content Include="Content\plugins\mmenu\js\jquery.mmenu.min.js" />
+    <Content Include="Content\plugins\rhinoslider\css\rhinoslider-1.04.css" />
+    <Content Include="Content\plugins\rhinoslider\img\rhinoslider-sprite.png" />
+    <Content Include="Content\plugins\rhinoslider\js\easing.js" />
+    <Content Include="Content\plugins\rhinoslider\js\mousewheel.js" />
+    <Content Include="Content\plugins\rhinoslider\js\rhinoslider-1.04.js" />
+    <Content Include="DynamicData\Content\GridViewPager.ascx" />
+    <Content Include="DynamicData\Content\Images\Back.gif" />
+    <Content Include="DynamicData\Content\Images\header_back.gif" />
+    <Content Include="DynamicData\Content\Images\PgFirst.gif" />
+    <Content Include="DynamicData\Content\Images\PgLast.gif" />
+    <Content Include="DynamicData\Content\Images\PgNext.gif" />
+    <Content Include="DynamicData\Content\Images\PgPrev.gif" />
+    <Content Include="DynamicData\Content\Images\plus.gif" />
+    <Content Include="DynamicData\EntityTemplates\Default.ascx" />
+    <Content Include="DynamicData\EntityTemplates\Default_Edit.ascx" />
+    <Content Include="DynamicData\EntityTemplates\Default_Insert.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Boolean.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Boolean_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Children.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Children_Insert.ascx" />
+    <Content Include="DynamicData\FieldTemplates\DateTime.ascx" />
+    <Content Include="DynamicData\FieldTemplates\DateTime_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Decimal_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\EmailAddress.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Enumeration.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Enumeration_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ForeignKey.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ForeignKey_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Integer_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ManyToMany.ascx" />
+    <Content Include="DynamicData\FieldTemplates\ManyToMany_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\MultilineText_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Text.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Text_Edit.ascx" />
+    <Content Include="DynamicData\FieldTemplates\Url.ascx" />
+    <Content Include="DynamicData\Filters\Boolean.ascx" />
+    <Content Include="DynamicData\Filters\Enumeration.ascx" />
+    <Content Include="DynamicData\Filters\ForeignKey.ascx" />
+    <Content Include="DynamicData\PageTemplates\Details.aspx" />
+    <Content Include="DynamicData\PageTemplates\Edit.aspx" />
+    <Content Include="DynamicData\PageTemplates\Insert.aspx" />
+    <Content Include="DynamicData\PageTemplates\List.aspx" />
+    <Content Include="DynamicData\PageTemplates\ListDetails.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\js\jquery\jquery.min.js" />
+    <Content Include="Content\js\jquery\jquery.validate.min.js" />
+    <Content Include="Content\js\modernizr-1.7.min.js" />
+    <Content Include="Settings\appsettings.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Compile Include="Models\AuthenticationManager.cs" />
+    <None Include="Settings\connectionstrings.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Site.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\js\jquery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\js\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Settings\smtp.config" />
+    <Content Include="Settings\elmah.config" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\MatchesForCurrentRound\_MatchesForCurrentRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.Mobile.cshtml" />
+    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\MatchesForNextRound\_MatchesForNextRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\UserBets\_Users.cshtml" />
+    <Content Include="Views\UserBets\_UsersSlider.cshtml" />
+    <Content Include="Views\UserBets\_UsersSlider.Mobile.cshtml" />
+    <Content Include="Views\Shared\Templates\_Menu.cshtml" />
+    <Content Include="Views\Shared\Templates\_Menu.Mobile.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceJSInclude.Mobile.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.Mobile.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceJSInclude.cshtml" />
+    <Content Include="Views\Dashboard\DashboardIndex.Mobile.cshtml" />
+    <Content Include="Views\Dashboard\DashboardStandings.Mobile.cshtml" />
+    <Content Include="Views\Dashboard\DashboardGoalscorerStandings.Mobile.cshtml" />
+    <Content Include="Views\Help\_HelpDashboard.Mobile.cshtml" />
+    <Content Include="Views\Help\_HelpDashboard.cshtml" />
+    <Content Include="Views\Admin\_AddMatch.cshtml" />
+    <Content Include="Views\Admin\_AddMatch.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DynamicData\CustomPages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bets.Data\Bets.Data.csproj">
+      <Project>{5A3CA920-4473-44DE-9E73-50D993584346}</Project>
+      <Name>Bets.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Includes\_DetailInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_MainCSSInclude.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Includes\_MainJSInclude.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Includes\_HeadJSInclude.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\BOYCOTT_-webfont.eot" />
+    <None Include="Content\BOYCOTT_-webfont.ttf" />
+    <None Include="Content\css\include\css3.less" />
+    <Content Include="Views\Dashboard\DashboardIndex.cshtml" />
+    <Content Include="Views\Error\Http404.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\MyBets\MyBetsIndex.cshtml" />
+    <Content Include="Views\RoundBets\RoundBetsIndex.cshtml" />
+    <Content Include="Views\UserBets\UserBetsIndex.cshtml" />
+    <Content Include="Views\Teams\TeamsIndex.cshtml" />
+    <Content Include="Views\Profile\ProfileIndex.cshtml" />
+    <Content Include="Views\Help\HelpIndex.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <None Include="Content\css\include\settings.less" />
+    <None Include="Content\css\twitter-bootstrap\bootstrap.less" />
+    <None Include="Content\css\twitter-bootstrap\forms.less" />
+    <None Include="Content\css\twitter-bootstrap\mixins.less" />
+    <None Include="Content\css\twitter-bootstrap\patterns.less" />
+    <None Include="Content\css\twitter-bootstrap\reset.less" />
+    <None Include="Content\css\twitter-bootstrap\scaffolding.less" />
+    <None Include="Content\css\twitter-bootstrap\tables.less" />
+    <None Include="Content\css\twitter-bootstrap\type.less" />
+    <None Include="Content\css\twitter-bootstrap\variables.less" />
+    <Content Include="Content\js\modules\lookup.dev.js" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\bootstrap.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\forms.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\mixins.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\patterns.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\reset.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\scaffolding.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\tables.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\type.less" />
+    <None Include="Content\plugins\twitter-bootstrap\lib\variables.less" />
+    <Content Include="Views\Shared\Includes\_AdvancedFiltersInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DetailActionsInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DetailTabsInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_MasterParametersInclude.cshtml" />
+    <Content Include="Views\Shared\Layouts\_DetailPageLayout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_ListingDataLayout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_ListingPageLayout.cshtml" />
+    <Content Include="Views\Shared\Templates\_ListingActions.cshtml" />
+    <Content Include="Views\Shared\Templates\_ListingHeader.cshtml" />
+    <Content Include="Views\Shared\Templates\_Lookup.cshtml" />
+    <Content Include="Views\Shared\Templates\_LookupList.cshtml" />
+    <Content Include="Views\Shared\_Pagination.cshtml" />
+    <Content Include="Views\Shared\Layouts\_Layout.cshtml" />
+    <Content Include="Views\MatchesForCurrentRound\_MatchesForCurrentRoundListingItem.cshtml" />
+    <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
+    <Content Include="Views\MatchesForNextRound\_MatchesForNextRoundListingItem.cshtml" />
+    <Content Include="Views\Shared\Layouts\_HorizontalListingDataLayout.cshtml" />
+    <Content Include="Views\Shared\Templates\_MatchBet.cshtml" />
+    <Content Include="Views\Goalscorer\_GoalscorerListingItem.cshtml" />
+    <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
+    <Content Include="Views\Standings\_StandingsListingItem.cshtml" />
+    <Content Include="Views\StandingsBonus\_StandingsBonusListingItem.cshtml" />
+    <Content Include="Views\NotificationMailer\_Layout.cshtml" />
+    <Content Include="Views\NotificationMailer\RoundNotification.cshtml" />
+    <EntityDeploy Include="Bets.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Bets.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Bets.DynamicData</CustomToolNamespace>
+    </EntityDeploy>
+    <Content Include="DynamicData\web.config" />
+    <Content Include="Site.master" />
+    <Content Include="Views\GoalscorerStandings\_GoalscorerStandingsListingItem.cshtml" />
+    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.cshtml" />
+    <Content Include="Views\GoalscorerBetsForRound\_GoalscorerBetsForRoundListingItem.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\MatchBet\_MatchBetListingItem.cshtml" />
+    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.cshtml" />
+    <Content Include="Views\GoalscorerForUserBets\Index.cshtml" />
+    <Content Include="Views\WinnerForUserBets\Index.cshtml" />
+    <Content Include="Views\RoundGoalscorerForUser\Index.cshtml" />
+    <Content Include="Views\NotificationMailer\MatchNotificationForToday.cshtml" />
+    <Content Include="Views\Shared\Goalscorer.cshtml" />
+    <Content Include="Views\Shared\Winner.cshtml" />
+    <Content Include="Views\Shared\_RoundStandingsListingItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51538</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51538/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

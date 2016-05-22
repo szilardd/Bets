@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MatchForRoundModel>
+		   
+<p>Hey, it seems like you haven't placed a bet for these matches taking place today.</p>
+
+<br />
+
+<table class="listing-table">
+
+	<thead>
+		<tr>
+			<th class="col-Date">Date</th>
+			<th class="col-Flag"></th>
+			<th class="col-Match"></th>
+			<th class="col-Flag"></th>
+			<th class="col-Result">1</th>
+			<th class="col-Result">x</th>
+			<th class="col-Result">2</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		@foreach (var item in Model.Select((m, i) => new { m = m, index = i })) {
+			<tr class="@(item.index % 2 == 1 ? "alt-row" : "") listing-item">
+
+				<td>@item.m.Date.ToDate(true)</td>
+				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.FirstTeamFlag)" /></td>
+				<td style="text-align:center">@item.m.FirstTeamName vs @item.m.SecondTeamName</td>
+				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.SecondTeamFlag)" /></td>
+				<td>@item.m.Points1</td>
+				<td>@item.m.PointsX</td>
+				<td>@item.m.Points2</td>
+			</tr>
+		}
+	</tbody>
+
+</table>
+
+<br />
+
+<p>Click <a href="@Url.Action("Index", "Dashboard", null, Request.Url.Scheme)" target="_blank">here</a> to place your bets before it's not too late! You can place bets right until one hour before the kickoff time.</p>

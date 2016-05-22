@@ -1,0 +1,39 @@
+﻿@model PagedList<IModel>
+@{ Layout = null; }
+
+<div class="listing-wrapper">
+
+	<table class="@(Model.FullRows ? "full-rows" : "") listing-table">
+		
+		@Html.Partial(Url.Template("ListingHeader"))
+
+		<tbody>
+		@foreach (var item in Model.Select((m, i) => new { m = m, index = i })) {
+	
+			<tr class="listing-item" data-id="@((item.m.ID == 0 ) ? ( ( String.IsNullOrEmpty(item.m.StrID) ) ? "0" : item.m.StrID ) : item.m.ID.ToString() )">
+
+				@{ object template = ViewBag.ListingItemTemplate; }
+				@if (template != null) {
+					@Html.Partial(template.ToString(), item.m)
+				}
+				else {
+
+					foreach (var data in item.m.GetLookupListingData()) {
+						<td>
+							@(data)&nbsp;
+						</td>
+					}
+				}
+
+				<td class="col-select last">
+					<span class="button-action btn-lookup-add" @((template != null) ? "data-action="+template.ToString() : "" )>Select</span>
+					<span class="listing-item-name removed">@item.m.GetTitle()</span>
+				</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>
+
+@Html.Partial("_Pagination")
+@Html.Hidden("fld-total-count", Model.TotalCount)

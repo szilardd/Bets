@@ -1,0 +1,21 @@
+﻿#help-page li {
+  margin-left: 20px;
+  list-style-type: disc;
+  line-height: 25px;
+  float: none;
+}
+#help-page li ul li {
+  list-style-type: circle;
+}
+#help-page li ul.image-list li {
+  list-style-type: none;
+  margin-left: 10px;
+  width: 100%;
+}
+#help-page h2 {
+  text-align: left;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhlbHAubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxVQUFXO0VBQ1YsaUJBQUE7RUFDQSxxQkFBQTtFQUNBLGlCQUFBO0VBQ0csV0FBQTs7QUFHSCxVQUFXLEdBQUcsR0FBRztFQUNoQix1QkFBQTs7QUFHRSxVQUFXLEdBQUcsR0FBRSxXQUFZO0VBQ3hCLHFCQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBOztBQUdSLFVBQVc7RUFDVixnQkFBQTtFQUNHLGVBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUEiLCJmaWxlIjoidW5kZWZpbmVkIn0= */

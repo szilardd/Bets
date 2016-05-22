@@ -1,0 +1,85 @@
+﻿@model MatchForRoundModel
+
+@if (ViewData["type"] == "header") {
+    <th colspan="12">&nbsp;</th>
+    <th>&nbsp;</th>
+}
+else {
+    
+    var winType = Model.WinTypeID.ToEnum<WinType>();
+    var hasWinType = (winType != WinType.None);
+    <td colspan="13">
+
+        <!-- Date and View/Bet/Close -->
+        <ul class="date-and-action">
+            <li>@Model.Date.ToDate(true)</li>
+
+            <li>
+                @if (!Model.Expired) {
+                    <input type="button" value="Bet" class="btn-bet btn" />
+                }
+                else {
+                    <input type="button" value="View" class="btn-view btn" />
+                }
+            </li>
+        </ul>
+        <div class="clear"></div>
+
+        <!-- Team 1 vs Team 2-->
+        <div class="teams">
+            <img class="flag" src="@Url.GetTeamFlagImage(Model.FirstTeamFlag)" />
+            <span>@Model.FirstTeamName <i>vs</i> @Model.SecondTeamName</span>
+            <img class="flag" src="@Url.GetTeamFlagImage(Model.SecondTeamFlag)" />
+        </div>
+        <div class="clear"></div>
+
+        <!-- 1 x 2 -->
+        <ul class="points">
+            <li class="title">1</li>
+            <li class="title">x</li>
+            <li class="title">2</li>
+            <li>@Model.Points1</li>
+            <li>@Model.PointsX</li>
+            <li>@Model.Points2</li>
+        </ul>
+    
+        <!-- My Bet, Bonus, Result, Pts -->
+        <ul class="results @(hasWinType ? "has-win-type" : "")">
+            <li class="title">My Bet</li>
+            <li class="title">Bonus</li>
+            <li class="title">Result</li>
+            <li class="title">Pts</li>
+            @if (winType != WinType.None) {
+                <li class="title bonus-item">&nbsp;</li>
+            }
+            <li>
+                <span class="FirstTeamGoals">@Model.BetFirstTeamGoals</span>
+                @if (Model.BetFirstTeamGoals == null) {
+                    <span class="bet-warning"></span>
+                }
+                else {
+                    <span>&nbsp;-&nbsp;</span>
+                }
+                <span class="SecondTeamGoals">@Model.BetSecondTeamGoals</span>
+            </li>
+            <li><span class="Bonus">@(Model.Bonus ?? 0)</span></li>
+            <li>
+                <span>@Model.FirstTeamGoals</span>
+                <span>&nbsp;-&nbsp;</span>
+                <span>@Model.SecondTeamGoals</span>
+            </li>
+            <li>@if (hasWinType) { @(Model.BetPointsWonBonus) }</li>
+            @if (hasWinType) {
+                <li class="bonus-item">
+                    @switch (winType)
+                    {
+                        case WinType.Result:	<text><span class="bet-win @(Model.Bonus == 0 ? "bet-win-result" : "bet-win-result-bonus")"></span></text>; break;
+                        case WinType.Score:	<text><span class="bet-win @(Model.Bonus == 0 ? "bet-win-score" : "bet-win-score-bonus")"></span></text>; break;
+                        case WinType.Nothing:	<text><span class="bet-win bet-win-none"></span></text>; break;
+                    }
+                </li>
+            }
+        </ul>
+        <div class="clear"></div>
+    </td>
+}

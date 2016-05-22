@@ -1,0 +1,28 @@
+﻿@model PagedList<IModel>
+@{ Layout = null; }
+@{ 
+	var viewName = "_" + (string)ViewBag.PageType + "ListingItem";
+	var listingItemViewExists = Html.ViewExists(viewName);
+}
+
+<ul class="@(Model.FullRows ? "full-rows" : "") listing-wrapper clearfix">
+
+	@Html.Partial(viewName, null, new ViewDataDictionary { { "type", "header" } })
+
+	@foreach (var item in Model.Select((m, i) => new { m = m, index = i }))
+	{
+		<li data-id="@item.m.ID" class="listing-item" @if (item.m.Timestamp != null)	{ <text>data-timestamp=@(item.m.Timestamp.ToString().Replace("\"", ""))</text>} >
+
+			@{ 
+				ViewBag.Data = new ViewDataDictionary { { "index", item.index }, { "totalIndex", Model.PageSize * (Model.CurrentPage - 1) + item.index }, { "count", Model.TotalCount } };
+				ViewBag.Type = "item";
+			}
+			@Html.Partial(viewName, item.m, ViewData)
+					
+		</li>
+	}
+</ul>
+
+@if (Model.TotalPages > 1) {
+	@Html.Partial("_Pagination")
+}

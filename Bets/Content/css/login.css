@@ -1,0 +1,96 @@
+﻿.box-shadow {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.disable-appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+html {
+  background: none;
+}
+body {
+  background: url(../img/main/stucco.png);
+}
+.editor-field {
+  width: auto;
+  float: none;
+}
+input[type=text],
+input[type=password] {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  width: 120px;
+  height: 28px;
+  display: block;
+  border: 1px solid #999;
+  padding: 5px 10px;
+  margin: auto;
+}
+.login-holder {
+  margin-top: 100px;
+  box-shadow: 0 5px 90px #cdcdcd;
+  -moz-box-shadow: 0 5px 90px #cdcdcd;
+  -webkit-box-shadow: 0 5px 90px #cdcdcd;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  width: 278px;
+  margin: 100px auto auto auto;
+  text-align: center;
+  padding: 25px 0;
+}
+.login-holder input[type=submit] {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ff6600;
+  border: solid 1px #280d3e;
+  width: 80px;
+  height: 30px;
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+.login-holder input[type=submit]:hover {
+  background-color: yellowGreen;
+}
+.field-validation-error,
+.validation-summary-errors {
+  display: block;
+  margin: 0 auto;
+  font-weight: normal;
+  padding-top: 5px;
+}
+.field-validation-error *,
+.validation-summary-errors * {
+  color: red;
+  line-height: 15px;
+}
+#login-page #title {
+  margin-left: 20px;
+  text-shadow: 1px 1px #CCC;
+  margin-bottom: 20px;
+}
+#login-page #title span {
+  font-size: 55px;
+}
+h2 {
+  margin-bottom: 40px;
+  text-shadow: 1px 1px #CCC;
+  font-weight: bold;
+}
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,47 @@
+﻿@model ListingViewModel
+@{ 
+	Layout = null;
+	var headerView = "_" + (string)ViewBag.PageType + "LookupHeader";
+}
+
+<div id="lookup-@ViewBag.Type" class="lookup-page listing-page" data-listingtype="@ViewBag.Type" data-pagetype="@Model.SubPageType">
+
+	@if (Html.ViewExists(headerView)) {
+		<div class="lookup-header">
+			@Html.Partial(headerView)
+		</div>
+	}
+
+	<!-- search -->
+	<div class="clearfix">
+
+		<span class="button-add btn-add-all first removed">Add Selected</span>
+
+		<div class="search-box">
+			<input type="text" placeholder="Search" class="txt-listing-search" value="@ViewBag.Keyword">
+			<span class="btn-cancel-search pointer"></span>
+		</div>
+
+		@if (Model.HasAdvancedFilter) {
+			<span class="advanced-filter pointer @(Model.IsAdvancedFilterOn ? "advanced-filter-on" : "")">Advanced</span>
+		}
+
+		<span class="removed" id="listing-count-container"><span id="listing-count">@Model.Items.TotalCount</span><span>&nbsp;records selected</span></span>
+
+	</div>
+
+	<!-- advanced search -->
+	@if (Model.HasAdvancedFilter) {
+		Html.RenderPartial(Url.Include("AdvancedFilters"));
+	}
+	
+	@if (Model.Parameters != null) {
+		@Html.Partial(Url.Include("MasterParameters"), Model.Parameters)
+	}
+
+	<div class="listing-items">
+		@Html.Partial(Url.Template("LookupList"), Model.Items)
+	</div>
+
+</div>
+

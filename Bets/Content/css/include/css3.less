@@ -1,0 +1,75 @@
+﻿//border-radius
+.border-radius(@radius: 5px)
+{
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+.border-radius(@top, @bottom)
+{
+	.border_radius(@top, @bottom, @top, @bottom);
+}
+
+.border-radius(@topLeft, @topRight, @bottomRight, @bottomLeft)
+{
+	-webkit-border-radius:@topLeft @topRight @bottomRight @bottomLeft;
+	-moz-border-radius:@topLeft @topRight @bottomRight @bottomLeft;
+	border-radius:@topLeft @topRight @bottomRight @bottomLeft;
+}
+//
+
+.box-shadow
+{
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.box-shadow(@x:0, @y:0, @size:2, @color:#000)
+{
+	box-shadow: @x @y @size @color;
+	-moz-box-shadow: @x @y @size @color;
+	-webkit-box-shadow: @x @y @size @color;
+}
+
+.background-gradient(@from:#FFF, @to:#EEE)
+{
+	//default for backward compatibility
+	background: @from; 
+	background-image: -moz-linear-gradient(top, @from, @to);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
+}
+
+.background-size(@width, @height)
+{
+	-webkit-background-size: @width @height;
+	-moz-background-size: @width @height;
+}
+
+.transition(@range: all, @time: 1s, @ease: ease-in-out)
+{
+	-moz-transition: @range @time @ease;
+	-webkit-transition: @range @time @ease;
+	-o-transition: @range @time @ease;
+	transition: @range @time @ease;
+}
+
+.disable-appearance
+{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-o-appearance:none;
+}
+
+.opacity(@level) {
+	opacity: @level / 100;
+	filter: alpha(opacity=@level);
+}
+
+.ellipsis {	overflow:hidden; text-overflow:ellipsis; white-space: nowrap; }
+
+.rotate(@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);	
+}

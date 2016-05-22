@@ -1,0 +1,18 @@
+﻿<!--start menu-->
+<div class="right menu">
+
+    <div class="account">
+        @{ Html.RenderPartial("_LogOnPartial"); }
+    </div>
+
+    <nav class="right">
+        <ul>
+            <li><a href="@Url.Action("Index", "Dashboard")" class="grn @if (ViewBag.Module == Module.Dashboard) { <text>selected</text> }">Dashboard</a></li>
+            <li><a href="@Url.Action("Index", "MyBets")" class="grn @if (ViewBag.Module == Module.MyBets) { <text>selected</text> }">Global Bets</a></li>
+            <li><a href="@Url.Action("Index", "UserBets")" class="grn @if (ViewBag.Module == Module.UserBets) { <text>selected</text> }">Users</a></li>
+            <li><a href="@Url.Action("Index", "RoundBets")" class="grn @if (ViewBag.Module == Module.RoundBets) { <text>selected</text> }">Rounds</a></li>
+            <li><a href="@Url.Action("Index", "Teams")" class="grn @if (ViewBag.Module == Module.Teams) { <text>selected</text> }">Teams</a></li>
+        </ul>
+    </nav>
+</div>
+<!--end menu-->

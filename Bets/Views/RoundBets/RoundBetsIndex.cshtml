@@ -1,0 +1,83 @@
+﻿@model IEnumerator<ModelIDName>
+@{ Layout = Url.Layout(""); }
+
+@section ExternalsCSS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+		.Add(Url.CSSPlugin("rhinoslider/css/rhinoslider-1.04"))
+		.Render("~/content/combined/combined-slider-#.min.css"))
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+		.Add(Url.CSSDev("pages/rounds"))
+		.Render("~/content/combined/combined-rounds-#.min.css"))
+}
+
+@section ExternalsJS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptPlugin("rhinoslider/js/mousewheel"))
+		.Add(Url.ScriptPlugin("rhinoslider/js/easing"))
+		.Add(Url.ScriptPlugin("rhinoslider/js/rhinoslider-1.04"))
+		.Render("~/content/combined/combined-slider-#.min.js"))
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptDev("pages/rounds"))
+		.Render("~/content/combined/combined-rounds-#.min.js"))
+}
+
+<div class="clearfix">
+
+	<div id="main-container">
+
+		@if (ViewBag.FirstRoundID != null) {
+
+			<ul id="round-slider">
+				@{ int counter = 0; Model.MoveNext(); }
+
+				@while (Model.Current != null) {
+					counter = 0;
+					<li>
+						@do {
+							<div class="slide" data-id="@Model.Current.ID">@Model.Current.Name</div>
+							counter += 1;
+						}
+						while (Model.MoveNext() && counter % 4 != 3);
+					</li>
+				}
+			</ul>
+
+			<div id="round-matches">
+				@{ Html.RenderAction("Index", "MatchesForRound", new { RoundID = ViewBag.FirstRoundID }); }
+			</div>
+
+			<div id="round-standings" class="clearfix">
+
+				<div>
+					<h1>Top 5 Users</h1>
+					<div>
+						@{ Html.RenderAction("Index", "BestUsersForRound", new { RoundID = ViewBag.FirstRoundID }); }
+					</div>
+				</div>
+
+				<div>
+					<h1>Bottom 5 Users</h1>
+					<div>
+						@{ Html.RenderAction("Index", "WorstUsersForRound", new { RoundID = ViewBag.FirstRoundID }); }
+					</div>
+				</div>
+
+			</div>
+	  
+			@*<div id="round-goalscorerbets">
+				<h1>Goalscorers</h1>
+				<div>
+					@{ Html.RenderAction("Index", "GoalscorerBetsForRound", new { RoundID = ViewBag.FirstRoundID }); }
+				</div>
+			</div>*@
+		}
+		else {
+	  
+			<h1 class="center-text">We have no data to display for the current round. Please come back after it has ended.</h1>
+		}
+	</div>
+</div>

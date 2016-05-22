@@ -1,0 +1,55 @@
+﻿@model IModel
+@{ 
+	var isDetailMode = ViewBag.PageMode == PageMode.Detail;
+	var detailViewModel = (DetailViewModel)ViewBag.DetailViewModel;
+}
+
+@helper RenderTab(DetailViewModel detailViewModel, string name, string label) {
+	<li><a href="#" @if (detailViewModel.SelectedTab == name) { <text>class="active"</text> }>@label</a></li>
+}
+
+@functions {
+
+	void DisplayTabs(DetailViewModel detailViewModel, dynamic viewBagTabs) {
+
+		if (viewBagTabs == null)
+			return;
+		
+		IEnumerable<string> tabNames = null, tabLabels = null;
+		var tabs = viewBagTabs as IEnumerable<string>;
+
+		//tabs is a simple list
+		if (tabs != null) {
+			tabNames = tabs;
+			tabLabels = tabs;
+		}
+		//tabs contains labels and names
+		else {
+			var tabsDict = ViewBag.Tabs as Dictionary<string, string>;
+
+			if (tabsDict != null)
+			{
+				tabNames = tabsDict.Keys;
+				tabLabels = tabsDict.Values;
+			}
+		}
+
+		if (tabLabels != null) {
+			for (int i = 0, length = tabLabels.Count(); i < length; i++) {
+				this.Write(RenderTab(detailViewModel, tabNames.ElementAt(i), tabLabels.ElementAt(i)));
+			}
+		}
+	}
+}
+
+<ul class="tabs clearfix">
+
+	<li><a href="#">Detail</a></li>
+		
+	@{ DisplayTabs(detailViewModel, ViewBag.Tabs); }
+
+	@if (isDetailMode) {
+		DisplayTabs(detailViewModel, ViewBag.DetailTabs);
+	}
+		
+</ul>

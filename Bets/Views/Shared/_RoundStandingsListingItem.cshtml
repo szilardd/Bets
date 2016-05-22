@@ -1,0 +1,11 @@
+﻿@model UserModel
+@{ Layout = null; }
+		   
+@if (ViewData["type"] == "header") {
+	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "DisplayName", "Name" }, { "Points", "Pts" } });
+}
+else {
+	
+	<td><img class="icon thumb" src="@Url.GetUserImage(Model.Username)" /> @Model.DisplayName</td>
+	<td><b>@Model.Points</b> points</td>
+}

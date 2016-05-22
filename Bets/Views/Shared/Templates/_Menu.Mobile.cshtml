@@ -1,0 +1,24 @@
+﻿<a href="#menu" id="menu-trigger"></a>
+
+<nav id="menu">
+    <ul>
+        <li><a href="@Url.Action("Index", "Dashboard")" class="grn @if (ViewBag.Module == Module.Dashboard) { <text>selected</text> }">Matches</a></li>
+        <li><a href="@Url.Action("Standings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardStandings) { <text>selected</text> }">Standings</a></li>
+        <li><a href="@Url.Action("GoalscorerStandings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardGoalscorerStandings) { <text>selected</text> }">Top Goalscorers</a></li>
+        <li><a href="@Url.Action("Index", "MyBets")" class="grn @if (ViewBag.Module == Module.MyBets) { <text>selected</text> }">Global Bets</a></li>
+        <li><a href="@Url.Action("Index", "UserBets")" class="grn @if (ViewBag.Module == Module.UserBets) { <text>selected</text> }">Users</a></li>
+        <li><a href="@Url.Action("Index", "RoundBets")" class="grn @if (ViewBag.Module == Module.RoundBets) { <text>selected</text> }">Rounds</a></li>
+        <li><a href="@Url.Action("Index", "Teams")" class="grn @if (ViewBag.Module == Module.Teams) { <text>selected</text> }">Teams</a></li>
+        @if (Request.IsAuthenticated)
+        {
+            <li><a href="@Url.Action("Index", "Help")" class="grn">Help</a></li>
+            <li><a href="@Url.Action("Index", "Profile")" class="grn">Profile</a></li>
+
+            if (ViewBag.IsAdmin ?? false)
+            {
+                <li class="no-border"><a href="@Url.Action("Index", "Admin")" class="grn">Admin</a></li>
+            }
+            <li class="menu-logoff"><a href="@Url.Action("LogOff", "Account")" class="grn">Log Off</a></li>
+        }
+    </ul>
+</nav>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <title>LynxBets</title>
+
+	@Html.Partial(Url.Include("MainCSS"))
+    @Html.Partial(Url.Include("HeadJS"))
+
+	@RenderSection("ExternalsCSS", required: false)
+
+    @Html.Partial(Url.Include("DeviceCSS"))
+
+	<link rel="shortcut icon" href="@Url.ImgUrl("favicon.ico")">
+    <link rel="apple-touch-icon" href="@Url.ImgUrl("logo.png")" />
+</head>
+
+<body class="layout @ViewBag.LayoutType-layout page-@((ViewBag.Name ?? "").ToLower())">
+
+    <div>
+	    <!--start header-->
+	    <header class="clearfix">
+
+		    <div class="main clearfix">
+
+			    <!--start title-->
+			    <a href="@Url.Action("Index", "Dashboard")"><h1 class="fontface pointer left" id="title"><span class="orange">Lynx</span><span class="green">Bets</span></h1></a>
+			    <!--end title-->
+
+			    <img class="logo" src="@Url.Img("logo.png")"/>
+
+			    @Html.Partial(Url.Template("Menu"))
+
+		    </div>
+
+		    @* <div class="bottom"> </div> *@
+
+	    </header>
+	    <!--end header-->
+
+	    <div id="container">
+		    @RenderBody()
+	    </div>
+    </div>
+
+    @Html.Partial(Url.Include("MainJS"))
+    @RenderSection("ExternalsJS", required: false)
+</body>
+
+</html>

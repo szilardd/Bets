@@ -1,0 +1,30 @@
+﻿<script type="text/javascript"> 
+	var Config = { BaseURL : "@Url.Action("Index", "")" };
+</script>
+
+@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+    .Add(Url.ScriptDev("main"))
+	.Add(Url.Script("jquery/jquery.validate.min"))
+	.Add(Url.Script("jquery/jquery.validate.unobtrusive.min"))
+	.Add(Url.Script("jquery/jquery.blockUI.min"))
+	.Add(Url.Script("jquery/jquery.tmpl"))
+	.Add(Url.ScriptDev("jquery/jquery.validate.additional"))
+	.Add(Url.ScriptPlugin("knockout/jquery.tmpl"))
+	.Add(Url.ScriptPlugin("knockout/knockout"))
+	.Add(Url.ScriptPlugin("knockout/koBindingConventionsPrototype2"))
+	.Add(Url.ScriptPlugin("fancybox/jquery.fancybox-1.3.4.pack"))
+	.Add(Url.ScriptPlugin("jqueryui/jquery-ui-1.8.17.custom.min"))
+	.Add(Url.ScriptPlugin("jqueryui/jquery-ui-timepicker-addon"))
+	.Add(Url.Script("main/date.min"))
+	.Add(Url.ScriptDev("main/config"))
+	.Add(Url.ScriptDev("main/overrides"))
+	.Add(Url.ScriptDev("main/ajaxutils"))
+	.Add(Url.ScriptDev("main/utils"))
+	.Add(Url.ScriptDev("modules/eventmanager"))
+	.Add(Url.ScriptDev("modules/crud"))
+	.Add(Url.ScriptDev("modules/lookup"))
+	.Add(Url.ScriptDev("modules/listing"))
+    .Add(Url.ScriptDev("bgchanger"))
+	.Render("~/content/combined/combined-#.min.js"))
+
+@Html.Partial(Url.Include("DeviceJS"))

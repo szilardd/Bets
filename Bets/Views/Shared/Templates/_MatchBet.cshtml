@@ -1,0 +1,28 @@
+﻿<script id="bet-template" type="text/x-jquery-tmpl"> 
+    <tr class="bet-row">
+		<td colspan="12">
+
+			<input type="number" value="0" id="FirstTeamGoals" tabindex="1" />
+			<span>&nbsp;-&nbsp;</span>
+			<input type="number" value="0" id="SecondTeamGoals" tabindex="2" />
+
+			<span class="bet-spacer">&nbsp;</span>
+
+			<span class="bonus-container" data-bind="visible: maxUserBonus() > 0">
+				Bonus&nbsp;
+				<input type="button" value="-" class="btn btn-bonus" data-val="-1"/>
+				<input type="number" value="0" id="Bonus" tabindex="3"/>
+				<input type="button" value="+" class="btn btn-bonus" data-val="1"/>
+				(max <span class="MaxUserBonus"></span>)
+			</span>
+
+			<span data-bind="visible: maxUserBonus() == 0">
+				No bonus points left
+			</span>
+		</td>
+		<td class="cell-BetAction">
+			<div><input type="button" value="Save" class="btn-save btn" /></div>
+		</td>
+	</tr>
+</script>
+

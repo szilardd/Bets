@@ -1,0 +1,99 @@
+﻿@model List<GetAllGroupStandingsResult>
+@{ Layout = Url.Layout(""); }
+@section ExternalsCSS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+		.Add(Url.CSSDev("pages/teams"))
+		.Render("~/content/combined/combined-teams-#.min.css"))
+}
+@section ExternalsJS {
+
+	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+		.Add(Url.ScriptDev("pages/teams"))
+		.Add(Url.Script("jquery/jquery.tooltip"))
+		.Render("~/content/combined/combined-teams-#.min.js"))
+}
+
+<div class="clearfix">
+    <div id="main-container">
+        <div id="standing-container">
+            <table border="0">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (((i % 4) + 1 == 1) || (i == 0)){ 
+                        <tr>
+                            <th colspan="4" class="group-header">Group @Model[i].Group </th>
+                            <th colspan="8" class="group-header center">Total </th>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="team-header">Team </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Matches Played">MP</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Wins">W</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Draws">D</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Losses">L</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Goals for">F</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Goals against">A</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Goal difference">D</div>
+                            </td>
+                            <td class="team-header">
+                                <div class="tooldiv" title="Points">P</div>
+                            </td>
+                        </tr>
+                        }
+                         <tr>
+                            <td class="order-icon">
+                                <span>
+                                    @((i % 4) + 1)
+                                </span>
+                            </td>
+                            <td class="country-icon">
+								<img src="@Url.GetTeamFlagImage(Model[i].Flag)" alt="flag-@Model[i].Flag" class="flag"/>
+                            </td>
+                            <td>
+                                @Model[i].Team
+                            </td>
+                            <td>
+                                @Model[i].Pld
+                            </td>
+                            <td>
+                                @Model[i].Won
+                            </td>
+                            <td>
+                                @Model[i].Draw
+                            </td>
+                            <td>
+                                @Model[i].Lost
+                            </td>
+                            <td>
+                                @Model[i].Scored
+                            </td>
+                            <td>
+                                @Model[i].Against
+                            </td>
+                            <td>
+                                @Model[i].Agg
+                            </td>
+                            <td>
+                                @Model[i].Pts
+                            </td>
+                        </tr>
+                    if (i % 4 == 3)
+                    { <tr><td colspan="12">&nbsp;</td></tr>}
+                }
+            </table>
+        </div>
+    </div>
+</div>

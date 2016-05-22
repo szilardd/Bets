@@ -1,0 +1,112 @@
+﻿@model IModel
+@{ 
+	var isDetailMode = ViewBag.PageMode == PageMode.Detail;
+	
+	//master page and layout
+	string masterPage = (ViewBag.MasterPage == null || ViewBag.MasterPage == Menu.None) ? Menu.Master.ToString() : ViewBag.MasterPage.ToString();
+	Layout = Url.Layout(masterPage);
+
+	var detailViewModel = (DetailViewModel)ViewBag.DetailViewModel;
+	
+	//page type
+	string pageType = detailViewModel.Module == Module.None ? detailViewModel.PageType : detailViewModel.Module.ToString();
+	
+	//page module
+	int? moduleValue = (detailViewModel.Module == Module.None && detailViewModel.ParentModule != null) ? Convert.ToInt32(detailViewModel.ParentModule) : Convert.ToInt32(detailViewModel.Module);
+	Module module = Html.ToEnum<Module>(moduleValue);
+	
+	//
+	Dictionary<string, object> frmParams = new Dictionary<string, object>();
+	frmParams.Add("class", "frm-detail hidden");
+	
+	//file upload
+	if (ViewBag.HasFileUpload ?? false)	{
+		frmParams.Add("enctype", "multipart/form-data");
+	}
+
+	//id
+	object id = Model.ID;
+}
+
+@section ExternalsCSS { 
+	@Html.Partial(Url.Include("DetailCSS"))
+
+	@if (IsSectionDefined("ExternalsCSS")) {
+		@RenderSection("ExternalsCSS");
+	}
+}
+
+@section ExternalsJS { 
+	@Html.Partial(Url.Include("DetailJS"))
+
+	@if (IsSectionDefined("ExternalsJS")) {
+		@RenderSection("ExternalsJS");
+	}
+}
+
+<div class="detail-page" data-type="@pageType.ToLower()" data-editmode="@((ViewBag.EditMode ?? false).ToString().ToLower())" id="detail-@pageType.ToLower()">
+
+	<div class="clearfix">
+
+		<h1 class="left">
+			@((isDetailMode) ? Model.GetTitle() : "New " + detailViewModel.Label)			
+		</h1>			
+	}
+	</div>
+
+	<div class="clearfix">
+		@if (isDetailMode) {
+	  
+			if (ViewBag.AllowClose ?? true) {
+				<a class="button-action first" href="@Url.ControllerAction(detailViewModel.Actions[DetailAction.Close])">Close Record</a>
+			}
+			
+			if (Html.ViewExists("_" + pageType + "DetailActions")) {
+				@Html.Partial("_" + pageType + "DetailActions")
+			}
+		}
+	</div>	
+
+	@Html.Partial(Url.Include("DetailTabs"), Model)
+
+	<div class="tabs-bottom"></div>
+
+	<div class="panes">
+
+		@using (Html.BeginForm(ViewData["PageMode"].ToString(), pageType, detailViewModel.Parameters.ToRouteValue(), FormMethod.Post, frmParams)) {
+	  
+			@RenderSection("Form")
+			
+			if (Model != null) {
+				
+				<input type="hidden" value="@id" name="ID" id="ID" />
+				
+				if (!Convert.ToBoolean(ViewBag.CustomToken ?? false)) {
+					@Html.AntiForgeryToken()
+				}
+				
+				if (Model.Timestamp != null) {					
+					@Html.Hidden("Timestamp", Model.Timestamp)
+				}
+			}
+
+			if (detailViewModel.Parameters != null) {
+				
+				<div class="master-params">
+					@Html.Partial(Url.Include("MasterParameters"), detailViewModel.Parameters)
+				</div>
+			}
+		}
+
+		@if (IsSectionDefined("DetailTabs")) {
+			@RenderSection("DetailTabs")
+		}
+	</div>
+
+	<input type="hidden" name="fld-detail-page" value="@pageType.ToLower()" />
+	@if (Model != null)	{
+		<input type="hidden" name="fld-detail-id" value="@id" />
+	}
+	<input type="hidden" name="fld-pagemode" value="@Convert.ToInt32(ViewBag.PageMode)" />
+	<input type="hidden" name="fld-action" id="fld-action" value="@detailViewModel.Action.ToString().ToLower()" />
+</div>

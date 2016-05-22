@@ -1,0 +1,25 @@
+﻿@{ int pageIndex = Model.PageIndex, currentPage = Model.CurrentPage, totalPages = Model.TotalPages; }
+
+<div class="frm-pagination">
+
+	<input type="hidden" name="pg" id="pg" value="@currentPage" />
+	@if (currentPage == 1) { 
+		<span class="prev disabled"></span>
+	}
+	else {
+		<a class="pagination prev" data-page-index="@(currentPage - 1)" href="#"></a>
+	}
+
+	@if (currentPage == totalPages)	{ 
+		<span class="next disabled"></span>
+	}
+	else { 
+		<a class="pagination next" data-page-index="@(currentPage + 1)" href="#"></a>
+	} 
+
+	<div class="page-info"><strong>@currentPage</strong> <span>of</span> <strong>@totalPages</strong></div>
+	<input type="hidden" class="current-page" value="@currentPage" />
+
+</div>          
+
+<!-- /Pagination -->

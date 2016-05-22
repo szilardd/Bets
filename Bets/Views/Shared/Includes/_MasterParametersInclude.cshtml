@@ -1,0 +1,7 @@
+﻿@model Dictionary<string, object>
+		   
+<form class="frm-search">
+	@foreach (var item in Model.Keys) {
+		<input type="hidden" id="@item" name="@item" value="@Model[item]" />
+	}
+</form>

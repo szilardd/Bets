@@ -1,0 +1,16 @@
+﻿.box-shadow {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.disable-appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNzczMubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFxQkE7RUFFQyxnQkFBQTtFQUNBLHFCQUFBO0VBQ0Esd0JBQUE7O0FBZ0NEO0VBRUMsd0JBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBOztBQVFEO0VBQVksZ0JBQUE7RUFBaUIsdUJBQUE7RUFBd0IsbUJBQUEiLCJmaWxlIjoidW5kZWZpbmVkIn0= */

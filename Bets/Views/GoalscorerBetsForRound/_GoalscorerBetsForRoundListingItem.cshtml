@@ -1,0 +1,19 @@
+﻿@model GoalscorerBetModel
+
+@if (ViewData["type"] == "header") {
+	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "Username", "User" }, { "GoalscorerName", "Player" }, { "GoalScored", "Scored" }, { "PointsWon", "Points" } });
+}
+else {
+	
+	<td><img class="icon thumb" src="@Url.GetUserImage(Model.Username)" /> @Model.UserDisplayName</td>
+	<td><img class="icon thumb" src="@Url.GetPlayerImage(Model.GoalscorerExternalID)" /> @Model.GoalscorerName</td>
+	<td>
+		@if (Model.PointsWon > 0) {
+			<span class="bet-win bet-win-result"></span>
+		}
+		else {
+			<span class="bet-win bet-win-none"></span>
+		}
+	</td>
+	<td>@Model.PointsWon</td>
+}

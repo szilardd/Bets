@@ -1,0 +1,35 @@
+﻿@{
+    var options = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.Teams);
+    var rounds = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.RoundID);
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Round</th>
+            <th>First</th>
+            <th>Second</th>
+            <th>Date</th>
+            <th>1</th>
+            <th>x</th>
+            <th>2</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody class="match-list">
+        <tr>
+            <td><select class="RoundID">@rounds</select></td>
+            <td><select class="FirstTeamID">@options</select></td>
+            <td><select class="SecondTeamID">@options</select></td>
+            <td><input type="text" class="Date span3" data-date="true" /></td>
+            <td><input type="text" class="Points1 span1" /></td>
+            <td><input type="text" class="PointsX span1" /></td>
+            <td><input type="text" class="Points2 span1" /></td>
+            <td>
+                <input type="button" class="btnRemoveMatch btn" value="-" />
+                <input type="button" class="btnAddMatch btn" value="+" />
+            </td>
+        </tr>
+    </tbody>
+</table>

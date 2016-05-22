@@ -1,0 +1,70 @@
+﻿<div id="help-page">
+
+	<h2>Pages</h2>
+
+	<ul>
+		@Html.Partial("_HelpDashboard")
+		<li><b>Global Bets</b> - Bets for the top goalscorer of the competition and for the winning team</li>
+		<li><b>Users</b> - Bets made by other users grouped by rounds. Only closed rounds are shown</li>
+		<li><b>Rounds</b> - Bets made in each round by all users. Only closed rounds are shown</li>
+		<li><b>Teams</b> - Team group standings</li>
+        <li><b>Help</b> - this page</li>
+		<li><b>Profile</b> - Profile settings (display name, email, picture, password)</li>
+	</ul>
+
+	<div class="clear"></div>
+
+	<h2>Bets</h2>
+
+	<ul>
+		<li>
+            Types of bets and the date when they expire:
+			
+			<ul>
+				<li><b>Match bets:</b> users can bet on matches right until one hour before the match starts</li>
+				<li><b>Top goalscorer:</b> users can bet on the top goalscorer right until one hour before the start of the first match</li>
+				<li><b>Winning team:</b> users can bet on the winning team right until one hour before the start of the first match</li>
+			</ul>
+		</li>
+		<li>The points displayed for each type of bet are determined by multiplying the booking house odds by 100. These are 'borrowed' from <a target="_blank" href="http://www.bwin.com">bwin.com</a>.</li>
+		<li>For match bets each outcome (<b>1 - the first team wins, x - draw, 2 - the second team wins</b>) has a number of points assigned that can be won by users. If a user guesses the <b>exact score</b>,
+		the number of points won will be equal to the points assigned to the outcome <b>multiplied by 2</b>.</li>
+		<li>The user has the option to assign one or two <b>bonus points</b> to a match bet. If the outcome of the match is the one set by the user, the number of points won will be multiplied by the number of bonus points.
+		<br/>For example, if a match outcome has 100 points assigned, then with one bonus point the number of points won will be 200 (100 + 1 * 100), with 2 points it will be 300 (100 + 2 * 100).
+        Each user will receive <b>10 bonus points</b> at the start of the competition. Users can choose to use their bonus points for any matches they wish, but only <b>2 bonus points per match are allowed</b>.
+		</li>
+		<li>
+			Types of wins for match bets:
+			<ul class="image-list">
+				<li><span class="bet-win bet-win-score"></span> - exact score</li>
+				<li><span class="bet-win bet-win-result"></span> - match outcome</li>
+				<li><span class="bet-win bet-win-score-bonus"></span> - exact score with bonus points</li>
+				<li><span class="bet-win bet-win-result-bonus"></span> - match outcome with bonus points</li>
+				<li><span class="bet-win bet-win-none"></span> - keep trying</li>
+			</ul>
+		</li>
+		<li>In the knockout stages, the final result for a match is the one <b>after 90 minutes</b>. For example if after 90 minutes the result is 2-2, this is a draw (x), it doesn't matter which team wins in the extra time or after penalty shootout.</li>
+	</ul>
+	
+    <div class="clear"></div>
+
+	<h2>Standings</h2>
+
+	<ul>
+		<li>
+            The standings are based on the number of points won by users for match bets, top goalscorer bet and winning team bet. The points for the last two bets will be assigned after the final match.
+		</li>
+		<li>The standings are updated each time after the result of a match is added into the system.</li>
+	</ul>
+
+    <div class="clear"></div>
+
+    <h2>Reminders</h2>
+
+    <ul>
+        <li>At the start of each round users will receive an email with the matches taking place in that round.</li>
+        <li>Users will also receive notifications by email in case they forget to add a bet for one or more matches.</li>
+    </ul>
+
+    <div class="clear"></div>
+</div>

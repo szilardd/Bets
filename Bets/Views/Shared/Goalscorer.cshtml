@@ -1,0 +1,22 @@
+﻿@model GoalscorerModel
+		   
+<div><img class="icon full" src="@Url.GetPlayerImage(Model.ExternalID)" /></div>
+<div>
+	<img class="flag" src="@Url.GetTeamFlagImage(Model.TeamFlag)" />
+	<b>@Model.ShortName</b>
+</div>
+
+<div>
+    <div><b>@Model.Points</b> points</div>
+    <div><b>@Model.GoalsScored</b> goal@(Model.GoalsScored != 1 ? "s" : "")</div>
+</div>
+	
+@if (!ViewBag.Expired) { 
+    
+    if (Model.BetMade) {
+	    <div class="bet-made"></div>
+    }
+    else if ((ViewBag.AllowBet ?? true)) {
+	    <div><input type="button" class="btn" value="Select" /></div>
+    }
+}

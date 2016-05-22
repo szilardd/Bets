@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Bets" Class="BetsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=Bets;Integrated Security=True;MultipleActiveResultSets=True;Application Name=Bets" SettingsObjectName="Bets.Data.Properties.Settings" SettingsPropertyName="BetsConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Matches" Member="Matches">
+    <Type Name="Match">
+      <Column Name="MatchID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecondTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Points1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointsX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Points2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoundID" Storage="_Round" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstTeamGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondTeamGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Result" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Players" Member="Players">
+    <Type Name="Player">
+      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageURL" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Storage="_IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GoalsScored" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExternalID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teams" Member="Teams">
+    <Type Name="Team">
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FlagPrefix" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExternalID" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GlobalBets" Member="GlobalBets">
+    <Type Name="GlobalBet">
+      <Column Name="BetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WinnerTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GoalscorersForRounds" Member="GoalscorerForRounds">
+    <Type Name="GoalscorerForRound">
+      <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Goals" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MatchBets" Member="MatchBets">
+    <Type Name="MatchBet">
+      <Column Name="BetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MatchID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstTeamGoals" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecondTeamGoals" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointsWon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WinTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PointsWonBonus" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rounds" Member="Rounds">
+    <Type Name="Round">
+      <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Closed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BetsForRounds" Member="BetsForRounds">
+    <Type Name="BetsForRound">
+      <Column Name="BetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PointsForRounds" Member="PointsForRounds">
+    <Type Name="PointsForRound">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MatchPoints" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MatchPointsBonus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GoalscorerPoints" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Settings" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="SettingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CurrentRoundID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstMatchDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ScoreMultiplier" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RoundGoalMultiplier" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="BonusMultiplier" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="LastNotificationRoundID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxBonusPerMatch" Type="System.Int32" DbType="int" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertedDate" AutoSync="Never" Type="System.DateTime" DbType="DateTime NOT NULL" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointsWon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PointsWonBonus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Bonus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SaveWinnerBet" Method="SaveWinnerBet">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TeamID" Parameter="teamID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveGoalscorerBet" Method="SaveGoalscorerBet">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveGoalscorerForRoundBet" Method="SaveGoalscorerForRoundBet">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GoalscorerID" Parameter="goalscorerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveMatchBet" Method="SaveMatchBet">
+    <Parameter Name="MatchID" Parameter="matchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FirstTeamGoals" Parameter="firstTeamGoals" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SecondTeamGoals" Parameter="secondTeamGoals" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Bonus" Parameter="bonus" Type="System.Int32" DbType="Int" />
+    <Parameter Name="HourLimit" Parameter="hourLimit" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SaveMatchResult" Method="SaveMatchResult">
+    <Parameter Name="MatchID" Parameter="matchID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FirstTeamGoals" Parameter="firstTeamGoals" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SecondTeamGoals" Parameter="secondTeamGoals" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAllGroupStandings" Method="GetAllGroupStandings">
+    <ElementType Name="GetAllGroupStandingsResult">
+      <Column Name="TeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Group]" Member="Group" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Flag" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Team" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Pld" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Won" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Draw" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Lost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Scored" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Against" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Agg" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SaveGoalscorerForCurrentRound" Method="SaveGoalscorerForCurrentRound">
+    <Parameter Name="GoalscorerID" Parameter="goalscorerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Goals" Parameter="goals" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddRound" Method="AddRound">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SetUserPointsForRound" Method="SetUserPointsForRound">
+    <Parameter Name="RoundID" Parameter="roundID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveTeam" Method="RemoveTeam">
+    <Parameter Name="TeamID" Parameter="teamID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemovePlayer" Method="RemovePlayer">
+    <Parameter Name="PlayerID" Parameter="playerID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CloseRound" Method="CloseRound">
+    <Parameter Name="RoundID" Parameter="roundID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateLastNotificationRoundID" Method="UpdateLastNotificationRoundID">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateUser" Method="UpdateUser">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DisplayName" Parameter="displayName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OldPassword" Parameter="oldPassword" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

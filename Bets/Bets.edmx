@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BetsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BetsModelStoreContainer">
+          <EntitySet Name="GlobalBets" EntityType="BetsModel.Store.GlobalBets" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="GoalscorersForRounds" EntityType="BetsModel.Store.GoalscorersForRounds" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="MatchBets" EntityType="BetsModel.Store.MatchBets" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Matches" EntityType="BetsModel.Store.Matches" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Players" EntityType="BetsModel.Store.Players" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PointsForRounds" EntityType="BetsModel.Store.PointsForRounds" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Rounds" EntityType="BetsModel.Store.Rounds" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Settings" EntityType="BetsModel.Store.Settings" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Teams" EntityType="BetsModel.Store.Teams" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Users" EntityType="BetsModel.Store.Users" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_GlobalBets_Players" Association="BetsModel.Store.FK_GlobalBets_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GlobalBets" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GlobalBets_Teams" Association="BetsModel.Store.FK_GlobalBets_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="GlobalBets" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GlobalBets_Users" Association="BetsModel.Store.FK_GlobalBets_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GlobalBets" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoalscorersForRounds_Players" Association="BetsModel.Store.FK_GoalscorersForRounds_Players">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GoalscorersForRounds" EntitySet="GoalscorersForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoalscorersForRounds_Rounds" Association="BetsModel.Store.FK_GoalscorersForRounds_Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="GoalscorersForRounds" EntitySet="GoalscorersForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Bet_LNXBets_Users" Association="BetsModel.Store.FK_LNXBets_Bet_LNXBets_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MatchBets" EntitySet="MatchBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Matches_LNXBets_Matches" Association="BetsModel.Store.FK_LNXBets_Matches_LNXBets_Matches">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Matches_LNXBets_Teams" Association="BetsModel.Store.FK_LNXBets_Matches_LNXBets_Teams">
+            <End Role="Teams" EntitySet="Teams" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matches_Rounds" Association="BetsModel.Store.FK_Matches_Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="Matches" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointsForRounds_Rounds" Association="BetsModel.Store.FK_PointsForRounds_Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="PointsForRounds" EntitySet="PointsForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointsForRounds_Users" Association="BetsModel.Store.FK_PointsForRounds_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PointsForRounds" EntitySet="PointsForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Settings_Rounds" Association="BetsModel.Store.FK_Settings_Rounds">
+            <End Role="Rounds" EntitySet="Rounds" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GlobalBets">
+          <Key>
+            <PropertyRef Name="BetID" />
+          </Key>
+          <Property Name="BetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="WinnerTeamID" Type="int" />
+          <Property Name="GoalscorerID" Type="int" />
+        </EntityType>
+        <EntityType Name="GoalscorersForRounds">
+          <Key>
+            <PropertyRef Name="RoundID" />
+            <PropertyRef Name="GoalscorerID" />
+          </Key>
+          <Property Name="RoundID" Type="int" Nullable="false" />
+          <Property Name="GoalscorerID" Type="int" Nullable="false" />
+          <Property Name="Goals" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MatchBets">
+          <Key>
+            <PropertyRef Name="BetID" />
+          </Key>
+          <Property Name="BetID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MatchID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FirstTeamGoals" Type="int" Nullable="false" />
+          <Property Name="SecondTeamGoals" Type="int" Nullable="false" />
+          <Property Name="Result" Type="int" Nullable="false" />
+          <Property Name="PointsWon" Type="int" Nullable="false" />
+          <Property Name="PointsWonBonus" Type="int" Nullable="false" />
+          <Property Name="WinTypeID" Type="int" Nullable="false" />
+          <Property Name="Bonus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Matches">
+          <Key>
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Name="MatchID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstTeamID" Type="int" Nullable="false" />
+          <Property Name="SecondTeamID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Points1" Type="int" Nullable="false" />
+          <Property Name="PointsX" Type="int" Nullable="false" />
+          <Property Name="Points2" Type="int" Nullable="false" />
+          <Property Name="RoundID" Type="int" Nullable="false" />
+          <Property Name="FirstTeamGoals" Type="int" />
+          <Property Name="SecondTeamGoals" Type="int" />
+          <Property Name="Result" Type="int" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Name="PlayerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TeamID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="GoalsScored" Type="int" Nullable="false" />
+          <Property Name="ExternalID" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PointsForRounds">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoundID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoundID" Type="int" Nullable="false" />
+          <Property Name="MatchPoints" Type="int" Nullable="false" />
+          <Property Name="MatchPointsBonus" Type="int" Nullable="false" />
+          <Property Name="GoalscorerPoints" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rounds">
+          <Key>
+            <PropertyRef Name="RoundID" />
+          </Key>
+          <Property Name="RoundID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentRoundID" Type="int" Nullable="false" />
+          <Property Name="FirstMatchDate" Type="datetime" Nullable="false" />
+          <Property Name="ScoreMultiplier" Type="float" Nullable="false" />
+          <Property Name="RoundGoalMultiplier" Type="float" Nullable="false" />
+          <Property Name="BonusMultiplier" Type="float" Nullable="false" />
+          <Property Name="LastNotificationRoundID" Type="int" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="FlagPrefix" Type="varchar" Nullable="false" MaxLength="3" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Group" Type="varchar" MaxLength="1" />
+          <Property Name="Points" Type="int" />
+          <Property Name="ExternalID" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+		  <Property Name="PasswordSalt" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="InsertedDate" Type="datetime" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+          <Property Name="PointsWon" Type="int" Nullable="false" />
+          <Property Name="PointsWonBonus" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Bonus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GlobalBets_Players">
+          <End Role="Players" Type="BetsModel.Store.Players" Multiplicity="0..1" />
+          <End Role="GlobalBets" Type="BetsModel.Store.GlobalBets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="GlobalBets">
+              <PropertyRef Name="GoalscorerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GlobalBets_Teams">
+          <End Role="Teams" Type="BetsModel.Store.Teams" Multiplicity="0..1" />
+          <End Role="GlobalBets" Type="BetsModel.Store.GlobalBets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="GlobalBets">
+              <PropertyRef Name="WinnerTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GlobalBets_Users">
+          <End Role="Users" Type="BetsModel.Store.Users" Multiplicity="1" />
+          <End Role="GlobalBets" Type="BetsModel.Store.GlobalBets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GlobalBets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GoalscorersForRounds_Players">
+          <End Role="Players" Type="BetsModel.Store.Players" Multiplicity="1" />
+          <End Role="GoalscorersForRounds" Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="GoalscorersForRounds">
+              <PropertyRef Name="GoalscorerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GoalscorersForRounds_Rounds">
+          <End Role="Rounds" Type="BetsModel.Store.Rounds" Multiplicity="1" />
+          <End Role="GoalscorersForRounds" Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="GoalscorersForRounds">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Bet_LNXBets_Users">
+          <End Role="Users" Type="BetsModel.Store.Users" Multiplicity="1" />
+          <End Role="MatchBets" Type="BetsModel.Store.MatchBets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MatchBets">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Matches_LNXBets_Matches">
+          <End Role="Teams" Type="BetsModel.Store.Teams" Multiplicity="1" />
+          <End Role="Matches" Type="BetsModel.Store.Matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="FirstTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Matches_LNXBets_Teams">
+          <End Role="Teams" Type="BetsModel.Store.Teams" Multiplicity="1" />
+          <End Role="Matches" Type="BetsModel.Store.Matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teams">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="SecondTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matches_Rounds">
+          <End Role="Rounds" Type="BetsModel.Store.Rounds" Multiplicity="1" />
+          <End Role="Matches" Type="BetsModel.Store.Matches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="Matches">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointsForRounds_Rounds">
+          <End Role="Rounds" Type="BetsModel.Store.Rounds" Multiplicity="1" />
+          <End Role="PointsForRounds" Type="BetsModel.Store.PointsForRounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="PointsForRounds">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointsForRounds_Users">
+          <End Role="Users" Type="BetsModel.Store.Users" Multiplicity="1" />
+          <End Role="PointsForRounds" Type="BetsModel.Store.PointsForRounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PointsForRounds">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Settings_Rounds">
+          <End Role="Rounds" Type="BetsModel.Store.Rounds" Multiplicity="1" />
+          <End Role="Settings" Type="BetsModel.Store.Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rounds">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="CurrentRoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BetsModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="BetsEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="GlobalBets" EntityType="BetsModel.GlobalBet" />
+          <EntitySet Name="GoalscorersForRounds" EntityType="BetsModel.GoalscorersForRound" />
+          <EntitySet Name="MatchBets" EntityType="BetsModel.MatchBet" />
+          <EntitySet Name="Matches" EntityType="BetsModel.Match" />
+          <EntitySet Name="Players" EntityType="BetsModel.Player" />
+          <EntitySet Name="PointsForRounds" EntityType="BetsModel.PointsForRound" />
+          <EntitySet Name="Rounds" EntityType="BetsModel.Round" />
+          <EntitySet Name="Settings" EntityType="BetsModel.Setting" />
+          <EntitySet Name="Teams" EntityType="BetsModel.Team" />
+          <EntitySet Name="Users" EntityType="BetsModel.User" />
+          <AssociationSet Name="FK_GlobalBets_Players" Association="BetsModel.FK_GlobalBets_Players">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="GlobalBet" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GlobalBets_Teams" Association="BetsModel.FK_GlobalBets_Teams">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="GlobalBet" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GlobalBets_Users" Association="BetsModel.FK_GlobalBets_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="GlobalBet" EntitySet="GlobalBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoalscorersForRounds_Players" Association="BetsModel.FK_GoalscorersForRounds_Players">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="GoalscorersForRound" EntitySet="GoalscorersForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GoalscorersForRounds_Rounds" Association="BetsModel.FK_GoalscorersForRounds_Rounds">
+            <End Role="Round" EntitySet="Rounds" />
+            <End Role="GoalscorersForRound" EntitySet="GoalscorersForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Bet_LNXBets_Users" Association="BetsModel.FK_LNXBets_Bet_LNXBets_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MatchBet" EntitySet="MatchBets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Matches_LNXBets_Matches" Association="BetsModel.FK_LNXBets_Matches_LNXBets_Matches">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LNXBets_Matches_LNXBets_Teams" Association="BetsModel.FK_LNXBets_Matches_LNXBets_Teams">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matches_Rounds" Association="BetsModel.FK_Matches_Rounds">
+            <End Role="Round" EntitySet="Rounds" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointsForRounds_Rounds" Association="BetsModel.FK_PointsForRounds_Rounds">
+            <End Role="Round" EntitySet="Rounds" />
+            <End Role="PointsForRound" EntitySet="PointsForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointsForRounds_Users" Association="BetsModel.FK_PointsForRounds_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PointsForRound" EntitySet="PointsForRounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Settings_Rounds" Association="BetsModel.FK_Settings_Rounds">
+            <End Role="Round" EntitySet="Rounds" />
+            <End Role="Setting" EntitySet="Settings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GlobalBet">
+          <Key>
+            <PropertyRef Name="BetID" />
+          </Key>
+          <Property Type="Int32" Name="BetID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="WinnerTeamID" />
+          <Property Type="Int32" Name="GoalscorerID" />
+          <NavigationProperty Name="Player" Relationship="BetsModel.FK_GlobalBets_Players" FromRole="GlobalBet" ToRole="Player" />
+          <NavigationProperty Name="Team" Relationship="BetsModel.FK_GlobalBets_Teams" FromRole="GlobalBet" ToRole="Team" />
+          <NavigationProperty Name="User" Relationship="BetsModel.FK_GlobalBets_Users" FromRole="GlobalBet" ToRole="User" />
+        </EntityType>
+        <EntityType Name="GoalscorersForRound">
+          <Key>
+            <PropertyRef Name="RoundID" />
+            <PropertyRef Name="GoalscorerID" />
+          </Key>
+          <Property Type="Int32" Name="RoundID" Nullable="false" />
+          <Property Type="Int32" Name="GoalscorerID" Nullable="false" />
+          <Property Type="Int32" Name="Goals" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="BetsModel.FK_GoalscorersForRounds_Players" FromRole="GoalscorersForRound" ToRole="Player" />
+          <NavigationProperty Name="Round" Relationship="BetsModel.FK_GoalscorersForRounds_Rounds" FromRole="GoalscorersForRound" ToRole="Round" />
+        </EntityType>
+        <EntityType Name="MatchBet">
+          <Key>
+            <PropertyRef Name="BetID" />
+          </Key>
+          <Property Type="Int32" Name="BetID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="MatchID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="FirstTeamGoals" Nullable="false" />
+          <Property Type="Int32" Name="SecondTeamGoals" Nullable="false" />
+          <Property Type="Int32" Name="Result" Nullable="false" />
+          <Property Type="Int32" Name="PointsWon" Nullable="false" />
+          <Property Type="Int32" Name="PointsWonBonus" Nullable="false" />
+          <Property Type="Int32" Name="WinTypeID" Nullable="false" />
+          <Property Type="Int32" Name="Bonus" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="BetsModel.FK_LNXBets_Bet_LNXBets_Users" FromRole="MatchBet" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="MatchID" />
+          </Key>
+          <Property Type="Int32" Name="MatchID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="FirstTeamID" Nullable="false" />
+          <Property Type="Int32" Name="SecondTeamID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Points1" Nullable="false" />
+          <Property Type="Int32" Name="PointsX" Nullable="false" />
+          <Property Type="Int32" Name="Points2" Nullable="false" />
+          <Property Type="Int32" Name="RoundID" Nullable="false" />
+          <Property Type="Int32" Name="FirstTeamGoals" />
+          <Property Type="Int32" Name="SecondTeamGoals" />
+          <Property Type="Int32" Name="Result" />
+          <NavigationProperty Name="Team" Relationship="BetsModel.FK_LNXBets_Matches_LNXBets_Matches" FromRole="Match" ToRole="Team" />
+          <NavigationProperty Name="Team1" Relationship="BetsModel.FK_LNXBets_Matches_LNXBets_Teams" FromRole="Match" ToRole="Team" />
+          <NavigationProperty Name="Round" Relationship="BetsModel.FK_Matches_Rounds" FromRole="Match" ToRole="Round" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerID" />
+          </Key>
+          <Property Type="Int32" Name="PlayerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="TeamID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Int32" Name="Points" Nullable="false" />
+          <Property Type="Int32" Name="GoalsScored" Nullable="false" />
+          <Property Type="String" Name="ExternalID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GlobalBets" Relationship="BetsModel.FK_GlobalBets_Players" FromRole="Player" ToRole="GlobalBet" />
+          <NavigationProperty Name="GoalscorersForRounds" Relationship="BetsModel.FK_GoalscorersForRounds_Players" FromRole="Player" ToRole="GoalscorersForRound" />
+        </EntityType>
+        <EntityType Name="PointsForRound">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoundID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="RoundID" Nullable="false" />
+          <Property Type="Int32" Name="MatchPoints" Nullable="false" />
+          <Property Type="Int32" Name="MatchPointsBonus" Nullable="false" />
+          <Property Type="Int32" Name="GoalscorerPoints" Nullable="false" />
+          <NavigationProperty Name="Round" Relationship="BetsModel.FK_PointsForRounds_Rounds" FromRole="PointsForRound" ToRole="Round" />
+          <NavigationProperty Name="User" Relationship="BetsModel.FK_PointsForRounds_Users" FromRole="PointsForRound" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="RoundID" />
+          </Key>
+          <Property Type="Int32" Name="RoundID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Closed" Nullable="false" />
+          <NavigationProperty Name="GoalscorersForRounds" Relationship="BetsModel.FK_GoalscorersForRounds_Rounds" FromRole="Round" ToRole="GoalscorersForRound" />
+          <NavigationProperty Name="Matches" Relationship="BetsModel.FK_Matches_Rounds" FromRole="Round" ToRole="Match" />
+          <NavigationProperty Name="PointsForRounds" Relationship="BetsModel.FK_PointsForRounds_Rounds" FromRole="Round" ToRole="PointsForRound" />
+          <NavigationProperty Name="Settings" Relationship="BetsModel.FK_Settings_Rounds" FromRole="Round" ToRole="Setting" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Type="Int32" Name="SettingID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int32" Name="CurrentRoundID" Nullable="false" />
+          <Property Type="DateTime" Name="FirstMatchDate" Nullable="false" />
+          <Property Type="Double" Name="ScoreMultiplier" Nullable="false" />
+          <Property Type="Double" Name="RoundGoalMultiplier" Nullable="false" />
+          <Property Type="Double" Name="BonusMultiplier" Nullable="false" />
+          <Property Type="Int32" Name="LastNotificationRoundID" />
+          <NavigationProperty Name="Round" Relationship="BetsModel.FK_Settings_Rounds" FromRole="Setting" ToRole="Round" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Type="Int32" Name="TeamID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FlagPrefix" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="String" Name="Group" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Points" />
+          <Property Type="String" Name="ExternalID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GlobalBets" Relationship="BetsModel.FK_GlobalBets_Teams" FromRole="Team" ToRole="GlobalBet" />
+          <NavigationProperty Name="Matches" Relationship="BetsModel.FK_LNXBets_Matches_LNXBets_Matches" FromRole="Team" ToRole="Match" />
+          <NavigationProperty Name="Matches1" Relationship="BetsModel.FK_LNXBets_Matches_LNXBets_Teams" FromRole="Team" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+		  <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="InsertedDate" Nullable="false" />
+          <Property Type="Int32" Name="ProfileID" Nullable="false" />
+          <Property Type="Int32" Name="PointsWon" Nullable="false" />
+          <Property Type="Int32" Name="PointsWonBonus" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Bonus" Nullable="false" />
+          <NavigationProperty Name="GlobalBets" Relationship="BetsModel.FK_GlobalBets_Users" FromRole="User" ToRole="GlobalBet" />
+          <NavigationProperty Name="MatchBets" Relationship="BetsModel.FK_LNXBets_Bet_LNXBets_Users" FromRole="User" ToRole="MatchBet" />
+          <NavigationProperty Name="PointsForRounds" Relationship="BetsModel.FK_PointsForRounds_Users" FromRole="User" ToRole="PointsForRound" />
+        </EntityType>
+        <Association Name="FK_GlobalBets_Players">
+          <End Type="BetsModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="BetsModel.GlobalBet" Role="GlobalBet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="GlobalBet">
+              <PropertyRef Name="GoalscorerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GlobalBets_Teams">
+          <End Type="BetsModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="BetsModel.GlobalBet" Role="GlobalBet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="GlobalBet">
+              <PropertyRef Name="WinnerTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GlobalBets_Users">
+          <End Type="BetsModel.User" Role="User" Multiplicity="1" />
+          <End Type="BetsModel.GlobalBet" Role="GlobalBet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GlobalBet">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GoalscorersForRounds_Players">
+          <End Type="BetsModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="BetsModel.GoalscorersForRound" Role="GoalscorersForRound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerID" />
+            </Principal>
+            <Dependent Role="GoalscorersForRound">
+              <PropertyRef Name="GoalscorerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GoalscorersForRounds_Rounds">
+          <End Type="BetsModel.Round" Role="Round" Multiplicity="1" />
+          <End Type="BetsModel.GoalscorersForRound" Role="GoalscorersForRound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="GoalscorersForRound">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Bet_LNXBets_Users">
+          <End Type="BetsModel.User" Role="User" Multiplicity="1" />
+          <End Type="BetsModel.MatchBet" Role="MatchBet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MatchBet">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Matches_LNXBets_Matches">
+          <End Type="BetsModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="BetsModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="FirstTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LNXBets_Matches_LNXBets_Teams">
+          <End Type="BetsModel.Team" Role="Team" Multiplicity="1" />
+          <End Type="BetsModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="SecondTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matches_Rounds">
+          <End Type="BetsModel.Round" Role="Round" Multiplicity="1" />
+          <End Type="BetsModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointsForRounds_Rounds">
+          <End Type="BetsModel.Round" Role="Round" Multiplicity="1" />
+          <End Type="BetsModel.PointsForRound" Role="PointsForRound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="PointsForRound">
+              <PropertyRef Name="RoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointsForRounds_Users">
+          <End Type="BetsModel.User" Role="User" Multiplicity="1" />
+          <End Type="BetsModel.PointsForRound" Role="PointsForRound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PointsForRound">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Settings_Rounds">
+          <End Type="BetsModel.Round" Role="Round" Multiplicity="1" />
+          <End Type="BetsModel.Setting" Role="Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="RoundID" />
+            </Principal>
+            <Dependent Role="Setting">
+              <PropertyRef Name="CurrentRoundID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BetsModelStoreContainer" CdmEntityContainer="BetsEntities">
+          <EntitySetMapping Name="GlobalBets">
+            <EntityTypeMapping TypeName="BetsModel.GlobalBet">
+              <MappingFragment StoreEntitySet="GlobalBets">
+                <ScalarProperty Name="GoalscorerID" ColumnName="GoalscorerID" />
+                <ScalarProperty Name="WinnerTeamID" ColumnName="WinnerTeamID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BetID" ColumnName="BetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoalscorersForRounds">
+            <EntityTypeMapping TypeName="BetsModel.GoalscorersForRound">
+              <MappingFragment StoreEntitySet="GoalscorersForRounds">
+                <ScalarProperty Name="Goals" ColumnName="Goals" />
+                <ScalarProperty Name="GoalscorerID" ColumnName="GoalscorerID" />
+                <ScalarProperty Name="RoundID" ColumnName="RoundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MatchBets">
+            <EntityTypeMapping TypeName="BetsModel.MatchBet">
+              <MappingFragment StoreEntitySet="MatchBets">
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="WinTypeID" ColumnName="WinTypeID" />
+                <ScalarProperty Name="PointsWonBonus" ColumnName="PointsWonBonus" />
+                <ScalarProperty Name="PointsWon" ColumnName="PointsWon" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="SecondTeamGoals" ColumnName="SecondTeamGoals" />
+                <ScalarProperty Name="FirstTeamGoals" ColumnName="FirstTeamGoals" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+                <ScalarProperty Name="BetID" ColumnName="BetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matches">
+            <EntityTypeMapping TypeName="BetsModel.Match">
+              <MappingFragment StoreEntitySet="Matches">
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="SecondTeamGoals" ColumnName="SecondTeamGoals" />
+                <ScalarProperty Name="FirstTeamGoals" ColumnName="FirstTeamGoals" />
+                <ScalarProperty Name="RoundID" ColumnName="RoundID" />
+                <ScalarProperty Name="Points2" ColumnName="Points2" />
+                <ScalarProperty Name="PointsX" ColumnName="PointsX" />
+                <ScalarProperty Name="Points1" ColumnName="Points1" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SecondTeamID" ColumnName="SecondTeamID" />
+                <ScalarProperty Name="FirstTeamID" ColumnName="FirstTeamID" />
+                <ScalarProperty Name="MatchID" ColumnName="MatchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="BetsModel.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="ExternalID" ColumnName="ExternalID" />
+                <ScalarProperty Name="GoalsScored" ColumnName="GoalsScored" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointsForRounds">
+            <EntityTypeMapping TypeName="BetsModel.PointsForRound">
+              <MappingFragment StoreEntitySet="PointsForRounds">
+                <ScalarProperty Name="GoalscorerPoints" ColumnName="GoalscorerPoints" />
+                <ScalarProperty Name="MatchPointsBonus" ColumnName="MatchPointsBonus" />
+                <ScalarProperty Name="MatchPoints" ColumnName="MatchPoints" />
+                <ScalarProperty Name="RoundID" ColumnName="RoundID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rounds">
+            <EntityTypeMapping TypeName="BetsModel.Round">
+              <MappingFragment StoreEntitySet="Rounds">
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoundID" ColumnName="RoundID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="BetsModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="LastNotificationRoundID" ColumnName="LastNotificationRoundID" />
+                <ScalarProperty Name="BonusMultiplier" ColumnName="BonusMultiplier" />
+                <ScalarProperty Name="RoundGoalMultiplier" ColumnName="RoundGoalMultiplier" />
+                <ScalarProperty Name="ScoreMultiplier" ColumnName="ScoreMultiplier" />
+                <ScalarProperty Name="FirstMatchDate" ColumnName="FirstMatchDate" />
+                <ScalarProperty Name="CurrentRoundID" ColumnName="CurrentRoundID" />
+                <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="BetsModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="ExternalID" ColumnName="ExternalID" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="FlagPrefix" ColumnName="FlagPrefix" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BetsModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PointsWonBonus" ColumnName="PointsWonBonus" />
+                <ScalarProperty Name="PointsWon" ColumnName="PointsWon" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+				<ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Bets">
+        <EntityTypeShape EntityType="BetsModel.GlobalBet" Width="1.5" PointX="9" PointY="8.875" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BetsModel.GoalscorersForRound" Width="1.5" PointX="3" PointY="8.25" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="BetsModel.MatchBet" Width="1.5" PointX="3" PointY="0.75" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="BetsModel.Match" Width="1.5" PointX="6" PointY="7.375" Height="3.7109993489583388" />
+        <EntityTypeShape EntityType="BetsModel.Player" Width="1.5" PointX="0.75" PointY="11.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="BetsModel.PointsForRound" Width="1.5" PointX="3" PointY="5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BetsModel.Round" Width="1.5" PointX="0.75" PointY="8" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BetsModel.Setting" Width="1.5" PointX="3" PointY="18.25" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="BetsModel.Team" Width="1.5" PointX="3.75" PointY="11.625" Height="3.1340950520833388" />
+        <EntityTypeShape EntityType="BetsModel.User" Width="1.5" PointX="0.75" PointY="3.5" Height="3.5186979166666674" />
+        <AssociationConnector Association="BetsModel.FK_GlobalBets_Players">
+          <ConnectorPoint PointX="1.5" PointY="11.75" />
+          <ConnectorPoint PointX="1.5" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="6.2604141666666671" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="6.4270808333333331" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="8.625" PointY="11.335999348958339" />
+          <ConnectorPoint PointX="8.625" PointY="10.057444661458334" />
+          <ConnectorPoint PointX="9" PointY="10.057444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_GlobalBets_Teams">
+          <ConnectorPoint PointX="5.25" PointY="13.192047526041669" />
+          <ConnectorPoint PointX="6.2604141666666671" PointY="13.192047526041669" />
+          <ConnectorPoint PointX="6.4270808333333331" PointY="13.192047526041669" />
+          <ConnectorPoint PointX="9.75" PointY="13.192047526041669" />
+          <ConnectorPoint PointX="9.75" PointY="11.239889322916667" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_GlobalBets_Users">
+          <ConnectorPoint PointX="2.25" PointY="4.4420475260416659" />
+          <ConnectorPoint PointX="9.75" PointY="4.4420475260416659" />
+          <ConnectorPoint PointX="9.75" PointY="8.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_GoalscorersForRounds_Players">
+          <ConnectorPoint PointX="2.25" PointY="11.751152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="11.376152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="9.2401432291666676" />
+          <ConnectorPoint PointX="3" PointY="9.2401432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_GoalscorersForRounds_Rounds">
+          <ConnectorPoint PointX="2.25" PointY="8.6825716145833347" />
+          <ConnectorPoint PointX="3" PointY="8.6825716145833347" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_LNXBets_Bet_LNXBets_Users">
+          <ConnectorPoint PointX="2.25" PointY="3.6920475260416659" />
+          <ConnectorPoint PointX="3" PointY="3.6920475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_LNXBets_Matches_LNXBets_Matches">
+          <ConnectorPoint PointX="5.25" PointY="12.377271263020841" />
+          <ConnectorPoint PointX="6.2604141666666671" PointY="12.377271263020841" />
+          <ConnectorPoint PointX="6.4270808333333331" PointY="12.377271263020841" />
+          <ConnectorPoint PointX="6.75" PointY="12.377271263020841" />
+          <ConnectorPoint PointX="6.75" PointY="11.085999348958339" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_LNXBets_Matches_LNXBets_Teams">
+          <ConnectorPoint PointX="5.25" PointY="14.006823789062498" />
+          <ConnectorPoint PointX="6.3437475" PointY="14.006823789062498" />
+          <ConnectorPoint PointX="6.3437475" PointY="11.085999348958339" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_Matches_Rounds">
+          <ConnectorPoint PointX="2.25" PointY="8.09375" />
+          <ConnectorPoint PointX="6" PointY="8.09375" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_PointsForRounds_Rounds">
+          <ConnectorPoint PointX="2.25" PointY="8.0011528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="7.6261528461538468" />
+          <ConnectorPoint PointX="2.625" PointY="7.7398893229166674" />
+          <ConnectorPoint PointX="3" PointY="7.3648893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_PointsForRounds_Users">
+          <ConnectorPoint PointX="2.25" PointY="6.0093489583333337" />
+          <ConnectorPoint PointX="3" PointY="6.0093489583333337" />
+        </AssociationConnector>
+        <AssociationConnector Association="BetsModel.FK_Settings_Rounds">
+          <ConnectorPoint PointX="2.25" PointY="10.302580630608976" />
+          <ConnectorPoint PointX="2.5660744349011213" PointY="10.618655065510096" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="10.736506195707854" />
+          <ConnectorPoint PointX="2.8125" PointY="10.865080630608976" />
+          <ConnectorPoint PointX="2.8125" PointY="19.528595377604169" />
+          <ConnectorPoint PointX="3" PointY="19.528595377604169" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

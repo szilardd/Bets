@@ -1,0 +1,54 @@
+﻿@model ListingViewModel
+
+<form class="advanced-search clearfix" style="display:none">
+	
+	@if (!ViewBag.IsLookup) {
+		<div>
+			<span class="button-action right btn-save-search" href="#">Save this Search</span>
+			<span class="button-action right btn-clear-filters" href="#">X</span>
+		</div>
+	}
+
+	<div class="clearfix">
+			
+		<!-- Date Filters -->
+		@if (Model.HasDateFilter) {
+			<div>
+				@Html.DropDownList("DateFilter")
+
+				<input class="date-field" type="text" name="FromDate" id="FromDate" value="@Model.GetAdvancedFilterValue("FromDate").ToDate()" />
+				<input class="date-field" type="text" name="ToDate" id="ToDate" value="@Model.GetAdvancedFilterValue("ToDate").ToDate()" />
+			</div>
+		}
+
+
+		<!-- Dropdown Filters -->
+		@if (Model.AdvancedFilters != null) {
+			<div class="dropdown clearfix @if (Model.HasDateFilter) { <text>second</text> }">
+				@foreach (var item in Model.AdvancedFilters.Keys) {
+
+					var attributes = new Dictionary<string,object>();
+			
+					if (Model.AdvancedFilterDependencies != null) {
+
+						if (Model.AdvancedFilterDependencies.ContainsValue(item)) {
+							attributes.Add("data-dependency", "true");
+						}
+
+						if (Model.AdvancedFilterDependencies.ContainsKey(item))	{
+							attributes.Add("data-dependenton", Model.AdvancedFilterDependencies[item]);
+						}
+					}
+			
+					@Html.DropDownList(
+						item,
+						Model.AdvancedFilters[item],
+						attributes
+					);
+				}
+			</div>
+		}
+	
+	</div>
+		
+</form>
