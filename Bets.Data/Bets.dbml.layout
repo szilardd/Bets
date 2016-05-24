@@ -44,16 +44,10 @@
         <elementListCompartment Id="808070e7-de9f-44b5-add1-19c7c4ad8253" absoluteBounds="4.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1965a3b2-ca79-41ab-9d81-1f36e49ef0d9" isExpanded="false" absoluteBounds="4.5, 3.125, 2, 0.45">
-      <DataClassMoniker Name="/BetsDataContext/BetsForRound" />
-      <nestedChildShapes>
-        <elementListCompartment Id="33b8f418-af92-4038-9484-c5780bf59c8b" absoluteBounds="4.515, 3.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="47bb52d1-5aa6-48c6-a1e1-06d097750f22" isExpanded="false" absoluteBounds="4.5, 3.75, 2, 0.45">
+    <classShape Id="47bb52d1-5aa6-48c6-a1e1-06d097750f22" isExpanded="false" absoluteBounds="4.5, 3.25, 2, 0.45">
       <DataClassMoniker Name="/BetsDataContext/PointsForRound" />
       <nestedChildShapes>
-        <elementListCompartment Id="b422a8c7-9238-422e-a70f-4959428dbff9" absoluteBounds="4.515, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b422a8c7-9238-422e-a70f-4959428dbff9" absoluteBounds="4.515, 3.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="03c14432-a5b1-4d05-b5d8-76ebe8e4507b" isExpanded="false" absoluteBounds="2, 2.5, 2, 0.45">

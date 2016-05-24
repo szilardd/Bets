@@ -43,7 +43,7 @@ namespace Bets.Data
             var suffix = string.Empty;
 
             // if hosted in local IIS as virtual directory, add the name
-            if (url.Port == 80 && !DataConfig.IsLiveMode())
+            if (url.Port == 80 && !DataConfig.IsLiveMode() && url.Segments.Length >= 2)
             {
                 suffix += url.Segments[1].TrimEnd('/') + "/";
             }

@@ -48,6 +48,25 @@ input:active, input:focus {
 	-moz-outline-style: none; 
 }
 
+    .cell-BetAction.loading {
+        position: relative;
+    }
+
+        .cell-BetAction.loading input {
+            background-color: #D0D0D0;
+        }
+
+        .cell-BetAction.loading::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            background:red url(../img/../img/ajax-loader-small.gif) no-repeat;
+            background-size: contain;
+            top: 7px;
+            left: 20px;
+            position: absolute;
+        }
+
 input, textarea, select, .uneditable-input {
     height: 26px;
 }
@@ -572,13 +591,13 @@ img {
     width: 900px;
     background-size: 100% auto;
     height: 235px;
+    background-color: @backColor;
 }
 
 @iterations: 12;
 .hero-loop (@i) when (@i > 0) {
     .hero-@{i} {
         background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url('../img/heroimages/hero@{i}.jpg');
-        width: @i;
     }
     .hero-loop(@i - 1);
 }

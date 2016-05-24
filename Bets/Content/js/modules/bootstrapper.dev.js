@@ -42,6 +42,7 @@
 					$nextRow.remove();
 
 			    //inline block
+				$this.parents('.cell-BetAction').toggleClass('loading');
 				$this.attr('disabled');
 
 				AjaxUtils.post({
@@ -56,7 +57,8 @@
 
 										$td.html(html);
 
-										$this.removeAttr('disabled');
+										$this.parents('.cell-BetAction').toggleClass('loading');
+										$this.removeAttr('disabled').removeClass('loading');
 									}
 				});
 			}

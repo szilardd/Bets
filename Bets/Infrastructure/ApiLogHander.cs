@@ -18,6 +18,12 @@ namespace Bets.Infrastructure
             {
                 HttpResponseMessage response = task.Result;
 
+                // ignore swagger internals
+                if (request.RequestUri.AbsoluteUri.Contains("swagger"))
+                {
+                    return response;
+                }
+
                 Trace.WriteLine(request.ToString(), "LogHandler Request");
                 Trace.WriteLine(response.ToString(), "LogHandler Response");
 

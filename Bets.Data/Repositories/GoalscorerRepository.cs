@@ -48,32 +48,6 @@ namespace Bets.Data
             );
         }
 
-        public IQueryable<GoalscorerModel> GetRoundGoalScorerForUserBets(int userID, int roundID)
-        {
-            return
-            (
-                from allBet in this.Context.BetsForRounds
-                join
-                goalscorer in this.Context.Players on allBet.GoalscorerID equals goalscorer.PlayerID
-                join
-                team in this.Context.Teams on goalscorer.TeamID equals team.TeamID
-                from setting in this.Context.Settings
-                join 
-				match in this.Context.Matches on setting.CurrentRoundID equals match.RoundID
-                where goalscorer.Active && (goalscorer.TeamID == match.FirstTeamID || goalscorer.TeamID == match.SecondTeamID) && allBet.UserID == userID && allBet.RoundID == roundID
-                select new GoalscorerModel
-                {
-                    ID = goalscorer.PlayerID,
-                    Name = goalscorer.Name,
-                    TeamFlag = team.FlagPrefix,
-                    GoalsScored = goalscorer.GoalsScored,
-                    ExternalID = goalscorer.ExternalID,
-                    Points = Convert.ToInt32(goalscorer.Points * setting.RoundGoalMultiplier),
-                    BetMade = (goalscorer.PlayerID == allBet.GoalscorerID)
-                }
-            );
-        }
-
 		public IQueryable<GoalscorerModel> GetGoalscorersForListing(ListingParams<GoalscorerModel> listingDataModel)
 		{
 			var models =

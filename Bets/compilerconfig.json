@@ -46,5 +46,9 @@
   {
     "outputFile": "Content/css/pages/teams.css",
     "inputFile": "Content/css/pages/teams.less"
+  },
+  {
+    "outputFile": "Content/css/reset.css",
+    "inputFile": "Content/css/reset.less"
   }
 ]

@@ -7,7 +7,7 @@
     <Schema Namespace="BetsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BetsModelStoreContainer">
           <EntitySet Name="GlobalBets" EntityType="BetsModel.Store.GlobalBets" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
-          <EntitySet Name="GoalscorersForRounds" EntityType="BetsModel.Store.GoalscorersForRounds" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Name="GoalscorersForRounds" EntityType="BetsModel.Store.GoalscorersForRounds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatchBets" EntityType="BetsModel.Store.MatchBets" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="Matches" EntityType="BetsModel.Store.Matches" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="Players" EntityType="BetsModel.Store.Players" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
@@ -29,12 +29,12 @@
             <End Role="GlobalBets" EntitySet="GlobalBets" />
           </AssociationSet>
           <AssociationSet Name="FK_GoalscorersForRounds_Players" Association="BetsModel.Store.FK_GoalscorersForRounds_Players">
-            <End Role="Players" EntitySet="Players" />
-            <End Role="GoalscorersForRounds" EntitySet="GoalscorersForRounds" />
+            <End EntitySet="Players" Role="Players" />
+            <End EntitySet="GoalscorersForRounds" Role="GoalscorersForRounds" />
           </AssociationSet>
           <AssociationSet Name="FK_GoalscorersForRounds_Rounds" Association="BetsModel.Store.FK_GoalscorersForRounds_Rounds">
-            <End Role="Rounds" EntitySet="Rounds" />
-            <End Role="GoalscorersForRounds" EntitySet="GoalscorersForRounds" />
+            <End EntitySet="Rounds" Role="Rounds" />
+            <End EntitySet="GoalscorersForRounds" Role="GoalscorersForRounds" />
           </AssociationSet>
           <AssociationSet Name="FK_LNXBets_Bet_LNXBets_Users" Association="BetsModel.Store.FK_LNXBets_Bet_LNXBets_Users">
             <End Role="Users" EntitySet="Users" />
@@ -79,9 +79,9 @@
             <PropertyRef Name="RoundID" />
             <PropertyRef Name="GoalscorerID" />
           </Key>
-          <Property Name="RoundID" Type="int" Nullable="false" />
-          <Property Name="GoalscorerID" Type="int" Nullable="false" />
-          <Property Name="Goals" Type="int" Nullable="false" />
+          <Property Name="RoundID" Nullable="false" Type="int" />
+          <Property Name="GoalscorerID" Nullable="false" Type="int" />
+          <Property Name="Goals" Nullable="false" Type="int" />
         </EntityType>
         <EntityType Name="MatchBets">
           <Key>
@@ -224,8 +224,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoalscorersForRounds_Players">
-          <End Role="Players" Type="BetsModel.Store.Players" Multiplicity="1" />
-          <End Role="GoalscorersForRounds" Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" />
+          <End Type="BetsModel.Store.Players" Multiplicity="1" Role="Players" />
+          <End Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" Role="GoalscorersForRounds" />
           <ReferentialConstraint>
             <Principal Role="Players">
               <PropertyRef Name="PlayerID" />
@@ -236,8 +236,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoalscorersForRounds_Rounds">
-          <End Role="Rounds" Type="BetsModel.Store.Rounds" Multiplicity="1" />
-          <End Role="GoalscorersForRounds" Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" />
+          <End Type="BetsModel.Store.Rounds" Multiplicity="1" Role="Rounds" />
+          <End Type="BetsModel.Store.GoalscorersForRounds" Multiplicity="*" Role="GoalscorersForRounds" />
           <ReferentialConstraint>
             <Principal Role="Rounds">
               <PropertyRef Name="RoundID" />
@@ -359,12 +359,12 @@
             <End Role="GlobalBet" EntitySet="GlobalBets" />
           </AssociationSet>
           <AssociationSet Name="FK_GoalscorersForRounds_Players" Association="BetsModel.FK_GoalscorersForRounds_Players">
-            <End Role="Player" EntitySet="Players" />
-            <End Role="GoalscorersForRound" EntitySet="GoalscorersForRounds" />
+            <End EntitySet="Players" Role="Player" />
+            <End EntitySet="GoalscorersForRounds" Role="GoalscorersForRound" />
           </AssociationSet>
           <AssociationSet Name="FK_GoalscorersForRounds_Rounds" Association="BetsModel.FK_GoalscorersForRounds_Rounds">
-            <End Role="Round" EntitySet="Rounds" />
-            <End Role="GoalscorersForRound" EntitySet="GoalscorersForRounds" />
+            <End EntitySet="Rounds" Role="Round" />
+            <End EntitySet="GoalscorersForRounds" Role="GoalscorersForRound" />
           </AssociationSet>
           <AssociationSet Name="FK_LNXBets_Bet_LNXBets_Users" Association="BetsModel.FK_LNXBets_Bet_LNXBets_Users">
             <End Role="User" EntitySet="Users" />
@@ -412,9 +412,9 @@
             <PropertyRef Name="RoundID" />
             <PropertyRef Name="GoalscorerID" />
           </Key>
-          <Property Type="Int32" Name="RoundID" Nullable="false" />
-          <Property Type="Int32" Name="GoalscorerID" Nullable="false" />
-          <Property Type="Int32" Name="Goals" Nullable="false" />
+          <Property Name="RoundID" Nullable="false" Type="Int32" />
+          <Property Name="GoalscorerID" Nullable="false" Type="Int32" />
+          <Property Name="Goals" Nullable="false" Type="Int32" />
           <NavigationProperty Name="Player" Relationship="BetsModel.FK_GoalscorersForRounds_Players" FromRole="GoalscorersForRound" ToRole="Player" />
           <NavigationProperty Name="Round" Relationship="BetsModel.FK_GoalscorersForRounds_Rounds" FromRole="GoalscorersForRound" ToRole="Round" />
         </EntityType>
@@ -578,8 +578,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoalscorersForRounds_Players">
-          <End Type="BetsModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="BetsModel.GoalscorersForRound" Role="GoalscorersForRound" Multiplicity="*" />
+          <End Type="BetsModel.Player" Multiplicity="1" Role="Player" />
+          <End Type="BetsModel.GoalscorersForRound" Multiplicity="*" Role="GoalscorersForRound" />
           <ReferentialConstraint>
             <Principal Role="Player">
               <PropertyRef Name="PlayerID" />
@@ -590,8 +590,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GoalscorersForRounds_Rounds">
-          <End Type="BetsModel.Round" Role="Round" Multiplicity="1" />
-          <End Type="BetsModel.GoalscorersForRound" Role="GoalscorersForRound" Multiplicity="*" />
+          <End Type="BetsModel.Round" Multiplicity="1" Role="Round" />
+          <End Type="BetsModel.GoalscorersForRound" Multiplicity="*" Role="GoalscorersForRound" />
           <ReferentialConstraint>
             <Principal Role="Round">
               <PropertyRef Name="RoundID" />
@@ -843,7 +843,7 @@
     <Diagrams>
       <Diagram Name="Bets">
         <EntityTypeShape EntityType="BetsModel.GlobalBet" Width="1.5" PointX="9" PointY="8.875" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BetsModel.GoalscorersForRound" Width="1.5" PointX="3" PointY="8.25" Height="1.9802864583333353" />
+        <EntityTypeShape Height="1.9802864583333353" EntityType="BetsModel.GoalscorersForRound" PointX="3" PointY="8.375" Width="1.5" />
         <EntityTypeShape EntityType="BetsModel.MatchBet" Width="1.5" PointX="3" PointY="0.75" Height="3.1340950520833317" />
         <EntityTypeShape EntityType="BetsModel.Match" Width="1.5" PointX="6" PointY="7.375" Height="3.7109993489583388" />
         <EntityTypeShape EntityType="BetsModel.Player" Width="1.5" PointX="0.75" PointY="11.75" Height="2.9417936197916674" />
