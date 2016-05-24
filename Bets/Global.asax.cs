@@ -64,10 +64,9 @@ namespace Bets
 
         protected void Application_Start()
 		{
-            RegisterRoutes(RouteTable.Routes);
-
             GlobalConfiguration.Configure(WebApiConfig.Register); // web api
 
+            RegisterRoutes(RouteTable.Routes);
             RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterModelBinders();
             DisplayMode.Register();

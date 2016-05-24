@@ -17,7 +17,7 @@ namespace Bets.Data.Models
 		public int? BetSecondTeamGoals { get; set; }
 		public int? BetResult { get; set; }
 		public int? BetPointsWon { get; set; }
-		public int? WinTypeID { get; set; }
+		public int WinTypeID { get; set; }
 		public int? Bonus { get; set; }
 		public int? BetPointsWonBonus { get; set; }
 

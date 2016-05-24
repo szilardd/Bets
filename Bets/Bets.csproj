@@ -1293,6 +1293,7 @@
     <Content Include="Views\WinnerForUserBets\Index.cshtml" />
     <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

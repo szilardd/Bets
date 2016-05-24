@@ -37,7 +37,7 @@ namespace Bets
                 config.EnableSystemDiagnosticsTracing();
 
                 //log all method calls
-                config.MessageHandlers.Add(new ApiLogHandler());
+                //config.MessageHandlers.Add(new ApiLogHandler());
             }
 
             // set up elmah
