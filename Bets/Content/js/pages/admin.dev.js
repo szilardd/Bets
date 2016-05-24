@@ -281,17 +281,39 @@
 		});
 	}
 
+	function bindGetMatches() {
+
+	    var $this = $(this),
+				    $block = $this.parent();
+
+	    $container.find('.btn-get-matches').click(function () {
+
+	        Utils.blockElement($block, true);
+
+	        AjaxUtils.post({
+	            url: 'Admin/AddMatch',
+	            data: { roundID: $("#RoundForGet").val() },
+	            dataType: "json",
+	            success: function (result) {
+	                endAction(result, $this);
+	            },
+	            error: function (result) { endAction(false, $this); }
+	        });
+	    });
+	}
+
 	function init() {
 
-		$container = $('#admin-content');
+	    $container = $('#admin-content');
 
-		bindAddMatch();
-		bindAddMatchResult();
-		bindAddPlayerGoal();
-		bindAddRound();
-		bindRemoveTeam();
-		bindCloseRound();
-		bindRemovePlayer();
+	    bindAddMatch();
+	    bindAddMatchResult();
+	    bindAddPlayerGoal();
+	    bindAddRound();
+	    bindRemoveTeam();
+	    bindCloseRound();
+	    bindRemovePlayer();
+	    bindGetMatches();
 	}
 
 	return {

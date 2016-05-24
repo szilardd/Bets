@@ -55,5 +55,12 @@ namespace Bets.Data
 				() => { return new SPResult { Result = this.Context.RemoveTeam(id) }; }
 			);
 		}
-	}
+
+        public Team GetTeamByName(string TeamName)
+        {
+            var entities = this.GetAll();
+            entities = entities.Where(e => e.Name == TeamName);
+            return entities.FirstOrDefault();
+        }
+    }
 }

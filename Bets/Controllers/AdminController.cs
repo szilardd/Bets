@@ -69,5 +69,12 @@ namespace Bets.Controllers
 		{
 			return Json(new RoundRepository().CloseCurrentRound().Success);
 		}
+
+        [HttpPost]
+        public ActionResult AddMatch(int roundID)
+        {
+            var m_strFilePath = "D:/IntertopsOdds.xml";
+            return Json(new AddMatchesHelper().AddMatchesToRound(m_strFilePath, roundID));
+        }
     }
 }
