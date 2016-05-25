@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using System.Web;
 using System.IO;
+using System.Diagnostics;
 
 namespace Bets.Data
 {
@@ -91,8 +92,24 @@ namespace Bets.Data
 
 		public static string ToJSON(this object obj)
 		{
-			JavaScriptSerializer serializer = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue };
-			return serializer.Serialize(obj);
+            try
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer { MaxJsonLength = Int32.MaxValue };
+                return serializer.Serialize(obj);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message);
+                Trace.WriteLine(ex.StackTrace);
+
+                if (ex.InnerException != null)
+                {
+                    Trace.WriteLine(ex.InnerException.Message);
+                    Trace.WriteLine(ex.InnerException.StackTrace);
+                }
+
+                return null;
+            }
 		}
 
 

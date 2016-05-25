@@ -41,31 +41,6 @@ namespace Bets.Data
 			return models;
 		}
 
-		public GoalscorerModel GetGoalscorerBetForCurrentRound()
-		{
- 			return
-			(
-				from	player in this.GetAll()
-						join
-						bet in this.Context.BetsForRounds on player.PlayerID equals bet.GoalscorerID
-						join
-						setting in this.Context.Settings on bet.RoundID equals setting.CurrentRoundID
-						join
-						team in this.Context.Teams on player.TeamID equals team.TeamID
-				where	bet.UserID == this.UserID 
-				select	new GoalscorerModel
-						{
-							ID = player.PlayerID,
-							Name = player.Name,
-							TeamFlag = team.FlagPrefix,
-							GoalsScored = player.GoalsScored,
-							ExternalID = player.ExternalID,
-                            Points = Convert.ToInt32(player.Points * setting.RoundGoalMultiplier),
-							BetMade = true
-						}
-			).FirstOrDefault();
-		}
-
 		public GoalscorerModel GetGlobalGoalscorerBet()
 		{
  			return

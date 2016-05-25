@@ -76,14 +76,6 @@
       <Column Name="Closed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.BetsForRounds" Member="BetsForRounds">
-    <Type Name="BetsForRound">
-      <Column Name="BetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.PointsForRounds" Member="PointsForRounds">
     <Type Name="PointsForRound">
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

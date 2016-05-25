@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bets.Data</RootNamespace>
     <AssemblyName>Bets.Data</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,6 +34,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\Bets.Data.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataAnnotationsExtensions, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -139,7 +141,6 @@
     </Compile>
     <Compile Include="Repositories\BestUsersForRoundRepository.cs" />
     <Compile Include="Repositories\GlobalRepository.cs" />
-    <Compile Include="Repositories\GoalscorerBetsForRoundRepository.cs" />
     <Compile Include="Repositories\GoalscorerForRoundRepository.cs" />
     <Compile Include="Repositories\GoalscorerRepository.cs" />
     <Compile Include="Repositories\GoalscorerStandingsRepository.cs" />
@@ -179,7 +180,9 @@
       <SubType>Designer</SubType>
       <CustomToolNamespace>Bets.Data</CustomToolNamespace>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -196,7 +199,6 @@
       <DependentUpon>Bets.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

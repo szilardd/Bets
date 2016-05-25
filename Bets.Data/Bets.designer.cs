@@ -51,9 +51,6 @@ namespace Bets.Data
     partial void InsertRound(Round instance);
     partial void UpdateRound(Round instance);
     partial void DeleteRound(Round instance);
-    partial void InsertBetsForRound(BetsForRound instance);
-    partial void UpdateBetsForRound(BetsForRound instance);
-    partial void DeleteBetsForRound(BetsForRound instance);
     partial void InsertPointsForRound(PointsForRound instance);
     partial void UpdatePointsForRound(PointsForRound instance);
     partial void DeletePointsForRound(PointsForRound instance);
@@ -148,14 +145,6 @@ namespace Bets.Data
 			get
 			{
 				return this.GetTable<Round>();
-			}
-		}
-		
-		public System.Data.Linq.Table<BetsForRound> BetsForRounds
-		{
-			get
-			{
-				return this.GetTable<BetsForRound>();
 			}
 		}
 		
@@ -1675,140 +1664,6 @@ namespace Bets.Data
 					this._Closed = value;
 					this.SendPropertyChanged("Closed");
 					this.OnClosedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BetsForRounds")]
-	public partial class BetsForRound : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _BetID;
-		
-		private int _UserID;
-		
-		private int _RoundID;
-		
-		private int _GoalscorerID;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnBetIDChanging(int value);
-    partial void OnBetIDChanged();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnRoundIDChanging(int value);
-    partial void OnRoundIDChanged();
-    partial void OnGoalscorerIDChanging(int value);
-    partial void OnGoalscorerIDChanged();
-    #endregion
-		
-		public BetsForRound()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BetID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int BetID
-		{
-			get
-			{
-				return this._BetID;
-			}
-			set
-			{
-				if ((this._BetID != value))
-				{
-					this.OnBetIDChanging(value);
-					this.SendPropertyChanging();
-					this._BetID = value;
-					this.SendPropertyChanged("BetID");
-					this.OnBetIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundID", DbType="Int NOT NULL")]
-		public int RoundID
-		{
-			get
-			{
-				return this._RoundID;
-			}
-			set
-			{
-				if ((this._RoundID != value))
-				{
-					this.OnRoundIDChanging(value);
-					this.SendPropertyChanging();
-					this._RoundID = value;
-					this.SendPropertyChanged("RoundID");
-					this.OnRoundIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalscorerID", DbType="Int NOT NULL")]
-		public int GoalscorerID
-		{
-			get
-			{
-				return this._GoalscorerID;
-			}
-			set
-			{
-				if ((this._GoalscorerID != value))
-				{
-					this.OnGoalscorerIDChanging(value);
-					this.SendPropertyChanging();
-					this._GoalscorerID = value;
-					this.SendPropertyChanged("GoalscorerID");
-					this.OnGoalscorerIDChanged();
 				}
 			}
 		}

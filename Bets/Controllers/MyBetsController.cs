@@ -27,18 +27,9 @@ namespace Bets.Controllers
 			var userID = Convert.ToInt32(Membership.GetUser().ProviderUserKey);
 			var goalscorerRepo = new GoalscorerForRoundRepository(userID);
 
-			ViewBag.RoundGoalscorerBet = goalscorerRepo.GetGoalscorerBetForCurrentRound();
 			ViewBag.GlobalGoalscorerBet = goalscorerRepo.GetGlobalGoalscorerBet();
 			ViewBag.WinnerBet = new WinnerRepository(userID).GetWinnerBet();
 			ViewBag.MaxBonusPerMatch = new SettingsRepository().GetItem(0).MaxBonusPerMatch;
-		}
-
-		public ActionResult GetGoalscorerForRoundBet()
-		{
-			var userID = Convert.ToInt32(Membership.GetUser().ProviderUserKey);
-			var repo = new GoalscorerForRoundRepository(userID);
-
-			return PartialView("Goalscorer", repo.GetGoalscorerBetForCurrentRound());
 		}
 
 		public ActionResult GetGoalscorerBet()

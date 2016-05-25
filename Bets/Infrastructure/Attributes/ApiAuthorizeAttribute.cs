@@ -8,7 +8,7 @@ namespace Bets
     {
         public override void OnAuthorization(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            bool needsAuthorization = false;
+            bool needsAuthorization = true;
 
             // ignore authorization in debug mode if not Authorization header is provided
             if (!DataConfig.IsLiveMode())

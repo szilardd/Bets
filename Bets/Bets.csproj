@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bets</RootNamespace>
     <AssemblyName>Bets</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <FileUpgradeFlags>
@@ -28,6 +28,7 @@
     <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,14 +50,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <DocumentationFile>bin\Bets.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin, Version=4.48.4489.28432, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -73,6 +77,10 @@
     </Reference>
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="dotless.Core, Version=1.2.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.2.1.0\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -168,8 +176,8 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquishIt.Framework, Version=0.9.8.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SquishIt.0.9.8.2\lib\SquishIt.Framework.dll</HintPath>
+    <Reference Include="SquishIt.Framework, Version=0.8.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SquishIt.0.8.5\lib\SquishIt.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
@@ -177,20 +185,55 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -223,24 +266,17 @@
       <HintPath>..\packages\Microsoft.AspNet.OData.5.9.0\lib\net45\System.Web.OData.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
       <Private>True</Private>
@@ -253,17 +289,25 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -274,10 +318,16 @@
   <ItemGroup>
     <Compile Include="App_Start\AutomapperConfig.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\DisplayMode.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Bets.Designer.cs">
+      <DependentUpon>Bets.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\GoalscorerBetsController.cs" />
@@ -285,16 +335,15 @@
     <Compile Include="Controllers\Api\Main\BaseApiController.cs" />
     <Compile Include="Controllers\Api\MatchBetsController.cs" />
     <Compile Include="Controllers\Api\MatchesController.cs" />
-    <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\Api\SettingsController.cs" />
     <Compile Include="Controllers\Api\StandingsController.cs" />
     <Compile Include="Controllers\Api\TeamBetsController.cs" />
     <Compile Include="Controllers\Api\TeamsController.cs" />
+    <Compile Include="Controllers\Api\UsersController.cs" />
     <Compile Include="Controllers\BestUsersForRoundController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GoalscorerController.cs" />
-    <Compile Include="Controllers\GoalscorerForRoundController.cs" />
     <Compile Include="Controllers\GoalscorerForUserBetsController.cs" />
     <Compile Include="Controllers\GoalscorerStandingsController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
@@ -306,15 +355,13 @@
     <Compile Include="Controllers\MatchesForRoundController.cs" />
     <Compile Include="Controllers\MyBetsController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
-    <Compile Include="Controllers\RoundGoalscorerForUserController.cs" />
-    <Compile Include="Controllers\RoundMatchesForUserController.cs" />
-    <Compile Include="Controllers\UserBetsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RoundBetsController.cs" />
+    <Compile Include="Controllers\RoundMatchesForUserController.cs" />
     <Compile Include="Controllers\StandingsBonusController.cs" />
     <Compile Include="Controllers\StandingsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
-    <Compile Include="Controllers\GoalscorerBetsForRoundController.cs" />
+    <Compile Include="Controllers\UserBetsController.cs" />
     <Compile Include="Controllers\WinnerController.cs" />
     <Compile Include="Controllers\WinnerForUserBetsController.cs" />
     <Compile Include="Controllers\WorstUsersForRoundController.cs" />
@@ -544,10 +591,10 @@
     <Compile Include="Helpers\PagedList.cs" />
     <Compile Include="Helpers\UIExtensions.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
-    <Compile Include="Infrastructure\Attributes\ApiLogFilter.cs" />
     <Compile Include="Infrastructure\ApiLogHander.cs" />
     <Compile Include="Infrastructure\Attributes\ApiAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\ApiGlobalExceptionHandler.cs" />
+    <Compile Include="Infrastructure\Attributes\ApiLogFilter.cs" />
     <Compile Include="Infrastructure\Attributes\LogonAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\ValidateAntiForgeryFormAndJSONAttribute.cs" />
     <Compile Include="Infrastructure\Authentication\AuthorizeXAttribute.cs" />
@@ -557,22 +604,18 @@
     <Compile Include="Infrastructure\Authentication\ThatRoleProvider.cs" />
     <Compile Include="Infrastructure\Binders\DateModelBinder.cs" />
     <Compile Include="Infrastructure\Config.cs" />
-    <Compile Include="Bets.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Bets.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Infrastructure\CustomTextWriteTraceListener.cs" />
     <Compile Include="Mailers\INotificationMailer.cs" />
     <Compile Include="Mailers\NotificationMailer.cs" />
     <Compile Include="Models\ApplicationOAuthProvider.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\AuthenticationManager.cs" />
     <Compile Include="Models\CustomUserStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.master.cs">
       <DependentUpon>Site.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
@@ -582,7 +625,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BOYCOTT_-webfont.svg" />
-    <Compile Include="App_Start\DisplayMode.cs" />
     <Content Include="App_Data\Tracing\readme.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -642,16 +684,10 @@
     <Content Include="Content\css\pages\dashboard.css">
       <DependentUpon>dashboard.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\pages\dashboard.css.map">
-      <DependentUpon>dashboard.css</DependentUpon>
-    </Content>
     <Content Include="Content\css\mobile.less" />
     <None Include="Content\css\pages\dashboard.less" />
     <Content Include="Content\css\pages\rounds.css">
       <DependentUpon>rounds.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\pages\rounds.css.map">
-      <DependentUpon>rounds.css</DependentUpon>
     </Content>
     <None Include="Content\css\pages\rounds.less" />
     <Content Include="Content\css\pages\rounds.min.css">
@@ -660,18 +696,12 @@
     <Content Include="Content\css\pages\teams.css">
       <DependentUpon>teams.less</DependentUpon>
     </Content>
-    <Content Include="Content\css\pages\teams.css.map">
-      <DependentUpon>teams.css</DependentUpon>
-    </Content>
     <None Include="Content\css\pages\teams.less" />
     <Content Include="Content\css\pages\teams.min.css">
       <DependentUpon>teams.less</DependentUpon>
     </Content>
     <Content Include="Content\css\pages\userbets.css">
       <DependentUpon>userbets.less</DependentUpon>
-    </Content>
-    <Content Include="Content\css\pages\userbets.css.map">
-      <DependentUpon>userbets.css</DependentUpon>
     </Content>
     <None Include="Content\css\pages\userbets.less" />
     <Content Include="Content\css\pages\userbets.min.css">
@@ -681,6 +711,9 @@
       <DependentUpon>reset.less</DependentUpon>
     </Content>
     <None Include="Content\css\reset.less" />
+    <Content Include="Content\css\reset.min.css">
+      <DependentUpon>reset.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\twitter-bootstrap\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
@@ -695,6 +728,9 @@
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\grass.png" />
     <Content Include="Content\img\heroimages\hero1.jpg" />
+    <Content Include="Content\img\heroimages\hero10.jpg" />
+    <Content Include="Content\img\heroimages\hero11.jpg" />
+    <Content Include="Content\img\heroimages\hero12.jpg" />
     <Content Include="Content\img\heroimages\hero2.jpg" />
     <Content Include="Content\img\heroimages\hero3.jpg" />
     <Content Include="Content\img\heroimages\hero4.jpg" />
@@ -702,6 +738,7 @@
     <Content Include="Content\img\heroimages\hero6.jpg" />
     <Content Include="Content\img\heroimages\hero7.jpg" />
     <Content Include="Content\img\heroimages\hero8.jpg" />
+    <Content Include="Content\img\heroimages\hero9.jpg" />
     <Content Include="Content\img\icons\no.png" />
     <Content Include="Content\img\icons\star-bonus.png" />
     <Content Include="Content\img\icons\star.png" />
@@ -939,6 +976,7 @@
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ni.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\nl.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\no.svg" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\NORTHENI.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\np.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\nr.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\nu.svg" />
@@ -968,7 +1006,6 @@
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sb.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sc.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sd.svg" />
-    <Content Include="Content\plugins\flag-icon-css\flags\4x3\se.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sg.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sh.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\si.svg" />
@@ -980,6 +1017,7 @@
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\so.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sr.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ss.svg" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sse.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\st.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sv.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\sx.svg" />
@@ -1015,6 +1053,7 @@
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\vi.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\vn.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\vu.svg" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\WALES.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\wf.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ws.svg" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ye.svg" />
@@ -1158,7 +1197,8 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Models\AuthenticationManager.cs" />
+    <Content Include="DynamicData\web.config" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Settings\connectionstrings.config">
       <SubType>Designer</SubType>
     </None>
@@ -1175,72 +1215,94 @@
     </Content>
     <Content Include="Content\js\jquery\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\js\jquery\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Settings\smtp.config" />
     <Content Include="Settings\elmah.config" />
-    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Settings\diagnostics.config" />
+    <Content Include="Site.master" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\Admin\_AddMatch.cshtml" />
+    <Content Include="Views\Admin\_AddMatch.Mobile.cshtml" />
+    <Content Include="Views\Dashboard\DashboardGoalscorerStandings.Mobile.cshtml" />
+    <Content Include="Views\Dashboard\DashboardIndex.cshtml" />
+    <Content Include="Views\Dashboard\DashboardIndex.Mobile.cshtml" />
+    <Content Include="Views\Dashboard\DashboardStandings.Mobile.cshtml" />
+    <Content Include="Views\Error\Http404.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\GoalscorerForUserBets\Index.cshtml" />
+    <Content Include="Views\GoalscorerStandings\_GoalscorerStandingsListingItem.cshtml" />
+    <Content Include="Views\Goalscorer\_GoalscorerListingItem.cshtml" />
+    <Content Include="Views\Help\HelpIndex.cshtml" />
+    <Content Include="Views\Help\_HelpDashboard.cshtml" />
+    <Content Include="Views\Help\_HelpDashboard.Mobile.cshtml" />
+    <Content Include="Views\MatchBet\_MatchBetListingItem.cshtml" />
+    <Content Include="Views\MatchesForCurrentRound\_MatchesForCurrentRoundListingItem.cshtml" />
     <Content Include="Views\MatchesForCurrentRound\_MatchesForCurrentRoundListingItem.Mobile.cshtml" />
-    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.Mobile.cshtml" />
-    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\MatchesForNextRound\_MatchesForNextRoundListingItem.cshtml" />
     <Content Include="Views\MatchesForNextRound\_MatchesForNextRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.cshtml" />
+    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.Mobile.cshtml" />
+    <Content Include="Views\MyBets\MyBetsIndex.cshtml" />
+    <Content Include="Views\NotificationMailer\MatchNotificationForToday.cshtml" />
+    <Content Include="Views\NotificationMailer\RoundNotification.cshtml" />
+    <Content Include="Views\NotificationMailer\_Layout.cshtml" />
+    <Content Include="Views\Profile\ProfileIndex.cshtml" />
+    <Content Include="Views\RoundBets\RoundBetsIndex.cshtml" />
+    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.cshtml" />
+    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.Mobile.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Goalscorer.cshtml" />
+    <Content Include="Views\Shared\Includes\_AdvancedFiltersInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DetailActionsInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DetailInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DetailTabsInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.Mobile.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceJSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_DeviceJSInclude.Mobile.cshtml" />
+    <Content Include="Views\Shared\Includes\_HeadJSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_MainCSSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_MainJSInclude.cshtml" />
+    <Content Include="Views\Shared\Includes\_MasterParametersInclude.cshtml" />
+    <Content Include="Views\Shared\Layouts\_DetailPageLayout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_HorizontalListingDataLayout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_Layout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_ListingDataLayout.cshtml" />
+    <Content Include="Views\Shared\Layouts\_ListingPageLayout.cshtml" />
+    <Content Include="Views\Shared\Templates\_ListingActions.cshtml" />
+    <Content Include="Views\Shared\Templates\_ListingHeader.cshtml" />
+    <Content Include="Views\Shared\Templates\_Lookup.cshtml" />
+    <Content Include="Views\Shared\Templates\_LookupList.cshtml" />
+    <Content Include="Views\Shared\Templates\_MatchBet.cshtml" />
+    <Content Include="Views\Shared\Templates\_Menu.cshtml" />
+    <Content Include="Views\Shared\Templates\_Menu.Mobile.cshtml" />
+    <Content Include="Views\Shared\Winner.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Pagination.cshtml" />
+    <Content Include="Views\Shared\_RoundStandingsListingItem.cshtml" />
+    <Content Include="Views\StandingsBonus\_StandingsBonusListingItem.cshtml" />
+    <Content Include="Views\Standings\_StandingsListingItem.cshtml" />
+    <Content Include="Views\Teams\TeamsIndex.cshtml" />
+    <Content Include="Views\UserBets\UserBetsIndex.cshtml" />
     <Content Include="Views\UserBets\_Users.cshtml" />
     <Content Include="Views\UserBets\_UsersSlider.cshtml" />
     <Content Include="Views\UserBets\_UsersSlider.Mobile.cshtml" />
-    <Content Include="Views\Shared\Templates\_Menu.cshtml" />
-    <Content Include="Views\Shared\Templates\_Menu.Mobile.cshtml" />
-    <Content Include="Views\Shared\Includes\_DeviceJSInclude.Mobile.cshtml" />
-    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.Mobile.cshtml" />
-    <Content Include="Views\Shared\Includes\_DeviceCSSInclude.cshtml" />
-    <Content Include="Views\Shared\Includes\_DeviceJSInclude.cshtml" />
-    <Content Include="Views\Dashboard\DashboardIndex.Mobile.cshtml" />
-    <Content Include="Views\Dashboard\DashboardStandings.Mobile.cshtml" />
-    <Content Include="Views\Dashboard\DashboardGoalscorerStandings.Mobile.cshtml" />
-    <Content Include="Views\Help\_HelpDashboard.Mobile.cshtml" />
-    <Content Include="Views\Help\_HelpDashboard.cshtml" />
-    <Content Include="Views\Admin\_AddMatch.cshtml" />
-    <Content Include="Views\Admin\_AddMatch.Mobile.cshtml" />
-    <Content Include="Settings\diagnostics.config" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\WinnerForUserBets\Index.cshtml" />
+    <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />
     <Folder Include="DynamicData\CustomPages\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bets.Data\Bets.Data.csproj">
-      <Project>{5A3CA920-4473-44DE-9E73-50D993584346}</Project>
-      <Name>Bets.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Includes\_DetailInclude.cshtml" />
-    <Content Include="Views\Shared\Includes\_MainCSSInclude.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Includes\_MainJSInclude.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\Includes\_HeadJSInclude.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\BOYCOTT_-webfont.eot" />
-    <None Include="Content\BOYCOTT_-webfont.ttf" />
+    <Content Include="Content\BOYCOTT_-webfont.eot" />
+    <Content Include="Content\BOYCOTT_-webfont.ttf" />
     <None Include="Content\css\include\css3.less" />
-    <Content Include="Views\Dashboard\DashboardIndex.cshtml" />
-    <Content Include="Views\Error\Http404.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\MyBets\MyBetsIndex.cshtml" />
-    <Content Include="Views\RoundBets\RoundBetsIndex.cshtml" />
-    <Content Include="Views\UserBets\UserBetsIndex.cshtml" />
-    <Content Include="Views\Teams\TeamsIndex.cshtml" />
-    <Content Include="Views\Profile\ProfileIndex.cshtml" />
-    <Content Include="Views\Help\HelpIndex.cshtml" />
-    <Content Include="Views\Admin\AdminIndex.cshtml" />
     <None Include="Content\css\include\settings.less" />
     <None Include="Content\css\twitter-bootstrap\bootstrap.less" />
     <None Include="Content\css\twitter-bootstrap\forms.less" />
@@ -1261,53 +1323,22 @@
     <None Include="Content\plugins\twitter-bootstrap\lib\tables.less" />
     <None Include="Content\plugins\twitter-bootstrap\lib\type.less" />
     <None Include="Content\plugins\twitter-bootstrap\lib\variables.less" />
-    <Content Include="Views\Shared\Includes\_AdvancedFiltersInclude.cshtml" />
-    <Content Include="Views\Shared\Includes\_DetailActionsInclude.cshtml" />
-    <Content Include="Views\Shared\Includes\_DetailTabsInclude.cshtml" />
-    <Content Include="Views\Shared\Includes\_MasterParametersInclude.cshtml" />
-    <Content Include="Views\Shared\Layouts\_DetailPageLayout.cshtml" />
-    <Content Include="Views\Shared\Layouts\_ListingDataLayout.cshtml" />
-    <Content Include="Views\Shared\Layouts\_ListingPageLayout.cshtml" />
-    <Content Include="Views\Shared\Templates\_ListingActions.cshtml" />
-    <Content Include="Views\Shared\Templates\_ListingHeader.cshtml" />
-    <Content Include="Views\Shared\Templates\_Lookup.cshtml" />
-    <Content Include="Views\Shared\Templates\_LookupList.cshtml" />
-    <Content Include="Views\Shared\_Pagination.cshtml" />
-    <Content Include="Views\Shared\Layouts\_Layout.cshtml" />
-    <Content Include="Views\MatchesForCurrentRound\_MatchesForCurrentRoundListingItem.cshtml" />
-    <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
-    <Content Include="Views\MatchesForNextRound\_MatchesForNextRoundListingItem.cshtml" />
-    <Content Include="Views\Shared\Layouts\_HorizontalListingDataLayout.cshtml" />
-    <Content Include="Views\Shared\Templates\_MatchBet.cshtml" />
-    <Content Include="Views\Goalscorer\_GoalscorerListingItem.cshtml" />
-    <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
-    <Content Include="Views\Standings\_StandingsListingItem.cshtml" />
-    <Content Include="Views\StandingsBonus\_StandingsBonusListingItem.cshtml" />
-    <Content Include="Views\NotificationMailer\_Layout.cshtml" />
-    <Content Include="Views\NotificationMailer\RoundNotification.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bets.Data\Bets.Data.csproj">
+      <Project>{5a3ca920-4473-44de-9e73-50d993584346}</Project>
+      <Name>Bets.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <EntityDeploy Include="Bets.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Bets.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Bets.DynamicData</CustomToolNamespace>
     </EntityDeploy>
-    <Content Include="DynamicData\web.config" />
-    <Content Include="Site.master" />
-    <Content Include="Views\GoalscorerStandings\_GoalscorerStandingsListingItem.cshtml" />
-    <Content Include="Views\MatchesForRound\_MatchesForRoundListingItem.cshtml" />
-    <Content Include="Views\GoalscorerBetsForRound\_GoalscorerBetsForRoundListingItem.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\MatchBet\_MatchBetListingItem.cshtml" />
-    <Content Include="Views\RoundMatchesForUser\_RoundMatchesForUserListingItem.cshtml" />
-    <Content Include="Views\GoalscorerForUserBets\Index.cshtml" />
-    <Content Include="Views\WinnerForUserBets\Index.cshtml" />
-    <Content Include="Views\RoundGoalscorerForUser\Index.cshtml" />
-    <Content Include="Views\NotificationMailer\MatchNotificationForToday.cshtml" />
-    <Content Include="Views\Shared\Goalscorer.cshtml" />
-    <Content Include="Views\Shared\Winner.cshtml" />
-    <Content Include="Views\Shared\_RoundStandingsListingItem.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1329,16 +1360,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51538</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51538/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

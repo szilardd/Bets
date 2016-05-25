@@ -37,37 +37,37 @@ namespace Bets
 			);
 		}
 
-		public static void RegisterModelBinders()
-		{
-			ModelBinders.Binders.DefaultBinder = new DateModelBinder();
-		}
+        public static void RegisterModelBinders()
+        {
+            ModelBinders.Binders.DefaultBinder = new DateModelBinder();
+        }
 
-		#region "Application Events"
+        #region "Application Events"
 
-		protected void Application_Error(object sender, EventArgs e)
-		{
-			Exception exception = Server.GetLastError();
-			Server.ClearError();
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            Server.ClearError();
 
-			Response.Clear();
+            Response.Clear();
 
-			var code = (exception is HttpException) ? (exception as HttpException).GetHttpCode() : 500;
+            var code = (exception is HttpException) ? (exception as HttpException).GetHttpCode() : 500;
 
-			RouteData routeData = new RouteData();
-			routeData.Values.Add("controller", "Error");
-			routeData.Values.Add("action", (code == 404) ? "Http404" : "Index");
-			routeData.Values.Add("error", exception);
+            RouteData routeData = new RouteData();
+            routeData.Values.Add("controller", "Error");
+            routeData.Values.Add("action", (code == 404) ? "Http404" : "Index");
+            routeData.Values.Add("error", exception);
 
-			IController errorController = new ErrorController();
-			errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
-		}
+            IController errorController = new ErrorController();
+            errorController.Execute(new RequestContext(new HttpContextWrapper(Context), routeData));
+        }
 
-		protected void Application_Start()
+        protected void Application_Start()
 		{
             GlobalConfiguration.Configure(WebApiConfig.Register); // web api
 
+            RegisterRoutes(RouteTable.Routes);
             RegisterGlobalFilters(GlobalFilters.Filters);
-			RegisterRoutes(RouteTable.Routes);
 			RegisterModelBinders();
             DisplayMode.Register();
             Bootstrapper.RegisterDependencyInjection();

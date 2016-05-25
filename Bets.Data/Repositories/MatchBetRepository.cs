@@ -35,7 +35,7 @@ namespace Bets.Data
 							PointsWon = matchBet.PointsWon,
 							PointsWonBonus = matchBet.PointsWonBonus,
 							Bonus = matchBet.Bonus,
-							WinTypeID = matchBet.WinTypeID
+							WinTypeID = matchBet.WinTypeID ?? 0
 						}
 			);
 

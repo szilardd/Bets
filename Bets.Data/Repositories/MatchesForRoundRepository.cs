@@ -105,7 +105,7 @@ namespace Bets.Data
 							BetPointsWonBonus = bet.PointsWonBonus,
 							Bonus = bet.Bonus,
 							Expired = IsExpired(match.Date),
-							WinTypeID = bet.WinTypeID
+							WinTypeID = bet.WinTypeID ?? 0
 						}
 			);
 
@@ -187,7 +187,7 @@ namespace Bets.Data
 							BetPointsWonBonus = bet.PointsWonBonus,
 							Bonus = bet.Bonus,
 							Expired = IsExpired(match.Date),
-							WinTypeID = bet.WinTypeID,
+							WinTypeID = bet.WinTypeID ?? 0,
 							UserID = user.UserID,
 							UserEmail = user.Email,
 							Username = user.Username
