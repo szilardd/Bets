@@ -41,7 +41,8 @@ namespace Bets.Helpers
                 double Points1 = Convert.ToDouble(singleMatch.SelectSingleNode("Bet[@type='SM']/line[@name='odds1']").InnerText) * 100;
                 double PointsX = Convert.ToDouble(singleMatch.SelectSingleNode("Bet[@type='SM']/line[@name='oddsdraw']").InnerText) * 100;
                 double Points2 = Convert.ToDouble(singleMatch.SelectSingleNode("Bet[@type='SM']/line[@name='odds2']").InnerText) * 100;
-
+                DateTime Date = DateTime.ParseExact(singleMatch.SelectSingleNode("Date").InnerText, "MM/dd/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime OurDate = Date.AddHours(10);
                 //Add the Match
                 Matches.Add(new MatchModel()
                 {
@@ -49,7 +50,7 @@ namespace Bets.Helpers
                     SecondTeamID = SecondID,
                     FirstTeamName = FirstTeam,
                     SecondTeamName = SecondTeam,
-                    Date = DateTime.ParseExact(singleMatch.SelectSingleNode("Date").InnerText, "MM/dd/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
+                    Date = OurDate,
                     Points1 = Convert.ToInt32(Points1),
                     PointsX = Convert.ToInt32(PointsX),
                     Points2 = Convert.ToInt32(Points2),

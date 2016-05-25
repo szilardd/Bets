@@ -73,7 +73,7 @@ namespace Bets.Controllers
         [HttpPost]
         public ActionResult AddMatch(int roundID)
         {
-            var m_strFilePath = "D:/IntertopsOdds.xml";
+            var m_strFilePath = "http://xmlfeed.intertops.com/XMLOddsFeed/IntertopsOdds.aspx"; 
             return Json(new AddMatchesHelper().AddMatchesToRound(m_strFilePath, roundID));
         }
     }
