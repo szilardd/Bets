@@ -2,7 +2,11 @@
 using Bets.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
+using System.Text;
+using System.Web;
 using System.Xml;
 
 namespace Bets.Helpers
@@ -58,6 +62,136 @@ namespace Bets.Helpers
                 });
             }
             return (new MatchRepository().AddMatches(Matches));
+        }
+
+        /// <summary>
+        /// Will parse livescore.com and get the result for the matches. Then it'll compare the team names to the one we have in the Matches table. When there's a match it'll insert the result. 
+        /// </summary>
+        public List<MatchModel> GetMatchResultsHelper()
+        {
+            //URL from where we get the results
+            string urlAddress = "http://www.livescore.com/soccer/2016-05-24/";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string data = "";
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+                StreamReader readStream = null;
+
+                if (response.CharacterSet == null)
+                {
+                    readStream = new StreamReader(receiveStream);
+                }
+                else
+                {
+                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                }
+
+                data = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+            }
+            //Get all the matches for the current round
+            IQueryable<MatchModel> Matches = new MatchRepository().GetMatchesForCurrentRound();
+            List<MatchModel> MatchesWithResults = new List<MatchModel>();
+
+            //Clean the html
+            string Results = UnHtml(data);
+
+            //Loop through the matches and search for them within the clean html 
+            foreach (var Match in Matches)
+            {
+                string FirstTeam = Match.FirstTeamName;
+                string SecondTeam = Match.SecondTeamName;
+
+                int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
+                int pTo = Results.LastIndexOf(SecondTeam);
+
+                //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
+                if(pTo - pFrom > 0 && Results.IndexOf(FirstTeam) > 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
+                {
+                    String result = Results.Substring(pFrom, pTo - pFrom);
+                    Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
+                    Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
+                    MatchesWithResults.Add(Match);
+                }  
+            }
+            return MatchesWithResults;
+        }
+
+        public static String UnHtml(String html)
+        {
+            html = HttpUtility.UrlDecode(html);
+            html = HttpUtility.HtmlDecode(html);
+
+            html = RemoveTag(html, "<!--", "-->");
+            html = RemoveTag(html, "<script", "</script>");
+            html = RemoveTag(html, "<style", "</style>");
+            html = RemoveTag(html, "<span", "</span>");
+            html = RemoveTag(html, "<select", "</select>");
+            html = RemoveTag(html, "<link", "/>");
+            html = RemoveTag(html, "<meta", "/>");
+            html = RemoveTag(html, "<title>", "</title>");
+            html = RemoveTag(html, "<img", "/>");
+            html = RemoveTag(html, "</div> <div class=\"sco\">", "class=\"scorelink\">");
+            html = RemoveTag(html, "</a>", "name\">");
+            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray even\"", "class=\"ply tright name\">");
+            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray", "class=\"ply tright name\">");
+            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div>", "</strong>");
+            html = RemoveTag(html, "<!DOCTYPE html>", "<head>");
+            html = RemoveTag(html, "</div>", "</html>");
+
+            html = SingleSpacedTrim(html);
+
+            return html;
+        }
+
+        private static String RemoveTag(String html, String startTag, String endTag)
+        {
+            Boolean bAgain;
+            do
+            {
+                bAgain = false;
+                Int32 startTagPos = html.IndexOf(startTag, 0, StringComparison.CurrentCultureIgnoreCase);
+                if (startTagPos < 0)
+                    continue;
+                Int32 endTagPos = html.IndexOf(endTag, startTagPos + 1, StringComparison.CurrentCultureIgnoreCase);
+                if (endTagPos <= startTagPos)
+                    continue;
+                html = html.Remove(startTagPos, endTagPos - startTagPos + endTag.Length);
+                bAgain = true;
+            } while (bAgain);
+            return html;
+        }
+
+        private static String SingleSpacedTrim(String inString)
+        {
+            StringBuilder sb = new StringBuilder();
+            Boolean inBlanks = false;
+            foreach (Char c in inString)
+            {
+                switch (c)
+                {
+                    case '\r':
+                    case '\n':
+                    case '\t':
+                    case ' ':
+                        if (!inBlanks)
+                        {
+                            inBlanks = true;
+                            sb.Append(' ');
+                        }
+                        continue;
+                    default:
+                        inBlanks = false;
+                        sb.Append(c);
+                        break;
+                }
+            }
+            return sb.ToString().Trim();
         }
     }
 }
