@@ -70,7 +70,7 @@ namespace Bets.Helpers
         public List<MatchModel> GetMatchResultsHelper()
         {
             //URL from where we get the results
-            string urlAddress = "http://www.livescore.com/soccer/2016-05-24/";
+            string urlAddress = "http://www.livescore.com";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
