@@ -22,6 +22,7 @@
 		this.matchViewModel = new MatchViewModel(params);
 		this.savedMatchViewModel = new MatchViewModel(params);
 
+		this.maxBonusPerMatch = maxBonusPerMatch;
 		this.maxUserBonus = ko.observable(Math.min(parseInt(userBonus) + this.matchViewModel.bonus(), maxBonusPerMatch));
 
 		this.save = function () {
@@ -54,6 +55,15 @@
 											self.endEdit();
 
 										Utils.unblockElement($btnSave);
+
+                                        // update listing row UI
+										var $rowBonusElement = self.$row.find('.bonus-single');
+										if (self.matchViewModel.bonus()) {
+										    $rowBonusElement.removeClass('hidden');
+										}
+										else {
+										    $rowBonusElement.addClass('hidden');
+										}
 									},
 				error			:	function () {
 										self.$betRow.addClass("invalid");
@@ -177,6 +187,16 @@
 				bonus			:	$row.find('.Bonus').text()
 			});
 
+            
+			var $btnSingle = $betRow.find('.btn-bonus-single');
+
+			if (betViewModel.bonus) {
+			    $btnSingle.addClass('selected');
+			}
+			else {
+			    $btnSingle.removeClass('selected');
+			}
+
 			//create and apply bet row bindings
 			ko.bindingConventions.conventions({
 				".btn-save"			:	{ 	click	:	function(viewModel, event) {
@@ -198,7 +218,19 @@
 				'.btn-bonus'		:	{	click	:	function(viewModel, event) {
 															viewModel.updateBonusPoints.call(event.target);
 														}
-										}
+										},
+				'.btn-bonus-single':    {
+                                            click   :   function(viewModel, event) {
+
+                                                            var $element = $(event.target);
+                                                            $element.toggleClass('selected');
+
+                                                            var bonus = $element.hasClass('selected') ? 1 : 0;
+                                                            viewModel.matchViewModel.bonus(bonus);
+
+                                                            $row.find('.Bonus').text(bonus);
+                                                        }
+                        				}
 			});
 
 			ko.applyBindings(betViewModel, $betRow[0]);
@@ -210,9 +242,6 @@
 										},
 				'.SecondTeamGoals'	:	function(viewModel) {
 											return { text : viewModel.secondTeamGoals };
-										},
-				'.Bonus'			:	function(viewModel) {
-											return { text: viewModel.bonus };
 										}
 			});
 

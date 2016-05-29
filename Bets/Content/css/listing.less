@@ -30,7 +30,7 @@
 
 	.listing-wrapper th, .listing-wrapper td {
 		.ellipsis;
-		line-height: 30px;
+		line-height: 28px;
         border: none;
 	}
 	.listing-wrapper th a, .listing-wrapper td a { 
@@ -64,6 +64,10 @@
 			padding: 10px 0;
 			height: 30px;
 		}
+
+            .listing-page tr.bet-row td > div:first-child {
+			    margin-left: 220px;
+		    } 
 	
         .listing-page .bet-spacer {
             display: inline-block;
@@ -79,6 +83,7 @@
 		height: 25px;
 		text-align: center;
 		padding: 0;
+        float: right;
 	}
 	
 	.listing-page .btn-bonus {
@@ -86,6 +91,24 @@
 		padding: 2px;
 		height: 22px;
 	}
+
+    .listing-page .btn-bonus-single, .listing-page .bonus-single {
+        width: 22px;
+        padding: 2px;
+        height: 22px;
+        background: #FFF url(../img/icons/bonus.png) no-repeat center;
+        margin: 3px 0 0 10px;
+    }
+
+        .listing-page .bonus-single {
+            margin-top: 2px;
+            display: block;
+        }
+
+        .listing-page .btn-bonus-single.selected {
+            background-color: #CCC;
+        }
+        
 	
 	.listing-page .txt-listing-search:focus {
 		.box-shadow;
@@ -256,7 +279,7 @@ span.sequence-no
 #listing-matchesforcurrentround .flag,
 #listing-roundmatchesforuser .flag,
 #listing-matchesforround .flag {
-    margin-top: 9px;
+    margin-top: 5px;
 }
 
 
@@ -361,9 +384,9 @@ ul.listing-horizontal {
 	}
 	
 		.goalscorer, .winner {
-			border-right: solid 1px #CCC;
 			padding-right: 7px;
 			min-height: 305px;
+            margin-right: 20px;
 		}
 		
 			.goalscorer h3, .winner h3 {
@@ -470,7 +493,7 @@ ul.listing-horizontal {
 	margin: 0 auto;
     position: absolute;
     top: 15px;
-    left: 10px;
+    left: 7px;
 }
 
 .bet-win, .bet-warning {
@@ -504,6 +527,7 @@ ul.listing-horizontal {
 	.cell-BetAction div {
         width: 44px;
         height: 27px;
+        float: right;
 	}
 	
 .bet-warning {
@@ -526,5 +550,5 @@ ul.listing-horizontal {
 
     .goalscorer-selected div.bet-made, .winner-selected div.bet-made {
         top: 0;
-        left: 0;
+        left: 2px;
     }

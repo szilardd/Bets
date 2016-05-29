@@ -24,7 +24,8 @@
 
 					@if (listingDataViewExists) {		
 						ViewBag.Data = new ViewDataDictionary { { "index", item.index }, { "totalIndex", Model.PageSize * (Model.CurrentPage - 1) + item.index }, { "count" , Model.TotalCount } };
-						@Html.Partial(viewName, item.m, new ViewDataDictionary { { "type", "item" } });
+                        ViewBag.type = "item";
+						@Html.Partial(viewName, item.m, ViewData);
 					}
 					else {
 						foreach (var data in item.m.GetListingData(ViewBag.ParentModule)) {

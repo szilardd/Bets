@@ -10,6 +10,7 @@
 
 		@Html.Partial(Url.Include("HeadJS"))
 		@Html.Partial(Url.Include("MainCSS"))
+        @Html.Partial(Url.Include("DeviceCSS"))
 
 		@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
 			.Add(Url.CSSDev("login"))

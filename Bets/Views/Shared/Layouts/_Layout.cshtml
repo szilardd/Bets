@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="apple-touch-icon-precomposed.png">
+
     <title>LynxBets</title>
 
 	@Html.Partial(Url.Include("MainCSS"))
@@ -13,7 +23,7 @@
     @Html.Partial(Url.Include("DeviceCSS"))
 
 	<link rel="shortcut icon" href="@Url.ImgUrl("favicon.ico")">
-    <link rel="apple-touch-icon" href="@Url.ImgUrl("logo.png")" />
+    <link rel="apple-touch-icon-precomposed" href="@Url.ImgUrl("logo.png")" />
 </head>
 
 <body class="layout @ViewBag.LayoutType-layout page-@((ViewBag.Name ?? "").ToLower())">

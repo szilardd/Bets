@@ -4,7 +4,7 @@
 {
 	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { 
 		{ "Date", "Date" }, { "FirstFlag", "" }, { "Match", "" }, { "SecondFlag", "" }, { "Points1", "1" }, 
-		{ "PointsX", "x" }, { "Points2", "2" }, { "BetValue", "My Bet" }, {"Bonus", "Bonus" }, { "Result", "Result" }, 
+		{ "PointsX", "x" }, { "Points2", "2" }, { "BetValue", "Bet" }, {"Bonus", "Bonus" }, { "Result", "Result" }, 
 		{ "BetPointsWonBonus", "Pts" }, { "Won", "" }, { "Bet", "" }
 	});
 }
@@ -30,9 +30,19 @@ else
 		}
 		<span class="SecondTeamGoals">@Model.BetSecondTeamGoals</span>
 	</td>
-	
-	<td class="Bonus">@Model.Bonus</td>
-	
+
+    if (ViewBag.MaxBonusPerMatch == 1)
+    {
+        <td>
+            <span class="Bonus removed">@Model.Bonus</span>   
+            <span class="bonus-single @(Model.Bonus == 1 ? "" : "hidden")"></span>
+        </td>
+    }
+    else
+    {
+        <td class="Bonus">@Model.Bonus</td>
+    }
+
 	<td class="center-text">
 		<span>@Model.FirstTeamGoals</span>
 		<span>&nbsp;-&nbsp;</span>

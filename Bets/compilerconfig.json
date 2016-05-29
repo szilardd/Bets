@@ -50,5 +50,13 @@
   {
     "outputFile": "Content/css/reset.css",
     "inputFile": "Content/css/reset.less"
+  },
+  {
+    "outputFile": "Content/css/mobile.css",
+    "inputFile": "Content/css/mobile.less"
+  },
+  {
+    "outputFile": "Content/css/pages/dashboard.css",
+    "inputFile": "Content/css/pages/dashboard.less"
   }
 ]

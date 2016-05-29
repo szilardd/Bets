@@ -1,11 +1,13 @@
 ﻿@model MatchForRoundModel
 
-@if (ViewData["type"] == "header") {
+@if (ViewData["type"] == "header")
+{
     <th colspan="12">&nbsp;</th>
     <th>&nbsp;</th>
 }
-else {
-    
+else
+{
+
     var winType = Model.WinTypeID.ToEnum<WinType>();
     var hasWinType = (winType != WinType.None);
     <td colspan="13">
@@ -15,10 +17,12 @@ else {
             <li>@Model.Date.ToDate(true)</li>
 
             <li>
-                @if (!Model.Expired) {
+                @if (!Model.Expired)
+                {
                     <input type="button" value="Bet" class="btn-bet btn" />
                 }
-                else {
+                else
+                {
                     <input type="button" value="View" class="btn-view btn" />
                 }
             </li>
@@ -42,34 +46,51 @@ else {
             <li>@Model.PointsX</li>
             <li>@Model.Points2</li>
         </ul>
-    
+
         <!-- My Bet, Bonus, Result, Pts -->
         <ul class="results @(hasWinType ? "has-win-type" : "")">
-            <li class="title">My Bet</li>
+            <li class="title">Bet</li>
             <li class="title">Bonus</li>
             <li class="title">Result</li>
             <li class="title">Pts</li>
-            @if (winType != WinType.None) {
+            @if (winType != WinType.None)
+            {
                 <li class="title bonus-item">&nbsp;</li>
             }
             <li>
                 <span class="FirstTeamGoals">@Model.BetFirstTeamGoals</span>
-                @if (Model.BetFirstTeamGoals == null) {
+                @if (Model.BetFirstTeamGoals == null)
+                {
                     <span class="bet-warning"></span>
                 }
-                else {
+                else
+                {
                     <span>&nbsp;-&nbsp;</span>
                 }
                 <span class="SecondTeamGoals">@Model.BetSecondTeamGoals</span>
             </li>
-            <li><span class="Bonus">@(Model.Bonus ?? 0)</span></li>
+            <li>
+                @if (ViewBag.MaxBonusPerMatch == 1)
+                {
+                    <span class="Bonus removed">@Model.Bonus</span>
+                    <span class="bonus-single @(Model.Bonus == 1 ? "" : "hidden")"></span>
+                }
+                else
+                {
+                    <span class="Bonus">@(Model.Bonus ?? 0)</span>
+                }
+            </li>
             <li>
                 <span>@Model.FirstTeamGoals</span>
                 <span>&nbsp;-&nbsp;</span>
                 <span>@Model.SecondTeamGoals</span>
             </li>
-            <li>@if (hasWinType) { @(Model.BetPointsWonBonus) }</li>
-            @if (hasWinType) {
+            <li>
+                @if (hasWinType)
+                { @(Model.BetPointsWonBonus) }
+            </li>
+            @if (hasWinType)
+                {
                 <li class="bonus-item">
                     @switch (winType)
                     {

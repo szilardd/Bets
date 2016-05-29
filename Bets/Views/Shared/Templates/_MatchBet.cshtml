@@ -2,23 +2,35 @@
     <tr class="bet-row">
 		<td colspan="12">
 
-			<input type="number" value="0" id="FirstTeamGoals" tabindex="1" />
-			<span>&nbsp;-&nbsp;</span>
-			<input type="number" value="0" id="SecondTeamGoals" tabindex="2" />
+            <div class="left">
+                <input type="number" value="0" id="FirstTeamGoals" tabindex="1" />
+                <span>&nbsp;-&nbsp;</span>
+                <input type="number" value="0" id="SecondTeamGoals" tabindex="2" />
+            </div>
 
 			<span class="bet-spacer">&nbsp;</span>
 
-			<span class="bonus-container" data-bind="visible: maxUserBonus() > 0">
-				Bonus&nbsp;
-				<input type="button" value="-" class="btn btn-bonus" data-val="-1"/>
-				<input type="number" value="0" id="Bonus" tabindex="3"/>
-				<input type="button" value="+" class="btn btn-bonus" data-val="1"/>
-				(max <span class="MaxUserBonus"></span>)
-			</span>
+            <div class="left">
+                <div class="bonus-container" data-bind="visible: maxUserBonus() > 0 && maxBonusPerMatch > 1">
+                    Bonus&nbsp;
+                    <input type="button" value="-" class="btn btn-bonus" data-val="-1" />
+                    <input type="number" value="0" id="Bonus" tabindex="3" />
+                    <input type="button" value="+" class="btn btn-bonus" data-val="1" />
+                    (max <span class="MaxUserBonus"></span>)
+                </div>
 
-			<span data-bind="visible: maxUserBonus() == 0">
-				No bonus points left
-			</span>
+                <div class="bonus-container" data-bind="visible: maxUserBonus() > 0 && maxBonusPerMatch == 1">
+                    <div class="left">
+                        <input type="number" value="0" id="Bonus" tabindex="3" data-bind="visible: false" />
+                        <input type="button" class="btn-bonus-single" data-bind="css: { selected: matchViewModel.bonus() > 0 }" />
+                    </div>
+                    <div class="left">&nbsp;(bonus)</div>
+                </div>
+
+                <span data-bind="visible: maxUserBonus() == 0">
+                    No bonus points left
+                </span>
+            </div>
 		</td>
 		<td class="cell-BetAction">
 			<div><input type="button" value="Save" class="btn-save btn" /></div>

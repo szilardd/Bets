@@ -18,6 +18,18 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
+input[type=button] {
+    box-shadow: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.removed {
+    display: none;
+}
+
 /*-------------------
 |       RESET       |
 -------------------*/
@@ -227,7 +239,11 @@ h1 {
 	color: #444;
 	text-align: left;
 	margin-bottom: 10px;
-	padding-left: 5px;
+	padding-left: 10px;
+}
+
+.page-dashboard h1 {
+    padding-left: 15px;
 }
 
 h2 {
@@ -495,8 +511,6 @@ nav ul li a.prpl:hover, nav ul li a.prpl.selected
     box-shadow: none;
 }
 
-    .btn-ac
-
     .btn:hover {
         background:#E6E6E6;
     }
@@ -520,6 +534,7 @@ nav ul li a.prpl:hover, nav ul li a.prpl.selected
 .icon {
 	.border-radius(5px);
     border: solid 1px #CAC5C5;
+    background: #FFF;
 }
 
 img {
@@ -545,7 +560,6 @@ img {
 
         td img.flag {
             float: left;
-            margin-top: 3px;
         }
 /*-------------------
 |      PROFILE      |

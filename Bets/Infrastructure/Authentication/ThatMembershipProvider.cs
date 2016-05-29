@@ -305,7 +305,10 @@ namespace ThatAuthentication
 
             //if user is online, store the user data into session
             if (valid && HttpContext.Current.Session != null)
+            {
                 HttpContext.Current.Session[SessionKey.User.ToString()] = modelUser;
+                HttpContext.Current.Session[SessionKey.MaxBonusPerMatch.ToString()] = new SettingsRepository().GetItem(0).MaxBonusPerMatch;
+            }
 
 			return valid;
 		}

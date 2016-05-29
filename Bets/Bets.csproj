@@ -624,6 +624,7 @@
     <Compile Include="ViewModels\SearchParams.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon-precomposed.png" />
     <Content Include="Content\BOYCOTT_-webfont.svg" />
     <Content Include="App_Data\Tracing\readme.md" />
     <None Include="compilerconfig.json" />
@@ -681,11 +682,17 @@
     <Content Include="Content\css\mobile.css">
       <DependentUpon>mobile.less</DependentUpon>
     </Content>
+    <Content Include="Content\css\mobile.min.css">
+      <DependentUpon>mobile.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\pages\dashboard.css">
       <DependentUpon>dashboard.less</DependentUpon>
     </Content>
     <Content Include="Content\css\mobile.less" />
     <None Include="Content\css\pages\dashboard.less" />
+    <Content Include="Content\css\pages\dashboard.min.css">
+      <DependentUpon>dashboard.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\pages\rounds.css">
       <DependentUpon>rounds.less</DependentUpon>
     </Content>
@@ -739,6 +746,7 @@
     <Content Include="Content\img\heroimages\hero7.jpg" />
     <Content Include="Content\img\heroimages\hero8.jpg" />
     <Content Include="Content\img\heroimages\hero9.jpg" />
+    <Content Include="Content\img\icons\bonus.png" />
     <Content Include="Content\img\icons\no.png" />
     <Content Include="Content\img\icons\star-bonus.png" />
     <Content Include="Content\img\icons\star.png" />
@@ -1294,7 +1302,6 @@
     <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
-    <Content Include="Views\Admin\GetMatchResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

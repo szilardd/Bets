@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Bets.Data;
 using Bets.Data.Models;
+using Bets.Helpers;
 
 namespace Bets.Controllers
 {
@@ -17,6 +18,8 @@ namespace Bets.Controllers
 
 			this.ListingViewModel.IsSubPage = true;
 			this.ListingViewModel.MinPageSize = 20;
+
+            ViewBag.MaxBonusPerMatch = new SettingsRepository().GetItem(0).MaxBonusPerMatch;
 		}
 
 		private Dictionary<string, object> GetUserData()
@@ -32,13 +35,13 @@ namespace Bets.Controllers
 		protected override void SetListingData(MatchForRoundModel model)
 		{
 			base.SetListingData(model);
-			model.Current = true;
+            model.Current = true;
 		}
 
 		protected override void SetDefaultListingData(MatchForRoundModel model)
 		{
 			base.SetDefaultListingData(model);
-			model.Current = true;
+            model.Current = true;
 		}
 
 		protected override Dictionary<string, object> AfterSave(DBActionType actionType, MatchForRoundModel model)
