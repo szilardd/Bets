@@ -624,7 +624,14 @@
     <Compile Include="ViewModels\SearchParams.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="icon-114x114.png" />
+    <Content Include="icon-128x128.png" />
+    <Content Include="icon-144x144.png" />
+    <Content Include="icon-192x192.png" />
+    <Content Include="icon-36x36.png" />
+    <Content Include="icon-48x48.png" />
+    <Content Include="icon-57x57.png" />
+    <Content Include="icon-72x72.png" />
     <Content Include="Content\BOYCOTT_-webfont.svg" />
     <Content Include="App_Data\Tracing\readme.md" />
     <None Include="compilerconfig.json" />
@@ -1197,15 +1204,18 @@
     <Content Include="DynamicData\PageTemplates\Insert.aspx" />
     <Content Include="DynamicData\PageTemplates\List.aspx" />
     <Content Include="DynamicData\PageTemplates\ListDetails.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\jquery\jquery.min.js" />
     <Content Include="Content\js\jquery\jquery.validate.min.js" />
     <Content Include="Content\js\modernizr-1.7.min.js" />
+    <Content Include="icon-96x96.png" />
     <Content Include="Settings\appsettings.config" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DynamicData\web.config" />
+    <Content Include="manifest.json" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Settings\connectionstrings.config">
       <SubType>Designer</SubType>
@@ -1302,6 +1312,7 @@
     <Content Include="Views\Winner\_WinnerListingItem.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
+    <Content Include="Views\Shared\Includes\_MetaInclude.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

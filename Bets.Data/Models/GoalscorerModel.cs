@@ -26,19 +26,29 @@ namespace Bets.Data.Models
                 //add initials
                 for (int i = 0; i < nameParts.Length - 1; i += 1)
                 {
-                    //if name is less 3 chars or less, add it
+                    //if name is 3 chars or less, add it
                     if (!force && nameParts[i].Length <= 3)
+                    {
                         shortName += nameParts[i];
+                    }
                     //otherwise add only initial
                     else
-                        shortName += nameParts[i][0] + ".";
+                    {
+                        // if last name is long, do not add initial
+                        if (nameParts[nameParts.Length - 1].Length < 10)
+                        {
+                            shortName += nameParts[i][0] + ".";
+                        }
+                    }
                 }
 
                 //add last name
                 shortName += " " + nameParts[nameParts.Length - 1];
             }
             else
+            {
                 shortName = name;
+            }
 
             return shortName;
         }
