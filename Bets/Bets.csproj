@@ -631,6 +631,9 @@
       <DependentUpon>profile.css</DependentUpon>
     </Content>
     <Content Include="Content\img\buttons\done.svg" />
+    <Content Include="Content\img\buttons\next.svg" />
+    <Content Include="Content\img\buttons\prev.svg" />
+    <Content Include="Content\img\hamburger-menu.svg" />
     <Content Include="Content\img\icons\bonus.svg" />
     <Content Include="Content\img\icons\no.svg" />
     <Content Include="Content\img\icons\star-bonus.svg" />
@@ -752,8 +755,6 @@
     </Content>
     <Content Include="Content\img\ajax-loader-small.gif" />
     <Content Include="Content\img\ajax-loader.gif" />
-    <Content Include="Content\img\buttons\next.png" />
-    <Content Include="Content\img\buttons\prev.png" />
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\grass.png" />
     <Content Include="Content\img\heroimages\hero1.jpg" />
