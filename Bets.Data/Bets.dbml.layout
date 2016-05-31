@@ -41,7 +41,7 @@
     <classShape Id="e866d744-bbd3-4897-ab22-68fc5256511a" isExpanded="false" absoluteBounds="4.5, 1.875, 2, 0.45">
       <DataClassMoniker Name="/BetsDataContext/Round" />
       <nestedChildShapes>
-        <elementListCompartment Id="808070e7-de9f-44b5-add1-19c7c4ad8253" absoluteBounds="4.515, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="808070e7-de9f-44b5-add1-19c7c4ad8253" absoluteBounds="4.515, 2.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="47bb52d1-5aa6-48c6-a1e1-06d097750f22" isExpanded="false" absoluteBounds="4.5, 3.25, 2, 0.45">

@@ -14,7 +14,7 @@ namespace Bets.Controllers
 	{
 		public TeamsController() : base(Module.Teams) 
         {
-            ViewBag.Name = "Teams";
+            this.name = "Teams";
         }
 
         protected override void SetIndexData()

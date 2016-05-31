@@ -18,7 +18,7 @@ namespace Bets.Controllers
     {
 		public ProfileController() : base(Module.Profile) 
 		{
-			ViewBag.Name = "Profile";
+			this.name = "Profile";
 		}
 
 		protected override void SetIndexData()

@@ -27,16 +27,22 @@
 
 		this.save = function () {
 
-			var $btnSave = self.$betRow.find('.btn-save').parent();
+		    var $btnSave = self.$betRow.find('.btn-save'),
+                $container = $btnSave.parent();
+
+		    $btnSave.removeClass("invalid");
 
 			//validate
 			if (self.matchViewModel.firstTeamGoals() == '' || self.matchViewModel.secondTeamGoals() == '') {
-				self.$betRow.addClass("invalid");
+			    $btnSave.addClass("invalid");
+			    setTimeout(function () {
+			        $btnSave.removeClass("invalid");
+			    }, 200);
 				return;
 			}
 
 			//inline block
-			Utils.blockElement($btnSave, true);
+			Utils.blockElement($container, true);
 
 			AjaxUtils.post({
 				url				:	self.$page.data('pagetype') + '/Add',
@@ -50,11 +56,11 @@
 										self.maxUserBonus(Math.min(self.matchViewModel.bonus() + userBonus, maxBonusPerMatch));
 
 										if (response.Success === false)
-											self.$betRow.addClass("invalid");
+										    $btnSave.addClass("invalid");
 										else
 											self.endEdit();
 
-										Utils.unblockElement($btnSave);
+										Utils.unblockElement($container);
 
                                         // update listing row UI
 										var $rowBonusElement = self.$row.find('.bonus-single');
@@ -66,7 +72,7 @@
 										}
 									},
 				error			:	function () {
-										self.$betRow.addClass("invalid");
+										$btnSave.addClass("invalid");
 
 										Utils.unblockElement($btnSave);
 									}

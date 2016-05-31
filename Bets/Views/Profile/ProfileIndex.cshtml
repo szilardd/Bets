@@ -7,6 +7,12 @@
 		.Render("~/content/combined/combined-profile-#.min.js"))
 }
 
+@section ExternalsCSS {
+    @MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+        .Add(Url.CSSDev("pages/profile"))
+        .Render("~/content/combined/combined-profile-#.min.css"))
+}
+
 @{ ActionStatus actionStatus = (TempData[Config.ActionStatus] != null) ? (ActionStatus)TempData[Config.ActionStatus] : new ActionStatus { Success = true, Message = "" }; }
 
 @using (Html.BeginForm("Detail", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })) {

@@ -624,6 +624,21 @@
     <Compile Include="ViewModels\SearchParams.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\pages\profile.css">
+      <DependentUpon>profile.less</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pages\profile.min.css">
+      <DependentUpon>profile.css</DependentUpon>
+    </Content>
+    <Content Include="Content\img\buttons\done.svg" />
+    <Content Include="Content\img\icons\bonus.svg" />
+    <Content Include="Content\img\icons\no.svg" />
+    <Content Include="Content\img\icons\star-bonus.svg" />
+    <Content Include="Content\img\icons\star.svg" />
+    <Content Include="Content\img\icons\warning.svg" />
+    <Content Include="Content\img\icons\yes-bonus.svg" />
+    <Content Include="Content\img\icons\yes.svg" />
+    <Content Include="Content\img\profile\user.svg" />
     <Content Include="icon-114x114.png" />
     <Content Include="icon-128x128.png" />
     <Content Include="icon-144x144.png" />
@@ -703,6 +718,7 @@
     <Content Include="Content\css\pages\rounds.css">
       <DependentUpon>rounds.less</DependentUpon>
     </Content>
+    <Content Include="Content\css\pages\profile.less" />
     <None Include="Content\css\pages\rounds.less" />
     <Content Include="Content\css\pages\rounds.min.css">
       <DependentUpon>rounds.css</DependentUpon>
@@ -736,7 +752,6 @@
     </Content>
     <Content Include="Content\img\ajax-loader-small.gif" />
     <Content Include="Content\img\ajax-loader.gif" />
-    <Content Include="Content\img\buttons\done.png" />
     <Content Include="Content\img\buttons\next.png" />
     <Content Include="Content\img\buttons\prev.png" />
     <Content Include="Content\img\favicon.ico" />
@@ -753,17 +768,9 @@
     <Content Include="Content\img\heroimages\hero7.jpg" />
     <Content Include="Content\img\heroimages\hero8.jpg" />
     <Content Include="Content\img\heroimages\hero9.jpg" />
-    <Content Include="Content\img\icons\bonus.png" />
-    <Content Include="Content\img\icons\no.png" />
-    <Content Include="Content\img\icons\star-bonus.png" />
-    <Content Include="Content\img\icons\star.png" />
-    <Content Include="Content\img\icons\warning.png" />
-    <Content Include="Content\img\icons\yes-bonus.png" />
-    <Content Include="Content\img\icons\yes.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\magnifier.png" />
     <Content Include="Content\img\main\stucco.png" />
-    <Content Include="Content\img\profile\user.gif" />
     <Content Include="Content\js\bgchanger.dev.js" />
     <Content Include="Content\js\bgchanger.min.js">
       <DependentUpon>bgchanger.dev.js</DependentUpon>

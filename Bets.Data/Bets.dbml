@@ -74,6 +74,7 @@
       <Column Name="RoundID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Closed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Finished" Type="System.Boolean" DbType="bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.PointsForRounds" Member="PointsForRounds">

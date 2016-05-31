@@ -44,20 +44,21 @@
             else
             {
                 <span>
-                    The user has the option to assign a <b>1 bonus point</b> to a match bet. If the outcome of the match is the one set
-                    by the user, the number of points won will be multiplied by two.
-                    <br />For example, if a match outcome has 100 points assigned, then with a bonus point the number of points won will be 200 (100 + 1 * 100). 
+                    The user has the option to assign a <b>bonus point</b> to a match bet. If the outcome of the match is the one set
+                    by the user, the number of points won will be doubled.
+                    <br />For example, if a match outcome has 100 points assigned, then with a bonus point the number of points won will be 200 (100 + 1 * 100).
+                    <br />If the exact score matches the bet, then the user receives 2 * 200 = 400 points
                 </span>
             }
 
             <span>
-                Each user will receive <b>10 bonus points</b> at the start of the competition. Users can choose to use their bonus points for any matches
-                they wish
+                Each user will receive <b>5 bonus points</b> at the start of the competition. Users can choose to use their bonus points for any matches
+                they wish.
             </span>
 
             @if (ViewBag.MaxBonusPerMatch > 1)
             {
-                <span>, but only < b > 2 bonus points per match are allowed</ b >.</span>
+                <span>, but only <b> 2 bonus points per match are allowed</b>.</span>
             }
         </li>
         <li>

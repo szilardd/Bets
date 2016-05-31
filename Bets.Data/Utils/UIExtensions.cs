@@ -93,7 +93,7 @@ namespace Bets.Data
             }
             else
             {
-                return root + "profile/user.gif";
+                return root + "profile/user.svg";
             }
         }
 

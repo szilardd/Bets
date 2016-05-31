@@ -10,6 +10,7 @@ using System.Web.WebPages;
 using System.Text.RegularExpressions;
 using System.Web.Http;
 using Autofac;
+using Bets.Data;
 
 namespace Bets
 {
@@ -48,6 +49,9 @@ namespace Bets
         {
             Exception exception = Server.GetLastError();
             Server.ClearError();
+
+            // log error
+            Logger.Log(exception);
 
             Response.Clear();
 

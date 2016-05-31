@@ -53,7 +53,7 @@ namespace Bets.Data
 						select	match
 					);
 				}
-				//otherwise, return only matches in the given round, but only if the round is closed or permission is granted
+				//otherwise, return only matches in the given round, but only if the round is finished or permission is granted
 				else
 				{
 					entities = 
@@ -61,7 +61,7 @@ namespace Bets.Data
 						from	match in entities
 								join
 								round in this.Context.Rounds on match.RoundID equals round.RoundID
-						where	(this.IsAdmin || round.Closed || listingDataModel.Model.ForNotification) && match.RoundID == listingDataModel.Model.RoundID
+						where	(this.IsAdmin || round.Finished || listingDataModel.Model.ForNotification) && match.RoundID == listingDataModel.Model.RoundID
 						select	match
 					);
 				}

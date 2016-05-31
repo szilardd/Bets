@@ -24,7 +24,7 @@ namespace Bets.Controllers
 			ViewBag.Teams = teamRepo.GetTeamList(true).ToList();
 			ViewBag.MatchID = new MatchRepository(teamRepo.Context, teamRepo.UserID).GetActiveMatchList().ToList();
 			ViewBag.PlayerID = new PlayerRepository(teamRepo.Context, teamRepo.UserID).GetPlayerGoalsForCurrentRound();
-			ViewBag.RoundID = new RoundRepository(teamRepo.Context, teamRepo.UserID).GetRecentRounds();
+			ViewBag.RoundID = new RoundRepository(teamRepo.Context, teamRepo.UserID).GetActiveRounds();
 		}
 
 		[HttpPost]

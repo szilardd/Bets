@@ -1591,6 +1591,8 @@ namespace Bets.Data
 		
 		private bool _Closed;
 		
+		private bool _Finished;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1601,6 +1603,8 @@ namespace Bets.Data
     partial void OnNameChanged();
     partial void OnClosedChanging(bool value);
     partial void OnClosedChanged();
+    partial void OnFinishedChanging(bool value);
+    partial void OnFinishedChanged();
     #endregion
 		
 		public Round()
@@ -1664,6 +1668,26 @@ namespace Bets.Data
 					this._Closed = value;
 					this.SendPropertyChanged("Closed");
 					this.OnClosedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Finished", DbType="bit NOT NULL")]
+		public bool Finished
+		{
+			get
+			{
+				return this._Finished;
+			}
+			set
+			{
+				if ((this._Finished != value))
+				{
+					this.OnFinishedChanging(value);
+					this.SendPropertyChanging();
+					this._Finished = value;
+					this.SendPropertyChanged("Finished");
+					this.OnFinishedChanged();
 				}
 			}
 		}
