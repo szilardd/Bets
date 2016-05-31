@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="25px"
+   version="1.1"
+   viewBox="0 0 25 25"
+   width="25px"
+   id="svg3710"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="1464738848_Hamburger.svg">
+  <metadata
+     id="metadata3724">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview3722"
+     showgrid="false"
+     inkscape:zoom="13.350176"
+     inkscape:cx="-26.756341"
+     inkscape:cy="25.181675"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3710" />
+  <title
+     id="title3712" />
+  <desc
+     id="desc3714" />
+  <defs
+     id="defs3716" />
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     id="TabBar-Icons"
+     stroke="none"
+     stroke-width="1">
+    <g
+       fill="#000000"
+       id="Hamburger">
+      <path
+         d="M0,2 L25,2 L25,6 L0,6 L0,2 Z M0,10 L25,10 L25,14 L0,14 L0,10 Z M0,18 L25,18 L25,22 L0,22 L0,18 Z"
+         id="path3720" />
+    </g>
+  </g>
+  <path
+     style="fill:#ffffff"
+     d="M 0.84765625 2.5429688 L 0.84765625 5.5078125 L 25.210938 5.5078125 L 25.210938 2.5429688 L 0.84765625 2.5429688 z "
+     id="rect3730" />
+  <rect
+     style="fill:#ffffff"
+     id="rect3737"
+     width="25.542734"
+     height="4.0448904"
+     x="-0.074905381"
+     y="2.0040486" />
+  <rect
+     style="fill:#ffffff"
+     id="rect3737-4"
+     width="25.542734"
+     height="4.0448904"
+     x="0.037452415"
+     y="9.966464" />
+  <rect
+     style="fill:#ffffff"
+     id="rect3737-1"
+     width="25.542734"
+     height="4.0448904"
+     x="-0.11235767"
+     y="17.958895" />
+</svg>
