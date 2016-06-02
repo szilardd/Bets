@@ -38,3 +38,9 @@
 <br />
 
 <p>Click <a href="@Url.Action("Index", "Dashboard", null, Request.Url.Scheme)" target="_blank">here</a> to place your bets. You can place bets right until one hour before the kickoff time.</p>
+
+@if (ViewBag.BonusPointsLeft > 0)
+{
+    <br/>
+    <p>You have @ViewBag.BonusPointsLeft bonus point(s) to bet <img src="@Url.Img("icons/bonus.svg", absolute: true)" class="bonus-img"/> </p>
+}

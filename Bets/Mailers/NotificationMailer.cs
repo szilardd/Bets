@@ -11,7 +11,6 @@ namespace Bets.Mailers
 {
     public class NotificationMailer : MailerBase, INotificationMailer     
 	{
-		private MailMessage mailMessage = new MailMessage();
 		private MatchesForRoundRepository matchRepo = new MatchesForRoundRepository();
 		
 		public NotificationMailer(): base()
@@ -24,33 +23,42 @@ namespace Bets.Mailers
 			return null;
 		}
 		
-		public MailMessage RoundNotification(int roundID)
+		public void RoundNotification(int roundID)
 		{
-			var userRepo = new UserRepository(this.matchRepo.Context, matchRepo.UserID);
-			var userEmails = userRepo.GetActiveUsers().Select(e => e.Email).ToList();	
+            var mailMessage = new MailMessage();
+            var userRepo = new UserRepository(this.matchRepo.Context, matchRepo.UserID);
+			var userEmails = userRepo.GetActiveUsers().Select(e => new { e.Email, e.UserID }).ToList();	
 			var listingDataModel = new ListingParams<MatchForRoundModel> { Model = new MatchForRoundModel { RoundID = roundID, ForNotification = true } };
 
-			ViewData.Model = matchRepo.GetMatchesForRound(listingDataModel).ToList();
+            var matchForRoundRepo = new MatchesForRoundRepository(userRepo.Context);
 
-			PopulateBody(mailMessage, viewName: "RoundNotification");
+            ViewData.Model = matchRepo.GetMatchesForRound(listingDataModel).ToList();
 
-			//send notification to all users
-			foreach (var email in userEmails)
+            //send notification to all users
+            foreach (var user in userEmails)
 			{
-				Email.Send(new Email
-				{
-					Body = mailMessage.Body,
-					Subject = "Notification for current round",
-					To = email
-				});
-			}
+                if (!string.IsNullOrEmpty(user.Email))
+                {
+                    matchForRoundRepo.UserID = user.UserID;
+                    
+                    ViewBag.BonusPointsLeft = matchForRoundRepo.GetUserBonus();
 
-			return mailMessage;
+                    PopulateBody(mailMessage, viewName: "RoundNotification");
+
+                    Email.Send(new Email
+                    {
+                        Body = mailMessage.Body,
+                        Subject = "Notification for current round",
+                        To = user.Email
+                    });
+                }
+			}
 		}
 
 		public void MatchNotificationForToday()
 		{
-			var matchesWithNoBets = matchRepo.GetMatchesWithNoBetsForToday();
+            var mailMessage = new MailMessage();
+            var matchesWithNoBets = matchRepo.GetMatchesWithNoBetsForToday();
 
 			foreach (var email in matchesWithNoBets.Keys)
 			{

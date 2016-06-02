@@ -76,9 +76,16 @@ namespace Bets.Data
             return GetTeamLogoImage(null, externalID);
         }
 
-        public static string Img(this UrlHelper helper, string url)
+        public static string Img(this UrlHelper helper, string url, bool absolute = false)
         {
-            return helper.Content(ImageRoot + url);
+            if (absolute)
+            {
+                return AbsoluteUrl(helper) + ImageRoot.Replace("~/", "") + url;
+            }
+            else
+            {
+                return helper.Content(ImageRoot + url);
+            }
         }
 
         public static string GetUserImage(this UrlHelper helper, string username)

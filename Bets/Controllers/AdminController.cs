@@ -86,5 +86,25 @@ namespace Bets.Controllers
                 new MatchRepository().AddMatchResult(Match);
             }
         }
+
+        [HttpPost]
+        public JsonResult SendEmail(string email)
+        {
+            try
+            {
+                Email.Send(new Email
+                {
+                    Body = "Test",
+                    Subject = "Test email from LynxBets",
+                    To = email
+                }, false);
+
+                return Json(new ActionStatus { Success = true, Message = "Success!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new ActionStatus { Success = false, Message = ex.ToString() });
+            }
+        }
     }
 }

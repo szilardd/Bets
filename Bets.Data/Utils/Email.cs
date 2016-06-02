@@ -17,7 +17,7 @@ namespace Bets.Data
 		public string To { get; set; }
 		public string ToName { get; set; }
 
-		public static bool Send(Email email)
+		public static bool Send(Email email, bool handleError = true)
 		{
 			var message = new MailMessage();
 			var smtpClient = new SmtpClient();
@@ -39,6 +39,12 @@ namespace Bets.Data
 			catch (Exception ex)
 			{
                 Logger.Log(ex);
+
+                if (!handleError)
+                {
+                    throw;
+                }
+
                 return false;
 			}
 		}
