@@ -2831,21 +2831,19 @@ namespace Bets.DynamicData
         /// <param name="username">Initial value of the Username property.</param>
         /// <param name="password">Initial value of the Password property.</param>
         /// <param name="passwordSalt">Initial value of the PasswordSalt property.</param>
-        /// <param name="email">Initial value of the Email property.</param>
         /// <param name="insertedDate">Initial value of the InsertedDate property.</param>
         /// <param name="profileID">Initial value of the ProfileID property.</param>
         /// <param name="pointsWon">Initial value of the PointsWon property.</param>
         /// <param name="pointsWonBonus">Initial value of the PointsWonBonus property.</param>
         /// <param name="displayName">Initial value of the DisplayName property.</param>
         /// <param name="bonus">Initial value of the Bonus property.</param>
-        public static User CreateUser(global::System.Int32 userID, global::System.String username, global::System.String password, global::System.String passwordSalt, global::System.String email, global::System.DateTime insertedDate, global::System.Int32 profileID, global::System.Int32 pointsWon, global::System.Int32 pointsWonBonus, global::System.String displayName, global::System.Int32 bonus)
+        public static User CreateUser(global::System.Int32 userID, global::System.String username, global::System.String password, global::System.String passwordSalt, global::System.DateTime insertedDate, global::System.Int32 profileID, global::System.Int32 pointsWon, global::System.Int32 pointsWonBonus, global::System.String displayName, global::System.Int32 bonus)
         {
             User user = new User();
             user.UserID = userID;
             user.Username = username;
             user.Password = password;
             user.PasswordSalt = passwordSalt;
-            user.Email = email;
             user.InsertedDate = insertedDate;
             user.ProfileID = profileID;
             user.PointsWon = pointsWon;
@@ -2961,7 +2959,7 @@ namespace Bets.DynamicData
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -2973,7 +2971,7 @@ namespace Bets.DynamicData
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false, "Email");
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
