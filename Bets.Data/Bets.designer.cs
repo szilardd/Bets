@@ -1067,9 +1067,9 @@ namespace Bets.Data
 		
 		private int _UserID;
 		
-		private int _WinnerTeamID;
+		private System.Nullable<int> _WinnerTeamID;
 		
-		private int _GoalscorerID;
+		private System.Nullable<int> _GoalscorerID;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1079,9 +1079,9 @@ namespace Bets.Data
     partial void OnBetIDChanged();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnWinnerTeamIDChanging(int value);
+    partial void OnWinnerTeamIDChanging(System.Nullable<int> value);
     partial void OnWinnerTeamIDChanged();
-    partial void OnGoalscorerIDChanging(int value);
+    partial void OnGoalscorerIDChanging(System.Nullable<int> value);
     partial void OnGoalscorerIDChanged();
     #endregion
 		
@@ -1130,8 +1130,8 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WinnerTeamID", DbType="Int NOT NULL")]
-		public int WinnerTeamID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WinnerTeamID", DbType="Int")]
+		public System.Nullable<int> WinnerTeamID
 		{
 			get
 			{
@@ -1150,8 +1150,8 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalscorerID", DbType="Int NOT NULL")]
-		public int GoalscorerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalscorerID", DbType="Int")]
+		public System.Nullable<int> GoalscorerID
 		{
 			get
 			{

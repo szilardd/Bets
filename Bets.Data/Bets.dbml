@@ -44,8 +44,8 @@
     <Type Name="GlobalBet">
       <Column Name="BetID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WinnerTeamID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WinnerTeamID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GoalscorerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.GoalscorersForRounds" Member="GoalscorerForRounds">

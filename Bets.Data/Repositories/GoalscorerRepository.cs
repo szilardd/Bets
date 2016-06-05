@@ -67,7 +67,7 @@ namespace Bets.Data
 							GoalsScored = player.GoalsScored,
 							ExternalID = player.ExternalID,
 							Points = player.Points,
-                            BetMade = (bet != null && player.PlayerID == bet.GoalscorerID)
+                            BetMade = (bet != null && bet.GoalscorerID != null && player.PlayerID == bet.GoalscorerID)
                         }
 			);
 
