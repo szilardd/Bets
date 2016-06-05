@@ -12,7 +12,7 @@
 
 <body class="layout @ViewBag.LayoutType-layout page-@((ViewBag.Name ?? "").ToLower())">
 
-    <div id="hero" class="hero-@(new Random((int)DateTime.Now.Ticks).Next(1,12))"></div>
+    <div id="hero" class="hero-@(new Random((int)DateTime.Now.Ticks).Next() % 13 + 1)"></div>
 
     <div>
 	    <!--start header-->

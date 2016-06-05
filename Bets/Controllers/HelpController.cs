@@ -8,7 +8,11 @@ using Bets.Data.Models;
 
 namespace Bets.Controllers
 {
-	public class HelpController : BaseController
+    /// <summary>
+    /// Cache for 10 minutes
+    /// </summary>
+    [OutputCache(Duration = 600, VaryByParam = "none")]
+    public class HelpController : BaseController
 	{
 		public HelpController() : base(Module.Help)
         {

@@ -10,7 +10,11 @@ using Bets.Data;
 
 namespace Bets.Controllers
 {
-	public partial class TeamsController : BaseController
+    /// <summary>
+    /// Cache for 10 minutes
+    /// </summary>
+    [OutputCache(Duration = 600, VaryByParam = "none")]
+    public partial class TeamsController : BaseController
 	{
 		public TeamsController() : base(Module.Teams) 
         {

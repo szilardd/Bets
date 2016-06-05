@@ -39,8 +39,8 @@ namespace Bets.Data
 
 	public class DataConfig
 	{
-		public static int ProfileImageWidth = 150;
-		public static int ProfileImageHeight = 150;
+		public static int ProfileImageWidth = 75;
+		public static int ProfileImageHeight = 75;
 		public static string DateFormat = "yyyy MMM dd";
 		public static string DateTimeFormat = "yyyy MMM dd HH:mm";
 		public static int MatchNotificationHour = 20;

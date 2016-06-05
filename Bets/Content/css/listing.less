@@ -491,7 +491,7 @@ ul.listing-horizontal {
     }
 	
 	#listing-standings img.full, #listing-standingsbonus img.full {
-		height: 75px;
+		height: 77px;
 		min-height: 0;
 	}
 	
@@ -516,22 +516,42 @@ ul.listing-horizontal {
  min-height: 0;
 }
 
+    #listing-matchesforcurrentround td:first-child, #listing-matchesforcurrentround th:first-child  {
+        padding-left: 0;
+    }
+
 #listing-goalscorerstandings {
-    width: 840px;
+    width: 860px;
     margin: 0 auto;
 }
     #listing-goalscorerstandings .listing-wrapper {
         min-height: 215px;
     }
 
+    #listing-goalscorerstandings li:first-child {
+        margin-left: 0;
+    }
+
+    #listing-goalscorerstandings li:last-child {
+        margin-right: 0;
+    }
+
+    #listing-goalscorerstandings .bet-made {
+        top: 7px;
+        left: 2px;
+    }
+
     #listing-goalscorerstandings li {
-        width: 140px;
+        width: 134px;
         position: relative;
+        margin: 10px 1px 0 10px;
+        padding: 0;
     }
 
     #listing-goalscorerstandings img.full {
         width: 100%;
-        height: 125px;
+        height: 100%;
+        min-height: 136px;
     }
 
 /*-----------------------
@@ -580,6 +600,10 @@ ul.listing-horizontal {
         height: 27px;
         float: right;
 	}
+
+     .listing-wrapper table td.cell-BetAction {
+         padding-right:0;
+     }
 	
 .bet-warning {
 	background: url(../img/icons/warning.svg) center no-repeat;

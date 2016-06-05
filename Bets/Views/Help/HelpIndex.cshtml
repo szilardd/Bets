@@ -5,8 +5,13 @@
     <ul>
         @Html.Partial("_HelpDashboard")
         <li><b>Global Bets</b> - Bets for the top goalscorer of the competition and for the winning team</li>
-        <li><b>Users</b> - Bets made by other users grouped by rounds. Only closed rounds are shown</li>
-        <li><b>Rounds</b> - Bets made in each round by all users. Only closed rounds are shown</li>
+        <li>
+            <b>User Bets</b> - Global bets and round bets made by users grouped by rounds.
+            Global bets are shown after the start of the first match while round bets are shonw only for closed rounds.
+        </li>
+        <li>
+            <b>Round Bets</b> - Bets made in each round by all users. Round bets are shown after the end of the first round.
+        </li>
         <li><b>Teams</b> - Team group standings</li>
         <li><b>Help</b> - this page</li>
         <li><b>Profile</b> - Profile settings (display name, email, picture, password)</li>
