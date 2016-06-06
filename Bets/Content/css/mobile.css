@@ -408,6 +408,10 @@
   #listing-goalscorerstandings img.full {
     height: auto;
   }
+  
+  #listing-goalscorer img.full, #listing-winner img.full {
+    min-height: 63px;
+  }
   /*----------------
     |    USER BETS   |
     ----------------*/
@@ -420,15 +424,12 @@
   .global-bets .goalscorer,
   .global-bets .winner {
     width: 30%;
-    min-height: 330px;
+    min-height: 240px;
+    margin-top: 75px;
   }
   .global-bets .goalscorer h3,
   .global-bets .winner h3 {
     font-size: 20px;
-  }
-  .global-bets .goalscorer h2,
-  .global-bets .winner h2 {
-    margin-top: 95px;
   }
   .global-bets #listing-goalscorer,
   .global-bets #listing-winner {
