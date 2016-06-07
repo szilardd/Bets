@@ -436,12 +436,17 @@ ul.listing-horizontal {
 	
 		.goalscorer, .winner {
 			padding-right: 7px;
-			min-height: 305px;
+			min-height: 300px;
             margin-right: 20px;
             background: lightgray;
             border: solid 1px #C1BABA;
             border-radius: 5px;
+            margin-top: 10px;
 		}
+
+            .winner {
+                min-height: 276px;
+            }
 		
 			.goalscorer h3, .winner h3 {
 				text-align: center;
@@ -450,8 +455,9 @@ ul.listing-horizontal {
 			}
 			
 			.goalscorer h2, .winner h2 {
-				margin-bottom: 15px;
+				margin-bottom: 9px;
 				font-weight: bold;
+                margin-top: 0;
 			}
 		
 		.listing-horizontal li div, .goalscorer div, .winner div {
@@ -621,6 +627,17 @@ ul.listing-horizontal {
 	width: 370px;
 	margin: 0 auto;
 }
+
+    .global-expired .goalscorer, .global-expired .winner {
+        background: none;
+        border: none;
+    }
+
+    .global-expired .listing-single {
+        width: 160px;
+        text-align: center;
+        margin-right: 20px;
+    }
 
 .standing-position {
 	font-size: 20px;
