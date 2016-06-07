@@ -64,18 +64,18 @@ input:active, input:focus {
         position: relative;
     }
 
-        .cell-BetAction.loading input {
+        .cell-BetAction.loading input, .date-and-action.loading input {
             background-color: #D0D0D0;
         }
 
-        .cell-BetAction.loading::after {
+        .cell-BetAction.loading::after, .date-and-action.loading::after {
             content: "";
             width: 15px;
             height: 15px;
             background:red url(../img/../img/ajax-loader-small.gif) no-repeat;
             background-size: contain;
-            top: 7px;
-            left: 20px;
+            top: 5px;
+            left: 30px;
             position: absolute;
         }
 
