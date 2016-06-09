@@ -108,7 +108,7 @@
       <Column Name="ProfileID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PointsWon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PointsWonBonus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DisplayName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Bonus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PasswordSalt" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>

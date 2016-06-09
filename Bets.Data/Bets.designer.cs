@@ -264,7 +264,7 @@ namespace Bets.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateUser")]
-		public int UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisplayName", DbType="VarChar(50)")] string displayName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldPassword", DbType="VarChar(50)")] string oldPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="VarChar(50)")] string newPassword)
+		public int UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisplayName", DbType="NVarChar(50)")] string displayName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldPassword", DbType="NVarChar(50)")] string oldPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(50)")] string newPassword)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, displayName, email, oldPassword, newPassword);
 			return ((int)(result.ReturnValue));
@@ -2322,7 +2322,7 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string DisplayName
 		{
 			get
