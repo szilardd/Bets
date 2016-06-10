@@ -1,9 +1,12 @@
 using System;
 using System.Configuration;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using Svg;
 
 namespace Bets.Data
 {
@@ -51,14 +54,49 @@ namespace Bets.Data
             return string.Format("{0}://{1}/{2}", url.Scheme, url.Authority, suffix);
         }
 
-        public static string GetTeamFlagImage(this UrlHelper helper, string flagPrefixOrExternalID)
+        public static string GetTeamFlagImage(this UrlHelper helper, string flagPrefixOrExternalID, bool forEmail = false)
         {
             //if external url, add id
             if (TeamFlagUrl != null && TeamFlagUrl.StartsWith("http"))
+            {
                 return TeamFlagUrl + flagPrefixOrExternalID + ".png";
+            }
             //otherwise resolve relative url and add id
             else
-                return AbsoluteUrl(helper) + TeamFlagUrl + flagPrefixOrExternalID + ".svg";
+            {
+                var imagePath = TeamFlagUrl + flagPrefixOrExternalID + ".svg";
+
+                if (forEmail && imagePath.EndsWith(".svg"))
+                {
+                    imagePath = SvgToPng(imagePath);
+                }
+
+                return AbsoluteUrl(helper) + imagePath;
+            }
+        }
+
+        public static string SvgToPng(string relativePath)
+        {
+            var imageFullPath = HostingEnvironment.MapPath("~/" + relativePath);
+            var pngFullPath = imageFullPath.Replace(".svg", ".png");
+
+            var imagePath = relativePath.Replace(".svg", ".png");
+
+            if (!File.Exists(pngFullPath))
+            {
+                var svgFileContents = File.ReadAllText(imageFullPath);
+
+                var byteArray = Encoding.ASCII.GetBytes(svgFileContents);
+                using (var stream = new MemoryStream(byteArray))
+                {
+                    var svgDocument = SvgDocument.Open(stream);
+                    var bitmap = svgDocument.Draw();
+
+                    bitmap.Save(pngFullPath, ImageFormat.Png);
+                }
+            }
+
+            return imagePath;
         }
 
         public static string GetTeamFlagImage(string flagPrefixOrExternalID)
@@ -76,11 +114,18 @@ namespace Bets.Data
             return GetTeamLogoImage(null, externalID);
         }
 
-        public static string Img(this UrlHelper helper, string url, bool absolute = false)
+        public static string Img(this UrlHelper helper, string url, bool absolute = false, bool forEmail = true)
         {
             if (absolute)
             {
-                return AbsoluteUrl(helper) + ImageRoot.Replace("~/", "") + url;
+                var imagePath = ImageRoot.Replace("~/", "") + url;
+               
+                if (forEmail && imagePath.EndsWith(".svg"))
+                {
+                    imagePath = SvgToPng(imagePath);
+                }
+
+                return AbsoluteUrl(helper) + imagePath;
             }
             else
             {

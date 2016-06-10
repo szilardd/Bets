@@ -180,6 +180,10 @@
       <HintPath>..\packages\SquishIt.0.8.5\lib\SquishIt.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Svg, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -1218,6 +1222,7 @@
     <Content Include="Content\js\jquery\jquery.validate.min.js" />
     <Content Include="Content\js\modernizr-1.7.min.js" />
     <Content Include="icon-96x96.png" />
+    <Content Include="lib\Svg.dll" />
     <Content Include="Settings\appsettings.config" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
