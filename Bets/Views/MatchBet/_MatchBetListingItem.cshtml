@@ -1,25 +1,27 @@
 ﻿@model MatchBetModel
 
 @if (ViewData["type"] == "header") {
-	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "Username", "User" }, { "", "Bet" }, {"Bonus", "Bonus" }, { "PointsWonBonus", "Pts" }, { "WinTypeID", "Won" } });
+	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "Username", "User" }, { "", "Bet" }, { "PointsWonBonus", "Pts" }, { "WinTypeID", "Won" } });
 }
 else {
 	var winType = Model.WinTypeID.ToEnum<WinType>();
 	
 	<td><img class="icon thumb" src="@Url.GetUserImage(Model.Username)" /> <span>@Model.UserDisplayName</span></td>
-	<td>
-		<span class="FirstTeamGoals">@Model.FirstTeamGoals</span>
-		<span>&nbsp;-&nbsp;</span>
-		<span class="SecondTeamGoals">@Model.SecondTeamGoals</span>
-	</td>
-    if (ViewBag.MaxBonusPerMatch == 1)
-    {
-        <td>
-            <span class="Bonus removed">@Model.Bonus</span>
-            <span class="bonus-single @(Model.Bonus == 1 ? "" : "hidden")"></span>
-        </td>
-    }
-    else
+    <td>
+        <div>
+            <span class="FirstTeamGoals">@Model.FirstTeamGoals</span>
+            <span>&nbsp;-&nbsp;</span>
+            <span class="SecondTeamGoals">@Model.SecondTeamGoals</span>
+        </div>
+        @if (ViewBag.MaxBonusPerMatch == 1)
+        {
+            <div>
+                <span class="Bonus removed">@Model.Bonus</span>
+                <span class="bonus-single @(Model.Bonus == 1 ? "" : "hidden")"></span>
+            </div>
+        }
+    </td>
+    if (ViewBag.MaxBonusPerMatch > 1)
     {
         <td class="Bonus">@Model.Bonus</td>
     }
