@@ -328,6 +328,14 @@
         display: none;
     }
 
+    #listing-matchbet tr {
+        border:none;
+    }
+
+    #listing-matchbet tr:first-child th {
+        padding-left: 3px;
+    }
+
     #listing-matchesforround,
     #listing-roundmatchesforuser,
     #listing-matchesforcurrentround {
@@ -495,6 +503,13 @@
     ----------------*/
     .page-userbets .slider-content {
         width: 100%;
+        border-right: none;
+    }
+
+    .page-userbets .slider-content:hover, .page-userbets .slider-content.active {
+        background: none;
+        color: #000; 
+        border-right: none;
     }
 
     /*----------------
@@ -591,7 +606,7 @@
         padding: 10px 0;
     }
 
-    .page-dashboard .btn-bet, .page-dashboard .btn-save {
+    .page-dashboard .btn-bet, .page-dashboard .btn-save, .page-dashboard .btn-view {
         margin-right: 5px;
         height: 24px;
     }
@@ -660,6 +675,10 @@
 	#listing-matchbet {
 		width: 100%;
 	}
+        #listing-matchbet tr {
+            border:none;
+        }
+
 		#listing-matchbet td, #listing-matchbet th {
 			text-align: center;
 		}
@@ -675,6 +694,7 @@
 
 		    #listing-matchbet td:first-child img {
 			    float:left;
+                margin-top:3px;
 		    }
 		
 		    #listing-matchbet td:first-child span {

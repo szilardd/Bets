@@ -6,13 +6,12 @@ using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using Svg;
 
 namespace Bets.Data
 {
     public static class UIExtensions
     {
-        private static string TeamFlagUrl = ConfigurationManager.AppSettings["TeamFlagUrl"];
+        public static string TeamFlagUrl = ConfigurationManager.AppSettings["TeamFlagUrl"];
         private static string TeamLogoUrl = ConfigurationManager.AppSettings["TeamLogoUrl"];
         private static string PlayerImageUrl = ConfigurationManager.AppSettings["PlayerImageUrl"];
         public const string ImageRoot = "~/content/img/";
@@ -66,37 +65,14 @@ namespace Bets.Data
             {
                 var imagePath = TeamFlagUrl + flagPrefixOrExternalID + ".svg";
 
-                if (forEmail && imagePath.EndsWith(".svg"))
+                // for emails provide png file
+                if (forEmail)
                 {
-                    imagePath = SvgToPng(imagePath);
+                    imagePath = imagePath.Replace(".svg", ".png");
                 }
 
                 return AbsoluteUrl(helper) + imagePath;
             }
-        }
-
-        public static string SvgToPng(string relativePath)
-        {
-            var imageFullPath = HostingEnvironment.MapPath("~/" + relativePath);
-            var pngFullPath = imageFullPath.Replace(".svg", ".png");
-
-            var imagePath = relativePath.Replace(".svg", ".png");
-
-            if (!File.Exists(pngFullPath))
-            {
-                var svgFileContents = File.ReadAllText(imageFullPath);
-
-                var byteArray = Encoding.ASCII.GetBytes(svgFileContents);
-                using (var stream = new MemoryStream(byteArray))
-                {
-                    var svgDocument = SvgDocument.Open(stream);
-                    var bitmap = svgDocument.Draw();
-
-                    bitmap.Save(pngFullPath, ImageFormat.Png);
-                }
-            }
-
-            return imagePath;
         }
 
         public static string GetTeamFlagImage(string flagPrefixOrExternalID)
@@ -114,18 +90,11 @@ namespace Bets.Data
             return GetTeamLogoImage(null, externalID);
         }
 
-        public static string Img(this UrlHelper helper, string url, bool absolute = false, bool forEmail = true)
+        public static string Img(this UrlHelper helper, string url, bool absolute = false)
         {
             if (absolute)
             {
-                var imagePath = ImageRoot.Replace("~/", "") + url;
-               
-                if (forEmail && imagePath.EndsWith(".svg"))
-                {
-                    imagePath = SvgToPng(imagePath);
-                }
-
-                return AbsoluteUrl(helper) + imagePath;
+                return AbsoluteUrl(helper) + ImageRoot.Replace("~/", "") + url;
             }
             else
             {

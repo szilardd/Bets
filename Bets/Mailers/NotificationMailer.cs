@@ -25,22 +25,35 @@ namespace Bets.Mailers
 		
 		public void RoundNotification(int roundID)
 		{
-            var mailMessage = new MailMessage();
             var userRepo = new UserRepository(this.matchRepo.Context, matchRepo.UserID);
-			var userEmails = userRepo.GetActiveUsers().Select(e => new { e.Email, e.UserID }).ToList();	
-			var listingDataModel = new ListingParams<MatchForRoundModel> { Model = new MatchForRoundModel { RoundID = roundID, ForNotification = true } };
+            var users = userRepo.GetActiveUsers().Select(e => new UserModel { Email = e.Email, ID = e.UserID }).ToList();
+
+            SendRoundNotificationToEmails(roundID, users, userRepo);   
+		}
+
+        public void RoundNotificationToAdmin(int roundID)
+        {
+            var userRepo = new UserRepository(this.matchRepo.Context, matchRepo.UserID);
+            var adminUser = userRepo.Context.Users.Where(e => e.Username == "admin").Select(e => new UserModel { Email = e.Email, ID = e.UserID }).ToList();
+            SendRoundNotificationToEmails(roundID, adminUser, userRepo);
+        }
+
+        private void SendRoundNotificationToEmails(int roundID, List<UserModel> users, UserRepository userRepo)
+        {
+            var mailMessage = new MailMessage();
+            var listingDataModel = new ListingParams<MatchForRoundModel> { Model = new MatchForRoundModel { RoundID = roundID, ForNotification = true } };
 
             var matchForRoundRepo = new MatchesForRoundRepository(userRepo.Context);
 
             ViewData.Model = matchRepo.GetMatchesForRound(listingDataModel).ToList();
 
             //send notification to all users
-            foreach (var user in userEmails)
-			{
+            foreach (var user in users)
+            {
                 if (!string.IsNullOrEmpty(user.Email))
                 {
-                    matchForRoundRepo.UserID = user.UserID;
-                    
+                    matchForRoundRepo.UserID = user.ID;
+
                     ViewBag.BonusPointsLeft = matchForRoundRepo.GetUserBonus();
 
                     PopulateBody(mailMessage, viewName: "RoundNotification");
@@ -52,8 +65,8 @@ namespace Bets.Mailers
                         To = user.Email
                     });
                 }
-			}
-		}
+            }
+        }
 
 		public void MatchNotificationForToday()
 		{

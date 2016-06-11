@@ -16,7 +16,7 @@ namespace Bets.Controllers
 	{
 		public UserBetsController() : base(Module.UserBets) 
         {
-            ViewBag.Name = "UserBets";
+            this.name = "UserBets";
         }
 
         protected override void SetIndexData()

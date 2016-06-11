@@ -106,5 +106,11 @@ namespace Bets.Controllers
                 return Json(new ActionStatus { Success = false, Message = ex.ToString() });
             }
         }
+
+        [HttpGet]
+        public void GenerateEmailImages()
+        {
+            ImageHelper.GeneratePngFromSvg();
+        }
     }
 }
