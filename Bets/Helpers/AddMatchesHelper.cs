@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Bets.Helpers
 {
@@ -101,11 +102,19 @@ namespace Bets.Helpers
             //Clean the html
             string Results = UnHtml(data);
             Results = Results.Replace("N.Ireland", "Northern Ireland");
+
+            Trace.TraceInformation("Result from LiveScore");
+            Trace.TraceInformation(Results);
+
             //Loop through the matches and search for them within the clean html 
             foreach (var Match in Matches)
             {
-                if(Match.FirstTeamGoals != null && Match.SecondTeamGoals != null)
+                var logPrefix = $"Match ID {Match.ID} ({Match.FirstTeamName} - {Match.SecondTeamName})";
+
+                if (Match.FirstTeamGoals == null && Match.SecondTeamGoals == null)
                 {
+                    Trace.TraceInformation($"{logPrefix} - Determinining result - match date {Match.Date}");
+
                     string FirstTeam = Match.FirstTeamName;
                     string SecondTeam = Match.SecondTeamName;
 
@@ -118,10 +127,22 @@ namespace Bets.Helpers
                         String result = Results.Substring(pFrom, pTo - pFrom);
                         Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
                         Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
+
+                        Trace.TraceInformation($"{logPrefix} - Found result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+
                         MatchesWithResults.Add(Match);
                     }
-                }            
+                    else
+                    {
+                        Trace.TraceInformation($"{logPrefix} - No result found");
+                    }
+                }
+                else
+                {
+                    Trace.TraceInformation($"{logPrefix} - Ingoring because already has result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+                }         
             }
+
             return MatchesWithResults;
         }
 

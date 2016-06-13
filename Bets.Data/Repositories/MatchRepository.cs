@@ -52,6 +52,8 @@ namespace Bets.Data
 							ID = match.MatchID,
 							FirstTeamName = firstTeam.Name,
 							SecondTeamName = secondTeam.Name,
+                            FirstTeamGoals = match.FirstTeamGoals,
+                            SecondTeamGoals = match.SecondTeamGoals,
 							Date = match.Date
 						}
 
