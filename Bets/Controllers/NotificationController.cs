@@ -49,5 +49,14 @@ namespace Bets.Controllers
 
 			return null;
         }
+
+        public void SendToAdmin()
+        {
+            var settingRepo = new SettingsRepository();
+            var setting = settingRepo.GetItem(0);
+
+            var mailMessage = new NotificationMailer();
+            mailMessage.RoundNotificationToAdmin(setting.CurrentRoundID);
+        }
     }
 }

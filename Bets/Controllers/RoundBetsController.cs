@@ -12,7 +12,7 @@ namespace Bets.Controllers
 		protected override void SetIndexData()
 		{
 			base.SetIndexData();
-			var rounds = new RoundRepository().GetClosedRounds(DataExtensions.UserIsAdmin());
+			var rounds = new RoundRepository().GetFinishedRounds(DataExtensions.UserIsAdmin());
 			ViewData.Model = rounds.GetEnumerator();
 			
 			if (rounds.Count() > 0)

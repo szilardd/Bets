@@ -11,12 +11,12 @@ namespace Bets.Data
 		public RoundRepository() : base() { }
 		public RoundRepository(BetsDataContext context, int userID) : base(context, userID) {}
 
-		public IQueryable<ModelIDName> GetClosedRounds(bool forAdmin = false)
+		public IQueryable<ModelIDName> GetFinishedRounds(bool forAdmin = false)
 		{
 			var entities = this.GetAll();
 
 			if (!forAdmin)
-				entities = entities.Where(e => e.Closed);
+				entities = entities.Where(e => e.Finished);
 
 			return entities.OrderByDescending(e => e.RoundID).Select(e => new ModelIDName
 			{
@@ -31,7 +31,7 @@ namespace Bets.Data
            (
                from rounds in this.Context.Rounds
                where rounds.RoundID == roundID
-               select rounds.Closed
+               select rounds.Finished
            ).SingleOrDefault();
 
             return isexpired;
@@ -49,9 +49,9 @@ namespace Bets.Data
             return roundname;
         }
 
-		public IEnumerable<DropdownOption> GetRecentRounds()
+		public IEnumerable<DropdownOption> GetActiveRounds()
 		{
-			return this.GetAll().OrderByDescending(e => e.RoundID).Take(2).Select(e => new DropdownOption
+			return this.GetAll().Where(e => !e.Closed).Select(e => new DropdownOption
 			{
 				Text = e.Name,
 				Value = e.RoundID.ToString()

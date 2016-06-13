@@ -200,6 +200,6 @@ FakesAssemblies/
 /Bets/content/combined/*
 !/Bets/content/combined/readme.md
 /Bets/content/img/profile/*
-!Bets/content/img/profile/user.gif
+!Bets/content/img/profile/user.svg
 Bets/App_Data/tracing/*
 !Bets/App_Data/tracing/readme.md

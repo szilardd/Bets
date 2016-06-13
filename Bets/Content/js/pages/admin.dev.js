@@ -302,6 +302,48 @@
 	    });
 	}
 
+	function bindSendEmails() {
+
+	    var $this = $(this),
+            $block = $this.parent(),
+            $message = $('.message');
+
+	    $container.find('.btn-send-email').click(function () {
+
+	        $message.text('Wait for it...');
+	        Utils.blockElement($block, true);
+
+	        AjaxUtils.post({
+	            url: 'Admin/SendEmail',
+	            data: { email: $("#Email").val() },
+	            dataType: "json",
+	            success: function (result) {
+
+	                if (result) {
+	                    $message.text(result.Message);
+	                }
+	                else {
+	                    $message.text('Unknown error');
+	                }
+
+	                endAction(result, $this);
+	            },
+	            error: function (result) {
+
+	                if (result) {
+	                    $message.text(result.Message);
+	                }
+	                else {
+	                    $message.text('Unknown error');
+	                }
+
+	                endAction(false, $this);
+	            }
+	        });
+	    });
+
+	}
+
 	function init() {
 
 	    $container = $('#admin-content');
@@ -314,6 +356,7 @@
 	    bindCloseRound();
 	    bindRemovePlayer();
 	    bindGetMatches();
+	    bindSendEmails();
 	}
 
 	return {

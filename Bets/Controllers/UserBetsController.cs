@@ -16,7 +16,7 @@ namespace Bets.Controllers
 	{
 		public UserBetsController() : base(Module.UserBets) 
         {
-            ViewBag.Name = "UserBets";
+            this.name = "UserBets";
         }
 
         protected override void SetIndexData()
@@ -29,7 +29,7 @@ namespace Bets.Controllers
             if (users.Count() > 0)
                 ViewBag.FirstUserID = users.First().UserID;
 
-			var rounds = new RoundRepository().GetClosedRounds(DataExtensions.UserIsAdmin());
+			var rounds = new RoundRepository().GetFinishedRounds(DataExtensions.UserIsAdmin());
             ViewBag.Rounds = rounds.GetEnumerator();
 
             if (rounds.Count() > 0)

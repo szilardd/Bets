@@ -42,8 +42,8 @@
 					$nextRow.remove();
 
 			    //inline block
-				$this.parents('.cell-BetAction').toggleClass('loading');
-				$this.attr('disabled');
+				$this.parents('.cell-BetAction,.date-and-action').toggleClass('loading');
+				$this.attr('disabled', true);
 
 				AjaxUtils.post({
 					url			:	"MatchBet?MatchID=" + matchID,
@@ -56,8 +56,8 @@
 										$td = $nextRow.find(':first');
 
 										$td.html(html);
-
-										$this.parents('.cell-BetAction').toggleClass('loading');
+										
+										$this.parents('.cell-BetAction,.date-and-action').toggleClass('loading');
 										$this.removeAttr('disabled').removeClass('loading');
 									}
 				});

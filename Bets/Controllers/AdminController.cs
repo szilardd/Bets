@@ -24,7 +24,7 @@ namespace Bets.Controllers
 			ViewBag.Teams = teamRepo.GetTeamList(true).ToList();
 			ViewBag.MatchID = new MatchRepository(teamRepo.Context, teamRepo.UserID).GetActiveMatchList().ToList();
 			ViewBag.PlayerID = new PlayerRepository(teamRepo.Context, teamRepo.UserID).GetPlayerGoalsForCurrentRound();
-			ViewBag.RoundID = new RoundRepository(teamRepo.Context, teamRepo.UserID).GetRecentRounds();
+			ViewBag.RoundID = new RoundRepository(teamRepo.Context, teamRepo.UserID).GetActiveRounds();
 		}
 
 		[HttpPost]
@@ -85,6 +85,32 @@ namespace Bets.Controllers
             {
                 new MatchRepository().AddMatchResult(Match);
             }
+        }
+
+        [HttpPost]
+        public JsonResult SendEmail(string email)
+        {
+            try
+            {
+                Email.Send(new Email
+                {
+                    Body = "Test",
+                    Subject = "Test email from LynxBets",
+                    To = email
+                }, false);
+
+                return Json(new ActionStatus { Success = true, Message = "Success!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new ActionStatus { Success = false, Message = ex.ToString() });
+            }
+        }
+
+        [HttpGet]
+        public void GenerateEmailImages()
+        {
+            ImageHelper.GeneratePngFromSvg();
         }
     }
 }

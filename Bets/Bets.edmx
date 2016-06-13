@@ -179,7 +179,7 @@
           <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
 		  <Property Name="PasswordSalt" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Email" Type="varchar" Nullable="true" MaxLength="150" />
           <Property Name="InsertedDate" Type="datetime" Nullable="false" />
           <Property Name="ProfileID" Type="int" Nullable="false" />
           <Property Name="PointsWon" Type="int" Nullable="false" />
@@ -530,7 +530,7 @@
           <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
 		  <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="150" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Type="DateTime" Name="InsertedDate" Nullable="false" />
           <Property Type="Int32" Name="ProfileID" Nullable="false" />
           <Property Type="Int32" Name="PointsWon" Nullable="false" />

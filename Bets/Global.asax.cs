@@ -10,6 +10,7 @@ using System.Web.WebPages;
 using System.Text.RegularExpressions;
 using System.Web.Http;
 using Autofac;
+using Bets.Data;
 
 namespace Bets
 {
@@ -49,6 +50,7 @@ namespace Bets
             Exception exception = Server.GetLastError();
             Server.ClearError();
 
+            Response.TrySkipIisCustomErrors = true;
             Response.Clear();
 
             var code = (exception is HttpException) ? (exception as HttpException).GetHttpCode() : 500;
@@ -83,6 +85,8 @@ namespace Bets
 				Context.Response.Clear();
 				Context.Response.StatusCode = 401;
 			}
+
+            Context.Response.TrySkipIisCustomErrors = true;
 		}
 
 		#endregion

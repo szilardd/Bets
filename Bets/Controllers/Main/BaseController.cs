@@ -13,6 +13,7 @@ namespace Bets.Controllers
     public class BaseController : Controller
     {
 		protected Module Module { get; set; }
+        protected string name;
 
 		public BaseController()
 		{
@@ -32,6 +33,7 @@ namespace Bets.Controllers
 		{
 			this.SetData();
 
+            ViewBag.Name = name;
 			ViewBag.IsAdmin = false;
 		
 			if (Request.IsAuthenticated)

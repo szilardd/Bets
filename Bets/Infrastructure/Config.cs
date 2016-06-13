@@ -26,7 +26,8 @@ namespace Bets.Helpers
 	{
 		SubSessionID,
 		Breadcrumbs,
-		User
+		User,
+        MaxBonusPerMatch
 	}
 
 	public enum TempKey

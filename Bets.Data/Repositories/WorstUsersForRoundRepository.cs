@@ -19,7 +19,7 @@ namespace Bets.Data
 						setting in this.Context.Settings on pointForRound.RoundID equals listingDataModel.Model.RoundID
 						join
 						round in this.Context.Rounds on pointForRound.RoundID equals round.RoundID
-				where	(this.IsAdmin || round.Closed)
+				where	(this.IsAdmin || round.Finished)
 				orderby	pointForRound.MatchPointsBonus + pointForRound.GoalscorerPoints ascending
 				select	new UserModel
 						{

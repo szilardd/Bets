@@ -12,7 +12,17 @@ else {
 		<span>&nbsp;-&nbsp;</span>
 		<span class="SecondTeamGoals">@Model.SecondTeamGoals</span>
 	</td>
-	<td>@Model.Bonus</td>
+    if (ViewBag.MaxBonusPerMatch == 1)
+    {
+        <td>
+            <span class="Bonus removed">@Model.Bonus</span>
+            <span class="bonus-single @(Model.Bonus == 1 ? "" : "hidden")"></span>
+        </td>
+    }
+    else
+    {
+        <td class="Bonus">@Model.Bonus</td>
+    }
 	<td>@(winType != WinType.None ? Model.PointsWonBonus.ToString() : "")</td>
 	<td>
 		@switch (winType)

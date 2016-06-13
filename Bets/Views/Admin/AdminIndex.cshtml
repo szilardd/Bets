@@ -1,181 +1,179 @@
-﻿@{ 
-	var options = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.Teams);
-	var rounds = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.RoundID);
+﻿@{
+    var options = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.Teams);
+    var rounds = Html.GetOptions((IEnumerable<SelectListItem>)ViewBag.RoundID);
 }
 
 @section ExternalsJS {
-	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
-		.Add(Url.ScriptDev("pages/admin"))
-		.Render("~/content/combined/combined-admin-#.min.js"))
+    @MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+        .Add(Url.ScriptDev("pages/admin"))
+        .Render("~/content/combined/combined-admin-#.min.js"))
 }
 
 <div id="admin-page" class="clearfix">
 
-	<div id="admin-menu">
-		<ul class="clearfix">
-			@*<li><a href="#" data-page="Admin" data-subpage="AddMatches">Manage Matches</a></li>
-			<li><a href="#">Manage Players</a></li>*@
+    <div id="admin-menu">
+        <ul class="clearfix">
+            @foreach (System.Web.DynamicData.MetaTable table in System.Web.DynamicData.MetaModel.Default.Tables.OrderBy(e => e.DisplayName))
+            {
+                <li><a href="@table.GetActionPath("List")">@table.DisplayName</a></li>}
+        </ul>
+    </div>
 
-			@foreach (System.Web.DynamicData.MetaTable table in System.Web.DynamicData.MetaModel.Default.Tables.OrderBy(e => e.DisplayName)) {
-		        <li><a href="@table.GetActionPath("List")">@table.DisplayName</a></li>
-			}
-		</ul>
-	</div>
-	
-	<div id="admin-content">
+    <div id="admin-content">
 
-		<!-- add round -->
-		<div class="clearfix">
-		
-			<h2>Add round</h2>
+        <!-- add round -->
+        <div class="clearfix">
 
-			<div>
-				<table>
-					<thead><th>Name</th></thead>
-					<tbody>
-						<tr>
-							<td><input type="text" id="RoundName" /></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+            <h2>Add round</h2>
 
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-add-round" value="Save" />
-				<span></span>
-			</div>
-		</div>
+            <div>
+                <table>
+                    <thead>
+                    <th>Name</th></thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" id="RoundName" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-		<!-- add matches -->
-		<div class="clearfix">
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-add-round" value="Save" />
+                <span></span>
+            </div>
+        </div>
 
-			<h2>Add matches</h2>
+        <!-- add matches -->
+        <div class="clearfix">
 
-			@Html.Partial("_AddMatch")
-	  
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-add-matches" value="Save" />
-				<span></span>
-			</div>
-		</div>
+            <h2>Add matches</h2>
 
-		<!-- add match result -->
-		<div class="clearfix">
-			<h2>Add match result</h2>
+            @Html.Partial("_AddMatch")
 
-			<table>
-				<thead>
-					<tr>
-						<th>Match</th>
-						<th>Goals 1</th>
-						<th>Goals 2</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>@Html.DropDownList("MatchID")</td>
-						<td><input type="text" id="FirstTeamGoals" class="span1"/></td>
-						<td><input type="text" id="SecondTeamGoals" class="span1"/></td>
-					</tr>
-				</tbody>
-			</table>
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-add-matches" value="Save" />
+                <span></span>
+            </div>
+        </div>
 
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-add-match-result" value="Save" />
-				<span></span>
-			</div>
-		</div>
+        <!-- add match result -->
+        <div class="clearfix">
+            <h2>Add match result</h2>
 
-		<!-- set player goals -->
-		<div class="goal-container clearfix">
-			<h2>Add player goals</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Match</th>
+                        <th>Goals 1</th>
+                        <th>Goals 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.DropDownList("MatchID")</td>
+                        <td><input type="text" id="FirstTeamGoals" class="span1" /></td>
+                        <td><input type="text" id="SecondTeamGoals" class="span1" /></td>
+                    </tr>
+                </tbody>
+            </table>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Goals in current round</th>
-						<th>Goals in total</th>
-					</tr>
-				</thead>
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-add-match-result" value="Save" />
+                <span></span>
+            </div>
+        </div>
 
-				<tbody>
-					<tr>
-						<td>@Html.CustomDataDropdown("PlayerID", true)</td>
-						<td>
-							<input type="button" value="-" class="btn btn-goal" data-val="-1"/>
-							<input type="text" value="0" id="GoalsScored" class="span1 center-text"/>
-							<input type="button" value="+" class="btn btn-goal" data-val="1"/>
-						</td>
-						<td id="GoalsScoredTotal">0</td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-save-goals" value="Save" />
-				<span></span>
-			</div>
-		</div>
+        <!-- set player goals -->
+        <div class="goal-container clearfix">
+            <h2>Add player goals</h2>
 
-		<!-- remove team -->
-		<div class="clearfix">
-			<h2>Remove Team</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Goals in current round</th>
+                        <th>Goals in total</th>
+                    </tr>
+                </thead>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-					</tr>
-				</thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.CustomDataDropdown("PlayerID", true)</td>
+                        <td>
+                            <input type="button" value="-" class="btn btn-goal" data-val="-1" />
+                            <input type="text" value="0" id="GoalsScored" class="span1 center-text" />
+                            <input type="button" value="+" class="btn btn-goal" data-val="1" />
+                        </td>
+                        <td id="GoalsScoredTotal">0</td>
+                    </tr>
+                </tbody>
+            </table>
 
-				<tbody>
-					<tr>
-						<td><select id="RemoveTeamID">@options</select></td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-remove-team" value="Save" />
-				<span></span>
-			</div>
-		</div>
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-save-goals" value="Save" />
+                <span></span>
+            </div>
+        </div>
 
-		<!-- remove player -->
-		<div class="clearfix">
-			<h2>Remove Player</h2>
+        <!-- remove team -->
+        <div class="clearfix">
+            <h2>Remove Team</h2>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-					</tr>
-				</thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
 
-				<tbody>
-					<tr>
-						<td>@Html.CustomDataDropdown("PlayerID", true, new Dictionary<string,object> { { "id", "RemovePlayerID" } })</td>
-					</tr>
-				</tbody>
-			</table>
-			
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-remove-player" value="Save" />
-				<span></span>
-			</div>
-		</div>
+                <tbody>
+                    <tr>
+                        <td><select id="RemoveTeamID">@options</select></td>
+                    </tr>
+                </tbody>
+            </table>
 
-		<!-- close round -->
-		<div class="clearfix">
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-remove-team" value="Save" />
+                <span></span>
+            </div>
+        </div>
 
-			<h2>Close current round</h2>
+        <!-- remove player -->
+        <div class="clearfix">
+            <h2>Remove Player</h2>
 
-			<div class="save-container">
-				<input type="submit" class="btn primary btn-close-round" value="Close" />
-				<span></span>
-			</div>
-		</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>@Html.CustomDataDropdown("PlayerID", true, new Dictionary<string, object> { { "id", "RemovePlayerID" } })</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-remove-player" value="Save" />
+                <span></span>
+            </div>
+        </div>
+
+        <!-- close round -->
+        <div class="clearfix">
+
+            <h2>Close current round</h2>
+
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-close-round" value="Close" />
+                <span></span>
+            </div>
+        </div>
 
         <!-- Add matches to round -->
         <div class="clearfix">
@@ -197,7 +195,21 @@
                 <span></span>
             </div>
         </div>
-	</div>
+
+        <!-- Email test matches -->
+        <div class="clearfix">
+
+            <h2>Send test email</h2>
+
+            <input type="text" name="Email" id="Email" />
+
+            <div class="message"></div>
+            
+            <div class="save-container">
+                <input type="submit" class="btn primary btn-send-email" value="Send" />
+                <span></span>
+            </div>
+        </div>
+    </div>
 
 </div>
-

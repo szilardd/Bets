@@ -17,6 +17,8 @@ namespace Bets.Controllers
 
 			this.ListingViewModel.IsSubPage = true;
 			this.ListingViewModel.MinPageSize = 20;
-		}
+
+            ViewBag.MaxBonusPerMatch = new SettingsRepository().GetItem(0).MaxBonusPerMatch;
+        }
     }
 }

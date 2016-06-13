@@ -22,7 +22,7 @@ namespace Bets.Data.Models
 		public int? BetPointsWonBonus { get; set; }
 
 		public bool ForNotification { get; set; }
-	}
+    }
 
 	public class MatchWithNoBetModel : MatchForRoundModel
 	{

@@ -22,20 +22,28 @@
 		this.matchViewModel = new MatchViewModel(params);
 		this.savedMatchViewModel = new MatchViewModel(params);
 
+		this.maxBonusPerMatch = maxBonusPerMatch;
 		this.maxUserBonus = ko.observable(Math.min(parseInt(userBonus) + this.matchViewModel.bonus(), maxBonusPerMatch));
 
 		this.save = function () {
 
-			var $btnSave = self.$betRow.find('.btn-save').parent();
+		    var $btnSave = self.$betRow.find('.btn-save'),
+                $container = $btnSave.parent();
+
+		    $btnSave.removeClass("invalid");
 
 			//validate
 			if (self.matchViewModel.firstTeamGoals() == '' || self.matchViewModel.secondTeamGoals() == '') {
-				self.$betRow.addClass("invalid");
+			    $btnSave.addClass("invalid");
+			    setTimeout(function () {
+			        $btnSave.removeClass("invalid");
+			    }, 200);
 				return;
 			}
 
 			//inline block
-			Utils.blockElement($btnSave, true);
+			$btnSave.parents('.cell-BetAction').toggleClass('loading');
+			$btnSave.attr('disabled', true);
 
 			AjaxUtils.post({
 				url				:	self.$page.data('pagetype') + '/Add',
@@ -47,18 +55,29 @@
 										//refresh user bonus
 										userBonus = parseInt(response.UserBonus);
 										self.maxUserBonus(Math.min(self.matchViewModel.bonus() + userBonus, maxBonusPerMatch));
-
+										
 										if (response.Success === false)
-											self.$betRow.addClass("invalid");
+										    $btnSave.addClass("invalid");
 										else
-											self.endEdit();
+										    self.endEdit();
 
-										Utils.unblockElement($btnSave);
+										$btnSave.parents('.cell-BetAction').toggleClass('loading');
+										$btnSave.removeAttr('disabled').removeClass('loading');
+
+                                        // update listing row UI
+										var $rowBonusElement = self.$row.find('.bonus-single');
+										if (self.matchViewModel.bonus()) {
+										    $rowBonusElement.removeClass('hidden');
+										}
+										else {
+										    $rowBonusElement.addClass('hidden');
+										}
 									},
 				error			:	function () {
-										self.$betRow.addClass("invalid");
+				                        $btnSave.addClass("invalid");
 
-										Utils.unblockElement($btnSave);
+				                        $btnSave.parents('.cell-BetAction').toggleClass('loading');
+				                        $btnSave.removeAttr('disabled').removeClass('loading');
 									}
 			});
 		};
@@ -177,6 +196,16 @@
 				bonus			:	$row.find('.Bonus').text()
 			});
 
+            
+			var $btnSingle = $betRow.find('.btn-bonus-single');
+
+			if (betViewModel.bonus) {
+			    $btnSingle.addClass('selected');
+			}
+			else {
+			    $btnSingle.removeClass('selected');
+			}
+
 			//create and apply bet row bindings
 			ko.bindingConventions.conventions({
 				".btn-save"			:	{ 	click	:	function(viewModel, event) {
@@ -198,7 +227,19 @@
 				'.btn-bonus'		:	{	click	:	function(viewModel, event) {
 															viewModel.updateBonusPoints.call(event.target);
 														}
-										}
+										},
+				'.btn-bonus-single':    {
+                                            click   :   function(viewModel, event) {
+
+                                                            var $element = $(event.target);
+                                                            $element.toggleClass('selected');
+
+                                                            var bonus = $element.hasClass('selected') ? 1 : 0;
+                                                            viewModel.matchViewModel.bonus(bonus);
+
+                                                            $row.find('.Bonus').text(bonus);
+                                                        }
+                        				}
 			});
 
 			ko.applyBindings(betViewModel, $betRow[0]);
@@ -210,9 +251,6 @@
 										},
 				'.SecondTeamGoals'	:	function(viewModel) {
 											return { text : viewModel.secondTeamGoals };
-										},
-				'.Bonus'			:	function(viewModel) {
-											return { text: viewModel.bonus };
 										}
 			});
 

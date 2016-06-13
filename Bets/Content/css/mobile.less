@@ -7,6 +7,10 @@
         -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
     }
 
+    body {
+        width: auto;
+    }
+
     .fixed {
         position: fixed;
     }
@@ -17,17 +21,28 @@
 
     .main {
         padding-top: 0;
+        height: 75px;
     }
 
     .logo {
-        width: 28px;
+        width: auto;
         height: 47px;
-        left: 214px;
-        top: 21px;
+        left: 175px;
+        top: 17px;
     }
 
     #title {
-        margin-left: 7px;
+        margin-left: 5px;
+        margin-top: 5px;
+        padding: 0;
+    }
+
+    #login-page #title {
+        margin-left: 24px;
+    }
+
+    .account, #hero, footer {
+        display: none;
     }
 
     header {
@@ -55,9 +70,13 @@
     |    MENU     |
     -------------*/
 
+    nav a.grn:hover, nav a.grn.selected {
+        background: none;
+    }
+
     #menu-trigger {
         background: center center no-repeat transparent;
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUeNpi/P//PwOtARMDHQBdLGFBYtMq3BiHT3DRPU4YR4NrNAmPJuHRJDyahEeT8Ii3BCDAAF0WBj5Er5idAAAAAElFTkSuQmCC);
+        background-image: url(../img/hamburger-menu.svg);
         display: block;
         width: 40px;
         height: 40px;
@@ -84,14 +103,16 @@
         }
     #menu li {
         float: none;
+        height: 50px;
     }
 
         #menu li a {
             color: #FFF;
+            line-height: 30px;
         }
 
             #menu li a.selected {
-                color: @secondaryColor;
+                color: @menuColor;
             }
 
             #menu .menu-logoff a {
@@ -187,7 +208,7 @@
     }
 
         .page-profile form {
-            width: auto;
+            width: 215px;
             margin: 0 auto;
             border: none;
             box-shadow: none;
@@ -203,12 +224,10 @@
     -------------*/
     img.thumb, img.flag {
         float:none;
-        margin: auto;
     }
 
         td img.flag {
             float:none;
-            margin-top: 0;
         }
 
     .listing-table td img.flag {
@@ -216,6 +235,49 @@
         float:none;
     }
 
+    /*-----------------
+    |   GLOBAL BETS   |
+    -----------------*/
+    .goalscorer, .winner {
+        margin-right: 0;
+    }
+
+        .goalscorer h2 {
+
+        }
+
+        .winner h2 {
+            margin-bottom: 50px;
+        }
+
+    #listing-goalscorerstandings div.bet-made {
+        width: 16px;
+        height: 16px;
+    }
+
+    #listing-goalscorerstandings li:first-child {
+        margin-left: 10px;
+    }
+
+    #listing-goalscorerstandings li:last-child {
+        margin-right: 10px;
+    }
+
+    .listing-horizontal div.bet-made, .goalscorer div.bet-made, .winner div.bet-made {
+        top: 4px;
+        left: 9px;
+        width: 12px;
+        height: 12px;
+    }
+
+    #listing-goalscorer .listing-items, #listing-winner .listing-items {
+        height: 350px;
+    }
+
+    .goalscorer-selected div.bet-made, .winner-selected div.bet-made {
+        left: 2px;
+        top: 2px;
+    }
     .bet-win {
         float: right;
         width: 18px;
@@ -245,12 +307,33 @@
         padding-left: 6px;
     }
 
+    .listing-page tr.bet-row td > div:first-child {
+        margin-left: 120px;
+    }
+
+    .listing-page .bonus-single {
+        padding: 0;
+        display: block;
+        margin: 0;
+        margin-left: 14px;
+        width: 16px;
+        height: 16px;
+    }
+
     .points li, .results li {
         text-align: center;
     }
 
     #listing-matchesforcurrentround tbody:first-child {
         display: none;
+    }
+
+    #listing-matchbet tr {
+        border:none;
+    }
+
+    #listing-matchbet tr:first-child th {
+        padding-left: 3px;
     }
 
     #listing-matchesforround,
@@ -365,6 +448,17 @@
             float: right;
         }
 
+        .cell-BetAction.loading::after {
+            top: 15px;
+            left: 130px;
+        }
+
+        .date-and-action.loading::after {
+            top: 25px;
+            right: 15px;
+            left: inherit;
+        }
+
     /*---------------
     |   STANDINGS   |
     ---------------*/
@@ -389,7 +483,7 @@
     }
 
     #listing-goalscorerstandings {
-        width: 285px;
+        width: 300px;
     }
 
         #listing-goalscorerstandings li {
@@ -399,12 +493,23 @@
         #listing-goalscorerstandings img.full {
             height: auto;
         }
+        
+    #listing-goalscorer img.full, #listing-winner img.full {
+        min-height: 63px;
+    }
 
     /*----------------
     |    USER BETS   |
     ----------------*/
     .page-userbets .slider-content {
         width: 100%;
+        border-right: none;
+    }
+
+    .page-userbets .slider-content:hover, .page-userbets .slider-content.active {
+        background: none;
+        color: #000; 
+        border-right: none;
     }
 
     /*----------------
@@ -412,16 +517,21 @@
     ----------------*/
     .global-bets .goalscorer, .global-bets .winner {
         width: 30%;
-        min-height: 330px;
+        min-height: 281px;
     }
 
         .global-bets .goalscorer h3, .global-bets .winner h3 {
             font-size: 20px;
         }
 
-        .global-bets .goalscorer h2, .global-bets .winner h2 {
-            margin-top: 70px;
+        .global-bets .goalscorer {
+            margin-top: 51px;
         }
+
+        .global-bets .winner {
+            margin-top: 51px;
+        }
+
 
     .global-bets #listing-goalscorer, .global-bets #listing-winner {
         width: 70%;
@@ -438,10 +548,6 @@
             min-height: 0;
             min-height: 70px;
         }
-
-            .global-bets #listing-winner li {
-                min-height: 80px;
-            }
 
             .global-bets .listing-page li div {
                 margin: 0;
@@ -480,18 +586,34 @@
 
         .global-expired .listing-single {
             width: 50%;
+            margin-right: 0;
         }
 
     .global-expired .goalscorer, .global-expired .winner {
-        width: 100px;
+        width: 150px;
         margin: 0 auto;
         float: none;
     }
 
-    .goalscorer, .winner {
-        border-right: 0;
+    /*-----------------
+    |    DASHBOARD    |
+    -----------------*/
+    .page-dashboard tr {
+        border-bottom: dotted 1px #CCC;
     }
 
+    .page-dashboard #container {
+        padding: 10px 0;
+    }
+
+    .page-dashboard .btn-bet, .page-dashboard .btn-save, .page-dashboard .btn-view {
+        margin-right: 5px;
+        height: 24px;
+    }
+
+    .page-dashboard .date-and-action li:first-child {
+        margin-left: 5px;
+    }
 
     /*-------------
     |    TEAMS    |
@@ -553,6 +675,10 @@
 	#listing-matchbet {
 		width: 100%;
 	}
+        #listing-matchbet tr {
+            border:none;
+        }
+
 		#listing-matchbet td, #listing-matchbet th {
 			text-align: center;
 		}
@@ -568,6 +694,7 @@
 
 		    #listing-matchbet td:first-child img {
 			    float:left;
+                margin-top:3px;
 		    }
 		
 		    #listing-matchbet td:first-child span {

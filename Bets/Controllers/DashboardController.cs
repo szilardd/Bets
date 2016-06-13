@@ -12,7 +12,10 @@ namespace Bets.Controllers
 {
 	public partial class DashboardController : BaseController
 	{
-		public DashboardController() : base(Module.Dashboard) { }
+		public DashboardController() : base(Module.Dashboard)
+        {
+            this.name = "Dashboard";
+        }
 
 		protected override void SetIndexData()
 		{
