@@ -1,7 +1,7 @@
 ﻿@model MatchBetModel
 
 @if (ViewData["type"] == "header") {
-	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "Username", "User" }, { "", "Bet" }, { "PointsWonBonus", "Pts" }, { "WinTypeID", "Won" } });
+	@Html.Partial(Url.Template("ListingHeader"), new Dictionary<string, string> { { "Username", "User" }, { "", "Bet" }, { "PointsWonBonus", "Pts" }, { "WinTypeID", "" } });
 }
 else {
 	var winType = Model.WinTypeID.ToEnum<WinType>();

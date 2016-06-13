@@ -200,10 +200,10 @@ namespace Bets.Data
 			//group matches by user
 			foreach (var match in matches)
 			{
-				if (match.Username != "admin")
-				{
-					string email = match.UserEmail;
+                string email = match.UserEmail;
 
+                if (match.Username != "admin" && !string.IsNullOrEmpty(email))
+				{
 					if (!matchListByUser.ContainsKey(email))
 						matchListByUser[email] = new List<MatchWithNoBetModel>();
 
