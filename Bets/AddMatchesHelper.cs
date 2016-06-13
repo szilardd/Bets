@@ -104,23 +104,20 @@ namespace Bets.Helpers
             //Loop through the matches and search for them within the clean html 
             foreach (var Match in Matches)
             {
-                if(Match.FirstTeamGoals != null && Match.SecondTeamGoals != null)
+                string FirstTeam = Match.FirstTeamName;
+                string SecondTeam = Match.SecondTeamName;
+
+                int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
+                int pTo = Results.LastIndexOf(SecondTeam);
+
+                //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
+                if(pTo - pFrom > 0 && Results.IndexOf(FirstTeam) >= 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
                 {
-                    string FirstTeam = Match.FirstTeamName;
-                    string SecondTeam = Match.SecondTeamName;
-
-                    int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
-                    int pTo = Results.LastIndexOf(SecondTeam);
-
-                    //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
-                    if (pTo - pFrom > 0 && Results.IndexOf(FirstTeam) >= 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
-                    {
-                        String result = Results.Substring(pFrom, pTo - pFrom);
-                        Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
-                        Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
-                        MatchesWithResults.Add(Match);
-                    }
-                }            
+                    String result = Results.Substring(pFrom, pTo - pFrom);
+                    Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
+                    Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
+                    MatchesWithResults.Add(Match);
+                }  
             }
             return MatchesWithResults;
         }

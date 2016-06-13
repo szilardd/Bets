@@ -76,6 +76,7 @@ namespace Bets.Controllers
             return Json(new AddMatchesHelper().AddMatchesToRound(m_strFilePath, roundID));
         }
 
+        [AllowAnonymous]
         public void GetMatchResults()
         {
             List<MatchModel> MatchesWithResults = new AddMatchesHelper().GetMatchResultsHelper();
