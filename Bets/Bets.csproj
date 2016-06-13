@@ -180,6 +180,10 @@
       <HintPath>..\packages\SquishIt.0.8.5\lib\SquishIt.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Svg, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
       <Private>True</Private>
@@ -588,6 +592,7 @@
     <Compile Include="Helpers\AddMatchesHelper.cs" />
     <Compile Include="Helpers\DataExtensions.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PagedList.cs" />
     <Compile Include="Helpers\UIExtensions.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
@@ -634,6 +639,7 @@
     <Content Include="Content\img\buttons\next.svg" />
     <Content Include="Content\img\buttons\prev.svg" />
     <Content Include="Content\img\hamburger-menu.svg" />
+    <Content Include="Content\img\icons\bonus.png" />
     <Content Include="Content\img\icons\bonus.svg" />
     <Content Include="Content\img\icons\no.svg" />
     <Content Include="Content\img\icons\star-bonus.svg" />
@@ -643,6 +649,260 @@
     <Content Include="Content\img\icons\yes.svg" />
     <Content Include="Content\img\magnifier.svg" />
     <Content Include="Content\img\profile\user.svg" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ad.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ae.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\af.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ag.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ai.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\al.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\am.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ao.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\aq.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ar.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\as.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\at.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\au.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\aw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ax.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\az.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ba.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bb.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bd.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\be.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bi.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bj.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bq.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\br.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bs.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\by.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\bz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ca.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cd.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ch.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ci.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ck.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\co.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cx.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cy.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\cz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\de.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\dj.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\dk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\dm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\do.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\dz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ec.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ee.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\eg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\eh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\er.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\es.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\et.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\eu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fi.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fj.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fo.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\fr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ga.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gb-eng.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gb-nir.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gb-sct.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gb-wls.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gb.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gd.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ge.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gi.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gp.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gq.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\gy.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\hk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\hm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\hn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\hr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ht.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\hu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\id.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ie.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\il.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\im.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\in.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\io.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\iq.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ir.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\is.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\it.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\je.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\jm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\jo.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\jp.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ke.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ki.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\km.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kp.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ky.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\kz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\la.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lb.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\li.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ls.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\lv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ly.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ma.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\md.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\me.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ml.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mo.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mp.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mq.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ms.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mx.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\my.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\mz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\na.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ne.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ng.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\no.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\NORTHENI.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\np.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\nz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\om.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pa.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pe.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ph.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ps.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\pw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\py.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\qa.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\re.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ro.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\rs.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ru.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\rw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sa.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sb.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sd.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sh.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\si.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sj.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\so.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ss.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sse.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\st.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sx.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sy.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\sz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\td.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\th.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tj.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tk.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tl.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\to.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tr.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tv.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\tz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ua.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ug.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\um.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\un.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\us.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\uy.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\uz.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\va.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\vc.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ve.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\vg.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\vi.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\vn.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\vu.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\WALES.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\wf.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ws.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\ye.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\yt.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\za.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\zm.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\zw.png" />
+    <Content Include="Content\plugins\flag-icon-css\flags\4x3\zz.png" />
     <Content Include="icon-114x114.png" />
     <Content Include="icon-128x128.png" />
     <Content Include="icon-144x144.png" />
@@ -1218,6 +1478,7 @@
     <Content Include="Content\js\jquery\jquery.validate.min.js" />
     <Content Include="Content\js\modernizr-1.7.min.js" />
     <Content Include="icon-96x96.png" />
+    <Content Include="lib\Svg.dll" />
     <Content Include="Settings\appsettings.config" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
@@ -1371,6 +1632,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -1388,6 +1652,9 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:52536/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

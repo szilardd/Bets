@@ -19,7 +19,7 @@ namespace Bets.Data
             var smtpClient = new SmtpClient();
             var message = new MailMessage();
 
-            message.Sender = new MailAddress(email.From, email.FromName);
+            message.Sender = message.From; // defined in config file
             message.To.Add(new MailAddress(email.To, email.ToName));
             message.IsBodyHtml = true;
             message.Subject = email.Subject;
@@ -60,7 +60,7 @@ namespace Bets.Data
             var smtpClient = new SmtpClient();
             var message = new MailMessage();
 
-            message.Sender = new MailAddress(email.From, email.FromName);
+            message.Sender = message.From; // defined in config file
             message.To.Add(new MailAddress(email.To, email.ToName));
             message.IsBodyHtml = true;
             message.Subject = email.Subject;

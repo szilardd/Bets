@@ -320,12 +320,36 @@
         height: 16px;
     }
 
+        #listing-matchbet .bonus-single {
+            margin-top: 6px;
+        }
+
+        #listing-matchbet .bet-win {
+            margin-top: 6px;
+        }
+
     .points li, .results li {
         text-align: center;
     }
 
     #listing-matchesforcurrentround tbody:first-child {
         display: none;
+    }
+
+    #listing-matchbet tr {
+        border:none;
+    }
+
+    #listing-matchbet tr:first-child th {
+        padding-left: 3px;
+    }
+
+    #listing-matchbet tr:first-child th:nth-child(2) {
+        text-align:left;
+    }
+
+    #listing-matchbet tr:first-child th:nth-child(4) {
+        text-align:right;
     }
 
     #listing-matchesforround,
@@ -445,9 +469,13 @@
             left: 130px;
         }
 
+        .date-and-action.loading {
+            position: relative;
+        }
+
         .date-and-action.loading::after {
-            top: 25px;
-            right: 15px;
+            top: 5px;
+            right: 20px;
             left: inherit;
         }
 
@@ -495,6 +523,13 @@
     ----------------*/
     .page-userbets .slider-content {
         width: 100%;
+        border-right: none;
+    }
+
+    .page-userbets .slider-content:hover, .page-userbets .slider-content.active {
+        background: none;
+        color: #000; 
+        border-right: none;
     }
 
     /*----------------
@@ -502,7 +537,7 @@
     ----------------*/
     .global-bets .goalscorer, .global-bets .winner {
         width: 30%;
-        min-height: 286px;
+        min-height: 281px;
     }
 
         .global-bets .goalscorer h3, .global-bets .winner h3 {
@@ -510,11 +545,11 @@
         }
 
         .global-bets .goalscorer {
-            margin-top: 50px;
+            margin-top: 51px;
         }
 
         .global-bets .winner {
-            margin-top: 50px;
+            margin-top: 51px;
         }
 
 
@@ -591,7 +626,7 @@
         padding: 10px 0;
     }
 
-    .page-dashboard .btn-bet, .page-dashboard .btn-save {
+    .page-dashboard .btn-bet, .page-dashboard .btn-save, .page-dashboard .btn-view {
         margin-right: 5px;
         height: 24px;
     }
@@ -658,8 +693,12 @@
 	|  MATCH BET   |
 	-------------*/
 	#listing-matchbet {
-		width: 100%;
+		width: 99%;
 	}
+        #listing-matchbet tr {
+            border:none;
+        }
+
 		#listing-matchbet td, #listing-matchbet th {
 			text-align: center;
 		}
@@ -675,6 +714,7 @@
 
 		    #listing-matchbet td:first-child img {
 			    float:left;
+                margin-top:3px;
 		    }
 		
 		    #listing-matchbet td:first-child span {

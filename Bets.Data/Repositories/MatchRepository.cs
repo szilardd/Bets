@@ -44,13 +44,19 @@ namespace Bets.Data
 						firstTeam in this.Context.Teams on match.FirstTeamID equals firstTeam.TeamID
 						join
 						secondTeam in this.Context.Teams on match.SecondTeamID equals secondTeam.TeamID
-				select	new MatchModel
+                        join 
+                        rounds in this.Context.Rounds on match.RoundID equals rounds.RoundID
+                where rounds.Closed == false
+                select	new MatchModel
 						{
 							ID = match.MatchID,
 							FirstTeamName = firstTeam.Name,
 							SecondTeamName = secondTeam.Name,
+                            FirstTeamGoals = match.FirstTeamGoals,
+                            SecondTeamGoals = match.SecondTeamGoals,
 							Date = match.Date
 						}
+
 			);
 		}
 

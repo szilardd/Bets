@@ -1,57 +1,57 @@
 ﻿@model LogOnModel
 @{ Layout = null; }
-
 <!DOCTYPE html>
 <html>
-	<head>
-        @Html.Partial(Url.Include("Meta"))
-		
+<head>
+    @Html.Partial(Url.Include("Meta"))
 
-		@Html.Partial(Url.Include("HeadJS"))
-		@Html.Partial(Url.Include("MainCSS"))
-        
-		@MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
-			.Add(Url.CSSDev("login"))
-			.Render("~/content/combined/combined-login-#.min.css"))
+    @Html.Partial(Url.Include("HeadJS"))
+    @Html.Partial(Url.Include("MainCSS"))
 
-        @Html.Partial(Url.Include("DeviceCSS"))
-	</head>
-	<body id="login-page">
+    @MvcHtmlString.Create(SquishIt.Framework.Bundle.Css()
+            .Add(Url.CSSDev("login"))
+            .Render("~/content/combined/combined-login-#.min.css"))
+    @Html.Partial(Url.Include("DeviceCSS"))
+</head>
+<body id="login-page">
+    <div class="login-holder">
+        <!--start title-->
+        <h1 class="fontface middle" id="title">Lynx Bets</h1>
+        <!--end title-->
 
-		<div class="login-holder">
+        @using (Html.BeginForm())
+            {
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
 
-			<!--start title-->
-			<h1 class="fontface middle" id="title">Lynx Bets</h1>
-			<!--end title-->
-		
-			@using (Html.BeginForm())
-			{
-				<div class="editor-field">
-					@Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
-					@Html.ValidationMessageFor(m => m.UserName)
-				</div>
-			
-				<br />
-			
-				<div class="editor-field">
-					@Html.PasswordFor(m => m.Password, new { placeholder = "password" })
-					@Html.ValidationMessageFor(m => m.Password)
-				</div>
-			
-				<br />
-			
-				<input type="submit" value="Sign In"/>
+            <br />
 
-	   			@Html.ValidationSummary(true, "Login was unsuccessful.")
-	   
-				if (ViewBag.Message != null) {
-					<br />	   
-					@ViewBag.Message
-				}
-			}
-		</div><!--end login-holder-->
+                <div class="editor-field">
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
 
-	</body>
+                <br />
 
-	@Html.Partial(Url.Include("MainJS"))
+                <div class="editor-field">
+                    @Html.CheckBoxFor(m => m.RememberMe) Remember me
+                </div>
+                <br />
+
+                <input type="submit" value="Sign In" />
+
+                @Html.ValidationSummary(true, "Login was unsuccessful.")
+
+            if (ViewBag.Message != null)
+            {
+                <br />
+                @ViewBag.Message
+            }
+        }
+    </div><!--end login-holder-->
+</body>
+
+@Html.Partial(Url.Include("MainJS"))
 </html>

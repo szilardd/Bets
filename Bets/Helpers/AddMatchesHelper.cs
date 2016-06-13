@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Bets.Helpers
 {
@@ -46,7 +47,7 @@ namespace Bets.Helpers
                 double PointsX = Convert.ToDouble(singleMatch.SelectSingleNode("Bet[@type='SM']/line[@name='oddsdraw']").InnerText) * 100;
                 double Points2 = Convert.ToDouble(singleMatch.SelectSingleNode("Bet[@type='SM']/line[@name='odds2']").InnerText) * 100;
                 DateTime Date = DateTime.ParseExact(singleMatch.SelectSingleNode("Date").InnerText, "MM/dd/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                DateTime OurDate = Date.AddHours(10);
+                DateTime OurDate = Date.AddHours(7);
                 //Add the Match
                 Matches.Add(new MatchModel()
                 {
@@ -70,7 +71,7 @@ namespace Bets.Helpers
         public List<MatchModel> GetMatchResultsHelper()
         {
             //URL from where we get the results
-            string urlAddress = "http://www.livescore.com";
+            string urlAddress = "http://www.livescore.com/soccer/";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -100,25 +101,48 @@ namespace Bets.Helpers
 
             //Clean the html
             string Results = UnHtml(data);
+            Results = Results.Replace("N.Ireland", "Northern Ireland");
+
+            Trace.TraceInformation("Result from LiveScore");
+            Trace.TraceInformation(Results);
 
             //Loop through the matches and search for them within the clean html 
             foreach (var Match in Matches)
             {
-                string FirstTeam = Match.FirstTeamName;
-                string SecondTeam = Match.SecondTeamName;
+                var logPrefix = $"Match ID {Match.ID} ({Match.FirstTeamName} - {Match.SecondTeamName})";
 
-                int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
-                int pTo = Results.LastIndexOf(SecondTeam);
-
-                //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
-                if(pTo - pFrom > 0 && Results.IndexOf(FirstTeam) > 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
+                if (Match.FirstTeamGoals == null && Match.SecondTeamGoals == null)
                 {
-                    String result = Results.Substring(pFrom, pTo - pFrom);
-                    Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
-                    Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
-                    MatchesWithResults.Add(Match);
-                }  
+                    Trace.TraceInformation($"{logPrefix} - Determinining result - match date {Match.Date}");
+
+                    string FirstTeam = Match.FirstTeamName;
+                    string SecondTeam = Match.SecondTeamName;
+
+                    int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
+                    int pTo = Results.LastIndexOf(SecondTeam);
+
+                    //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
+                    if (pTo - pFrom > 0 && Results.IndexOf(FirstTeam) >= 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
+                    {
+                        String result = Results.Substring(pFrom, pTo - pFrom);
+                        Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
+                        Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
+
+                        Trace.TraceInformation($"{logPrefix} - Found result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+
+                        MatchesWithResults.Add(Match);
+                    }
+                    else
+                    {
+                        Trace.TraceInformation($"{logPrefix} - No result found");
+                    }
+                }
+                else
+                {
+                    Trace.TraceInformation($"{logPrefix} - Ingoring because already has result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+                }         
             }
+
             return MatchesWithResults;
         }
 
@@ -136,7 +160,8 @@ namespace Bets.Helpers
             html = RemoveTag(html, "<meta", "/>");
             html = RemoveTag(html, "<title>", "</title>");
             html = RemoveTag(html, "<img", "/>");
-            html = RemoveTag(html, "</div> <div class=\"sco\">", "class=\"scorelink\">");
+            html = RemoveTag(html, "</div> <div class=\"sco\">", "\">");
+            html = RemoveTag(html, "<a href", "\">");
             html = RemoveTag(html, "</a>", "name\">");
             html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray even\"", "class=\"ply tright name\">");
             html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray", "class=\"ply tright name\">");

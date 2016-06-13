@@ -28,20 +28,12 @@ namespace ThatAuthentication
 		private string passwordStrengthRegularExpression;
 		private MembershipPasswordFormat passwordFormat;
 
-		private IUserRepository userRepo;
-
 		private IUserRepository UserRepo
 		{
 			get
             {
-                if (userRepo == null)
-                {
-                    userRepo = DependencyResolver.Current.GetService<IUserRepository>();
-                }
-
-                return userRepo;
+                return DependencyResolver.Current.GetService<IUserRepository>();
             }
-			set { userRepo = value; }
 		}
 
 		public ThatMembershipProvider()
