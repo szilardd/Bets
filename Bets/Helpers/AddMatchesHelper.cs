@@ -9,11 +9,15 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Bets.Helpers
 {
     public class AddMatchesHelper
     {
+        private static string _FullTimeCode = "FT";
+        private static string _FutureGameResult = "?";
+
         /// <summary>
         /// Needs a path for the XML (source of the matches) and a roundID (to which round to insert the new matches)
         /// </summary>
@@ -70,67 +74,56 @@ namespace Bets.Helpers
         /// </summary>
         public List<MatchModel> GetMatchResultsHelper()
         {
-            //URL from where we get the results
-            string urlAddress = "http://www.livescore.com/soccer/";
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string data = "";
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = null;
-
-                if (response.CharacterSet == null)
-                {
-                    readStream = new StreamReader(receiveStream);
-                }
-                else
-                {
-                    readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
-                }
-
-                data = readStream.ReadToEnd();
-
-                response.Close();
-                readStream.Close();
-            }
             //Get all the matches for the current round
-            IQueryable<MatchModel> Matches = new MatchRepository().GetMatchesForCurrentRound();
-            List<MatchModel> MatchesWithResults = new List<MatchModel>();
+            List<MatchModel> matches = new MatchRepository().GetMatchesForToday().ToList();
+
+            //If there are no matches, do not go further
+            if (matches.Count == 0)
+            {
+                Trace.TraceInformation("No matches take place today");
+                return new List<MatchModel>();
+            }
+
+            var data = GetData();
+            
+            List<MatchModel> matchesWithResults = new List<MatchModel>();
 
             //Clean the html
-            string Results = UnHtml(data);
-            Results = Results.Replace("N.Ireland", "Northern Ireland");
-
+            data = data.Replace("N.Ireland", "Northern Ireland");
+            var matchesFromHtml = GetMatchResultsFromHtml(data);
+            
             Trace.TraceInformation("Result from LiveScore");
-            Trace.TraceInformation(Results);
+            Trace.TraceInformation(matchesFromHtml.ToJSON());
 
             //Loop through the matches and search for them within the clean html 
-            foreach (var Match in Matches)
+            foreach (var match in matches)
             {
-                var logPrefix = $"Match ID {Match.ID} ({Match.FirstTeamName} - {Match.SecondTeamName})";
+                var logPrefix = $"Match ID {match.ID} ({match.FirstTeamName} - {match.SecondTeamName})";
 
-                if (Match.FirstTeamGoals == null && Match.SecondTeamGoals == null)
+                if (match.FirstTeamGoals == null && match.SecondTeamGoals == null)
                 {
-                    Trace.TraceInformation($"{logPrefix} - Determinining result - match date {Match.Date}");
+                    Trace.TraceInformation($"{logPrefix} - Determining result - match date {match.Date}");
 
-                    string FirstTeam = Match.FirstTeamName;
-                    string SecondTeam = Match.SecondTeamName;
+                    var matchResult = matchesFromHtml.FirstOrDefault(e => e.FirstTeamName == match.FirstTeamName && e.SecondTeamName == match.SecondTeamName);
 
-                    int pFrom = Results.IndexOf(FirstTeam) + FirstTeam.Length;
-                    int pTo = Results.LastIndexOf(SecondTeam);
-
-                    //Only add the result if it finds both teams in relative close distance from each other, split the string between them to get both teams score
-                    if (pTo - pFrom > 0 && Results.IndexOf(FirstTeam) >= 0 && Results.LastIndexOf(SecondTeam) > 0 && pTo - pFrom < 10)
+                    if (matchResult != null)
                     {
-                        String result = Results.Substring(pFrom, pTo - pFrom);
-                        Match.FirstTeamGoals = Convert.ToInt32(result.Split('-')[0].Trim());
-                        Match.SecondTeamGoals = Convert.ToInt32(result.Split('-')[1].Trim());
+                        var minuteOrResult = matchResult.MinuteOrResult;
 
-                        Trace.TraceInformation($"{logPrefix} - Found result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+                        // only add result if the match has ended
+                        if (minuteOrResult == _FullTimeCode)
+                        {
+                            match.FirstTeamGoals = matchResult.FirstTeamGoals;
+                            match.SecondTeamGoals = matchResult.SecondTeamGoals;
 
-                        MatchesWithResults.Add(Match);
+                            Trace.TraceInformation($"{logPrefix} - Found result - {match.FirstTeamGoals}:{match.SecondTeamGoals}");
+
+                            matchesWithResults.Add(match);
+                        }
+                        else
+                        {
+                            Trace.TraceInformation($"{logPrefix} - Match hasn't ended yet - {minuteOrResult}");
+                        }
                     }
                     else
                     {
@@ -139,84 +132,97 @@ namespace Bets.Helpers
                 }
                 else
                 {
-                    Trace.TraceInformation($"{logPrefix} - Ingoring because already has result - {Match.FirstTeamGoals}:{Match.SecondTeamGoals}");
+                    Trace.TraceInformation($"{logPrefix} - Ignoring because already has result - {match.FirstTeamGoals}:{match.SecondTeamGoals}");
                 }         
             }
 
-            return MatchesWithResults;
+            return matchesWithResults;
         }
 
-        public static String UnHtml(String html)
+        private static string GetData()
         {
-            html = HttpUtility.UrlDecode(html);
-            html = HttpUtility.HtmlDecode(html);
-
-            html = RemoveTag(html, "<!--", "-->");
-            html = RemoveTag(html, "<script", "</script>");
-            html = RemoveTag(html, "<style", "</style>");
-            html = RemoveTag(html, "<span", "</span>");
-            html = RemoveTag(html, "<select", "</select>");
-            html = RemoveTag(html, "<link", "/>");
-            html = RemoveTag(html, "<meta", "/>");
-            html = RemoveTag(html, "<title>", "</title>");
-            html = RemoveTag(html, "<img", "/>");
-            html = RemoveTag(html, "</div> <div class=\"sco\">", "\">");
-            html = RemoveTag(html, "<a href", "\">");
-            html = RemoveTag(html, "</a>", "name\">");
-            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray even\"", "class=\"ply tright name\">");
-            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div> </div> <div class=\"row-gray", "class=\"ply tright name\">");
-            html = RemoveTag(html, "</div> <div class=\"star hidden\" data-type=\"star\"><i class=\"ico ico-star\"></i></div>", "</strong>");
-            html = RemoveTag(html, "<!DOCTYPE html>", "<head>");
-            html = RemoveTag(html, "</div>", "</html>");
-
-            html = SingleSpacedTrim(html);
-
-            return html;
-        }
-
-        private static String RemoveTag(String html, String startTag, String endTag)
-        {
-            Boolean bAgain;
-            do
+            //URL from where we get the results
+            string urlAddress = "http://www.livescore.com/soccer/";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            string data = "";
+            
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                bAgain = false;
-                Int32 startTagPos = html.IndexOf(startTag, 0, StringComparison.CurrentCultureIgnoreCase);
-                if (startTagPos < 0)
-                    continue;
-                Int32 endTagPos = html.IndexOf(endTag, startTagPos + 1, StringComparison.CurrentCultureIgnoreCase);
-                if (endTagPos <= startTagPos)
-                    continue;
-                html = html.Remove(startTagPos, endTagPos - startTagPos + endTag.Length);
-                bAgain = true;
-            } while (bAgain);
-            return html;
-        }
-
-        private static String SingleSpacedTrim(String inString)
-        {
-            StringBuilder sb = new StringBuilder();
-            Boolean inBlanks = false;
-            foreach (Char c in inString)
-            {
-                switch (c)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    case '\r':
-                    case '\n':
-                    case '\t':
-                    case ' ':
-                        if (!inBlanks)
+                    using (Stream receiveStream = response.GetResponseStream())
+                    {
+                        StreamReader readStream = null;
+
+                        if (response.CharacterSet == null)
                         {
-                            inBlanks = true;
-                            sb.Append(' ');
+                            readStream = new StreamReader(receiveStream);
                         }
-                        continue;
-                    default:
-                        inBlanks = false;
-                        sb.Append(c);
-                        break;
+                        else
+                        {
+                            readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                        }
+
+                        data = readStream.ReadToEnd();
+
+                        readStream.Dispose();
+                    }
                 }
             }
-            return sb.ToString().Trim();
+
+            return data;
+        }
+
+        /// <summary>
+        ///  Sample HTML for a finished match
+        ///
+        //  <div class="min"> FT </div> 
+        //  <div class="ply tright name"> Czech Republic </div> 
+        //  <div class="sco"> <a href="/euro/match/?match=1-1695441">2 - 2</a> </div> 
+        //  <div class="ply name"> Croatia</div>
+        ///
+        ///
+        ///  Sample HTML for an ongoing match
+        //
+        //  <div class="min"><img src="http://cdn3.livescore.com/web/img/flash.gif" alt="live"> 1' </div> 
+        //  <div class="ply tright name"> Yanbian </div> 
+        //  <div class="sco"> 0 - 0 </div> 
+        //  <div class="ply name"> Guangzhou Evergrande </div> 
+        /// </summary>
+        private static List<MatchResultModel> GetMatchResultsFromHtml(string html)
+        {
+            var pattern =
+
+            "<div class=\"min\"> *(?<Result>.*?) *<\\/div>" +                                   // result or minute (may contain other HTML elements)
+            ".*?name\"> *(?<FirstTeamName>.*?) *<\\/div>" +                                     // first team name
+            ".*?" +                                                                             // junk
+            "class=\"sco\">.*?(?<FirstTeamGoals>[0-9]|\\?) - (?<SecondTeamGoals>[0-9]|\\?)" +   // score
+            ".*?" +                                                                             // junk
+            "name\"> ?(?<SecondTeamName>.*?)<\\/div>";                                          // second team name
+
+            var regex = new Regex(pattern);
+            var results = new List<MatchResultModel>();
+
+            foreach (System.Text.RegularExpressions.Match matchResult in regex.Matches(html))
+            {
+                var firstTeamGoals = matchResult.Groups["FirstTeamGoals"].Value.Trim();
+
+                // if goal number is ?, the match hasn't started yet
+                // these matches need to be identified by the regex as further matches may have ended
+                if (firstTeamGoals != _FutureGameResult)
+                {
+                    results.Add(new MatchResultModel
+                    {
+                        MinuteOrResult = matchResult.Groups["Result"].Value.Trim(),
+                        FirstTeamName = matchResult.Groups["FirstTeamName"].Value.Trim(),
+                        SecondTeamName = matchResult.Groups["SecondTeamName"].Value.Trim(),
+                        FirstTeamGoals = Convert.ToInt32(firstTeamGoals.Trim()),
+                        SecondTeamGoals = Convert.ToInt32(matchResult.Groups["SecondTeamGoals"].Value.Trim())
+                    });
+                }
+            }
+
+            return results;
         }
     }
 }

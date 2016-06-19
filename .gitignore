@@ -197,6 +197,8 @@ FakesAssemblies/
 
 /Bets/Settings/smtp.config
 /Bets/Settings/connectionstrings.config
+/Bets/Settings/sessionstate.config
+/Bets/Settings/machinekey.config
 /Bets/content/combined/*
 !/Bets/content/combined/readme.md
 /Bets/content/img/profile/*
