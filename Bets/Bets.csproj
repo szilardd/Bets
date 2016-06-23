@@ -1582,6 +1582,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\GoalscorerForRound\_GoalscorerForRoundListingItem.cshtml" />
     <Content Include="Views\Shared\Includes\_MetaInclude.cshtml" />
+    <Content Include="Settings\sessionstate.config" />
+    <Content Include="Settings\machinekey.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

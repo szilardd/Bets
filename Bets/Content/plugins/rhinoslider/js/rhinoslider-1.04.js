@@ -384,7 +384,9 @@
 					}
 					if(vars.active.is(':last-child')){
 						if(settings.controlsPrevNext){
-							vars.buttons.next.addClass('disabled');
+						    vars.buttons.next.addClass('disabled');
+                            // make sure that vars are set
+						    $slider.data('slider:vars', vars);
 							pause();
 						}
 						if(settings.autoPlay){

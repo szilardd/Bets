@@ -52,13 +52,13 @@
 			var result = [];
 			if (node.id)
 				result.push("#" + node.id);
-			if (node.className) {
-				var classes = node.className.split(" ");
-				for (var classIndex = 0, maxClassIndex = classes.length; classIndex < maxClassIndex; classIndex++) {
-					var singleClass = classes[classIndex];			
-					if (singleClass)
-						result.push("." + singleClass);
-				}
+			if (node.className && typeof(node.className) !== "object") {
+			    var classes = node.className.split(" ");
+			    for (var classIndex = 0, maxClassIndex = classes.length; classIndex < maxClassIndex; classIndex++) {
+			        var singleClass = classes[classIndex];			
+			        if (singleClass)
+			            result.push("." + singleClass);
+			    }
 			}
 			return result;
 		},

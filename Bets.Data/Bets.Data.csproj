@@ -130,6 +130,7 @@
     <Compile Include="Models\MatchBetModel.cs" />
     <Compile Include="Models\MatchForRoundModel.cs" />
     <Compile Include="Models\MatchModel.cs" />
+    <Compile Include="Models\MatchResultModel.cs" />
     <Compile Include="Models\RoundMatchesForUserModel.cs" />
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
