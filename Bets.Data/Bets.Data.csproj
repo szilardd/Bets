@@ -122,6 +122,7 @@
     <Compile Include="Models\GoalscorerBetModel.cs" />
     <Compile Include="Models\GoalScorerForUserBetsModel.cs" />
     <Compile Include="Models\GoalscorerModel.cs" />
+    <Compile Include="Models\GoalscorerPointsModel.cs" />
     <Compile Include="Models\Main\ListingParams.cs" />
     <Compile Include="Models\Main\ListingSortModel.cs" />
     <Compile Include="Models\Main\Model.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Models\SettingModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WinnerPointsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -144,7 +146,9 @@
     <Compile Include="Repositories\BestUsersForRoundRepository.cs" />
     <Compile Include="Repositories\GlobalRepository.cs" />
     <Compile Include="Repositories\GoalscorerForRoundRepository.cs" />
+    <Compile Include="Repositories\GoalscorerPointsRepository.cs" />
     <Compile Include="Repositories\GoalscorerRepository.cs" />
+    <Compile Include="Repositories\GoalscorerResultRepository.cs" />
     <Compile Include="Repositories\GoalscorerStandingsRepository.cs" />
     <Compile Include="Repositories\MatchBetRepository.cs" />
     <Compile Include="Repositories\MatchesForRoundRepository.cs" />
@@ -162,7 +166,9 @@
     <Compile Include="Repositories\StandingsRepository.cs" />
     <Compile Include="Repositories\TeamRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\WinnerPointsRepository.cs" />
     <Compile Include="Repositories\WinnerRepository.cs" />
+    <Compile Include="Repositories\WinnerResultRepository.cs" />
     <Compile Include="Repositories\WorstUsersForRoundRepository.cs" />
     <Compile Include="TextToTraceWriter.cs" />
     <Compile Include="Utils\DataConfig.cs" />

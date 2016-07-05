@@ -17,6 +17,7 @@ namespace Bets.Data.Models
 		Help,
 		Admin,
         DashboardStandings,
-        DashboardGoalscorerStandings
-	}
+        DashboardGoalscorerStandings,
+        GlobalResults
+    }
 }

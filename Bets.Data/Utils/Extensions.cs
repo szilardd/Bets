@@ -148,5 +148,56 @@ namespace Bets.Data
         {
             return (betDate == DateTime.MinValue) ? betDate : betDate.AddHours(-1 * DataConfig.HoursBeforeBet);
         }
+
+        /// <summary>
+        /// If name is long, returns it as J. Doe (from John Doe)
+        /// </summary>
+        public static string GetShortName(string name, int maxLength = 14)
+        {
+            var shortName = GetShortName(name, maxLength, false);
+
+            if (shortName.Length >= maxLength)
+                shortName = GetShortName(name, maxLength, true);
+
+            return shortName;
+        }
+
+        private static string GetShortName(string name, int maxLength, bool force)
+        {
+            string shortName = "";
+
+            if (name.Length >= maxLength && name.Contains(' '))
+            {
+                string[] nameParts = name.Split(new char[] { ' ' });
+
+                //add initials
+                for (int i = 0; i < nameParts.Length - 1; i += 1)
+                {
+                    //if name is 3 chars or less, add it
+                    if (!force && nameParts[i].Length <= 3)
+                    {
+                        shortName += nameParts[i];
+                    }
+                    //otherwise add only initial
+                    else
+                    {
+                        // if last name is long, do not add initial
+                        if (nameParts[nameParts.Length - 1].Length < 10)
+                        {
+                            shortName += nameParts[i][0] + ".";
+                        }
+                    }
+                }
+
+                //add last name
+                shortName += " " + nameParts[nameParts.Length - 1];
+            }
+            else
+            {
+                shortName = name;
+            }
+
+            return shortName;
+        }
     }
 }

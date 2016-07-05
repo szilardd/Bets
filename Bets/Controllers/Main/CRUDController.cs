@@ -41,11 +41,12 @@ namespace Bets.Controllers
 		private bool isSubDetailPage;
 		private Module module;
 		private string searchParamsSessionKey;
+        private bool? _tournamentEnded;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		protected bool IsSubDetailPage
+        /// <summary>
+        /// 
+        /// </summary>
+        protected bool IsSubDetailPage
 		{
 			get { return isSubDetailPage; }
 			set { isSubDetailPage = value; this.ListingViewModel.IsSubDetailPage = value; }
@@ -77,10 +78,31 @@ namespace Bets.Controllers
 		protected ListingViewModel ListingViewModel { get; set; }
 		protected DetailViewModel DetailViewModel { get; set; }
 
-		/// <summary>
-		/// Pages are assigned to modules. A page can be accessed only if the logged in user has permission assigned to its module
-		/// </summary>
-		protected Module Module
+        protected bool TournamentEnded
+        {
+            get
+            {
+                if (_tournamentEnded == null)
+                {
+                    if (DataExtensions.UserIsAdmin())
+                    {
+                        _tournamentEnded = true;
+                    }
+                    else
+                    {
+                        var settingsRepo = new SettingsRepository();
+                        _tournamentEnded = settingsRepo.GetTournamentEndStatus();
+                    }
+                }
+
+                return _tournamentEnded.Value;
+            }
+        }
+
+        /// <summary>
+        /// Pages are assigned to modules. A page can be accessed only if the logged in user has permission assigned to its module
+        /// </summary>
+        protected Module Module
 		{
 			get { return module; }
 			set
@@ -456,7 +478,7 @@ namespace Bets.Controllers
 			return View(GetViewName(ViewType.List), this.ListingViewModel.Items);
 		}
 
-		public ActionResult Index(int? id, string pageType, bool? isLookup, M model = null, ListingParams<M> listingParams = null)
+		public virtual ActionResult Index(int? id, string pageType, bool? isLookup, M model = null, ListingParams<M> listingParams = null)
 		{
 			this.PageType = pageType;
 			this.IsLookup = isLookup ?? false;

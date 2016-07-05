@@ -347,8 +347,11 @@
     <Compile Include="Controllers\BestUsersForRoundController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GlobalResultsController.cs" />
     <Compile Include="Controllers\GoalscorerController.cs" />
     <Compile Include="Controllers\GoalscorerForUserBetsController.cs" />
+    <Compile Include="Controllers\GoalscorerPointsController.cs" />
+    <Compile Include="Controllers\GoalscorerResultController.cs" />
     <Compile Include="Controllers\GoalscorerStandingsController.cs" />
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\Main\BaseController.cs" />
@@ -368,6 +371,8 @@
     <Compile Include="Controllers\UserBetsController.cs" />
     <Compile Include="Controllers\WinnerController.cs" />
     <Compile Include="Controllers\WinnerForUserBetsController.cs" />
+    <Compile Include="Controllers\WinnerPointsController.cs" />
+    <Compile Include="Controllers\WinnerResultController.cs" />
     <Compile Include="Controllers\WorstUsersForRoundController.cs" />
     <Compile Include="DynamicData\Content\GridViewPager.ascx.cs">
       <DependentUpon>GridViewPager.ascx</DependentUpon>
@@ -649,6 +654,7 @@
     <Content Include="Content\img\icons\yes.svg" />
     <Content Include="Content\img\magnifier.svg" />
     <Content Include="Content\img\profile\user.svg" />
+    <Content Include="Content\js\pages\dashboard.dev.js" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ad.png" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\ae.png" />
     <Content Include="Content\plugins\flag-icon-css\flags\4x3\af.png" />
@@ -1584,6 +1590,11 @@
     <Content Include="Views\Shared\Includes\_MetaInclude.cshtml" />
     <Content Include="Settings\sessionstate.config" />
     <Content Include="Settings\machinekey.config" />
+    <Content Include="Views\WinnerResult\_WinnerResultListingItem.cshtml" />
+    <Content Include="Views\GoalscorerResult\_GoalscorerResultListingItem.cshtml" />
+    <Content Include="Views\GoalscorerPoints\_GoalscorerPointsListingItem.cshtml" />
+    <Content Include="Views\GlobalResults\GlobalResultsIndex.cshtml" />
+    <None Include="Views\WinnerPoints\_WinnerPointsListingItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\plugins\assets\" />

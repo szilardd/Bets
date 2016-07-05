@@ -176,18 +176,18 @@ namespace Bets.Helpers
         /// <summary>
         ///  Sample HTML for a finished match
         ///
-        //  <div class="min"> FT </div> 
-        //  <div class="ply tright name"> Czech Republic </div> 
-        //  <div class="sco"> <a href="/euro/match/?match=1-1695441">2 - 2</a> </div> 
-        //  <div class="ply name"> Croatia</div>
+        ///     <div class="min"> FT </div> 
+        ///     <div class="ply tright name"> Czech Republic </div> 
+        ///     <div class="sco"> <a href="/euro/match/?match=1-1695441">2 - 2</a> </div> 
+        ///     <div class="ply name"> Croatia</div>
         ///
         ///
         ///  Sample HTML for an ongoing match
-        //
-        //  <div class="min"><img src="http://cdn3.livescore.com/web/img/flash.gif" alt="live"> 1' </div> 
-        //  <div class="ply tright name"> Yanbian </div> 
-        //  <div class="sco"> 0 - 0 </div> 
-        //  <div class="ply name"> Guangzhou Evergrande </div> 
+        ///
+        ///     <div class="min"><img src="http://cdn3.livescore.com/web/img/flash.gif" alt="live"> 1' </div> 
+        ///     <div class="ply tright name"> Yanbian </div> 
+        ///     <div class="sco"> 0 - 0 </div> 
+        ///     <div class="ply name"> Guangzhou Evergrande </div> 
         /// </summary>
         private static List<MatchResultModel> GetMatchResultsFromHtml(string html)
         {

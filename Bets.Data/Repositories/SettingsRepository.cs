@@ -33,5 +33,10 @@ namespace Bets.Data
 				}
 			);
 		}
-	}
+
+        public bool GetTournamentEndStatus()
+        {
+            return (this.Context.Teams.Count(e => e.Active) == 1);
+        }
+    }
 }

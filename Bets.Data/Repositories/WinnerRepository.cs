@@ -79,7 +79,7 @@ namespace Bets.Data
 						bet in this.Context.GlobalBets on team.TeamID equals bet.WinnerTeamID
 				where	bet.UserID == this.UserID
 				select	new TeamModel
-						{
+                        {
 							ID = team.TeamID,
 							Name = team.Name,
 							Flag = team.FlagPrefix,
