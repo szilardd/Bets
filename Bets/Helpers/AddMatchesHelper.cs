@@ -193,7 +193,7 @@ namespace Bets.Helpers
         {
             var pattern =
 
-            "<div class=\"min\"> *(?<Result>.*?) *<\\/div>" +                                   // result or minute (may contain other HTML elements)
+            "<div class=\"min\">(<img.*?>)? *(?<Result>.*?) *<\\/div>" +                        // result or minute (may contain <img> tag or other HTML elements)
             ".*?name\"> *(?<FirstTeamName>.*?) *<\\/div>" +                                     // first team name
             ".*?" +                                                                             // junk
             "class=\"sco\">.*?(?<FirstTeamGoals>[0-9]|\\?) - (?<SecondTeamGoals>[0-9]|\\?)" +   // score
