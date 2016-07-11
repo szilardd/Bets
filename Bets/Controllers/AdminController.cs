@@ -76,15 +76,30 @@ namespace Bets.Controllers
             return Json(new AddMatchesHelper().AddMatchesToRound(m_strFilePath, roundID));
         }
 
-        public void GetMatchResults()
+        [HttpPost]
+        public JsonResult SendEmail(string email)
         {
-            List<MatchModel> MatchesWithResults = new AddMatchesHelper().GetMatchResultsHelper();
-
-            //Loop through the Matches which got result match and update the result in the db
-            foreach(var Match in MatchesWithResults)
+            try
             {
-                new MatchRepository().AddMatchResult(Match);
+                Email.Send(new Email
+                {
+                    Body = "Test",
+                    Subject = "Test email from LynxBets",
+                    To = email
+                }, false);
+
+                return Json(new ActionStatus { Success = true, Message = "Success!" });
             }
+            catch (Exception ex)
+            {
+                return Json(new ActionStatus { Success = false, Message = ex.ToString() });
+            }
+        }
+
+        [HttpGet]
+        public void GenerateEmailImages()
+        {
+            ImageHelper.GeneratePngFromSvg();
         }
     }
 }

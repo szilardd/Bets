@@ -1,7 +1,7 @@
 ﻿@import 'include/settings';
 @import 'include/css3';
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:800px) {
 
     * {
         -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
@@ -228,7 +228,6 @@
 
         td img.flag {
             float:none;
-            margin-top: 0;
         }
 
     .listing-table td img.flag {
@@ -243,11 +242,25 @@
         margin-right: 0;
     }
 
+        .goalscorer h2 {
+
+        }
+
+        .winner h2 {
+            margin-bottom: 50px;
+        }
+
     #listing-goalscorerstandings div.bet-made {
-        top: 16px;
-        left: 10px;
         width: 16px;
         height: 16px;
+    }
+
+    #listing-goalscorerstandings li:first-child {
+        margin-left: 10px;
+    }
+
+    #listing-goalscorerstandings li:last-child {
+        margin-right: 10px;
     }
 
     .listing-horizontal div.bet-made, .goalscorer div.bet-made, .winner div.bet-made {
@@ -307,12 +320,36 @@
         height: 16px;
     }
 
+        #listing-matchbet .bonus-single {
+            margin-top: 6px;
+        }
+
+        #listing-matchbet .bet-win {
+            margin-top: 6px;
+        }
+
     .points li, .results li {
         text-align: center;
     }
 
     #listing-matchesforcurrentround tbody:first-child {
         display: none;
+    }
+
+    #listing-matchbet tr {
+        border:none;
+    }
+
+    #listing-matchbet tr:first-child th {
+        padding-left: 3px;
+    }
+
+    #listing-matchbet tr:first-child th:nth-child(2) {
+        text-align:left;
+    }
+
+    #listing-matchbet tr:first-child th:nth-child(4) {
+        text-align:right;
     }
 
     #listing-matchesforround,
@@ -421,10 +458,19 @@
                     margin-top: 0;
                 }
 
-        #listing-matchesforround .cell-BetAction,
-        #listing-roundmatchesforuser .cell-BetAction,
-        #listing-matchesforcurrentround .cell-BetAction {
-            float: right;
+        .cell-BetAction.loading::after {
+            top: 15px;
+            left: 130px;
+        }
+
+        .date-and-action.loading {
+            position: relative;
+        }
+
+        .date-and-action.loading::after {
+            top: 5px;
+            right: 20px;
+            left: inherit;
         }
 
     /*---------------
@@ -451,7 +497,7 @@
     }
 
     #listing-goalscorerstandings {
-        width: 285px;
+        width: 300px;
     }
 
         #listing-goalscorerstandings li {
@@ -461,12 +507,23 @@
         #listing-goalscorerstandings img.full {
             height: auto;
         }
+        
+    #listing-goalscorer img.full, #listing-winner img.full {
+        min-height: 63px;
+    }
 
     /*----------------
     |    USER BETS   |
     ----------------*/
     .page-userbets .slider-content {
         width: 100%;
+        border-right: none;
+    }
+
+    .page-userbets .slider-content:hover, .page-userbets .slider-content.active {
+        background: none;
+        color: #000; 
+        border-right: none;
     }
 
     /*----------------
@@ -474,16 +531,21 @@
     ----------------*/
     .global-bets .goalscorer, .global-bets .winner {
         width: 30%;
-        min-height: 330px;
+        min-height: 281px;
     }
 
         .global-bets .goalscorer h3, .global-bets .winner h3 {
             font-size: 20px;
         }
 
-        .global-bets .goalscorer h2, .global-bets .winner h2 {
-            margin-top: 95px;
+        .global-bets .goalscorer {
+            margin-top: 51px;
         }
+
+        .global-bets .winner {
+            margin-top: 51px;
+        }
+
 
     .global-bets #listing-goalscorer, .global-bets #listing-winner {
         width: 70%;
@@ -500,10 +562,6 @@
             min-height: 0;
             min-height: 70px;
         }
-
-            .global-bets #listing-winner li {
-                min-height: 80px;
-            }
 
             .global-bets .listing-page li div {
                 margin: 0;
@@ -542,16 +600,13 @@
 
         .global-expired .listing-single {
             width: 50%;
+            margin-right: 0;
         }
 
     .global-expired .goalscorer, .global-expired .winner {
-        width: 100px;
+        width: 150px;
         margin: 0 auto;
         float: none;
-    }
-
-    .goalscorer, .winner {
-        border-right: 0;
     }
 
     /*-----------------
@@ -565,7 +620,7 @@
         padding: 10px 0;
     }
 
-    .page-dashboard .btn-bet, .page-dashboard .btn-save {
+    .page-dashboard .btn-bet, .page-dashboard .btn-save, .page-dashboard .btn-view {
         margin-right: 5px;
         height: 24px;
     }
@@ -632,8 +687,12 @@
 	|  MATCH BET   |
 	-------------*/
 	#listing-matchbet {
-		width: 100%;
+		width: 99%;
 	}
+        #listing-matchbet tr {
+            border:none;
+        }
+
 		#listing-matchbet td, #listing-matchbet th {
 			text-align: center;
 		}
@@ -649,6 +708,7 @@
 
 		    #listing-matchbet td:first-child img {
 			    float:left;
+                margin-top:3px;
 		    }
 		
 		    #listing-matchbet td:first-child span {
@@ -684,4 +744,83 @@
 	#listing-matchbet th:nth-child(5) {
 		width: 50px;
 	}
+
+    /*----------------------
+    |    GLOBAL RESULTS    |
+    ----------------------*/
+    .page-globalresults .thumb {
+        height: 25px;
+    }
+
+    .page-globalresults .flag, .page-globalresults .bet-win {
+        float: none;
+    }
+
+    .page-globalresults .bet-win {
+        margin-top: 10px;
+    }
+
+    .page-globalresults .listing-wrapper {
+        min-height: 0;
+    }
+
+    #listing-winnerresult .listing-wrapper, #listing-goalscorerresult .listing-wrapper {
+        min-height: 220px;
+    }
+
+    .page-globalresults #listing-winnerresult .listing-items, 
+    .page-globalresults #listing-goalscorerresult .listing-items {
+        width: 390px;
+        margin: 0 auto;
+    }
+
+        .page-globalresults .listing-items li, 
+        .page-globalresults .listing-items li {
+            width: 130px;
+        }
+
+    .page-globalresults #listing-winnerresult.listing-totalcount-2 .listing-items, 
+    .page-globalresults #listing-goalscorerresult.listing-totalcount-2 .listing-items {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .page-globalresults #listing-winnerresult.listing-totalcount-1 .listing-items,
+    .page-globalresults #listing-goalscorerresult.listing-totalcount-1 .listing-items {
+        width: 150px;
+        margin: 0 auto;
+    }
+
+    .page-globalresults .clearfix {
+        margin-bottom: 0;
+    }
+
+    .page-globalresults #listing-winnerresult.listing-totalcount-2 li, 
+    .page-globalresults #listing-goalscorerresult.listing-totalcount-2 li,
+    .page-globalresults #listing-winnerresult.listing-totalcount-1 li,
+    .page-globalresults #listing-goalscorerresult.listing-totalcount-1 li {
+        width: 150px;
+    }
+
+    .page-globalresults td {
+        line-height: 35px;
+    }
+
+        .page-globalresults td:nth-child(2) {
+            width: 125px;
+        }
+
+        .page-globalresults td:nth-child(3) {
+            width: 50px;
+        }
+
+        .page-globalresults td:nth-child(4) {
+            width: 45px;
+            text-align: center;
+        }
+
+        .page-globalresults td:last-child {
+            width: 23px;
+        }
 }
+

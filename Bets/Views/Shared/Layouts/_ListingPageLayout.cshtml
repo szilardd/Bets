@@ -11,7 +11,7 @@
 		data-listingtype="@Model.PageType.ToLower()" 
 		id="listing-@ViewBag.PageType.ToLower()" 
 		class=	"listing-page@{if (Model.IsSubPage) { <text>sub-listing</text> }} @{if (Model.IsSubDetailPage) { <text>sub-detail</text> }}
-				 listing-@ViewBag.ItemsPerPage listing-@Model.TemplateName.ToLower()"
+				 listing-@ViewBag.ItemsPerPage listing-@Model.TemplateName.ToLower() listing-totalcount-@Model.Items.TotalCount"
 >
 
 	@if (Model.HasSearch) {

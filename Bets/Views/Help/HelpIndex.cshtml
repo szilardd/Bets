@@ -5,8 +5,13 @@
     <ul>
         @Html.Partial("_HelpDashboard")
         <li><b>Global Bets</b> - Bets for the top goalscorer of the competition and for the winning team</li>
-        <li><b>Users</b> - Bets made by other users grouped by rounds. Only closed rounds are shown</li>
-        <li><b>Rounds</b> - Bets made in each round by all users. Only closed rounds are shown</li>
+        <li>
+            <b>User Bets</b> - Global bets and round bets made by users grouped by rounds.
+            Global bets are shown after the start of the first match while round bets are shonw only for closed rounds.
+        </li>
+        <li>
+            <b>Round Bets</b> - Bets made in each round by all users. Round bets are shown after the end of the first round.
+        </li>
         <li><b>Teams</b> - Team group standings</li>
         <li><b>Help</b> - this page</li>
         <li><b>Profile</b> - Profile settings (display name, email, picture, password)</li>
@@ -86,6 +91,11 @@
             The standings are based on the number of points won by users for match bets, top goalscorer bet and winning team bet. The points for the last two bets will be awarded after the final match.
         </li>
         <li>The standings are updated each time after the result of a match is added into the system.</li>
+        <li>
+            If two or more top goalscorers have the same number of goals at the end of the tournament, all users who made bets on them will win
+            the points assigned to the goalscorer. This is different than UEFA rules, where there is a single 'best' goalscorer in case of a tie based
+            on number of goal assists and minutes played.
+        </li>
     </ul>
 
     <div class="clear"></div>

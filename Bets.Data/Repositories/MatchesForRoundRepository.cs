@@ -21,11 +21,12 @@ namespace Bets.Data
 		public MatchesForRoundRepository(Repository<Match, MatchForRoundModel> repo) : base(repo) { }
         public MatchesForRoundRepository(int userID) : base(userID) { }
         public MatchesForRoundRepository(BetsDataContext context, int userID) : base(context, userID) { }
+        public MatchesForRoundRepository(BetsDataContext context) : base(context) { }
 
-		/// <summary>
-		/// Is the match expired ?
-		/// </summary>
-		public static Func<DateTime, bool> IsExpired = matchDate => (matchDate == null) ? false : (matchDate <= Extensions.GetExpirationDate());
+        /// <summary>
+        /// Is the match expired ?
+        /// </summary>
+        public static Func<DateTime, bool> IsExpired = matchDate => (matchDate == null) ? false : (matchDate <= Extensions.GetExpirationDate());
 
 		public override IQueryable<IModel> GetListingItems(ListingParams<MatchForRoundModel> listingDataModel)
 		{
@@ -199,10 +200,10 @@ namespace Bets.Data
 			//group matches by user
 			foreach (var match in matches)
 			{
-				if (match.Username != "admin")
-				{
-					string email = match.UserEmail;
+                string email = match.UserEmail;
 
+                if (match.Username != "admin" && !string.IsNullOrEmpty(email))
+				{
 					if (!matchListByUser.ContainsKey(email))
 						matchListByUser[email] = new List<MatchWithNoBetModel>();
 

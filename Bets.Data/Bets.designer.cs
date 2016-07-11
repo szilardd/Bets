@@ -264,7 +264,7 @@ namespace Bets.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateUser")]
-		public int UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisplayName", DbType="VarChar(50)")] string displayName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldPassword", DbType="VarChar(50)")] string oldPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="VarChar(50)")] string newPassword)
+		public int UpdateUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DisplayName", DbType="NVarChar(50)")] string displayName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="VarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="OldPassword", DbType="NVarChar(50)")] string oldPassword, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="NewPassword", DbType="NVarChar(50)")] string newPassword)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, displayName, email, oldPassword, newPassword);
 			return ((int)(result.ReturnValue));
@@ -1067,9 +1067,9 @@ namespace Bets.Data
 		
 		private int _UserID;
 		
-		private int _WinnerTeamID;
+		private System.Nullable<int> _WinnerTeamID;
 		
-		private int _GoalscorerID;
+		private System.Nullable<int> _GoalscorerID;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1079,9 +1079,9 @@ namespace Bets.Data
     partial void OnBetIDChanged();
     partial void OnUserIDChanging(int value);
     partial void OnUserIDChanged();
-    partial void OnWinnerTeamIDChanging(int value);
+    partial void OnWinnerTeamIDChanging(System.Nullable<int> value);
     partial void OnWinnerTeamIDChanged();
-    partial void OnGoalscorerIDChanging(int value);
+    partial void OnGoalscorerIDChanging(System.Nullable<int> value);
     partial void OnGoalscorerIDChanged();
     #endregion
 		
@@ -1130,8 +1130,8 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WinnerTeamID", DbType="Int NOT NULL")]
-		public int WinnerTeamID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WinnerTeamID", DbType="Int")]
+		public System.Nullable<int> WinnerTeamID
 		{
 			get
 			{
@@ -1150,8 +1150,8 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalscorerID", DbType="Int NOT NULL")]
-		public int GoalscorerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoalscorerID", DbType="Int")]
+		public System.Nullable<int> GoalscorerID
 		{
 			get
 			{
@@ -2222,7 +2222,7 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(150)")]
 		public string Email
 		{
 			get
@@ -2322,7 +2322,7 @@ namespace Bets.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string DisplayName
 		{
 			get

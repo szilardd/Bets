@@ -34,7 +34,7 @@ namespace Bets
             // register web abstractions like HttpContextBase.
             builder.RegisterModule<AutofacWebTypesModule>();
 
-            builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerRequest();
+            builder.RegisterType<UserRepository>().As<IUserRepository>();
 
             builder.Register<IMapper>(b =>
             {

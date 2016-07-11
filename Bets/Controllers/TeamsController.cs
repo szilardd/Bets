@@ -10,7 +10,7 @@ using Bets.Data;
 
 namespace Bets.Controllers
 {
-	public partial class TeamsController : BaseController
+    public partial class TeamsController : BaseController
 	{
 		public TeamsController() : base(Module.Teams) 
         {

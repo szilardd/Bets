@@ -1,6 +1,8 @@
 using System;
 using System.Configuration;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -9,7 +11,7 @@ namespace Bets.Data
 {
     public static class UIExtensions
     {
-        private static string TeamFlagUrl = ConfigurationManager.AppSettings["TeamFlagUrl"];
+        public static string TeamFlagUrl = ConfigurationManager.AppSettings["TeamFlagUrl"];
         private static string TeamLogoUrl = ConfigurationManager.AppSettings["TeamLogoUrl"];
         private static string PlayerImageUrl = ConfigurationManager.AppSettings["PlayerImageUrl"];
         public const string ImageRoot = "~/content/img/";
@@ -51,14 +53,26 @@ namespace Bets.Data
             return string.Format("{0}://{1}/{2}", url.Scheme, url.Authority, suffix);
         }
 
-        public static string GetTeamFlagImage(this UrlHelper helper, string flagPrefixOrExternalID)
+        public static string GetTeamFlagImage(this UrlHelper helper, string flagPrefixOrExternalID, bool forEmail = false)
         {
             //if external url, add id
             if (TeamFlagUrl != null && TeamFlagUrl.StartsWith("http"))
+            {
                 return TeamFlagUrl + flagPrefixOrExternalID + ".png";
+            }
             //otherwise resolve relative url and add id
             else
-                return AbsoluteUrl(helper) + TeamFlagUrl + flagPrefixOrExternalID + ".svg";
+            {
+                var imagePath = TeamFlagUrl + flagPrefixOrExternalID + ".svg";
+
+                // for emails provide png file
+                if (forEmail)
+                {
+                    imagePath = imagePath.Replace(".svg", ".png");
+                }
+
+                return AbsoluteUrl(helper) + imagePath;
+            }
         }
 
         public static string GetTeamFlagImage(string flagPrefixOrExternalID)
@@ -76,9 +90,16 @@ namespace Bets.Data
             return GetTeamLogoImage(null, externalID);
         }
 
-        public static string Img(this UrlHelper helper, string url)
+        public static string Img(this UrlHelper helper, string url, bool absolute = false)
         {
-            return helper.Content(ImageRoot + url);
+            if (absolute)
+            {
+                return AbsoluteUrl(helper) + ImageRoot.Replace("~/", "") + url;
+            }
+            else
+            {
+                return helper.Content(ImageRoot + url);
+            }
         }
 
         public static string GetUserImage(this UrlHelper helper, string username)

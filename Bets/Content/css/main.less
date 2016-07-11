@@ -64,18 +64,18 @@ input:active, input:focus {
         position: relative;
     }
 
-        .cell-BetAction.loading input {
+        .cell-BetAction.loading input, .date-and-action.loading input {
             background-color: #D0D0D0;
         }
 
-        .cell-BetAction.loading::after {
+        .cell-BetAction.loading::after, .date-and-action.loading::after {
             content: "";
             width: 15px;
             height: 15px;
             background:red url(../img/../img/ajax-loader-small.gif) no-repeat;
             background-size: contain;
-            top: 7px;
-            left: 20px;
+            top: 5px;
+            left: 30px;
             position: absolute;
         }
 
@@ -243,7 +243,7 @@ h1 {
 }
 
 .page-dashboard h1 {
-    padding-left: 15px;
+    padding-left: 0;
 }
 
 h2 {
@@ -367,8 +367,8 @@ div.bottom
 }
 
     .menu {
-	    width: 690px;
-        margin-left: 100px;
+	    width: 760px;
+        margin: 0 auto;
         height: 60px;
     }
 /*-------------------
@@ -556,7 +556,6 @@ img {
 }
 
 	img.full {
-		height: 150px;
 	}
 	
 	img.thumb {
@@ -578,7 +577,7 @@ img {
 |      PROFILE      |
 -------------------*/
 .page-profile .full {
-	width: 150px;
+	width: 75px;
 }
 
 .page-profile form {
@@ -610,6 +609,17 @@ img {
 	margin-top: 20px;
 }
 
+.anchor {
+    text-decoration: underline;
+    color: #fc7a00;
+}
+
+    .anchor:active, .anchor:visited, .anchor:current {
+        color: #e67b16;
+    }
+
+
+    
 /*-------------------------
 |         HERO            |
 -------------------------*/
@@ -621,7 +631,7 @@ img {
     background-color: @backColor;
 }
 
-@iterations: 12;
+@iterations: 13;
 .hero-loop (@i) when (@i > 0) {
     .hero-@{i} {
         background-image: linear-gradient(to bottom, rgba(3, 43, 74, 0.7), rgba(3, 43, 74, 0.7)), url('../img/heroimages/hero@{i}.jpg');

@@ -8,7 +8,7 @@ using Bets.Data.Models;
 
 namespace Bets.Controllers
 {
-	public class HelpController : BaseController
+    public class HelpController : BaseController
 	{
 		public HelpController() : base(Module.Help)
         {

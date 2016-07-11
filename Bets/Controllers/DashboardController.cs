@@ -21,7 +21,8 @@ namespace Bets.Controllers
 		{
 			base.SetIndexData();
 
-			ViewBag.MaxBonusPerMatch = new SettingsRepository().GetItem(0).MaxBonusPerMatch;
+            var settingsRepo = new SettingsRepository();
+            ViewBag.MaxBonusPerMatch = settingsRepo.GetItem(0).MaxBonusPerMatch;
 		}
 
         public ViewResult Standings()

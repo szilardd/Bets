@@ -13,6 +13,11 @@
 
 <div class="clearfix">
 
+    @if (ViewBag.TournamentEnded)
+    {
+        <p class="center-text"><a href="@Url.Action("Index","GlobalResults")" class="anchor">View Global Results</a></p>
+    }
+
     <div id="main-container" class="clearfix">
         @{ Html.RenderAction("Index", "MatchesForCurrentRound"); }       
     </div>

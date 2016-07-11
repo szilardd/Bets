@@ -13,7 +13,7 @@ else
 	var winType = Model.WinTypeID.ToEnum<WinType>();
   
 	<td class="col-Date">@Model.Date.ToDate(true)</td>
-	<td class="col-Flag"><img class="flag" src="@Url.GetTeamFlagImage(Model.FirstTeamFlag)" /></td>
+	<td class="col-Flag"><img class="flag" src="@Url.GetTeamFlagImage(Model.FirstTeamFlag, forEmail: true)" /></td>
 	<td class="col-Match">@Model.FirstTeamName vs @Model.SecondTeamName</td>
 	<td class="col-Flag"><img class="flag" src="@Url.GetTeamFlagImage(Model.SecondTeamFlag)" /></td>
 	<td>@Model.Points1</td>

@@ -1,6 +1,17 @@
 @model IEnumerable<MatchForRoundModel>
-		   
-<p>The following matches will take place in the current round between @Model.First().Date.ToDate(true) and @Model.Last().Date.ToDate(true).</p>
+@{ 
+    var first = Model.First().Date;
+    var last = Model.Last().Date;
+}		   
+
+@if (last.Date > first.Date)
+{
+    <p>The following matches will take place in the current round between @first.ToDate(true) and @last.ToDate(true).</p>
+}
+else
+{
+    <p>The final match will take place on @first.ToDate(true)</p>
+}
 
 <br />
 
@@ -23,9 +34,9 @@
 			<tr class="@(item.index % 2 == 1 ? "alt-row" : "") listing-item">
 
 				<td>@item.m.Date.ToDate(true)</td>
-				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.FirstTeamFlag)" /></td>
+				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.FirstTeamFlag, forEmail: true)" /></td>
                 <td style="text-align:center">@item.m.FirstTeamName vs @item.m.SecondTeamName</td>
-				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.SecondTeamFlag)" /></td>
+				<td><img width="21" height="16" src="@Url.GetTeamFlagImage(item.m.SecondTeamFlag, forEmail: true)" /></td>
 				<td>@item.m.Points1</td>
 				<td>@item.m.PointsX</td>
 				<td>@item.m.Points2</td>
@@ -38,3 +49,9 @@
 <br />
 
 <p>Click <a href="@Url.Action("Index", "Dashboard", null, Request.Url.Scheme)" target="_blank">here</a> to place your bets. You can place bets right until one hour before the kickoff time.</p>
+
+@if (ViewBag.BonusPointsLeft > 0)
+{
+    <br/>
+    <p>You have @ViewBag.BonusPointsLeft bonus point(s) to bet <img src="@Url.Img("icons/bonus.png", absolute: true)" class="bonus-img"/> </p>
+}

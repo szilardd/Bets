@@ -23,19 +23,19 @@ namespace Bets.Data
         {
             return
             (
-                from globalBet in this.Context.GlobalBets
-                join
-                team in this.Context.Teams on globalBet.WinnerTeamID equals team.TeamID
-                where globalBet.UserID == userID
-                select new TeamModel
-                {
-                    ID = team.TeamID,
-                    Name = team.Name,
-                    Flag = team.FlagPrefix,
-                    ExternalID = team.ExternalID,
-                    Points = (int)team.Points,
-                    BetMade = (team != null && team.TeamID == globalBet.WinnerTeamID)
-                }
+                from    globalBet in this.Context.GlobalBets
+                        join
+                        team in this.Context.Teams on globalBet.WinnerTeamID equals team.TeamID
+                where   globalBet.UserID == userID
+                select  new TeamModel
+                        {
+                            ID = team.TeamID,
+                            Name = team.Name,
+                            Flag = team.FlagPrefix,
+                            ExternalID = team.ExternalID,
+                            Points = (int)team.Points,
+                            BetMade = (team != null && globalBet.WinnerTeamID != null && team.TeamID == globalBet.WinnerTeamID)
+                        }
             );
         }
 
@@ -60,7 +60,7 @@ namespace Bets.Data
 							Flag = team.FlagPrefix,
                             Points = (int)team.Points,
 							ExternalID = team.ExternalID,
-                            BetMade = (globalBet != null && team.TeamID == globalBet.WinnerTeamID)
+                            BetMade = (globalBet != null && globalBet.WinnerTeamID != null && team.TeamID == globalBet.WinnerTeamID)
 						}
 			);
 
@@ -79,7 +79,7 @@ namespace Bets.Data
 						bet in this.Context.GlobalBets on team.TeamID equals bet.WinnerTeamID
 				where	bet.UserID == this.UserID
 				select	new TeamModel
-						{
+                        {
 							ID = team.TeamID,
 							Name = team.Name,
 							Flag = team.FlagPrefix,

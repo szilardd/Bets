@@ -38,5 +38,5 @@ namespace Bets.Helpers
 			var user = Membership.GetUser() as ThatAuthentication.ThatMembershipUser;
 			return (user.Role == Data.Models.Role.Admin);
 		}
-	}
+    }
 }

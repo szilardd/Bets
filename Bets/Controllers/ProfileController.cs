@@ -80,25 +80,40 @@ namespace Bets.Controllers
 			try
 			{
 				string destinationPath = Path.Combine(path, username + ".jpg");
+                FileInfo fileInfo = new FileInfo(destinationPath);
+                var fullImagePath = destinationPath.Replace(fileInfo.Extension, "") + "_full" + fileInfo.Extension;
 
-				FileInfo fileInfo = new FileInfo(destinationPath);
-
-				if (!Directory.Exists(fileInfo.DirectoryName))
+                if (!Directory.Exists(fileInfo.DirectoryName))
 					Directory.CreateDirectory(fileInfo.DirectoryName);
 
-				if (System.IO.File.Exists(destinationPath))
-					System.IO.File.Delete(destinationPath);
+                if (System.IO.File.Exists(destinationPath))
+                {
+                    System.IO.File.Delete(destinationPath);
+                }
 
-				pictureFile.SaveAs(destinationPath);
+                if (System.IO.File.Exists(fullImagePath))
+                {
+                    System.IO.File.Delete(fullImagePath);
+                }
+
+                // save original image
+                pictureFile.SaveAs(fullImagePath);
 
 				//resize image
-				MemoryStream memoryStream = new MemoryStream();
 				using (Image image = Image.FromStream(pictureFile.InputStream))
 				{
-					using (Image resizedImage = new Bitmap(image, DataConfig.ProfileImageWidth, DataConfig.ProfileImageHeight))
-					{
-						resizedImage.Save(destinationPath, image.RawFormat);
-					}
+                    // if size matches config, save without resize
+                    if (image.Size.Width == DataConfig.ProfileImageWidth && image.Size.Height == DataConfig.ProfileImageHeight)
+                    {
+                        image.Save(destinationPath, image.RawFormat);
+                    }
+                    else
+                    {
+                        using (Image resizedImage = new Bitmap(image, DataConfig.ProfileImageWidth, DataConfig.ProfileImageHeight))
+                        {
+                            resizedImage.Save(destinationPath, image.RawFormat);
+                        }
+                    }
 				}
 
 				return true;

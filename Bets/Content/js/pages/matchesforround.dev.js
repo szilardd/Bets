@@ -42,7 +42,8 @@
 			}
 
 			//inline block
-			Utils.blockElement($container, true);
+			$btnSave.parents('.cell-BetAction').toggleClass('loading');
+			$btnSave.attr('disabled', true);
 
 			AjaxUtils.post({
 				url				:	self.$page.data('pagetype') + '/Add',
@@ -54,13 +55,14 @@
 										//refresh user bonus
 										userBonus = parseInt(response.UserBonus);
 										self.maxUserBonus(Math.min(self.matchViewModel.bonus() + userBonus, maxBonusPerMatch));
-
+										
 										if (response.Success === false)
 										    $btnSave.addClass("invalid");
 										else
-											self.endEdit();
+										    self.endEdit();
 
-										Utils.unblockElement($container);
+										$btnSave.parents('.cell-BetAction').toggleClass('loading');
+										$btnSave.removeAttr('disabled').removeClass('loading');
 
                                         // update listing row UI
 										var $rowBonusElement = self.$row.find('.bonus-single');
@@ -72,9 +74,10 @@
 										}
 									},
 				error			:	function () {
-										$btnSave.addClass("invalid");
+				                        $btnSave.addClass("invalid");
 
-										Utils.unblockElement($btnSave);
+				                        $btnSave.parents('.cell-BetAction').toggleClass('loading');
+				                        $btnSave.removeAttr('disabled').removeClass('loading');
 									}
 			});
 		};

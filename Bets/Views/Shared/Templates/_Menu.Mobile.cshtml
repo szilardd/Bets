@@ -2,12 +2,16 @@
 
 <nav id="menu">
     <ul>
+        @if (ViewBag.TournamentEnded ?? false)
+        {
+            <li><a href="@Url.Action("Index", "GlobalResults")" class="grn @if (ViewBag.Module == Module.GlobalResults){ <text>selected</text> }">Global Results</a></li>
+        }
         <li><a href="@Url.Action("Index", "Dashboard")" class="grn @if (ViewBag.Module == Module.Dashboard) { <text>selected</text> }">Matches</a></li>
         <li><a href="@Url.Action("Standings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardStandings) { <text>selected</text> }">Standings</a></li>
         <li><a href="@Url.Action("GoalscorerStandings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardGoalscorerStandings) { <text>selected</text> }">Top Goalscorers</a></li>
         <li><a href="@Url.Action("Index", "MyBets")" class="grn @if (ViewBag.Module == Module.MyBets) { <text>selected</text> }">Global Bets</a></li>
-        <li><a href="@Url.Action("Index", "UserBets")" class="grn @if (ViewBag.Module == Module.UserBets) { <text>selected</text> }">Users</a></li>
-        <li><a href="@Url.Action("Index", "RoundBets")" class="grn @if (ViewBag.Module == Module.RoundBets) { <text>selected</text> }">Rounds</a></li>
+        <li><a href="@Url.Action("Index", "UserBets")" class="grn @if (ViewBag.Module == Module.UserBets) { <text>selected</text> }">User Bets</a></li>
+        <li><a href="@Url.Action("Index", "RoundBets")" class="grn @if (ViewBag.Module == Module.RoundBets) { <text>selected</text> }">Round Bets</a></li>
         <li><a href="@Url.Action("Index", "Teams")" class="grn @if (ViewBag.Module == Module.Teams) { <text>selected</text> }">Teams</a></li>
         @if (Request.IsAuthenticated)
         {
