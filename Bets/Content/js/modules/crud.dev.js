@@ -68,7 +68,7 @@ var CRUD = (function() {
 										var $el = $(el),
 											value = $el.val();
 
-										if (value == '' || $el.attr('disabled')) {
+										if (value === '' || $el.attr('disabled')) {
 											callback([]);
 											return;
 										}

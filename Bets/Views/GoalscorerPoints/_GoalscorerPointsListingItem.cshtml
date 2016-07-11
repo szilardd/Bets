@@ -1,0 +1,37 @@
+@model GoalscorerPointsModel
+
+@if (ViewBag.Type == "item")
+{
+    <td>
+        <img class="icon thumb" src="@Model.UserImageUrl" />
+        @Model.UserDisplayName
+    </td>
+    <td>
+        <img class="flag" src="@Model.PlayerTeamFlagUrl" />
+        @Model.PlayerShortName
+    </td>
+
+    <td>
+        <div><b>@Model.PlayerPoints</b></div>
+    </td>
+
+    <td><b>@Model.PlayerGoalsScored</b></td>
+
+    <td>
+        @if (Model.BetWon)
+        {
+            <span class="bet-win bet-win-result"></span>
+        }
+        else
+        {
+            <span class="bet-win bet-win-none"></span>
+        }
+    </td>
+}
+else {
+    <td>User</td>
+    <td>Player</td>
+    <td>Points</td>
+    <td>Goals</td>
+    <td></td>
+}

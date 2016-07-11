@@ -176,24 +176,24 @@ namespace Bets.Helpers
         /// <summary>
         ///  Sample HTML for a finished match
         ///
-        //  <div class="min"> FT </div> 
-        //  <div class="ply tright name"> Czech Republic </div> 
-        //  <div class="sco"> <a href="/euro/match/?match=1-1695441">2 - 2</a> </div> 
-        //  <div class="ply name"> Croatia</div>
+        ///     <div class="min"> FT </div> 
+        ///     <div class="ply tright name"> Czech Republic </div> 
+        ///     <div class="sco"> <a href="/euro/match/?match=1-1695441">2 - 2</a> </div> 
+        ///     <div class="ply name"> Croatia</div>
         ///
         ///
         ///  Sample HTML for an ongoing match
-        //
-        //  <div class="min"><img src="http://cdn3.livescore.com/web/img/flash.gif" alt="live"> 1' </div> 
-        //  <div class="ply tright name"> Yanbian </div> 
-        //  <div class="sco"> 0 - 0 </div> 
-        //  <div class="ply name"> Guangzhou Evergrande </div> 
+        ///
+        ///     <div class="min"><img src="http://cdn3.livescore.com/web/img/flash.gif" alt="live"> 1' </div> 
+        ///     <div class="ply tright name"> Yanbian </div> 
+        ///     <div class="sco"> 0 - 0 </div> 
+        ///     <div class="ply name"> Guangzhou Evergrande </div> 
         /// </summary>
         private static List<MatchResultModel> GetMatchResultsFromHtml(string html)
         {
             var pattern =
 
-            "<div class=\"min\"> *(?<Result>.*?) *<\\/div>" +                                   // result or minute (may contain other HTML elements)
+            "<div class=\"min\">(<img.*?>)? *(?<Result>.*?) *<\\/div>" +                        // result or minute (may contain <img> tag or other HTML elements)
             ".*?name\"> *(?<FirstTeamName>.*?) *<\\/div>" +                                     // first team name
             ".*?" +                                                                             // junk
             "class=\"sco\">.*?(?<FirstTeamGoals>[0-9]|\\?) - (?<SecondTeamGoals>[0-9]|\\?)" +   // score

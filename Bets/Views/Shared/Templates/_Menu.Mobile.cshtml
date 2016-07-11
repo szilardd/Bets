@@ -2,6 +2,10 @@
 
 <nav id="menu">
     <ul>
+        @if (ViewBag.TournamentEnded ?? false)
+        {
+            <li><a href="@Url.Action("Index", "GlobalResults")" class="grn @if (ViewBag.Module == Module.GlobalResults){ <text>selected</text> }">Global Results</a></li>
+        }
         <li><a href="@Url.Action("Index", "Dashboard")" class="grn @if (ViewBag.Module == Module.Dashboard) { <text>selected</text> }">Matches</a></li>
         <li><a href="@Url.Action("Standings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardStandings) { <text>selected</text> }">Standings</a></li>
         <li><a href="@Url.Action("GoalscorerStandings", "Dashboard")" class="grn @if (ViewBag.Module == Module.DashboardGoalscorerStandings) { <text>selected</text> }">Top Goalscorers</a></li>

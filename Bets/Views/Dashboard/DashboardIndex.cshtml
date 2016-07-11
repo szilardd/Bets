@@ -3,30 +3,57 @@
 
 @section ExternalsJS {
 
-	@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
-		.Add(Url.ScriptDev("pages/singlebet"))
-		.Add(Url.ScriptDev("pages/matchesforround"))
-		.Render("~/content/combined/combined-dashboard-#.min.js"))
+    @MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+        .Add(Url.ScriptDev("pages/singlebet"))
+        .Add(Url.ScriptDev("pages/matchesforround"))
+        .Add(Url.ScriptDev("pages/dashboard"))
+        .Render("~/content/combined/combined-dashboard-#.min.js"))
 }
 
 @Html.Partial(Url.Template("MatchBet"))
 
 <div class="clearfix">
 
-	<div id="main-container" class="clearfix">
-		@{ Html.RenderAction("Index", "MatchesForCurrentRound"); }
+    <div id="main-container" class="clearfix">
+        
+        @if (ViewBag.TournamentEnded)
+        {
+            <div id="global-results">
+                <div>
+                    @{ Html.RenderAction("Index", "WinnerResult"); }
+                </div>
 
-		<div>
-			@{ Html.RenderAction("Index", "StandingsBonus"); }
-		</div>
+                <div>
+                    @{ Html.RenderAction("Index", "GoalscorerResult"); }
+                </div>
 
-		<div class="clear"></div>
-		
-		<div>
-			<h1>Top Goalscorers</h1>
-			@{ Html.RenderAction("Index", "GoalscorerStandings"); }
-		</div>
-	</div>
+                <div class="clearfix"></div>
 
-	<input type="hidden" id="fld-max-bonus" value="@ViewBag.MaxBonusPerMatch" />
+                <div>
+                    <input type="button" value="View Bets" class="btn-view btn" data-type="winnerpoints">
+                    <div class="global-container"></div>
+                </div>
+
+                <div>
+                    <input type="button" value="View Bets" class="btn-view btn" data-type="goalscorerpoints">
+                    <div class="global-container"></div>
+                </div>
+            </div>
+        }
+
+        @{ Html.RenderAction("Index", "MatchesForCurrentRound"); }
+
+        <div>
+            @{ Html.RenderAction("Index", "StandingsBonus"); }
+        </div>
+
+        <div class="clear"></div>
+
+        <div>
+            <h1>Top Goalscorers</h1>
+            @{ Html.RenderAction("Index", "GoalscorerStandings"); }
+        </div>
+    </div>
+
+    <input type="hidden" id="fld-max-bonus" value="@ViewBag.MaxBonusPerMatch" />
 </div>

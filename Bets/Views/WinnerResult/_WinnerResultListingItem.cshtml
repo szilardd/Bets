@@ -1,0 +1,6 @@
+@model TeamModel
+
+@if (ViewBag.Type == "item")
+{
+    Html.RenderPartial("Winner", Model, ViewData);
+}

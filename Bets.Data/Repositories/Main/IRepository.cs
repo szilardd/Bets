@@ -28,6 +28,7 @@ namespace Bets.Data
 		Delete = 2
 	}
 
+    [Serializable]
     public class ActionStatus<T>
     {
         [Required]
@@ -46,6 +47,7 @@ namespace Bets.Data
         }
     }
 
+    [Serializable]
     public class ActionStatus : ActionStatus<object>
 	{
     }

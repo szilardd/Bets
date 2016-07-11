@@ -1,6 +1,17 @@
 @model IEnumerable<MatchForRoundModel>
-		   
-<p>The following matches will take place in the current round between @Model.First().Date.ToDate(true) and @Model.Last().Date.ToDate(true).</p>
+@{ 
+    var first = Model.First().Date;
+    var last = Model.Last().Date;
+}		   
+
+@if (last.Date > first.Date)
+{
+    <p>The following matches will take place in the current round between @first.ToDate(true) and @last.ToDate(true).</p>
+}
+else
+{
+    <p>The final match will take place on @first.ToDate(true)</p>
+}
 
 <br />
 

@@ -7,6 +7,7 @@ using Bets.Data.Models;
 using Bets.Models;
 using System.Web.Security;
 using Bets.Helpers;
+using Bets.Data;
 
 namespace Bets.Controllers
 {
@@ -14,8 +15,9 @@ namespace Bets.Controllers
     {
 		protected Module Module { get; set; }
         protected string name;
+        private bool? _tournamentEnded;
 
-		public BaseController()
+        public BaseController()
 		{
 		}
 
@@ -29,14 +31,36 @@ namespace Bets.Controllers
 			ViewBag.Module = this.Module;
 		}
 
+        protected bool TournamentEnded
+        {
+            get
+            {
+                if (_tournamentEnded == null)
+                {
+                    if (DataExtensions.UserIsAdmin())
+                    {
+                        _tournamentEnded = true;
+                    }
+                    else
+                    {
+                        var settingsRepo = new SettingsRepository();
+                        _tournamentEnded = settingsRepo.GetTournamentEndStatus();
+                    }
+                }
+
+                return _tournamentEnded.Value;
+            }
+        }
+
 		protected virtual void SetIndexData()
 		{
 			this.SetData();
 
             ViewBag.Name = name;
 			ViewBag.IsAdmin = false;
-		
-			if (Request.IsAuthenticated)
+            ViewBag.TournamentEnded = TournamentEnded;
+
+            if (Request.IsAuthenticated)
 			{
 				var user = Membership.GetUser() as ThatAuthentication.ThatMembershipUser;
 
@@ -52,7 +76,7 @@ namespace Bets.Controllers
 			this.SetData();
 		}
 
-		public ActionResult Index()
+		public virtual ActionResult Index()
         {
 			this.SetIndexData();
 			return View(this.Module.ToString() + "Index", ViewData.Model);
