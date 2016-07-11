@@ -195,10 +195,6 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
-/Bets/Settings/smtp.config
-/Bets/Settings/connectionstrings.config
-/Bets/Settings/sessionstate.config
-/Bets/Settings/machinekey.config
 /Bets/content/combined/*
 !/Bets/content/combined/readme.md
 /Bets/content/img/profile/*
